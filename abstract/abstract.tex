@@ -1,0 +1,42 @@
+% $File: abstract.tex
+% $Date: Tue Feb 28 13:12:37 2012 +0800
+% $Author: wyx <ppwwyyxxc@gmail.com>
+
+\documentclass[a4paper]{article}
+\usepackage{fontspec,amsmath,amssymb,zhspacing,verbatim,minted}
+\usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+\usepackage[sorting=none]{biblatex}
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+\zhspacing
+
+
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\defbibheading{bibliography}{\section{参考文献}}
+\bibliography{refs.bib}
+
+% \figref{label}: reference to a figure
+\newcommand{\figref}[1]{\hyperref[fig:#1]{图\ref*{fig:#1}}}
+% \secref{label}: reference to a section
+\newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
+
+\input{mint-defs.tex}
+
+\title{Polynomial}
+\author{\\(ppwwyyxxc@gmail.com)}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\input{order.tex}
+%\input{theory.tex}
+%\input{function.tex}
+%\input{summary.tex}
+\printbibliography
+%\input{appendix.tex}
+
+\end{document}
+

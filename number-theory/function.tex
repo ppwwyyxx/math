@@ -1,0 +1,86 @@
+% $File: function.tex
+% $Date: Sat Mar 03 13:24:52 2012 +0800
+% Author:  ppwwyyxxc@gmail.com
+
+\section{Arithmetic Function}
+$ d(n)$约数个数,$ \sigma (n)$约数和,$ \varphi(n)$缩系大小,均有积性
+
+$ n=\prod{p_i^{\alpha_i}}$ 则$d(n)=\prod{(\alpha_i+1)},\sigma(n)=\prod{\frac{p_i^{\alpha_i}-1}{p_i-1}},\varphi(n)=n\prod({1-\frac{1}{p_i}})$
+\\
+
+$ d(n)$为奇$ \Leftrightarrow n=k^2$ ;$ \sigma(n)$为奇$ \Leftrightarrow n=k^2,2k^2$
+
+$ \varphi(n)=\varphi(2n)\Leftrightarrow n$为奇.
+
+$ \varphi(n) \mid n\Leftrightarrow n=1,2^{\alpha}3^{\beta}(\alpha \ge 1,\beta \ge 0)$
+
+$ n$的最小正缩系元素和为$ \frac{1}{2}n\varphi(n)$.配对
+\\
+
+估界:
+
+$ n$在$ [1,\sqrt{n}]$中约数至多$ \sqrt{n}$个,$ \therefore d(n)\le 2\sqrt{n}$
+
+$ \sigma(n)=\frac{1}{2}\sum_{d \mid n}{d+\frac{n}{d}}\ge \frac{1}{2}d(n)2\sqrt{n}=\sqrt{n}d(n)$
+
+$ \sigma(n)^2 \mathop \le \limits_{cauchy} d(n)\sum_{d\mid n}{d^2}=d(n)\sum_{d\mid n}{(\frac{n}{d})^2}\le n^2d(n)\sum{\frac{1}{k^2}}<2n^2d(n)$
+
+$ \varphi(p^a)=p^a-p^{a-1}>p^{\frac{a}{2}},\varphi(2^a)>\frac{2^{\frac{a}{2}}}{2}\Rightarrow \varphi(n)>\frac{\sqrt{n}}{2}.n$为奇时有$ \varphi(n)>\sqrt{n}$
+
+$ \varphi(n)\le n-1,d(n)+\varphi(n)\le n+1$当$ n$为合数时,$ \varphi(n)\le n-\sqrt{n}.$
+
+\[  \sum_{d \mid n}{\varphi(d)}=\sum_{e_1=0}^{\alpha_1}{\varphi(p_1^{e_1})}\sum_{e_2=0}^{\alpha_2}{\varphi(p_2^{e_2})}\cdots =\prod_{i=1}^{r}{\sum_{j=0}^{\alpha_i}{\varphi(p_i^j)}}=\prod_{i=1}^{r}{p_i^{\alpha_i}}=n\]
+
+\[ \frac{\varphi(mn)}{mn}=\prod_{p \mid mn}{(1-\frac{1}{p})}=\frac{\prod_{p \mid m}{(1-\frac{1}{p})}\prod_{p \mid n}{(1-\frac{1}{p})}}{\prod_{p \mid (m,n)}{(1-\frac{1}{p})}}=\frac{\frac{\varphi(m)}{m}\frac{\varphi(n)}{n}}{\frac{\varphi((m,n))}{(m,n)}} \]
+$ \Rightarrow \varphi(mn)\varphi((m,n))=(m,n)\varphi(m)\varphi(n) $ 
+\\
+
+$ d(n)=\prod{(\alpha+1)}\ge 2^r,\varphi(n)\ge n \prod{(1-\frac{1}{2})}=\frac{n}{2^r}\Rightarrow d(n)\varphi(n)\ge n$
+
+对$ \pi(n)=$小于$ n$的素数个数估界: 
+
+设$ n=k^2l,k$有$ \sqrt{n}$种取法,$ l$为不同素数积,有$ 2^{\pi(n)}$种取法.
+
+$ n\le \sqrt{n}2^{\pi(n)}\Rightarrow \pi(n)\ge \frac{1}{2}\log_2n$
+\\
+
+Fermat-Euler Theorem:
+$ (a,m)=1\Rightarrow a^{\varphi(m)}\equiv 1 \pmod m$
+
+证:取$ m$一组缩系$ x_1\cdots x_{\varphi(m)},$则$ ax_i$也构成一组缩系.$ \prod{ax_i}\equiv \prod{x_i}$
+
+推广:$ a^m \equiv a^{m-\varphi(m)} \pmod m$
+
+证:设$ m=m_1m_2:m_1$的素因子均被$ a$整除,而$ (m_2,a)=1,$则$ (m_1,m_2)=1$.
+
+首先有$ a^{\varphi(m_2)}\equiv 1 \pmod{m_2}\Rightarrow a^{\varphi(m)\equiv 1 \pmod{m_2}}\Rightarrow a^m\equiv a^{m-\varphi(m)\pmod{m_2}}$.
+
+于是只需$ a^m\equiv a^{m-\varphi(m)}\pmod{m_1}\Leftrightarrow m_1\mid a^{m-\varphi(m)}$ 
+
+$\Leftrightarrow V_p(m_1)\le (m-\varphi(m))V_p(a)$
+
+又$ V_p(m_1)=V_p(m)\le2^{V_p(m)-1}\le p^{V_p(m)-1}\le p^{V_p(m)-1}\varphi(\frac{m}{p^{V_p(m)}})$ 
+
+$=p^{V_p(m)}\varphi(\frac{m}{p^{V_p(m)}})-\varphi(p^{V_p(m)})\varphi(\frac{m}{p^{V_p(m)}})=p^{V_p(m)}\varphi(\frac{m}{p^{V_p(m)}})-\varphi(m)$ 
+
+$\le m-\varphi(m)\le (m-\varphi(m))V_p(a)$得证.
+\\
+
+一些等式:
+
+$ (m,n)=1\Rightarrow m^{\varphi(n)}+n^{\varphi(m)}\equiv 1 \pmod{mn}$
+
+$ a\varphi(a^kb^{k+1})=b\varphi(b^ka^{k+1})$
+
+$n=4k+3 \Rightarrow \forall d \mid n ,d+\frac{n}{d}\equiv 0 \pmod 4\Rightarrow 4 \mid \sigma(n)$
+\\
+
+$ (m,n)=1,\{ a_i\}_{1}^{\varphi(m)},\{ b_i\}_1^{\varphi(n)}$为缩系,则
+
+$ S=\{ mb_i+na_j | 1\le j\le \varphi(m),1\le i \le \varphi(n)\}$为mod $ mn$缩系.
+
+$ 1.(S_k,mn)=1; $ 
+
+$ 2.S_i\equiv S_j \pmod n\Rightarrow b_i\equiv b_j \pmod n\Rightarrow i=j;$ 
+
+$ 3.|S|=\varphi(m)\varphi(n)=\varphi(mn)$;

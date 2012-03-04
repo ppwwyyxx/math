@@ -1,0 +1,69 @@
+% $File: number-theory.tex
+% $Date: Sat Mar 03 13:23:26 2012 +0800
+% $Author: wyx <ppwwyyxxc@gmail.com>
+
+\documentclass[a4paper]{article}
+\usepackage{fontspec,zhspacing,amsmath,amssymb,verbatim,minted}
+\usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+\usepackage[sorting=none]{biblatex}
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+\zhspacing
+\setlength{\parindent}{1em}
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\defbibheading{bibliography}{\section{参考文献}}
+\bibliography{refs.bib}
+% \figref{label}: reference to a figure
+\newcommand{\figref}[1]{\hyperref[fig:#1]{图\ref*{fig:#1}}}
+% \secref{label}: reference to a section
+\newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+%\newcommand{\qed}{\nobreak \ifvmode \relax \else
+%      \ifdim\lastskip<1.5em \hskip-\lastskip
+%      \hskip1.5em plus0em minus0.5em \fi \nobreak
+%      \vrule height0.75em width0.5em depth0.25em\fi}
+%
+
+
+
+
+\input{mint-defs.tex}
+
+\title{Number Theory}
+\author{ppwwyyxxc@gmail.com}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\input{order.tex}
+\input{wilson.tex}
+\input{special-numbers.tex}
+\input{function.tex}
+\input{gauss.tex}
+\input{diophantine.tex}
+\printbibliography
+%\input{appendix.tex}
+
+\end{document}
+
+
+% 冯跃峰 初等数论；潘 初等数论； 小丛书； 奥塞经典； 刘培杰 背景研究；

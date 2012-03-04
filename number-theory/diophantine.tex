@@ -1,0 +1,76 @@
+% $File: diophantine.tex
+% $Date: Wed Feb 29 16:48:20 2012 +0800
+% Author: ppwwyyxxc@gmail.com
+\section{Diophantine Equation} 
+Pythagoras: $ a^2+b^2=c^2,(a,b,c)=1,2\mid b$的所有$ N^{+}$上的解为:
+
+$ a=u^2-v^2,b=2uv,c=u^2+v^2,(u,v)=1,u\ge v,2 \nmid u+v$
+\\
+
+$ a^2-mab+b^2=k,k\le m$且非平方数,方程无解.
+证:假设有最小解$ (a_0,b_0),a_0\ge b_0,$且$ a_0+b_0$,令$ a'=mb_0-a_0$,则$ a'\le 0$或$ a' \ge a_0$
+
+若$ a'=0$则$ k$平方数;若$ a'<0\Rightarrow a_o\ge mb_0+1\Rightarrow a^2-ma_0b_0+b_0^2>m\ge k$
+
+若$ a'\ge a_0\Rightarrow b_0^2-k=a_0a'\ge a_0^2\ge b_0^2\ge b_0^2-k$.每种情况均矛盾.
+\\
+
+Pell:
+标准Pell方程$ x^2-dy^2=1,d\in \mathbb{N^{+}},d$非平方数必有无穷多解,$ (x_0,y_0)$称为基本解,
+所有解为$ x_n+\sqrt{d}y_n=(x_0+\sqrt{d}y_0)^n$
+
+$ x^2-dy^2=C$若有解则必有无穷多解.设最小解$ (x_1,y_1)$,则$ x_n+\sqrt{d}y_n=(x_1+\sqrt{d}y_1)(x_0+\sqrt{d}y_0)^{n-1}$为部分解
+
+对上式中改变符号:$\left\{ \begin{matrix}x_n+\sqrt{d}y_n=(x_0+\sqrt{d}y_0)^n \\ x_n-\sqrt{d}y_n=(x_0-\sqrt{d}y_0)^n    \end{matrix} \right. \Rightarrow	$
+两式加减即可求出通项
+
+特征根为$ \lambda_{1,2}=x_0\pm\sqrt{d}y_0\Rightarrow $特征方程
+$ \lambda^2-2x_0\lambda+1=0\Rightarrow$ 
+
+递推关系$ \left \{\begin{matrix} x_{n+1}=2x_0x_n-x_{n-1}\\ y_{n+1}=2x_0y_n-y_{n-1}\end{matrix}\right.$
+\\
+
+$ x^2-dy^2=-1,$设$ \sqrt{d}$的连分数周期为$ l$,则$ l$为偶$ \Leftrightarrow $Pell方程无解
+
+特别地,素数$ p=4k+1$时,$ x^2-py^2=-1$	有解
+
+$ x^2-dy^2=-1$若有解则必有无穷多解.设最小解$ (x_1,y_1)$,则所有解为$ x_n+\sqrt{d}y_n=(x_1+\sqrt{d}y_1)^{2n-1}$
+\\
+
+Lemma:
+
+$ x^2-dy^2=4$的整数解$ x=u,y=v$是正整数解$ \Leftrightarrow \frac{u+\sqrt{d}v}{2}>1$
+
+证:$ \frac{u+\sqrt{d}v}{2}>1\Rightarrow \frac{u-\sqrt{d}v}{2}\in(0,1)$,
+两式相加得$ u>1$即$ u\ge 2$
+
+又$ 1>\frac{u-\sqrt{d}v}{2}\ge 1-\frac{\sqrt{d}v}{2}\Rightarrow v>0$.得证
+
+$ x^2-dy^2=4$若有最小解$ (x_1,y_1)$,则所有解$ \frac{x_n+\sqrt{d}y_n}{2}=(\frac{x_1+\sqrt{d}y_1}{2})^n$
+
+证:设数列$x,y, \frac{x_n+\sqrt{d}y_n}{2}=(\frac{x_1+\sqrt{d}y_1}{2})^n$,
+假设有解$ (a,b)$不在其中
+
+不妨设$ ( \frac{x_1+\sqrt{d}y_1}{2})^{n+1}>\frac{a+\sqrt{d}b}{2}>(\frac{x_1+\sqrt{d}y_1}{2})^n$,则
+
+$   \frac{x_1+\sqrt{d}y_1}{2}=\frac{x_n^2-dy_n^2}{4}\frac{x_1+\sqrt{d}y_1}{2}=(\frac{x_1+\sqrt{d}y_1}{2})^{n+1}\frac{x_n-\sqrt{d}y_n}{2}>\frac{a+\sqrt{d}b}{2}\frac{x_n-\sqrt{d}y_n}{2} $ 
+
+$  \overset{\text{def}}{=} \frac{s+\sqrt{d}t}{2}>(\frac{x_1+\sqrt{d}y_1}{2})^n\frac{x_n-\sqrt{d}y_n}{2}=1$ 
+\\
+
+解方程$ x^2-5y^2=-4$,有恒等式$ (\frac{3x-5y}{2})^2-5(\frac{3y-x}{2})^2=x^2-5y^2$
+
+$ \therefore (x,y)\rightarrow (\frac{3x-5y}{2},\frac{3y-x}{2}),$
+
+可证当$ y>1$时总有$ 0<\frac{3x-5y}{2}<x,0<\frac{3y-x}{2}<y$,完成递降
+
+递推可求得其所有解为$ \frac{x_n+\sqrt{5}y_n}{2}=(\frac{x_1+\sqrt{5}y_1}{2})^{2n+1}$
+
+事实上也有恒等式$ (ax-Dby)^2-D(ay-bx)^2=(a^2-Db^2)(x^2-Dy^2)=x^2-Dy^2$,但用它递降不总能做到边界
+\\
+
+(Catalan)$ a^x-b^y=1$只有$ 3^2-2^3=1$一组解.
+\\
+
+Techniques:
+
