@@ -5,10 +5,10 @@ BIBTEX=bibtex
 all: view
 
 
-rebuild  output/$(TARGET).pdf: *.tex *.bib output
+rebuild  output/$(TARGET).pdf: *.tex output
 	cd output && rm -f *.tex *.bib && ln -s ../*.tex ../*.bib .
-	cd output && $(TEX) $(TARGET).tex && $(BIBTEX) $(TARGET).aux && \
-		$(TEX) $(TARGET).tex && $(TEX) $(TARGET).tex
+	cd output && $(TEX) $(TARGET).tex &&  \
+		$(TEX) $(TARGET).tex 
 
 
 

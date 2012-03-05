@@ -1,5 +1,5 @@
 % $File: polynomial.tex
-% $Date: Mon Mar 05 11:03:53 2012 +0800
+% $Date: Mon Mar 05 16:34:11 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -23,6 +23,11 @@
 \newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
 \DeclareMathOperator{\LT}{\tiny{LT}}
 
+
+\let\Oldsum\sum
+\renewcommand{\sum}{\displaystyle\Oldsum}
+\let\Oldprod\prod
+\renewcommand{\prod}{\displaystyle\Oldprod}
 \input{mint-defs.tex}
 
 \title{Polynomial}
