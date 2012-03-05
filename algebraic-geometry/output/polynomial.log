@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2012.2.19)  5 MAR 2012 20:08
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2012.2.19)  5 MAR 2012 16:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**abstract.tex
-(./abstract.tex
+**polynomial.tex
+(./polynomial.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, pinyin, loaded.
@@ -443,10 +443,10 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/catchfile.sty
 Package: catchfile 2007/11/11 v1.2 Catches the contents of a file (HO)
 )
-runsystem(uname -s > "abstract.w18")...executed.
+runsystem(uname -s > "polynomial.w18")...executed.
 
- (./abstract.w18)
-runsystem(rm -- "abstract.w18")...executed.
+ (./polynomial.w18)
+runsystem(rm -- "polynomial.w18")...executed.
 
 )
 \minted@bgbox=\box31
@@ -454,11 +454,36 @@ runsystem(rm -- "abstract.w18")...executed.
 \@float@every@listing=\toks221
 \c@listing=\count115
 )
-runsystem(which pygmentize && touch abstract.aex)...executed.
+runsystem(which pygmentize && touch polynomial.aex)...executed.
 
-runsystem(rm abstract.aex)...executed.
+runsystem(rm polynomial.aex)...executed.
 
- (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+ (/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count116
+\lst@gtempboxa=\box32
+\lst@token=\toks222
+\lst@length=\count117
+\lst@currlwidth=\dimen114
+\lst@column=\count118
+\lst@pos=\count119
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
+\lst@newlines=\count120
+\lst@lineno=\count121
+\lst@maxwidth=\dimen117
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count122
+\lst@skipnumbers=\count123
+\lst@framebox=\box33
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
@@ -476,9 +501,9 @@ O)
 (/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
-\@linkdim=\dimen114
-\Hy@linkcounter=\count116
-\Hy@pagecounter=\count117
+\@linkdim=\dimen118
+\Hy@linkcounter=\count124
+\Hy@pagecounter=\count125
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -525,10 +550,10 @@ Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
 (/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
 Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
 ))
-\Fld@menulength=\count118
-\Field@Width=\dimen115
-\Fld@charsize=\dimen116
-\Field@toks=\toks222
+\Fld@menulength=\count126
+\Field@Width=\dimen119
+\Fld@charsize=\dimen120
+\Field@toks=\toks223
 Package hyperref Info: Hyper figures OFF on input line 4377.
 Package hyperref Info: Link nesting OFF on input line 4382.
 Package hyperref Info: Hyper index ON on input line 4385.
@@ -540,16 +565,16 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count119
-\c@Item=\count120
+\Hy@abspage=\count127
+\c@Item=\count128
 )
 *hyperref using default driver hdvipdfm*
 (/usr/share/texmf-texlive/tex/latex/hyperref/hdvipdfm.def
 File: hdvipdfm.def 2009/10/09 v6.79a Hyperref driver for dvipdfm
-\pdfm@box=\box32
-\c@Hy@AnnotLevel=\count121
-\HyField@AnnotCount=\count122
-\Fld@listcount=\count123
+\pdfm@box=\box34
+\c@Hy@AnnotLevel=\count129
+\HyField@AnnotCount=\count130
+\Fld@listcount=\count131
 )
 (/usr/share/texmf/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2011/05/12 v1.4c programmable bibliographies
@@ -559,50 +584,50 @@ Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 
 (/usr/share/texmf-texlive/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count124
+\et@xins=\count132
 )
-\etb@tempcnta=\count125
+\etb@tempcnta=\count133
 )
 (/usr/share/texmf/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count126
+\lrq@indent=\count134
 
 (/usr/share/texmf/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@listtotal=\count127
-\c@listcount=\count128
-\c@liststart=\count129
-\c@liststop=\count130
-\c@citecount=\count131
-\c@citetotal=\count132
-\c@multicitecount=\count133
-\c@multicitetotal=\count134
-\c@instcount=\count135
-\c@maxnames=\count136
-\c@minnames=\count137
-\c@maxitems=\count138
-\c@minitems=\count139
-\c@citecounter=\count140
-\c@savedcitecounter=\count141
-\c@uniquelist=\count142
-\c@uniquename=\count143
-\c@refsection=\count144
-\c@refsegment=\count145
-\c@maxextrayear=\count146
-\c@maxextraalpha=\count147
-\c@abbrvpenalty=\count148
-\c@highnamepenalty=\count149
-\c@lownamepenalty=\count150
-\c@maxparens=\count151
-\c@parenlevel=\count152
-\blx@tempcnta=\count153
-\blx@tempcntb=\count154
-\blx@maxsection=\count155
-\blx@maxsegment=\count156
-\blx@notetype=\count157
-\blx@parenlevel@text=\count158
-\blx@parenlevel@foot=\count159
+\c@listtotal=\count135
+\c@listcount=\count136
+\c@liststart=\count137
+\c@liststop=\count138
+\c@citecount=\count139
+\c@citetotal=\count140
+\c@multicitecount=\count141
+\c@multicitetotal=\count142
+\c@instcount=\count143
+\c@maxnames=\count144
+\c@minnames=\count145
+\c@maxitems=\count146
+\c@minitems=\count147
+\c@citecounter=\count148
+\c@savedcitecounter=\count149
+\c@uniquelist=\count150
+\c@uniquename=\count151
+\c@refsection=\count152
+\c@refsegment=\count153
+\c@maxextrayear=\count154
+\c@maxextraalpha=\count155
+\c@abbrvpenalty=\count156
+\c@highnamepenalty=\count157
+\c@lownamepenalty=\count158
+\c@maxparens=\count159
+\c@parenlevel=\count160
+\blx@tempcnta=\count161
+\blx@tempcntb=\count162
+\blx@maxsection=\count163
+\blx@maxsegment=\count164
+\blx@notetype=\count165
+\blx@parenlevel@text=\count166
+\blx@parenlevel@foot=\count167
 \labelnumberwidth=\skip49
 \labelalphawidth=\skip50
 \shorthandwidth=\skip51
@@ -614,72 +639,72 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \bibhang=\skip57
 \blx@auxin=\read3
 \blx@auxout=\write5
-\c@labelname=\count160
-\c@savedlabelname=\count161
-\c@author=\count162
-\c@savedauthor=\count163
-\c@shortauthor=\count164
-\c@savedshortauthor=\count165
-\c@editor=\count166
-\c@savededitor=\count167
-\c@editora=\count168
-\c@savededitora=\count169
-\c@editorb=\count170
-\c@savededitorb=\count171
-\c@editorc=\count172
-\c@savededitorc=\count173
-\c@shorteditor=\count174
-\c@savedshorteditor=\count175
-\c@bookauthor=\count176
-\c@savedbookauthor=\count177
-\c@translator=\count178
-\c@savedtranslator=\count179
-\c@annotator=\count180
-\c@savedannotator=\count181
-\c@commentator=\count182
-\c@savedcommentator=\count183
-\c@introduction=\count184
-\c@savedintroduction=\count185
-\c@foreword=\count186
-\c@savedforeword=\count187
-\c@afterword=\count188
-\c@savedafterword=\count189
-\c@holder=\count190
-\c@savedholder=\count191
-\c@namea=\count192
-\c@savednamea=\count193
-\c@nameb=\count194
-\c@savednameb=\count195
-\c@namec=\count196
-\c@savednamec=\count197
-\c@institution=\count198
-\c@savedinstitution=\count199
-\c@language=\count200
-\c@savedlanguage=\count201
-\c@location=\count202
-\c@savedlocation=\count203
-\c@organization=\count204
-\c@savedorganization=\count205
-\c@origlocation=\count206
-\c@savedoriglocation=\count207
-\c@origpublisher=\count208
-\c@savedorigpublisher=\count209
-\c@pageref=\count210
-\c@savedpageref=\count211
-\c@publisher=\count212
-\c@savedpublisher=\count213
-\c@lista=\count214
-\c@savedlista=\count215
-\c@listb=\count216
-\c@savedlistb=\count217
-\c@listc=\count218
-\c@savedlistc=\count219
-\c@listd=\count220
-\c@savedlistd=\count221
-\c@liste=\count222
-\c@savedliste=\count223
-\c@listf=\count224
-\c@savedlistf=\count225
+\c@labelname=\count168
+\c@savedlabelname=\count169
+\c@author=\count170
+\c@savedauthor=\count171
+\c@shortauthor=\count172
+\c@savedshortauthor=\count173
+\c@editor=\count174
+\c@savededitor=\count175
+\c@editora=\count176
+\c@savededitora=\count177
+\c@editorb=\count178
+\c@savededitorb=\count179
+\c@editorc=\count180
+\c@savededitorc=\count181
+\c@shorteditor=\count182
+\c@savedshorteditor=\count183
+\c@bookauthor=\count184
+\c@savedbookauthor=\count185
+\c@translator=\count186
+\c@savedtranslator=\count187
+\c@annotator=\count188
+\c@savedannotator=\count189
+\c@commentator=\count190
+\c@savedcommentator=\count191
+\c@introduction=\count192
+\c@savedintroduction=\count193
+\c@foreword=\count194
+\c@savedforeword=\count195
+\c@afterword=\count196
+\c@savedafterword=\count197
+\c@holder=\count198
+\c@savedholder=\count199
+\c@namea=\count200
+\c@savednamea=\count201
+\c@nameb=\count202
+\c@savednameb=\count203
+\c@namec=\count204
+\c@savednamec=\count205
+\c@institution=\count206
+\c@savedinstitution=\count207
+\c@language=\count208
+\c@savedlanguage=\count209
+\c@location=\count210
+\c@savedlocation=\count211
+\c@organization=\count212
+\c@savedorganization=\count213
+\c@origlocation=\count214
+\c@savedoriglocation=\count215
+\c@origpublisher=\count216
+\c@savedorigpublisher=\count217
+\c@pageref=\count218
+\c@savedpageref=\count219
+\c@publisher=\count220
+\c@savedpublisher=\count221
+\c@lista=\count222
+\c@savedlista=\count223
+\c@listb=\count224
+\c@savedlistb=\count225
+\c@listc=\count226
+\c@savedlistc=\count227
+\c@listd=\count228
+\c@savedlistd=\count229
+\c@liste=\count230
+\c@savedliste=\count231
+\c@listf=\count232
+\c@savedlistf=\count233
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -691,7 +716,8 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texmf/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2011/05/12 v1.4c biblatex generic definitions
-\c@smartand=\count226
+Normal \count register pool exhausted, switching to extended pool.
+\c@smartand=\count277
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -743,21 +769,21 @@ Package graphics Info: Driver file: dvips.def on input line 91.
 (/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-\Gin@req@height=\dimen117
-\Gin@req@width=\dimen118
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
 )
 (/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip58
 \subfigcapskip=\skip59
-\subfigcaptopadj=\dimen119
+\subfigcaptopadj=\dimen123
 \subfigbottomskip=\skip60
-\subfigcapmargin=\dimen120
+\subfigcapmargin=\dimen124
 \subfiglabelskip=\skip61
-\c@subfigure=\count227
-\c@lofdepth=\count228
-\c@subtable=\count229
-\c@lotdepth=\count230
+\c@subfigure=\count278
+\c@lofdepth=\count279
+\c@subtable=\count280
+\c@lotdepth=\count281
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -773,90 +799,91 @@ Package biblatex Info: ... file 'english.lbx' found.
  (/usr/share/texmf/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2011/05/12 v1.4c biblatex localization
 )
-\@quotelevel=\count231
-\@quotereset=\count232
+\@quotelevel=\count282
+\@quotereset=\count283
 
-(./abstract.aux)
-\openout1 = `abstract.aux'.
+(./polynomial.aux)
+\openout1 = `polynomial.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid this).
- on input line 37.
+ on input line 33.
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 37.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 37.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 37.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 37.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 37.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 37.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 37.
-LaTeX Font Info:    Redeclaring math accent \check on input line 37.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 37.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 37.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 37.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 37.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 33.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 33.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 33.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 33.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 33.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 33.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 33.
+LaTeX Font Info:    Redeclaring math accent \check on input line 33.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 33.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 33.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 33.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 33.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `normal' on input line 37.
+(Font)              `operators' in the math version `normal' on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> EU1/lmr/m/n on input line 37.
+(Font)                  OT1/cmr/m/n --> EU1/lmr/m/n on input line 33.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `bold' on input line 37.
+(Font)              `operators' in the math version `bold' on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> EU1/lmr/m/n on input line 37.
+(Font)                  OT1/cmr/bx/n --> EU1/lmr/m/n on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  EU1/lmr/m/n --> EU1/lmr/m/n on input line 37.
+(Font)                  EU1/lmr/m/n --> EU1/lmr/m/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  EU1/lmr/m/n --> EU1/lmr/m/n on input line 37.
+(Font)                  EU1/lmr/m/n --> EU1/lmr/m/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> EU1/lmr/m/it on input line 37.
+(Font)                  OT1/cmr/m/it --> EU1/lmr/m/it on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> EU1/lmr/bx/n on input line 37.
+(Font)                  OT1/cmr/bx/n --> EU1/lmr/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 37.
+(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 37.
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  EU1/lmr/m/n --> EU1/lmr/bx/n on input line 37.
+(Font)                  EU1/lmr/m/n --> EU1/lmr/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  EU1/lmr/m/n --> EU1/lmr/bx/n on input line 37.
+(Font)                  EU1/lmr/m/n --> EU1/lmr/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> EU1/lmr/bx/it on input line 37.
+(Font)                  OT1/cmr/bx/it --> EU1/lmr/bx/it on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 37.
+(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 37.
-runsystem(pygmentize -S default -f latex > abstract.pyg)...executed.
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 33.
+runsystem(pygmentize -S default -f latex > polynomial.pyg)...executed.
 
- (./abstract.pyg)
-Package hyperref Info: Link coloring ON on input line 37.
+ (./polynomial.pyg)
+\c@lstlisting=\count284
+Package hyperref Info: Link coloring ON on input line 33.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -864,16 +891,16 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count233
+\c@section@level=\count285
 )
-LaTeX Info: Redefining \ref on input line 37.
-LaTeX Info: Redefining \pageref on input line 37.
- (./abstract.out)
-(./abstract.out)
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+ (./polynomial.out)
+(./polynomial.out)
 \@outlinefile=\write6
-\openout6 = `abstract.out'.
+\openout6 = `polynomial.out'.
 
-\AtBeginShipoutBox=\box33
+\AtBeginShipoutBox=\box35
 Package biblatex Info: XeTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
@@ -883,44 +910,103 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Warning: Data encoding is 'utf8'.
 (biblatex)                Use backend=biber.
 
-\openout5 = `abstract-blx.bib'.
+\openout5 = `polynomial-blx.bib'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'abstract.bbl' found.
-(./abstract.bbl)
-Package biblatex Info: Reference section=0 on input line 37.
-Package biblatex Info: Reference segment=0 on input line 37.
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
+Package biblatex Info: ... file 'polynomial.bbl' found.
+(./polynomial.bbl)
+Package biblatex Info: Reference section=0 on input line 33.
+Package biblatex Info: Reference segment=0 on input line 33.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) (./abstract.toc)
+) (./polynomial.toc)
 \tf@toc=\write7
-\openout7 = `abstract.toc'.
+\openout7 = `polynomial.toc'.
 
 
-(./basic.tex) (./fundamental.tex [1
+(./basic.tex
+Underfull \hbox (badness 10000) in paragraph at lines 40--42
 
-])
+ []
 
-LaTeX Warning: Empty bibliography on input line 47.
 
-[2] (./abstract.aux)
-Package logreq Info: Writing requests to 'abstract.run.xml'.
-\openout1 = `abstract.run.xml'.
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
+
+ []
+
+[1
+
+]
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 63.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 63.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 65.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 65.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 65.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 71.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 71.
+
+Overfull \hbox (16.26408pt too wide) in paragraph at lines 71--72
+[]\EU1/SimSun(0)/m/n/10 以 及 \EU1/lmr/m/n/10 Grobner Basis \EU1/SimSun(0)/m/
+n/10 的 存 在 性\EU1/lmr/m/n/10 :$\OML/cmm/m/it/10 G \OT1/cmr/m/n/10 = \OMS
+/cmsy/m/n/10 f\OML/cmm/m/it/10 g[]; []  ; g[]\OMS/cmsy/m/n/10 g ^^Z \OML/cmm/m/
+it/10 I; s:t:\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 f \OMS/cmsy/m/n/10 2 \OML/cmm/m
+/it/10 I; \OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 i; []\OT1/cmr/m/n/10 (\OML/cmm/m/i
+t/10 f\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 g
+[]\OT1/cmr/m/n/10 )$ 
+ []
+
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 75.
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
+
+ []
+
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 89.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 89.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 89.
+LaTeX Font Info:    Command \tiny invalid in math mode on input line 89.
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 119--121
+
+ []
+
+)
+
+LaTeX Warning: Empty bibliography on input line 41.
+
+[3] (./polynomial.aux)
+Package logreq Info: Writing requests to 'polynomial.run.xml'.
+\openout1 = `polynomial.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12809 strings out of 495713
- 210612 string characters out of 1188883
- 543967 words of memory out of 3000000
- 15706 multiletter control sequences out of 15000+50000
- 10096 words of font info for 54 fonts, out of 3000000 for 9000
+ 13966 strings out of 495713
+ 227752 string characters out of 1188883
+ 560363 words of memory out of 3000000
+ 16853 multiletter control sequences out of 15000+50000
+ 10104 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 33i,6n,43p,821b,636s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,6n,43p,823b,923s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on abstract.pdf (2 pages).
+Output written on polynomial.pdf (3 pages).

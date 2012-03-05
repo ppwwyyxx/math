@@ -1,5 +1,5 @@
 % $File: polymial_ring.tex
-% $Date: Mon Mar 05 16:12:00 2012 +0800
+% $Date: Mon Mar 05 21:35:09 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{一元多项式环}
 K为一数域,$ K[x]$为主理想环,但$ Z[x]$不是
@@ -15,3 +15,11 @@ K为一数域,$ K[x]$为主理想环,但$ Z[x]$不是
 于是得到序列$ f_0=f,f_1=f',f_2,\cdots,f_s$
 
 记$ V_c$表示序列$ f_i(c),(i=0,\cdots,s)$的变号数,则$ f(x)$在区间$ (a,b),(f(a)f(b)\ne 0)$内的相异实根个数为$ V_a-V_b $
+
+于是可在此区间内求数值解
+\\
+
+多项式环上不可约的定义:因式只有可逆元和相伴元.$Q[x] $上不可约也许在$ Z[x]$上可约
+
+$ \alpha $为某个首一整系数多项式的复根,令$ J_{\alpha}=\{ f(x)\in Q[x] | f(\alpha)=0\}$,
+$ J_{\alpha}$中次数最低的首一多项式称为$ \alpha $在$ Q$上的极小多项式$ m_{\alpha}(x)$
