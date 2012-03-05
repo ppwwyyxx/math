@@ -1,12 +1,12 @@
 % $File: special-numbers.tex
-% $Date: Tue Feb 07 22:22:18 2012 +0800
+% $Date: Mon Mar 05 13:12:31 2012 +0800
 % Author:  ppwwyyxxc@gmail.com
 
 \section{Special Numbers}
 
 $ 2^k-1$为素数$ \Rightarrow k$为素数 
 
-Mersenne's Prime$ \Leftrightarrow $Perfect Number:($ \sigma(n)=2n \Leftrightarrow n=\frac{1}{2}M_{(p)}(M_{(p)}+1)$ )
+Mersenne's Prime$ \Leftrightarrow $Perfect Number:($ \sigma(n)=2n \Leftrightarrow n=\dfrac{1}{2}M_{(p)}(M_{(p)}+1)$ )
 
 i)若$ n=2^{p-1}M_{(p)},$则$ \sigma(n)=(1+2+\cdots+2^{p-1})(1+M_{(p)})=2n$
 
@@ -14,7 +14,7 @@ ii)若$ n$为偶完全数,易知$ n\ne 2^k,$
 
 于是设$ n=2^{m-1}u\Rightarrow 2^mu=\sigma(n)=\sigma(2^{m-1})\sigma(u)=(2^m-1)\sigma(u)$
 
-从而$ \sigma(u)=u+\frac{u}{2^m-1}\Rightarrow u=2^m-1,$且$ 2^m-1$为素数
+从而$ \sigma(u)=u+\dfrac{u}{2^m-1}\Rightarrow u=2^m-1,$且$ 2^m-1$为素数
 \\
 
 $ n^k+1$为素数$ \Rightarrow k$为2的幂
@@ -47,23 +47,23 @@ $ n \mid 2^n-2\Rightarrow 2^{2^n-1}-2=2^{nk+1}-2=2(2^{nk}-1)\equiv0\pmod{2^n-1}$
 \\
 
 Sylvester's Sequence
-$    a_1=2,a_n=a_{n-1}^2-a_{n-1}+1\Rightarrow \sum_{i=1}^{n}{\frac{1}{a_i}}+\frac{1}{\prod_{i=1}^{n}{a_i}}=1 $ 
+$    a_1=2,a_n=a_{n-1}^2-a_{n-1}+1\Rightarrow \sum_{i=1}^{n}{\dfrac{1}{a_i}}+\dfrac{1}{\prod_{i=1}^{n}{a_i}}=1 $ 
 
 $  a_{n+1}=\prod_{i=1}^{n}{a_i}+1\Rightarrow (a_n,a_m)=1,a_n\ge 2^{n-1}  $ 
 
-最佳单位分数逼近:对$ \forall \{x_n\},\sum_{i=1}^{n}{\frac{1}{x_i}}<1\Rightarrow \sum_{i=1}^{n}{\frac{1}{x_i}}\le \sum_{i=1}^{n}{\frac{1}{a_i}}$
+最佳单位分数逼近:对$ \forall \{x_n\},\sum_{i=1}^{n}{\dfrac{1}{x_i}}<1\Rightarrow \sum_{i=1}^{n}{\dfrac{1}{x_i}}\le \sum_{i=1}^{n}{\dfrac{1}{a_i}}$
 
-证:设有$ \sum_{i=1}^{j}{\frac{1}{x_i}}\le \sum_{i=1}^{j}{\frac{1}{a_i}},j=1,2,\cdots n,\sum_{i=1}^{n+1}{\frac{1}{x_i}}> \sum_{i=1}^{n+1}{a_i}$
+证:设有$ \sum_{i=1}^{j}{\dfrac{1}{x_i}}\le \sum_{i=1}^{j}{\dfrac{1}{a_i}},j=1,2,\cdots n,\sum_{i=1}^{n+1}{\dfrac{1}{x_i}}> \sum_{i=1}^{n+1}{a_i}$
 
-作Abel变换:\[  n+1=\sum_{i=1}^{n+1}{\frac{x_i}{x_i}}=x_{n+1}\sum_{i=1}^{n+1}{\frac{1}{x_i}}+\sum_{j=1}^{n}{(\sum_{i=1}^{j}{\frac{1}{x_i}})(x_j-x_{j+1})} \]
+作Abel变换:\[  n+1=\sum_{i=1}^{n+1}{\dfrac{x_i}{x_i}}=x_{n+1}\sum_{i=1}^{n+1}{\dfrac{1}{x_i}}+\sum_{j=1}^{n}{(\sum_{i=1}^{j}{\dfrac{1}{x_i}})(x_j-x_{j+1})} \]
 
-\[ > x_{n+1}\sum_{i=1}^{n+1}{\frac{1}{a_i}}+\sum_{j=1}^{n}{(\sum_{i=1}^{j}{\frac{1}{a_i}})(x_j-x_{j+1})}=\sum_{i=1}^{n+1}{\frac{x_i}{a_i}}\]
+\[ > x_{n+1}\sum_{i=1}^{n+1}{\dfrac{1}{a_i}}+\sum_{j=1}^{n}{(\sum_{i=1}^{j}{\dfrac{1}{a_i}})(x_j-x_{j+1})}=\sum_{i=1}^{n+1}{\dfrac{x_i}{a_i}}\]
 
-\[ \ge (n+1) \sqrt[n+1]{\frac{\prod{x_i}}{\prod{a_i}}}\Rightarrow \prod_{i=1}^{n+1}{x_i}<\prod_{i=1}^{n+1}{a_i}\Rightarrow \sum_{i=1}^{n+1}{\frac{1}{x_i}}<\sum_{i=1}^{n+1}{\frac{1}{a_i}}\] 
+\[ \ge (n+1) \sqrt[n+1]{\dfrac{\prod{x_i}}{\prod{a_i}}}\Rightarrow \prod_{i=1}^{n+1}{x_i}<\prod_{i=1}^{n+1}{a_i}\Rightarrow \sum_{i=1}^{n+1}{\dfrac{1}{x_i}}<\sum_{i=1}^{n+1}{\dfrac{1}{a_i}}\] 
 \\
 
 Sophie Germain素数$ p$($ 2p+1$也为素数).
 
 若$ p\equiv 3 \pmod 4$,则$ 2p+1 \mid 2^p-1=M_{(p)}$
 
-证:设$ k=2p+1=8t-1,2^{\frac{k-1}{2}}\equiv 1 \pmod k\Leftrightarrow (\frac{2}{k})=1=(-1)^{\frac{k^2-1}{8}}$
+证:设$ k=2p+1=8t-1,2^{\frac{k-1}{2}}\equiv 1 \pmod k\Leftrightarrow (\dfrac{2}{k})=1=(-1)^{\frac{k^2-1}{8}}$

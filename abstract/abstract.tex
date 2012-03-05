@@ -1,5 +1,5 @@
 % $File: abstract.tex
-% $Date: Tue Feb 28 13:12:37 2012 +0800
+% $Date: Mon Mar 05 11:03:51 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -21,17 +21,20 @@
 \newcommand{\figref}[1]{\hyperref[fig:#1]{图\ref*{fig:#1}}}
 % \secref{label}: reference to a section
 \newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
+\DeclareMathOperator{\LM}{\tiny{LM}}
+\DeclareMathOperator{\LT}{\tiny{LT}}
 
 \input{mint-defs.tex}
 
-\title{Polynomial}
+\title{Abstract}
 \author{\\(ppwwyyxxc@gmail.com)}
 
 \begin{document}
 \maketitle
 
 \tableofcontents
-\input{order.tex}
+\input{basic.tex}
+%\input{order.tex}
 %\input{theory.tex}
 %\input{function.tex}
 %\input{summary.tex}

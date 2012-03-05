@@ -1,5 +1,5 @@
 % $File: diophantine.tex
-% $Date: Wed Feb 29 16:48:20 2012 +0800
+% $Date: Mon Mar 05 15:55:10 2012 +0800
 % Author: ppwwyyxxc@gmail.com
 \section{Diophantine Equation} 
 Pythagoras: $ a^2+b^2=c^2,(a,b,c)=1,2\mid b$的所有$ N^{+}$上的解为:
@@ -21,13 +21,17 @@ Pell:
 
 $ x^2-dy^2=C$若有解则必有无穷多解.设最小解$ (x_1,y_1)$,则$ x_n+\sqrt{d}y_n=(x_1+\sqrt{d}y_1)(x_0+\sqrt{d}y_0)^{n-1}$为部分解
 
-对上式中改变符号:$\left\{ \begin{matrix}x_n+\sqrt{d}y_n=(x_0+\sqrt{d}y_0)^n \\ x_n-\sqrt{d}y_n=(x_0-\sqrt{d}y_0)^n    \end{matrix} \right. \Rightarrow	$
+对上式中改变符号:$
+\begin{cases}
+x_n+\sqrt{d}y_n=(x_0+\sqrt{d}y_0)^n \\
+x_n-\sqrt{d}y_n=(x_0-\sqrt{d}y_0)^n   
+\end{cases}  \Rightarrow	$
 两式加减即可求出通项
 
 特征根为$ \lambda_{1,2}=x_0\pm\sqrt{d}y_0\Rightarrow $特征方程
 $ \lambda^2-2x_0\lambda+1=0\Rightarrow$ 
 
-递推关系$ \left \{\begin{matrix} x_{n+1}=2x_0x_n-x_{n-1}\\ y_{n+1}=2x_0y_n-y_{n-1}\end{matrix}\right.$
+递推关系$ \begin{cases} x_{n+1}=2x_0x_n-x_{n-1}\\ y_{n+1}=2x_0y_n-y_{n-1}\end{cases}$
 \\
 
 $ x^2-dy^2=-1,$设$ \sqrt{d}$的连分数周期为$ l$,则$ l$为偶$ \Leftrightarrow $Pell方程无解
@@ -39,32 +43,32 @@ $ x^2-dy^2=-1$若有解则必有无穷多解.设最小解$ (x_1,y_1)$,则所有�
 
 Lemma:
 
-$ x^2-dy^2=4$的整数解$ x=u,y=v$是正整数解$ \Leftrightarrow \frac{u+\sqrt{d}v}{2}>1$
+$ x^2-dy^2=4$的整数解$ x=u,y=v$是正整数解$ \Leftrightarrow \dfrac{u+\sqrt{d}v}{2}>1$
 
-证:$ \frac{u+\sqrt{d}v}{2}>1\Rightarrow \frac{u-\sqrt{d}v}{2}\in(0,1)$,
+证:$ \dfrac{u+\sqrt{d}v}{2}>1\Rightarrow \dfrac{u-\sqrt{d}v}{2}\in(0,1)$,
 两式相加得$ u>1$即$ u\ge 2$
 
-又$ 1>\frac{u-\sqrt{d}v}{2}\ge 1-\frac{\sqrt{d}v}{2}\Rightarrow v>0$.得证
+又$ 1>\dfrac{u-\sqrt{d}v}{2}\ge 1-\dfrac{\sqrt{d}v}{2}\Rightarrow v>0$.得证
 
-$ x^2-dy^2=4$若有最小解$ (x_1,y_1)$,则所有解$ \frac{x_n+\sqrt{d}y_n}{2}=(\frac{x_1+\sqrt{d}y_1}{2})^n$
+$ x^2-dy^2=4$若有最小解$ (x_1,y_1)$,则所有解$ \dfrac{x_n+\sqrt{d}y_n}{2}=(\dfrac{x_1+\sqrt{d}y_1}{2})^n$
 
-证:设数列$x,y, \frac{x_n+\sqrt{d}y_n}{2}=(\frac{x_1+\sqrt{d}y_1}{2})^n$,
+证:设数列$x,y, \dfrac{x_n+\sqrt{d}y_n}{2}=(\dfrac{x_1+\sqrt{d}y_1}{2})^n$,
 假设有解$ (a,b)$不在其中
 
-不妨设$ ( \frac{x_1+\sqrt{d}y_1}{2})^{n+1}>\frac{a+\sqrt{d}b}{2}>(\frac{x_1+\sqrt{d}y_1}{2})^n$,则
+不妨设$ ( \dfrac{x_1+\sqrt{d}y_1}{2})^{n+1}>\dfrac{a+\sqrt{d}b}{2}>(\dfrac{x_1+\sqrt{d}y_1}{2})^n$,则
 
-$   \frac{x_1+\sqrt{d}y_1}{2}=\frac{x_n^2-dy_n^2}{4}\frac{x_1+\sqrt{d}y_1}{2}=(\frac{x_1+\sqrt{d}y_1}{2})^{n+1}\frac{x_n-\sqrt{d}y_n}{2}>\frac{a+\sqrt{d}b}{2}\frac{x_n-\sqrt{d}y_n}{2} $ 
+$   \dfrac{x_1+\sqrt{d}y_1}{2}=\dfrac{x_n^2-dy_n^2}{4}\dfrac{x_1+\sqrt{d}y_1}{2}=(\dfrac{x_1+\sqrt{d}y_1}{2})^{n+1}\dfrac{x_n-\sqrt{d}y_n}{2}>\dfrac{a+\sqrt{d}b}{2}\dfrac{x_n-\sqrt{d}y_n}{2} $ 
 
-$  \overset{\text{def}}{=} \frac{s+\sqrt{d}t}{2}>(\frac{x_1+\sqrt{d}y_1}{2})^n\frac{x_n-\sqrt{d}y_n}{2}=1$ 
+$  \overset{\text{def}}{=} \dfrac{s+\sqrt{d}t}{2}>(\dfrac{x_1+\sqrt{d}y_1}{2})^n\dfrac{x_n-\sqrt{d}y_n}{2}=1$ 
 \\
 
-解方程$ x^2-5y^2=-4$,有恒等式$ (\frac{3x-5y}{2})^2-5(\frac{3y-x}{2})^2=x^2-5y^2$
+解方程$ x^2-5y^2=-4$,有恒等式$ (\dfrac{3x-5y}{2})^2-5(\dfrac{3y-x}{2})^2=x^2-5y^2$
 
-$ \therefore (x,y)\rightarrow (\frac{3x-5y}{2},\frac{3y-x}{2}),$
+$ \therefore (x,y)\rightarrow (\dfrac{3x-5y}{2},\dfrac{3y-x}{2}),$
 
-可证当$ y>1$时总有$ 0<\frac{3x-5y}{2}<x,0<\frac{3y-x}{2}<y$,完成递降
+可证当$ y>1$时总有$ 0<\dfrac{3x-5y}{2}<x,0<\dfrac{3y-x}{2}<y$,完成递降
 
-递推可求得其所有解为$ \frac{x_n+\sqrt{5}y_n}{2}=(\frac{x_1+\sqrt{5}y_1}{2})^{2n+1}$
+递推可求得其所有解为$ \dfrac{x_n+\sqrt{5}y_n}{2}=(\dfrac{x_1+\sqrt{5}y_1}{2})^{2n+1}$
 
 事实上也有恒等式$ (ax-Dby)^2-D(ay-bx)^2=(a^2-Db^2)(x^2-Dy^2)=x^2-Dy^2$,但用它递降不总能做到边界
 \\

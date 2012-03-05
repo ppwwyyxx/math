@@ -1,5 +1,5 @@
 % $File: wilson.tex
-% $Date: Tue Feb 07 22:22:39 2012 +0800
+% $Date: Mon Mar 05 15:56:45 2012 +0800
 % Author:  ppwwyyxxc@gmail.com
 
 \section{Wilson}
@@ -32,11 +32,11 @@ $ \Rightarrow x^{p-1}+\sum_{i=1}^{p-2}{(-1)^is_ix^i}=(p+x)^{p-1}+\sum_{i=1}^{p-2
 
 $ \Rightarrow \sum_{i=1}^{p-2}{[(-1)^i-1]s_ix^i}\equiv p(p-1)x^{p-2}\pmod {p^2}$ 
 
-$ \Rightarrow \sum_{i=1}^{p-3}{[(-1)^i-1]s_ix^i}\equiv 0 \pmod {p^2}(\because s_{p-2}=-\frac{p(p-1)}{2})$
+$ \Rightarrow \sum_{i=1}^{p-3}{[(-1)^i-1]s_ix^i}\equiv 0 \pmod {p^2}(\because s_{p-2}=-\dfrac{p(p-1)}{2})$
 
 $ \Rightarrow p^2 \mid s_1,s_3,\cdots s_{p-4}$
 
-推论$ p^2 \mid s_1=(p-1)!(1+\frac{1}{2}+\cdots+\frac{1}{p-1}),p \mid s_{p-3}=\sum_{1\le i\le j\le p-1}{ij}$
+推论$ p^2 \mid s_1=(p-1)!(1+\dfrac{1}{2}+\cdots+\dfrac{1}{p-1}),p \mid s_{p-3}=\sum_{1\le i\le j\le p-1}{ij}$
 \\
 
 Wilson定理推广:
@@ -48,11 +48,11 @@ T1.奇素数$ p$,设$ c=\varphi(p^l),r_1,\cdots,r_c$是mod$ p^l$的缩系,则$ \
 此时$ r_i=r_j\Leftrightarrow r_i\equiv 1,-1\pmod{p^l}$配对即得证.
 \\
 
-T2:$ \because \varphi(p^l)=\varphi(2p^l),$取$ r_i'=\left\{ \begin{matrix}r_i,2 \nmid r_i\\ r_i+p^l,2\mid r_i\end{matrix} \right.$,则$ r_i'$为mod$ 2p^l$的缩系
+T2:$ \because \varphi(p^l)=\varphi(2p^l),$取$ r_i'= \begin{cases}r_i,& 2 \nmid r_i\\ r_i+p^l,& 2\mid r_i\end{cases} $,则$ r_i'$为mod$ 2p^l$的缩系
 
 且$ \prod_{i=1}^{c}{r_i'}\equiv -1 \pmod{p^l},2 \mid  \prod_{i=1}^{c}{r_i'}+1\Rightarrow  \prod_{i=1}^{c}{r_i'}\equiv -1 \pmod{2p^l}\\$
 \\
 
 T3:设$ c=\varphi(2^l),l\ge 3,r_1\cdots r_c$是mod$ 2^l$的缩系.则$  \prod_{i=1}^{c}{r_i}\equiv 1 \pmod{2^l}$
 
-证:同T1,使$ r_i=r_j$的充要条件是$ \frac{r_i-1}{2}\frac{r_i+1}{2}\equiv 0 \pmod{2^{l-2}}\Leftrightarrow r_i\equiv 1,2^{l-1}\pm 1,2^l-1$
+证:同T1,使$ r_i=r_j$的充要条件是$ \dfrac{r_i-1}{2}\dfrac{r_i+1}{2}\equiv 0 \pmod{2^{l-2}}\Leftrightarrow r_i\equiv 1,2^{l-1}\pm 1,2^l-1$

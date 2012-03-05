@@ -42,7 +42,7 @@ $ i=\{p_1f_1+\cdots+p_sf_s,p_i\in k[x_1,\cdots,x_n]\}$
 
 商理想:$ I:J={f: \forall g \in J,fg\in I }$
 
-性质: $ I\cap \langle h \rangle =\langle g_1,\cdots,g_t \rangle\Rightarrow I:\langle h \rangle=\langle \frac{g_1}{h},\cdots,\frac{g_t}{h} \rangle$,
+性质: $ I\cap \langle h \rangle =\langle g_1,\cdots,g_t \rangle\Rightarrow I:\langle h \rangle=\langle \dfrac{g_1}{h},\cdots,\dfrac{g_t}{h} \rangle$,
 其中$ \langle g_1,\cdots,g_t \rangle $为$ I$的Grobner 基
 \\
 
@@ -60,19 +60,19 @@ dickson's lemma:
 一些单项式的理想$ I= \langle x^a : a\in A \rangle $总可写为有限个基的理想
 $ I= \langle x^{a_1},\cdots,x^{a_s} \rangle $
 
-Def:$ LT(I)=\{q: \exists f \in I,LT(f)=q\}$
+Def:$ \LT(I)=\{q: \exists f \in I,\LT(f)=q\}$
 
-则可证存在$ g_1,\cdots,g_s\in I,s.t.  \langle LT(I) \rangle = \langle LT(g_1),\cdots,LT(g_t) \rangle $
+则可证存在$ g_1,\cdots,g_s\in I,s.t.  \langle \LT(I) \rangle = \langle \LT(g_1),\cdots,\LT(g_t) \rangle $
 
 进一步有Hilbert's Basis Theorem:
 
 任一个理想可由有限个多项式生成.(多项式环是诺特环(Noetherian Domain))   (基至少要有多少个?)
 
-以及Grobner Basis的存在性:$ G=\{g_1,\cdots,g_t\}\subset I,s.t.\forall f\in I,\exists i, LT(f)|LT(g_i)$
+以及Grobner Basis的存在性:$ G=\{g_1,\cdots,g_t\}\subset I,s.t.\forall f\in I,\exists i, \LT(f)|\LT(g_i)$
 
 性质:$ \forall f,\bar{f}^F$唯一,且$ f\in F\Rightarrow \bar{f}^F=0$
 
-Reduced Grobner basis:$ \forall p,q\in G,p\ne q,p$中每个单项式都不被$ LT(q)$整除.
+Reduced Grobner basis:$ \forall p,q\in G,p\ne q,p$中每个单项式都不被$ \LT(q)$整除.
 
 再加上首项系数为1后,称作Monic Grobner basis,它是唯一的.
 \\
@@ -86,7 +86,7 @@ $ I$可被有限生成.$  \langle f_1,\cdots,f_s \rangle \subset I_n\subset\cdot
 
 Grobner Basis判定:(Buchberger's S-pair criterion)
 
-\[  S(f,g)=\frac{R}{LT(f)}f+\frac{R}{(LT(g))}g,R=Lcm(LT(f),LT(g))\]
+\[  S(f,g)=\dfrac{R}{\LT(f)}f+\dfrac{R}{(\LT(g))}g,R=Lcm(\LT (f),\LT (g))\]
 则$  \langle g_1,\cdots,g_t \rangle $是Grobner基$ \Leftrightarrow \forall i,j,\overline{S(g_i,g_j)}^G=0$
 \\
 

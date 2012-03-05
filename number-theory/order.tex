@@ -1,5 +1,5 @@
 % $File: order.tex
-% $Date: Tue Feb 07 22:22:30 2012 +0800
+% $Date: Mon Mar 05 15:53:40 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com> 
 
 \section{Order}
@@ -7,7 +7,6 @@ Definition: $  \delta_m(a)=\min \{x|a^x \equiv 1 \pmod m\} $
 
 推广: $ a^d\equiv b^d \pmod p$,取倒数$ bb'\equiv1\pmod p$,则$ d=\delta_p(ab')$.性质类似
 \\
-
 若$ a^n \equiv 1 \pmod m$ ,则 $ \delta_m(a)\mid n $ .
 否则设$ n=\delta_m(a)q+r,a^r \equiv a^n \equiv 1 $且$ r<\delta_m(a)$.矛盾
 
@@ -21,7 +20,7 @@ $ (a,p)=1$,则在$ p^0,p^1,\ldots p^{a-1} \pmod a$中抽屉得 $ \exists d \le a
 
 证明$ n \nmid 2^n-1$:
 
-设$ n$最小素因子$ p$,则$ \delta_p(2) \mid (p-1,n)=(p-1,\frac{n}{p^{\alpha}})=1$.
+设$ n$最小素因子$ p$,则$ \delta_p(2) \mid (p-1,n)=(p-1,\dfrac{n}{p^{\alpha}})=1$.
 
 或者利用递降:$ n\rightarrow \delta_n(2) ; (a,b)\rightarrow (b,(a,b))$
 \\
@@ -59,19 +58,35 @@ $ a^{r_k}\equiv 1\pmod{p^k \rightarrow p^{k-1}}\Rightarrow r_{k-1}\mid r_k \ther
 
 再取$ i=k-k_0-1$,由$ p^{k-1}\parallel a^{r_1p^{k-k_0-1}}-1$知$ a^{r_1p^{k-k_0-1}}\not \equiv 1 \pmod{p^k}.$
 
-$  \therefore r_k=\left\{ \begin{matrix}r_1,1\le k \le k_0 \\ r_1p^{k-k_0},k\ge k_0 \end{matrix}\right. $
+
+$  \therefore r_k=
+\begin{cases}
+r_1, & 1\le k \le k_0 \\
+r_1p^{k-k_0}, & k\ge k_0 
+\end{cases} 
+$
 \\
 
 $ r_k=\delta_{2^k}(a)$的求解:
 
-i)$ a=4k+1,2^{k_0}\parallel a-1,r_k=\left\{ \begin{matrix} 1,1\le k \le k_0 \\ 2^{k-k_0},k\ge k_0 \end{matrix}\right.$ 
+i)$ a=4k+1,2^{k_0}\parallel a-1,r_k=
+\begin{cases}
+1,& 1\le k \le k_0 \\ 
+2^{k-k_0},& k\ge k_0 
+\end{cases}
+$ 
 
-ii)$ a=4k+3,2^{k_0}\parallel a+1,r_k=\left\{ \begin{matrix} 1,k=1 \\ 2,2\le k\le k_0+1 \\ 2^{k-k_0},k\ge k_0+1 \end{matrix}\right.$
+ii)$ a=4k+3,2^{k_0}\parallel a+1,r_k=
+\begin{cases} 
+1,& k=1 \\ 
+2,& 2\le k\le k_0+1 \\ 
+2^{k-k_0},& k\ge k_0+1 
+\end{cases}$
 \\
 
 引理的推广:$ a^{mrp^i}=1+p^{k_0+i}u,(u,p)=1.$
 
-设$ n=mrp^i$可得一命题:$ r=\delta_p(a),r\mid n,p^{\alpha}\parallel n\Rightarrow p^{\alpha}\parallel \frac{a^n-1}{a^r-1} $
+设$ n=mrp^i$可得一命题:$ r=\delta_p(a),r\mid n,p^{\alpha}\parallel n\Rightarrow p^{\alpha}\parallel \dfrac{a^n-1}{a^r-1} $
 \\
 
 反证:对给定$ n,a$,不存在无穷个$ k,s.t.n^k\mid a^k-1$
@@ -83,13 +98,13 @@ ii)若$ k$为奇,则$ 2^k\mid a^k-1\Rightarrow 2^k\mid a-1,$只有有限个$ k$.
 若$ k$为偶,$ a^{2l}\equiv 1 \pmod{2^l}.$当$ l>k_0$时,$ 2^{l-k_0}\mid l$不可能无穷个.
 \\
 \\
-$ r_k=\delta_m(a^k)=\frac{r_1}{(r_1,k)}$.
+$ r_k=\delta_m(a^k)=\dfrac{r_1}{(r_1,k)}$.
 
-证:设$ r'=\frac{r_1}{(r_1,k)}$.显然$ (r',\frac{k}{(r_1,k)})=1$
+证:设$ r'=\dfrac{r_1}{(r_1,k)}$.显然$ (r',\dfrac{k}{(r_1,k)})=1$
 
 由定义,$ a^{kr_k}\equiv 1 \pmod m, a^{kr'}\equiv 1 \pmod m. \Rightarrow  r_1 \mid kr_k,r_k\mid r'$
 
-$ \therefore r' =\frac{r_1}{(r_1,k)}\mid \frac{k}{(r_1,k)}r_k\Rightarrow r' \mid r_k. \therefore r'=r_k$
+$ \therefore r' =\dfrac{r_1}{(r_1,k)}\mid \dfrac{k}{(r_1,k)}r_k\Rightarrow r' \mid r_k. \therefore r'=r_k$
 
 推论:有$ \varphi(r_1)$个$ k,s.t.(r_1,k)=1.$又$ a^0,a^1,\cdots,a^{r_1-1}$对模$ m$不同余
 
@@ -115,7 +130,7 @@ $ \min\{ n|2^n\equiv -1 \pmod p\}<\delta_p(2),$否则 $,2^{n-\delta_p(2)}\equiv 
 $ p=3k+2$时,$ x$取$ \mod p$完系,则$ x^3$亦遍历.否则$ x^3\equiv y^3\Rightarrow \delta_p(xy^{-1})\mid(3,p-1)=1$.矛盾
 \\
 
-无穷数列$  \frac{1}{9}(10^{k\delta_{9a}(10)}-1)(k\ge1) $ 中,每项均由1组成且均为$ a$的倍数
+无穷数列$  \dfrac{1}{9}(10^{k\delta_{9a}(10)}-1)(k\ge1) $ 中,每项均由1组成且均为$ a$的倍数
 \\
 
 奇素$ p,p^n|a^p-1\Rightarrow p^{n-1}|a-1$
@@ -136,4 +151,4 @@ $ \therefore \delta_{p^2}(2)\mid (pn,p-1)=(n,p-1)\mid n\Rightarrow 2^n\equiv 1 \
 
 设$ (q-1,p)=d$ ,则$ \exists u,v,s.t.u(q-1)+vp=d\Rightarrow x^d\equiv(x^{q-1})^n(x^p)^v\equiv 1 \pmod q\Rightarrow d=p$ 
 
-$ \therefore p\mid q-1\Leftrightarrow q=pn+1$.又$ \frac{x^p-1}{x-1}$含无穷个素因子$ q$,可知$ {pn+1}$中有无穷多素数
+$ \therefore p\mid q-1\Leftrightarrow q=pn+1$.又$ \dfrac{x^p-1}{x-1}$含无穷个素因子$ q$,可知$ {pn+1}$中有无穷多素数

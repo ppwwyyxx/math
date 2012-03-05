@@ -1,5 +1,5 @@
 % $File: gauss.tex
-% $Date: Tue Feb 07 22:19:55 2012 +0800
+% $Date: Mon Mar 05 15:56:05 2012 +0800
 % Author: ppwwyyxxc@gmail.com
 \section{Gauss Function} 
 $ [x]+[y]\le [x+y];$
@@ -8,25 +8,25 @@ $ x+y\in Z\Rightarrow \{x\}+\{y\}=0,1$
 
 $[x]+[y]+[x+y]\le [2x]+[2y] $
 
-$ [\frac{m}{n}]\ge \frac{m-n+1}{n} $,带余除
+$ [\dfrac{m}{n}]\ge \dfrac{m-n+1}{n} $,带余除
 
-$ [\frac{x}{m}]=[\frac{[x]}{m}]$
+$ [\dfrac{x}{m}]=[\dfrac{[x]}{m}]$
 
-$ [a]+[a+\frac{1}{n}]+\cdots+[a+\frac{n-1}{n}]=[na],n\in N,a \in R$
+$ [a]+[a+\dfrac{1}{n}]+\cdots+[a+\dfrac{n-1}{n}]=[na],n\in N,a \in R$
 
-$ [x+\frac{1}{2}]=[2x]-[x]\Rightarrow \sum_{k=0}^{\infty}{[\frac{n+2^k}{2^{k+1}}]}=n,$或用二进制证明.
+$ [x+\dfrac{1}{2}]=[2x]-[x]\Rightarrow \sum_{k=0}^{\infty}{[\dfrac{n+2^k}{2^{k+1}}]}=n,$或用二进制证明.
 
 $ [\sqrt{n}+\sqrt{n+1}]=[\sqrt{4n+1}]=[\sqrt{4n+2}]=[\sqrt{4n+3}]=[\sqrt{n}+\sqrt{n+2}]$
 \\
 
-$ \sum_{i=1}^{\infty}{[\frac{k}{p^i}]}\le \sum_{i=1}^{\infty}{\frac{k}{p^i}}\le k\Rightarrow p^k \nmid k!.$
+$ \sum_{i=1}^{\infty}{[\dfrac{k}{p^i}]}\le \sum_{i=1}^{\infty}{\dfrac{k}{p^i}}\le k\Rightarrow p^k \nmid k!.$
 
-特别地,$ p\ge 3\Rightarrow V_p(k!)\le \frac{k}{2},$可用于组合数/阶乘证明中.
+特别地,$ p\ge 3\Rightarrow V_p(k!)\le \dfrac{k}{2},$可用于组合数/阶乘证明中.
 \\
 
-$ [\frac{x^2}{y}]+[\frac{y^2}{x}]=[\frac{x^2+y^2}{xy}]+xy\Rightarrow -1<\frac{x^2}{y}+\frac{y^2}{x}-\frac{x^2+y^2}{xy}-xy<2$
+$ [\dfrac{x^2}{y}]+[\dfrac{y^2}{x}]=[\dfrac{x^2+y^2}{xy}]+xy\Rightarrow -1<\dfrac{x^2}{y}+\dfrac{y^2}{x}-\dfrac{x^2+y^2}{xy}-xy<2$
 
-$ \Rightarrow \left\{ \begin{matrix} y^3-(1+x^2)y^2-2xy+x^3-x^2<0 \\ y^3-(1+x^2)y^2+xy+x^3-x^2>0 \end{matrix} \right. $设$ y\ge x$
+$ \Rightarrow \begin{cases} y^3-(1+x^2)y^2-2xy+x^3-x^2<0 \\ y^3-(1+x^2)y^2+xy+x^3-x^2>0 \end{cases}  $设$ y\ge x$
 
 $ \textcircled{1}\Leftrightarrow y(y(y-(1+x^2))-2x)+x^3-x^2<0.$
 
@@ -41,18 +41,18 @@ $ \therefore y=x^2+1$
 
 $ n$阶方格表,对列号为行号的倍数的格子数算两次:
 
-$ \sum_{i=1}^{n}{[\frac{n}{i}]}$为第$ i$行所有($ i$的倍数)列,$ \sum_{i=1}^{n}{d(i)}$为第$ i$列所有($ i$的约数)行.两者相等.
+$ \sum_{i=1}^{n}{[\dfrac{n}{i}]}$为第$ i$行所有($ i$的倍数)列,$ \sum_{i=1}^{n}{d(i)}$为第$ i$列所有($ i$的约数)行.两者相等.
 
-另证由$ [\frac{n}{i}]-[\frac{n-1}{i}]=\left \{ \begin{matrix} 0,i\nmid n\\ 1,i \mid n \end{matrix}\right.\Rightarrow f(n)=f(n-1)+d(n)=\cdots$
+另证由$ [\dfrac{n}{i}]-[\dfrac{n-1}{i}]= \begin{cases} 0,i\nmid n\\ 1,i \mid n \end{cases}\Rightarrow f(n)=f(n-1)+d(n)=\cdots$
 
-类似结论:$ \sum_{i=1}^{n}{i[\frac{n}{i}]}=\sum_{i=1}^{n}{\sigma(i)}$
+类似结论:$ \sum_{i=1}^{n}{i[\dfrac{n}{i}]}=\sum_{i=1}^{n}{\sigma(i)}$
 \\
 
 $ [ax]=x,x\in N$有$ n$个解
 
 $ \Rightarrow x=[ax]=[a]x+[\{ a\}x]$有$ n$个解$ \Leftrightarrow [a]=1$且$ \{ a\}x<1$有$ n$个解
 
-$ \therefore \{ a\}\in [\frac{1}{n},\frac{1}{n-1})\Rightarrow a \in [1+\frac{1}{n},1+\frac{1}{n-1})$
+$ \therefore \{ a\}\in [\dfrac{1}{n},\dfrac{1}{n-1})\Rightarrow a \in [1+\dfrac{1}{n},1+\dfrac{1}{n-1})$
 \\
 
 
