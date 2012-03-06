@@ -1,5 +1,5 @@
 % $File: polynomial.tex
-% $Date: Tue Mar 06 20:55:25 2012 +0800
+% $Date: Tue Mar 06 21:45:23 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{多项式}
 $ f(x)$次数$ \le n$,且$ f(k)(k=0\cdots n)$均为整数,
@@ -26,8 +26,29 @@ $ d_1,\cdots d_m$中同底数只保留低次幂,得$ d_1\cdots d_s.$则$ \exists
 $ \therefore \forall i,F(N)\equiv F(x_i)\not\equiv 0 \pmod{d_i}\Rightarrow \forall i,F(N)\not\equiv 0 \pmod{a_i}$
 \\
 
+设素数$ p_1,\cdots p_k,\forall i ,\exists x_i,p_i \mid P(x_i)\Rightarrow \exists x ,\prod_{i=1}^{k}{p_i}\mid P(x)$
+
+证:孙子.$ x\equiv x_i \pmod)p_i\Rightarrow P(x)\equiv P(x_i)\equiv 0$
+\\
+
 整系数多项式$ P(x)=a_nx^n+\cdots a_1x\pm1$值域的素因子无穷:假设有限-$ p_1\cdots p_k$
 
 则$ P(i\prod{p_t})$不含素因子$ \Rightarrow P(i\prod{p_t})=\pm 1$但$ n$次多项式至多给出$ 2n$个$ \pm 1$
 \\
 
+(Gauss)本原多项式的乘积仍是本原多项式.
+
+证:设$ f(x)g(x)$各项系数$ c_k$有公因子$ p$,设$ i=\min\{t: p \nmid a_t\},j=\min\{t: p\nmid b_t\}$
+
+则由$ c_{i+j}$的展开可得矛盾
+
+进一步,记各项系数的gcd(多项式的容度)为$ c(f)$,有$ c(fg)=c(f)c(g)$
+\\
+
+(Eisenstein)$ f(x)=\sum_{i=0}^{n}{a_nx^n},\exists p\in P,p \nmid a_n,p^2\nmid a_0,p \mid a_0\cdots a_{n-1}\Rightarrow f$不可约
+
+证:设$ f(x)=\sum_{i=0}^{s}{b_ix^i}\sum_{i=0}^{t}{c_ix^i},$不妨设$ p \mid b_0,$显然有$ p\nmid c_0,p\nmid b_n$
+
+设$ i=\min\{ t:p\nmid b_t\}$,考虑$ a_i$的展开可得矛盾
+
+证$ p-1$次分圆多项式不可约:取$ x=y+1$
