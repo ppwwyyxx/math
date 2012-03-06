@@ -1,0 +1,66 @@
+% $File: root.tex
+% $Date: Tue Mar 06 13:24:08 2012 +0800
+% Author: WuYuxin <ppwwyyxxc@gmail.com>
+\section{根}
+实系数多项式在实数域内可唯一分解为一次因式与判别式小于零的二次因式乘积.
+
+$ x^{2m}-1=(x-1) \prod_{k=1}^m{( x^2-2x\cos\dfrac{2k\pi}{2m+1}+1 )}$
+
+$ x^{2m+1}-1 =(x-1)(x+1)\prod_{k=1}^m{(x^2-2x\cos\dfrac{k\pi}{m}+1)}$ 
+
+$ x^{2m+1}+1=(x+1)\prod_{k=1}^m{( x^2-2x\cos\dfrac{(2k-1)\pi}{2m+1}+1 )}$
+
+$ x^{2m}+1=\prod_{k=1}^m{(x^2-2x\cos\dfrac{(2k-1)\pi}{2m}+1)}$
+
+取一些特殊值,可得等式:
+$ \prod_{k=1}^m{\cos\dfrac{k\pi}{2m+1}}=\dfrac{1}{2^m}$,
+$ \prod_{k=1}^{m-1}{\sin\dfrac{k\pi}{2m}}=\dfrac{\sqrt{m}}{2^{m-1}}$
+
+
+$ f(x)$是$ n\ge2$次多项式,$ f(x)\ge 0,\forall x\in \mathbb{R}\Rightarrow \exists g(x),h(x),f(x)=g^2(x)+h^2(x)$
+
+证:$ f(x)$的所有一次因式均有偶幂指数,且任意恒正的首一二次式可写为平方和.
+
+首一多项式$ f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$的根为$ c_1\cdots c_n$,定义其判别式为
+\[ \begin{aligned}
+	D(f) & =\prod_{1\le j< i\le n}{(c_i-c_j)^2}=
+		\begin{vmatrix} 
+		1 & 1 & \cdots & 1\\
+		c_1 & c_2 & \cdots & c_n \\
+		\vdots & \vdots & & \vdots \\
+		c_1^{n-1} & c_2^{n-1} & \cdots & c_n^{n-1}\\
+		\end{vmatrix}
+		\begin{vmatrix}
+		1 & c_1 & \cdots & c_1^{n-1}\\
+		1 & c_2 & \cdots & c_2^{n-1}\\
+		\vdots & \vdots & & \vdots \\
+		1 & c_n & \cdots & c_n^{n-1}\\
+		\end{vmatrix} \\
+		& = \begin{vmatrix}
+			s_0 & s_1 & \cdots & s_{n-1}\\
+			s_1 & s_2 & \cdots & s_{n}\\
+			\vdots & \vdots & & \vdots \\
+			s_{n-1} & s_{n} & \cdots & s_{2n-2}\\
+			\end{vmatrix}
+\end{aligned} \]
+
+幂和式可与初等对称多项式互化:
+
+$ s_k=\sum_{i=1}^{n}{x_i^k}=\begin{vmatrix}
+\sigma_1  & 1        & 0		& 0 &\cdots  & 0 & 0 \\
+2\sigma_2 & \sigma_1 & 1		& 0 & \cdots & 0 & 0\\
+3\sigma_3 & \sigma_2 & \sigma_1 & 1 & \cdots & 0 & 0\\
+\vdots	  & \vdots   & \vdots   &\vdots & \ddots & \vdots & \vdots \\
+\vdots	  & \vdots   & \vdots   &\vdots & \ddots & \vdots & \vdots \\
+(k-1)\sigma_{k-1} &\sigma_{k-2} &\sigma_{k-3} & \sigma_{k-4}& \cdots&\sigma_1&1\\
+k\sigma_k & \sigma_{k-1} &\sigma_{k-2} &\sigma_{k-3} &\cdots &\sigma_2 &\sigma_1 
+\end{vmatrix}$
+
+$ \sigma_k=\sum_{1\le j_1<\cdots <j_k\le n}{\prod_{t=1}^k{x_{j_t}}} = \dfrac{1}{k!}\begin{vmatrix} 
+s_1		& 1		& 0		& \cdots & 0 & 0\\
+s_2 	& s_1	& 2 	& \cdots & 0 & 0\\
+s_3 	& s_2 	& s_1	& \cdots & 0 & 0\\
+\vdots  & \vdots& \vdots& \ddots & \vdots & \vdots\\
+s_{k-1} &s_{k-2}&s_{k-3}& \cdots &s_1 &k-1\\
+s_{k}	&s_{k-1}&s_{k-2}& \cdots &s_2 &s_1
+\end{vmatrix}$

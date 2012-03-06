@@ -1,0 +1,33 @@
+% $File: polynomial.tex
+% $Date: Tue Mar 06 20:55:25 2012 +0800
+% Author: WuYuxin <ppwwyyxxc@gmail.com>
+\section{多项式}
+$ f(x)$次数$ \le n$,且$ f(k)(k=0\cdots n)$均为整数,
+
+则$ f(x)$为整值多项式,且整值多项式必可表为$ \sum_{i=0}^{n}{a_iC_x^i}$
+
+证:设$ f(x)=\sum_{i=0}^{n}{a_iC_x^i},a_i \in \mathbb{C}$,取$ x=0,1,\cdots$
+
+$ \mathbb{Z}\ni f(0)=a_0$.又$ \mathbb{Z}\ni f(1)=a_0+a_1\Rightarrow a_1\in \mathbb{Z}\cdots a_i\in \mathbb{Z}$
+
+推论:$ f(x)$次数$ \le n$,且对连续$ n+1$个整自变量取整值,则其为整值多项式(平移即可)
+\\
+
+整系数多项式$ P(x):u-v \mid P(u)-P(v)\Rightarrow P(1)\equiv P(k+1) \equiv \cdots \equiv P(nk+1) \pmod k$
+\\
+
+设有$ a_1,\cdots a_m$满足对$ \forall n,\exists i,a_i\mid F(n),$则$ \exists i,\forall n,a_i\mid F(n)$
+
+反证:设$ \exists x_1, a_1 \nmid F(x_1),\cdots \exists x_m, a_m \nmid F(x_m)
+\Leftrightarrow \exists d_i=p_i^{r_i},d_i \mid a_i$且$ d_i\nmid F(x_i)$
+
+$ d_1,\cdots d_m$中同底数只保留低次幂,得$ d_1\cdots d_s.$则$ \exists N ,\forall i,N\equiv x_i \pmod{d_i}$
+
+$ \therefore \forall i,F(N)\equiv F(x_i)\not\equiv 0 \pmod{d_i}\Rightarrow \forall i,F(N)\not\equiv 0 \pmod{a_i}$
+\\
+
+整系数多项式$ P(x)=a_nx^n+\cdots a_1x\pm1$值域的素因子无穷:假设有限-$ p_1\cdots p_k$
+
+则$ P(i\prod{p_t})$不含素因子$ \Rightarrow P(i\prod{p_t})=\pm 1$但$ n$次多项式至多给出$ 2n$个$ \pm 1$
+\\
+

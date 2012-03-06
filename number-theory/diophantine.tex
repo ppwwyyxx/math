@@ -1,5 +1,5 @@
 % $File: diophantine.tex
-% $Date: Mon Mar 05 15:55:10 2012 +0800
+% $Date: Tue Mar 06 20:28:54 2012 +0800
 % Author: ppwwyyxxc@gmail.com
 \section{Diophantine Equation} 
 Pythagoras: $ a^2+b^2=c^2,(a,b,c)=1,2\mid b$的所有$ N^{+}$上的解为:
@@ -78,3 +78,32 @@ $ \therefore (x,y)\rightarrow (\dfrac{3x-5y}{2},\dfrac{3y-x}{2}),$
 
 Techniques:
 
+$ x^4+y^4=z^2 ,x^4+y^2=z^4, x^{4m}+y^{4m}=z^{4m} $无非零解
+
+解构造:$ x^n+y^n=z^{n+1}$:$ x=1+k^n,y=kx,z=x$
+
+$ x^n+y^n=z^{n-1}$:$ x=(1+k^n)^{n-2},y=kx,z=(1+k^n)x$ 
+
+$ x!y!=z!$:$ z=x!,y=z-1$
+\\
+
+$ x^n+1=y^{n+1},(x,n+1)=1$无解:
+
+证:$ x^n=(y-1)(y^n+\cdots +1)$.假设$ d=(y-1,y^n+\cdots +1)>1$
+
+则$ \exists p \mid d ,s.t.y \equiv 1 \pmod p ,x\equiv 0 \pmod p$
+
+$ \Rightarrow \therefore y^n +\cdots + 1 \equiv n+1 \pmod p\Rightarrow p \mid n+1 $矛盾
+
+$ \therefore d=1\Rightarrow y-1=a^n,y^n+\cdots+1 =b^n \in (y^n,(y+1)^n)$矛盾
+\\
+
+$ 3x^2-4xy+3y^2=35\Rightarrow (3x-2y)^2+5y^2=105\Rightarrow y^2\le 21$为避免负项配方估界
+\\
+
+(CMO)解$ a^m+1 \mid a^n+203, n<m$时估界,$ n=m$时易.
+
+$ n>m$时,$ \Rightarrow a^m+1 \mid a^{n-m}-203$.若$ a^s<=203$估界.
+
+$ a^s>203$时$ \Rightarrow a^m+1\mid a^{s-m}+203=2^{n-2m}+203$类似前结构派生解
+\\
