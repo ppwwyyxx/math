@@ -1,5 +1,5 @@
 % $File: resultant.tex
-% $Date: Wed Mar 07 10:37:02 2012 +0800
+% $Date: Wed Mar 07 11:31:45 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{结式}
 设$ f(x)=\sum_{i=0}^{n}{a_ix^{n-i}},g(x)=\sum_{i=0}^{m}{b_ix^{m-i}}$
@@ -37,3 +37,28 @@ b_0 & b_1 & \cdots & b_m	&		 &		  &		   &		&	&   \\
 
 事实上有$ \deg ( \gcd (f,g) )=m+n-\rank S_{f,g}$ 
 \\
+
+在多项式方程组求解的应用:
+
+仅以$ \begin{cases}f(x,y)=0 \\g(x,y)=0 \end{cases}$为例,以$ x$为主元,求得结式$ R_x(f,g)$,是$ y$的多项式
+
+则对$ R_x(f,g)$的每个零点$ y_0,f(x,y_0),g(x,y_0)$有公共复根,求出即可
+\\
+
+设$ f(x)$的复根为$c_1,\cdots c_n $,$ g(x)$的复根为$ d_1,\cdots d_m$,则
+
+$ Res(f,g)=a_0^m\prod_{i=1}^{n}{g(c_i)}=(-1)^{mn}b_0^n\prod_{i=1}^{m}{f(d_j)}=a_0^mb_0^n\prod_{i=1}^{n}\prod_{j=1}^{m}{(c_i-d_j)}$
+\\
+
+设判别式$ D(f)=a_0^{2n-2}\prod_{1\le j<i\le n}{(c_i-c_j)^2},$有$ Res(f,f')=a_0(-1)^{\frac{n(n-1)}{2}}D(f)$
+
+$ D(fg)=D(f)D(g)(Res(f,g))^2$
+
+$ Res(f,g_1g_2)=Res(f,g_1)Res(f,g_2)$
+\\
+
+用于化参数方程为坐标方程:$ \begin{cases}x=\dfrac{-t^2+2t}{t^2+1} \\ y=\dfrac{2t^2+2t}{t^2+1} \end{cases}$
+
+{\bf 解}:任取点$ P(x,y),\exists t_0 \in \mathbb{R},s.t.\begin{cases}f(t)=(t^2+1)x+t^2-2t \\ g(t)=(t^2+1)y-2t^2-2t \end{cases}$有公共根$ t_0$
+
+排除掉$ x+1=y-2=0$的情形,只能$ Res(f,g)=0\Leftrightarrow 8x^2-4xy+5y^2+12x-12y=0 ,(x,y) \ne (-1,2)$为最终结果

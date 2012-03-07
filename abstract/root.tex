@@ -1,5 +1,5 @@
 % $File: root.tex
-% $Date: Wed Mar 07 10:37:51 2012 +0800
+% $Date: Wed Mar 07 11:12:22 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{根}
 实系数多项式在实数域内可唯一分解为一次因式与判别式小于零的二次因式乘积.
@@ -15,11 +15,12 @@ $ x^{2m}+1=\prod_{k=1}^m{(x^2-2x\cos\dfrac{(2k-1)\pi}{2m}+1)}$
 取一些特殊值,可得等式:
 $ \prod_{k=1}^m{\cos\dfrac{k\pi}{2m+1}}=\dfrac{1}{2^m}$,
 $ \prod_{k=1}^{m-1}{\sin\dfrac{k\pi}{2m}}=\dfrac{\sqrt{m}}{2^{m-1}}$
-
+\\
 
 $ f(x)$是$ n\ge2$次多项式,$ f(x)\ge 0,\forall x\in \mathbb{R}\Rightarrow \exists g(x),h(x),f(x)=g^2(x)+h^2(x)$
 
 {\bf 证 }:$ f(x)$的所有一次因式均有偶幂指数,且任意恒正的首一二次式可写为平方和.
+\\
 
 首一多项式$ f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$的根为$ c_1\cdots c_n$,定义其判别式为
 \[ \begin{aligned}
@@ -64,3 +65,6 @@ s_3 	& s_2 	& s_1	& \cdots & 0 & 0\\
 s_{k-1} &s_{k-2}&s_{k-3}& \cdots &s_1 &k-1\\
 s_{k}	&s_{k-1}&s_{k-2}& \cdots &s_2 &s_1
 \end{vmatrix}$
+\\
+
+设$f(x) $为首一多项式,$ g(x)=(x-a)f(x)\Rightarrow D(g)=D(f)f(a)^2$
