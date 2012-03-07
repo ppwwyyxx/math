@@ -1,0 +1,41 @@
+% $File: polymial_field.tex
+% $Date: Wed Mar 07 14:46:48 2012 +0800
+% Author: WuYuxin <ppwwyyxxc@gmail.com>
+\section{polynomial in field}
+(Zero Function) 若$ k$ 为无限域,则$ f:k^n\rightarrow k$是零函数(值域为0)
+$ \Leftrightarrow f=0$(零多项式)
+
+于是,两个多项式诱导同一个函数当且仅当它们相等
+
+有限域上未必,如$ \mathbb{Z}_3[x]$中$ x^3+2x^2+2$与$ 2x^2+x+2$是同一函数.
+\\
+
+判断$ f(x)=3x^5+11x^2+7$不可约:将其转化到$ \mathbb{Z}_2$域中,得
+
+$ \tilde{f}(x)=x^2(x^3+\bar{1})+\bar{1}=x^2(x+\bar{1})(x^2+x+\bar{1})+\bar{1}$
+
+但$ \mathbb{Z}_2$上的一次多项式只有$ x,x+\bar{1}$,不可约二次多项式只有$ x^2+x+\bar{1},$
+都不是$ \tilde{f}(x)$的因式
+\\
+
+$ \mathbb{Z}_p$上的函数都是$ \mathbb{Z}_p$上的一元多项式函数:
+
+{\bf 证}:考虑所有次数小于$ p$的一元多项式集合$ \mathbb{W}$,其中任两个不同的多项式诱导不同的函数,
+否则由Lagrange定理可得矛盾.
+
+考虑每个系数的取法,$ |\mathbb{W}|=p^p$,与$ \mathbb{Z}_p$上函数的总个数相等.得证.
+\\
+
+$ \eta^n =1,\eta^l\ne 1(1\le l<n),$称$ \eta$为本原$ n$次单位根
+
+且有$ \eta^k$为本原$ \dfrac{n}{(n,k)}$次单位根
+
+设$ \eta_1\cdots \eta_{\varphi(n)}$是全部本原$ n$次单位根
+
+定义$ n$阶分圆多项式$ f_n(x)=\prod_{i=1}^{\varphi(n)}{( x-\eta_i )}$
+
+有:$ f_n(x)$是集合$ \{ f(x)\in \mathbb{Q}[x]\mid f(\eta)=0\}$中次数最低的首一多项式(极小多项式)
+
+$ f_n(x)$在$ \mathbb{Q}$上不可约.
+
+$ x^n-1=\prod_{d \mid n}{f_d(x)}$
