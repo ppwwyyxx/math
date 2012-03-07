@@ -1,5 +1,5 @@
 % $File: wilson.tex
-% $Date: Mon Mar 05 15:56:45 2012 +0800
+% $Date: Wed Mar 07 10:42:48 2012 +0800
 % Author:  ppwwyyxxc@gmail.com
 
 \section{Wilson}
@@ -14,7 +14,7 @@ $ f(x) \equiv 0  \pmod p$的解数$  \le n$
 
 于是$ c_2,\cdots c_{n+1}$均为$ n-1$次同余方程$ h(x)\equiv 0 \pmod p$的解.矛盾
 
-推论:若$ f(x)\equiv 0$的解数$ >n$,则各项系数均被$ p$整除.
+{\bf 推论 }:若$ f(x)\equiv 0$的解数$ >n$,则各项系数均被$ p$整除.
 \\
 
 $ f(x)=(x-1)(x-2)\cdots (x-p+1)=\sum_{i=0}^{p-1}{s_ix^i}\equiv x^{p-1}-1 \pmod p $(Fermat)
@@ -36,14 +36,14 @@ $ \Rightarrow \sum_{i=1}^{p-3}{[(-1)^i-1]s_ix^i}\equiv 0 \pmod {p^2}(\because s_
 
 $ \Rightarrow p^2 \mid s_1,s_3,\cdots s_{p-4}$
 
-推论$ p^2 \mid s_1=(p-1)!(1+\dfrac{1}{2}+\cdots+\dfrac{1}{p-1}),p \mid s_{p-3}=\sum_{1\le i\le j\le p-1}{ij}$
+{\bf 推论 }:$ p^2 \mid s_1=(p-1)!(1+\dfrac{1}{2}+\cdots+\dfrac{1}{p-1}),p \mid s_{p-3}=\sum_{1\le i\le j\le p-1}{ij}$
 \\
 
 Wilson定理推广:
 
 T1.奇素数$ p$,设$ c=\varphi(p^l),r_1,\cdots,r_c$是mod$ p^l$的缩系,则$ \prod_{i=1}^{c}{r_i}\equiv -1 \pmod{p^l}$
 
-证:对每个$ r_i$有唯一$ r_j$使$ r_ir_j\equiv1\pmod{p^l}.$
+{\bf 证 }:对每个$ r_i$有唯一$ r_j$使$ r_ir_j\equiv1\pmod{p^l}.$
 
 此时$ r_i=r_j\Leftrightarrow r_i\equiv 1,-1\pmod{p^l}$配对即得证.
 \\
@@ -55,4 +55,4 @@ T2:$ \because \varphi(p^l)=\varphi(2p^l),$取$ r_i'= \begin{cases}r_i,& 2 \nmid 
 
 T3:设$ c=\varphi(2^l),l\ge 3,r_1\cdots r_c$是mod$ 2^l$的缩系.则$  \prod_{i=1}^{c}{r_i}\equiv 1 \pmod{2^l}$
 
-证:同T1,使$ r_i=r_j$的充要条件是$ \dfrac{r_i-1}{2}\dfrac{r_i+1}{2}\equiv 0 \pmod{2^{l-2}}\Leftrightarrow r_i\equiv 1,2^{l-1}\pm 1,2^l-1$
+{\bf 证 }:同T1,使$ r_i=r_j$的充要条件是$ \dfrac{r_i-1}{2}\dfrac{r_i+1}{2}\equiv 0 \pmod{2^{l-2}}\Leftrightarrow r_i\equiv 1,2^{l-1}\pm 1,2^l-1$

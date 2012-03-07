@@ -1,5 +1,5 @@
 % $File: order.tex
-% $Date: Mon Mar 05 15:53:40 2012 +0800
+% $Date: Wed Mar 07 10:39:46 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com> 
 
 \section{Order}
@@ -49,7 +49,7 @@ ii)当$ k\ge k_0$时,对$k $归纳证明$ r_k=r_1 p^{k-k_0}$
 
 引理:$ p^{k_0+i}\parallel a^{r_1p^i}-1\Leftrightarrow a^{r_1p^i}=1+p^{k_0+i}u,(u,p)=1$.
 
-证明:归纳.
+{\bf 证明 }:归纳.
 $ a^{r_1p^{i+1}}=(a^{r_1p^i})^p=(1+p^{k_0+i}u)^p=1+p^{k_0+i+1}(1+C_p^2u^2p^{k_0+i-1})$
 
 引理中取$ i=k-k_0,$则$ a^{r_1p^{k-k_0}}\equiv 1 \pmod{p^k}\Rightarrow r_k \mid r_1p^{k-k_0}$
@@ -89,7 +89,7 @@ ii)$ a=4k+3,2^{k_0}\parallel a+1,r_k=
 设$ n=mrp^i$可得一命题:$ r=\delta_p(a),r\mid n,p^{\alpha}\parallel n\Rightarrow p^{\alpha}\parallel \dfrac{a^n-1}{a^r-1} $
 \\
 
-反证:对给定$ n,a$,不存在无穷个$ k,s.t.n^k\mid a^k-1$
+{\bf 反证 }:对给定$ n,a$,不存在无穷个$ k,s.t.n^k\mid a^k-1$
 
 i)$ n$含奇因子$ p,a^k\equiv 1 \pmod {p^k}\Rightarrow r_k=r_1p^{k-k_0}\mid k\Rightarrow k>r_1p^{k-k_0}\ge 3^{k-k_0}$不可能无穷个
 
@@ -100,13 +100,13 @@ ii)若$ k$为奇,则$ 2^k\mid a^k-1\Rightarrow 2^k\mid a-1,$只有有限个$ k$.
 \\
 $ r_k=\delta_m(a^k)=\dfrac{r_1}{(r_1,k)}$.
 
-证:设$ r'=\dfrac{r_1}{(r_1,k)}$.显然$ (r',\dfrac{k}{(r_1,k)})=1$
+{\bf 证 }:设$ r'=\dfrac{r_1}{(r_1,k)}$.显然$ (r',\dfrac{k}{(r_1,k)})=1$
 
 由定义,$ a^{kr_k}\equiv 1 \pmod m, a^{kr'}\equiv 1 \pmod m. \Rightarrow  r_1 \mid kr_k,r_k\mid r'$
 
 $ \therefore r' =\dfrac{r_1}{(r_1,k)}\mid \dfrac{k}{(r_1,k)}r_k\Rightarrow r' \mid r_k. \therefore r'=r_k$
 
-推论:有$ \varphi(r_1)$个$ k,s.t.(r_1,k)=1.$又$ a^0,a^1,\cdots,a^{r_1-1}$对模$ m$不同余
+{\bf 推论 }:有$ \varphi(r_1)$个$ k,s.t.(r_1,k)=1.$又$ a^0,a^1,\cdots,a^{r_1-1}$对模$ m$不同余
 
 所以其中至少有$ \varphi(r_1)$个$ k,s.t.\delta_m(a^k)=r_1$.
 
@@ -115,13 +115,13 @@ $ \therefore r' =\dfrac{r_1}{(r_1,k)}\mid \dfrac{k}{(r_1,k)}r_k\Rightarrow r' \m
 
 若$ (m_1,m_2)=1,$则$ \delta_{m_1m_2}(a)=[\delta_{m_1}(a),\delta_{m_2}(a)]=[r_1,r_2]$
 
-证:i)显然对$ \forall n \mid m,\delta_n(a)\mid \delta_m(a). \therefore [r_1,r_2] \mid \delta_{m_1m_2}(a)$ 
+{\bf 证 }:i)显然对$ \forall n \mid m,\delta_n(a)\mid \delta_m(a). \therefore [r_1,r_2] \mid \delta_{m_1m_2}(a)$ 
 
 ii)$ a^{[r_1,r_2]}\equiv 1 \pmod{m_1,m_2 \rightarrow m_1m_2}\Rightarrow \delta_{m_1m_2}\mid [r_1,r_2]$
 
-推论:$ (m_1,m_2)=1$,则对$ \forall a_1,a_2,\exists a,s.t.\delta_{m_1m_2}(a)=[\delta_{m_1}(a_1),\delta_{m_2}(a_2)]$
+{\bf 推论 }:$ (m_1,m_2)=1$,则对$ \forall a_1,a_2,\exists a,s.t.\delta_{m_1m_2}(a)=[\delta_{m_1}(a_1),\delta_{m_2}(a_2)]$
 
-证:取$ a\equiv a_i \pmod{m_i},i=1,2$.则$ \delta_{m_i}(a)=\delta_{m_i}(a_i)$.由原命题即证.
+{\bf 证 }:取$ a\equiv a_i \pmod{m_i},i=1,2$.则$ \delta_{m_i}(a)=\delta_{m_i}(a_i)$.由原命题即证.
 \\
 
 $ \min\{ n|2^n\equiv -1 \pmod p\}<\delta_p(2),$否则 $,2^{n-\delta_p(2)}\equiv 2^n \equiv -1$,与最小性矛盾.

@@ -1,5 +1,5 @@
 % $File: special-numbers.tex
-% $Date: Mon Mar 05 13:12:31 2012 +0800
+% $Date: Wed Mar 07 10:42:12 2012 +0800
 % Author:  ppwwyyxxc@gmail.com
 
 \section{Special Numbers}
@@ -43,7 +43,7 @@ $ n \mid 2^n-2\Rightarrow 2^{2^n-1}-2=2^{nk+1}-2=2(2^{nk}-1)\equiv0\pmod{2^n-1}$
 
 孪生素数$ p,q=p+2.p+q\mid p^p+q^q$ 
 
-证$RHS =p^p+(p+2)^p+(p+2)^{p+2}-(p+2)^p=A(p+q)+q^p(p+1)(p+3)$
+{\bf 证 }:$RHS =p^p+(p+2)^p+(p+2)^{p+2}-(p+2)^p=A(p+q)+q^p(p+1)(p+3)$
 \\
 
 Sylvester's Sequence
@@ -53,7 +53,7 @@ $  a_{n+1}=\prod_{i=1}^{n}{a_i}+1\Rightarrow (a_n,a_m)=1,a_n\ge 2^{n-1}  $
 
 最佳单位分数逼近:对$ \forall \{x_n\},\sum_{i=1}^{n}{\dfrac{1}{x_i}}<1\Rightarrow \sum_{i=1}^{n}{\dfrac{1}{x_i}}\le \sum_{i=1}^{n}{\dfrac{1}{a_i}}$
 
-证:设有$ \sum_{i=1}^{j}{\dfrac{1}{x_i}}\le \sum_{i=1}^{j}{\dfrac{1}{a_i}},j=1,2,\cdots n,\sum_{i=1}^{n+1}{\dfrac{1}{x_i}}> \sum_{i=1}^{n+1}{a_i}$
+{\bf 证 }:设有$ \sum_{i=1}^{j}{\dfrac{1}{x_i}}\le \sum_{i=1}^{j}{\dfrac{1}{a_i}},j=1,2,\cdots n,\sum_{i=1}^{n+1}{\dfrac{1}{x_i}}> \sum_{i=1}^{n+1}{a_i}$
 
 作Abel变换:\[  n+1=\sum_{i=1}^{n+1}{\dfrac{x_i}{x_i}}=x_{n+1}\sum_{i=1}^{n+1}{\dfrac{1}{x_i}}+\sum_{j=1}^{n}{(\sum_{i=1}^{j}{\dfrac{1}{x_i}})(x_j-x_{j+1})} \]
 
@@ -66,4 +66,4 @@ Sophie Germain素数$ p$($ 2p+1$也为素数).
 
 若$ p\equiv 3 \pmod 4$,则$ 2p+1 \mid 2^p-1=M_{(p)}$
 
-证:设$ k=2p+1=8t-1,2^{\frac{k-1}{2}}\equiv 1 \pmod k\Leftrightarrow (\dfrac{2}{k})=1=(-1)^{\frac{k^2-1}{8}}$
+{\bf 证 }:设$ k=2p+1=8t-1,2^{\frac{k-1}{2}}\equiv 1 \pmod k\Leftrightarrow (\dfrac{2}{k})=1=(-1)^{\frac{k^2-1}{8}}$

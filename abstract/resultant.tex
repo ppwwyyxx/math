@@ -1,0 +1,39 @@
+% $File: resultant.tex
+% $Date: Wed Mar 07 10:37:02 2012 +0800
+% Author: WuYuxin <ppwwyyxxc@gmail.com>
+\section{结式}
+设$ f(x)=\sum_{i=0}^{n}{a_ix^{n-i}},g(x)=\sum_{i=0}^{m}{b_ix^{m-i}}$
+为$ K[x]$中两个多项式,$ m,n>0$,则
+$ Res(f,g)=0\Leftrightarrow a_0=b_0=0$或$ f(x),g(x)$有公共复根
+
+{\bf 分析}:$ a_0,b_0$不全为0时,$ f,g$有公共复根
+
+$ \Leftrightarrow \exists f_1(x),g_1(x),\deg f_1(x)<n,\deg g_1(x)<m,f(x)g_1(x)=g(x)f_1(x)$
+
+则可设$ f_1(x)=\sum_{i=0}^{n-1}{u_ix^{n-1-i}},g_1(x)=\sum_{i=0}^{m-1}{v_ix^{m-1-i}}.$,代入上式,有
+
+\[ \left \{  \begin{array}{lrclr}
+a_0v_0		&			&= &b_0u_0		&		\\
+a_1v_0+a_0v_1&			&= &b_1u_0+b_0u_1&		\\
+\cdots \cdots &\cdots	&= & \cdots\cdots &\cdots		\\
+		&{a_nv_{m-2}+a_{n-1}v_{m-1}}&=&		&b_mu_{n-2}+b_{m-1}u_{n-1}\\
+		& a_nv_{m-1}&= &				&b_mu_{n-1}\\
+\end{array}\right . \]
+
+此$ m+n$元齐次线性方程组有非零解$ \Leftrightarrow $
+
+\[Res(f,g)= \begin{vmatrix}
+a_0 & a_1 & \cdots & \cdots & \cdots & \cdots & a_n		&		&	&   \\
+	& a_0 & a_1	   & \cdots & \cdots & \cdots & \cdots  &a_n   &	&	\\
+	&	  & \cdots & \cdots & \cdots & \cdots & \cdots &		&	&	\\
+	&	  &		   & a_0	& a_1	 & \cdots & \cdots & \cdots &	& a_n\\
+b_0 & b_1 & \cdots & b_m	&		 &		  &		   &		&	&   \\
+	& b_0 & b_1	   & \cdots  &b_m   &	    	&		&		&	&	\\
+	&	  & \cdots & \cdots & \cdots & \cdots & \cdots &		&	&	\\
+	&	  &		   &		&		&		& b_0		& b_1	& \cdots & b_m\\
+\end{vmatrix} =0\]
+
+也即Sylvester's Matrix $ S_{f,g}$的行列式为0.
+
+事实上有$ \deg ( \gcd (f,g) )=m+n-\rank S_{f,g}$ 
+\\

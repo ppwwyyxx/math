@@ -1,16 +1,16 @@
 % $File: polynomial.tex
-% $Date: Tue Mar 06 21:45:23 2012 +0800
+% $Date: Wed Mar 07 10:41:33 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{多项式}
 $ f(x)$次数$ \le n$,且$ f(k)(k=0\cdots n)$均为整数,
 
 则$ f(x)$为整值多项式,且整值多项式必可表为$ \sum_{i=0}^{n}{a_iC_x^i}$
 
-证:设$ f(x)=\sum_{i=0}^{n}{a_iC_x^i},a_i \in \mathbb{C}$,取$ x=0,1,\cdots$
+{\bf 证 }:设$ f(x)=\sum_{i=0}^{n}{a_iC_x^i},a_i \in \mathbb{C}$,取$ x=0,1,\cdots$
 
 $ \mathbb{Z}\ni f(0)=a_0$.又$ \mathbb{Z}\ni f(1)=a_0+a_1\Rightarrow a_1\in \mathbb{Z}\cdots a_i\in \mathbb{Z}$
 
-推论:$ f(x)$次数$ \le n$,且对连续$ n+1$个整自变量取整值,则其为整值多项式(平移即可)
+{\bf 推论 }:$ f(x)$次数$ \le n$,且对连续$ n+1$个整自变量取整值,则其为整值多项式(平移即可)
 \\
 
 整系数多项式$ P(x):u-v \mid P(u)-P(v)\Rightarrow P(1)\equiv P(k+1) \equiv \cdots \equiv P(nk+1) \pmod k$
@@ -18,7 +18,7 @@ $ \mathbb{Z}\ni f(0)=a_0$.又$ \mathbb{Z}\ni f(1)=a_0+a_1\Rightarrow a_1\in \mat
 
 设有$ a_1,\cdots a_m$满足对$ \forall n,\exists i,a_i\mid F(n),$则$ \exists i,\forall n,a_i\mid F(n)$
 
-反证:设$ \exists x_1, a_1 \nmid F(x_1),\cdots \exists x_m, a_m \nmid F(x_m)
+{\bf 反证 }:设$ \exists x_1, a_1 \nmid F(x_1),\cdots \exists x_m, a_m \nmid F(x_m)
 \Leftrightarrow \exists d_i=p_i^{r_i},d_i \mid a_i$且$ d_i\nmid F(x_i)$
 
 $ d_1,\cdots d_m$中同底数只保留低次幂,得$ d_1\cdots d_s.$则$ \exists N ,\forall i,N\equiv x_i \pmod{d_i}$
@@ -28,7 +28,7 @@ $ \therefore \forall i,F(N)\equiv F(x_i)\not\equiv 0 \pmod{d_i}\Rightarrow \fora
 
 设素数$ p_1,\cdots p_k,\forall i ,\exists x_i,p_i \mid P(x_i)\Rightarrow \exists x ,\prod_{i=1}^{k}{p_i}\mid P(x)$
 
-证:孙子.$ x\equiv x_i \pmod)p_i\Rightarrow P(x)\equiv P(x_i)\equiv 0$
+{\bf 证 }:孙子.$ x\equiv x_i \pmod)p_i\Rightarrow P(x)\equiv P(x_i)\equiv 0$
 \\
 
 整系数多项式$ P(x)=a_nx^n+\cdots a_1x\pm1$值域的素因子无穷:假设有限-$ p_1\cdots p_k$
@@ -38,7 +38,7 @@ $ \therefore \forall i,F(N)\equiv F(x_i)\not\equiv 0 \pmod{d_i}\Rightarrow \fora
 
 (Gauss)本原多项式的乘积仍是本原多项式.
 
-证:设$ f(x)g(x)$各项系数$ c_k$有公因子$ p$,设$ i=\min\{t: p \nmid a_t\},j=\min\{t: p\nmid b_t\}$
+{\bf 证 }:设$ f(x)g(x)$各项系数$ c_k$有公因子$ p$,设$ i=\min\{t: p \nmid a_t\},j=\min\{t: p\nmid b_t\}$
 
 则由$ c_{i+j}$的展开可得矛盾
 
@@ -47,7 +47,7 @@ $ \therefore \forall i,F(N)\equiv F(x_i)\not\equiv 0 \pmod{d_i}\Rightarrow \fora
 
 (Eisenstein)$ f(x)=\sum_{i=0}^{n}{a_nx^n},\exists p\in P,p \nmid a_n,p^2\nmid a_0,p \mid a_0\cdots a_{n-1}\Rightarrow f$不可约
 
-证:设$ f(x)=\sum_{i=0}^{s}{b_ix^i}\sum_{i=0}^{t}{c_ix^i},$不妨设$ p \mid b_0,$显然有$ p\nmid c_0,p\nmid b_n$
+{\bf 证 }:设$ f(x)=\sum_{i=0}^{s}{b_ix^i}\sum_{i=0}^{t}{c_ix^i},$不妨设$ p \mid b_0,$显然有$ p\nmid c_0,p\nmid b_n$
 
 设$ i=\min\{ t:p\nmid b_t\}$,考虑$ a_i$的展开可得矛盾
 

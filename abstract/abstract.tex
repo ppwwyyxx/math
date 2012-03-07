@@ -1,5 +1,5 @@
 % $File: abstract.tex
-% $Date: Tue Mar 06 12:52:47 2012 +0800
+% $Date: Wed Mar 07 10:44:33 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -23,6 +23,7 @@
 \newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
 \DeclareMathOperator{\LM}{\tiny{LM}}
 \DeclareMathOperator{\LT}{\tiny{LT}}
+\DeclareMathOperator{\rank}{\tiny{rank}}
 
 \let\Oldsum\sum
 \renewcommand{\sum}{\displaystyle\Oldsum}
@@ -38,9 +39,11 @@
 \maketitle
 
 \tableofcontents
-\input{basic.tex}
-\input{polymial_ring.tex}
-\input{root.tex}
+%\input{order.tex}
+%\input{structure.tex}
+%\input{polymial_ring.tex}
+%\input{root.tex}
+\input{resultant.tex}
 \printbibliography
 %\input{appendix.tex}
 
