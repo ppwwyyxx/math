@@ -1,5 +1,5 @@
 % $File: n=ax+by.tex
-% $Date: Wed Mar 07 10:41:05 2012 +0800
+% $Date: Thu Mar 08 20:51:30 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{表n为ax+by}
 $(a,b)=1\Rightarrow \exists x,y\in \mathbb{N}^+,ax-by=1$
@@ -16,6 +16,24 @@ $ n=ab-a-b$不可表.反设结论不成立,则
 $ ab=(x+1)a+(y+1)b\Rightarrow b\mid x+1\Rightarrow x+1\ge b$矛盾
 \\
 
+写$ n$为$ ax+by,0\le x\le b-1$,若$ n=ax+by$中$ y\ge 0$
+
+则 $ n'=(b-1-x)a+(-1-y)b$中仍有$ 0 \le b-1-x \le b-1$,但$ -1-y <0$.
+
+于是$ n$可表$ \Rightarrow ab-a-b-n$不可表.$ \therefore [0,ab-a-b]$
+中有$ \dfrac{(a-1)(b-1)}{2}$个不可表.
+\\
+
 在矩形$\begin{matrix} 0\le x\le b\\ 0\le y\le a \end{matrix} $中有$ (a+1)(b+1)$个整点.
 
-其中使$ 0\le ax+by<ab$的整点有$ \dfrac{(a+1)(b+1}{2}$个
+其中使$ 0\le ax+by<ab$的整点有$ \dfrac{(a+1)(b+1)}{2} -1$个
+\\
+
+$ n=ax+by,x,y\in \mathbb{N^+}$有至少两种表法
+$ \Leftrightarrow n$可表为$ ab+a+b+ax+by,x,y\in \mathbb{N}$
+
+i) $ ab+a+b+ax+by=a(1+b+x)+b(1+y)=b(1+a+y)+a(1+x)$
+
+ii) $ ax_1+by_1=ax_2+by_2\Rightarrow a\mid y_2-y_1\Rightarrow y_2\ge a+1$
+
+$ \therefore ax_2+by_2=ab+a+b+(y_2-a-1)b+(x_2-1)a$
