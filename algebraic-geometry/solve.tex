@@ -1,0 +1,91 @@
+% $File: solve.tex
+% $Date: Wed Mar 21 10:55:18 2012 +0800
+% Author: WuYuxin <ppwwyyxxc@gmail.com>
+\section{solve}
+
+\subsection{elimination}
+Def: the $ l$th elimination ideal $ I_l=I\cap k[x_{l+1},\cdots,x_n]$
+
+(Elimination Theorem):$ G_l=G\cap k[x_{l+1},\cdots,x_n]$是$ I_l$的Grobner基
+\\
+
+Def: 将$ f \in I_{l-1}$写成$ f=c_q(x_{l+1},\cdots,x_n)x_l^q+\cdots+c_0(x_{l+1,\cdots,x_n})$.
+其中$ x_l^q$为$ f$中$ x_l$的最高次数.称$ c_q$为$ f$的leading coefficient polynomial
+
+(Extension Theorem):$ k$是代数闭域,$(a_{l+1}\cdots a_n)\in V(I_l)$
+若$ I_{l-1}$的字典序Grobner基中存在的一个元素的leading coefficient polynomials
+在$ (a_{l+1},\cdots,a_n)$处不为0,则此解可扩展,即$ \exists a_l,s.t.(a_l,\cdots,a_n)\in V(I_{l-1})$
+
+对零维理想,可求其字典序Grobner基后找到一元多项式进行消元.
+但此法若求数值解会导致之后系数误差,系数的微小误差对多项式根的数值求解影响很大,
+根的个数,是否为实数都无法判断.
+
+
+\subsection{finite-dimensional algebra}
+对余数的算术操作,有:
+
+$\bar{f}^G+\bar{g}^G= \overline{f+g}^G, \overline{fg}^G=\overline{\bar{f}^G\bar{g}^G}^G$
+(乘积次数可能变大,要再取余)
+\\
+
+由商环$ k[x_1,\ldots,x_n]/I$中定义陪集(coset):$ [f]=f+I=\{f+h:h\in I\}$.
+
+于是有$ \bar{f}^G=\bar{g}^G\Leftrightarrow f-g\in I\Leftrightarrow [f]=[g]$
+
+对陪集定义对应的算术操作,则此商环有线性空间结构,称为一个代数$ A$.
+
+定义这个代数的标准基:$ B=\{x^{\alpha}:x^{\alpha}\not \in \langle \LT(I) \rangle\}$
+\\
+
+如$ G=\{ x^2+\dfrac{3xy}{2}+\dfrac{y^2}{2}-\dfrac{3x}{2}-\dfrac{3y}{2},xy^2-x,y^3-y\}$
+是一组grevlex的Grobner基. $ \langle \LT(I) \rangle=\langle x^2,xy^2,y^3 \rangle$ 
+
+$\Rightarrow B=\{ 1,x,y,xy,y^2\}$为Remainder中可能的单项
+\\
+
+在$ A$中根据乘法操作定义映射$ m_f:m_f([g])=[f][g]=[fg]$.
+
+可证$ m_f$为线性映射,$ m_f=m_g\Leftrightarrow f-g\in I$
+
+考虑$ m_f$的矩阵表示,有$ m_f[i,j]=\overline{f B[j]}^G$中$ B[i]$项的系数
+\\
+
+(Finiteness Theorem)$ A=k[x_1,\ldots,x_n]/I$为有限维$ \Leftrightarrow V(I)$为有限集
+$ \Leftrightarrow \forall i,\exists m_i\ge0,g\in G:x_i^{m_i}=\LT(g)$.
+并称这样的理想为零维理想
+\\
+
+零维理想$ I,\forall i,I\cap k[x_i]\neq \emptyset$
+
+{\bf 证:}重定义字典序使$ x_i$最小.在$ Grobner$基中,$ \exists g,\LT(g)=x_i^{m_i},$则$ g$只含$ x_i$
+
+或:因为$ A$有限维,$\Rightarrow  S=\{1,[x_i],[x_i]^2,\cdots\}$线性相关.
+
+设$ m_i=\min\{t:\{ 1,[x_i]\cdots,[x_i]^{t} \}\texttt{线性相关}\}$
+
+$ \Rightarrow \exists c,\sum_{j=0}^{m_i}{c_j[x_i]^j=[0]}$ 即$\exists p_i(x_i)\in I$
+\\
+
+由有限定理,有求$ B$的方法:
+
+设$ S=\{ x_1^{a_1}\ldots x_n^{a_n}:1\le a_i\le m_i-1\},B=\{ m\in S:\overline{m}^G=m\}$
+
+\subsection{radical}
+求零维理想的根理想:
+
+Reduce: $ p_{red}=\dfrac{p}{(p,p')}$与$ p$有相同的根但无重根(sqr free)
+
+显然有$ \sqrt{\langle p \rangle}=\langle p_{red} \rangle,$如果$ p$ 为非零一元多项式.
+\\
+
+$ I\subset k[x_1\ldots x_n],p=\prod_{j=1}^{d}{( x_1-a_d )},a_j$两两不同.$ p_j=\dfrac{p}{x_1-a_j}$,
+
+则$ I+\langle p \rangle = \bigcap\limits_{j}{(I+\langle x_1-a_j \rangle)}$
+
+{\bf 证}.i)$ LHS \subset RHS$.因为属于右边交的每一个
+
+ii) $ p_j(I+\langle x_1-a_j \rangle)\subset I+\langle p \rangle$
+
+iii)设$ h \in RHS$,因为$ p_j$全体互素,有$ h=\sum_{j}{h_jp_jh},$由上ii),
+知和式中的每一项$ \subset I+\langle p \rangle=LHS$.于是$ RHS=LHS$
+

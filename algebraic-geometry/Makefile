@@ -7,8 +7,7 @@ all: view
 
 rebuild  output/$(TARGET).pdf: *.tex *.bib output
 	cd output && rm -f *.tex *.bib && ln -s ../*.tex ../*.bib .
-	cd output && $(TEX) $(TARGET).tex && $(BIBTEX) $(TARGET).aux && \
-		$(TEX) $(TARGET).tex
+	cd output && $(TEX) $(TARGET).tex
 
 
 
@@ -17,7 +16,7 @@ output:
 	cd output && rm -f res && ln -s ../res .
 
 view: output/$(TARGET).pdf
-	evince output/$(TARGET).pdf &
+	apvlv output/$(TARGET).pdf &
 
 clean:
 	rm -rf output
