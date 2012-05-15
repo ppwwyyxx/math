@@ -1,4 +1,4 @@
-TARGET=algebraic-geometry
+TARGET=report
 TEX=xelatex -shell-escape
 BIBTEX=bibtex
 
@@ -7,7 +7,8 @@ all: view
 
 rebuild  output/$(TARGET).pdf: *.tex *.bib output
 	cd output && rm -f *.tex *.bib && ln -s ../*.tex ../*.bib .
-	cd output && $(TEX) $(TARGET).tex
+	cd output && $(TEX) $(TARGET).tex && $(BIBTEX) $(TARGET).aux && \
+		$(TEX) $(TARGET).tex 
 
 
 

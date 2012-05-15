@@ -1,5 +1,37 @@
 % $File: quadratic_residue.tex
-% $Date: Thu Mar 08 20:56:51 2012 +0800
+% $Date: Tue Apr 03 11:39:23 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{Quadratic Residue}
 Def: $ \exists x,x^2\equiv d \pmod p,d<p,p$为奇素数.
+
+T1: $ \pmod p$ 的一个缩系中有$	\dfrac{p-1}{2}$个$ \pmod p$的二次剩余与二次非剩余,
+且方程$ x^2 \equiv d \pmod p$若有解必有两解.
+
+{\bf 证}:取绝对最小缩系$ S = \{ -\dfrac{p-1}{2},\cdots -1, 1,\cdots \dfrac{p-1}{2}\}.$ 
+
+$ (\dfrac{d}{p})= 1\Leftrightarrow d \equiv 1^2,\cdots,(\dfrac{p-1}{2})^2 \pmod p. $于是有$ \dfrac{p-1}{2}$个二次剩余
+\\
+
+T2(Euler):$ ( \dfrac{d}{p} )\equiv d^{\frac{p-1}{2}} \pmod p$.
+(由Fermat定理显然$ d^{\frac{p-1}{2}}\equiv \pm 1 \pmod p$)
+
+{\bf 证:}i)若$ (\dfrac{d}{p})=1,$则$ \exists x_0^2\equiv d\Rightarrow d^{\frac{p-1}{2}}\equiv x_0^{p-1}\equiv 1$
+
+ii)对$ p \nmid d$ ,满足$ ax\equiv d\pmod p$的缩系中的$ a,x$一一对应.
+
+假设$ (\dfrac{d}{p})=-1,$则总有$ a\ne x$,则$ d^{\frac{p-1}{2}}\equiv \prod_{i=1}^{\frac{p-1}{2}}{(a_ix_i)}\equiv (p-1)!\equiv -1\pmod p$
+\\
+
+T3(Gauss引理):设对$ 1\le j < \dfrac{p}{2},t_j\equiv jd \pmod p$且$ 0<t_j<p$.
+设在$ t_1\ldots,t_{\frac{p-1}{2}}$中有$ n$个$ >\dfrac{p}{2}$,则$ (\dfrac{d}{p})=(-1)^n$
+
+{\bf 证}:设$ >\dfrac{p}{2}$的为$ r_1,\ldots,r_n,<\dfrac{p}{2}$的为$ s_1,\ldots,s_k.k+n=\dfrac{p-1}{2}$.
+
+由于$ \forall 1\le j<i<\dfrac{p}{2},t_j\pm t_i\equiv (j\pm i)d \not \equiv 0\Rightarrow t_j\not\equiv \pm t_i\Rightarrow s_j\not\equiv -r_i\pmod p$
+
+又$ 1\le p-r_i<\dfrac{p}{2},$于是$ s_1,\ldots,s_k,p-r_1,\ldots,p-r_n$为$ 1,2,\ldots,\dfrac{p-1}{2}$的排列.
+
+$ \Rightarrow (\dfrac{p-1}{2})!d^{\frac{p-1}{2}}\equiv \prod_{i=1}^{\frac{p-1}{2}}{t_i}\equiv$ 
+$\prod_{i=1}^{k}{s_i}\prod_{i=1}^{n}{r_i}\equiv (-1)^n\prod_{i=1}^{k}{s_i}\prod_{i=1}^{n}{(p-r_i)}\equiv (-1)^n(\dfrac{p-1}{2})!$
+
+$ \Rightarrow (\dfrac{d}{p})=d^{\frac{p-1}{2}}\equiv(-1)^n$

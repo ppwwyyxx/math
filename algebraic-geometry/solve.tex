@@ -1,5 +1,5 @@
 % $File: solve.tex
-% $Date: Wed Mar 21 10:55:18 2012 +0800
+% $Date: Fri Mar 30 16:24:57 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{solve}
 
@@ -66,9 +66,16 @@ $ \Leftrightarrow \forall i,\exists m_i\ge0,g\in G:x_i^{m_i}=\LT(g)$.
 $ \Rightarrow \exists c,\sum_{j=0}^{m_i}{c_j[x_i]^j=[0]}$ 即$\exists p_i(x_i)\in I$
 \\
 
-由有限定理,有求$ B$的方法:
+由(Fitness Theorem),有求$ B$的方法:
 
 设$ S=\{ x_1^{a_1}\ldots x_n^{a_n}:1\le a_i\le m_i-1\},B=\{ m\in S:\overline{m}^G=m\}$
+\\
+
+(Theorem)设$ A$为由零维理想$ I$定义的商环上的代数,$ h_f$ 为$m_f$的最小多项式,则:
+
+$ \lambda $是$ h_f(x)=0$的根$\Leftrightarrow \lambda$是$ m_f$的特征值$ \Leftrightarrow \lambda\in \{ f(x):x\in V(I)\}$
+
+由此,分别计算$ m_{x_1},\cdots,m_{x_n}$即可解方程.
 
 \subsection{radical}
 求零维理想的根理想:
@@ -88,4 +95,19 @@ ii) $ p_j(I+\langle x_1-a_j \rangle)\subset I+\langle p \rangle$
 
 iii)设$ h \in RHS$,因为$ p_j$全体互素,有$ h=\sum_{j}{h_jp_jh},$由上ii),
 知和式中的每一项$ \subset I+\langle p \rangle=LHS$.于是$ RHS=LHS$
+\\
+
+$ I$ 为零维理想,$ p_i \in I \cap \mathbb{C}[x_i]$,则$ \sqrt{I}=I+\langle p_{1,red},\ldots,p_{n,red} \rangle$
+
+证:设$ RHS = J = J+\langle p_{1,red} \rangle = \bigcap\limits_{j}{(J + \langle x_1-a_{1j} \rangle)}$
+
+$ \Rightarrow J =\bigcap\limits_{j_1,\cdots ,j_n}{(J+\langle x_1-a_{1j_1},\ldots,x_n-a_{nj_n} \rangle)}$
+
+$ (\langle x_1-a_{1j_1},\ldots,x_n-a_{nj_n} \rangle)$为极大理想,
+所以$(J+\langle x_1-a_{1j_1},\ldots,x_n-a_{nj_n} \rangle) $等于$ \mathbb{C}[x_1\ldots,x_n]$或$ \langle x_1-a_{1j_1},\ldots,x_n-a_{nj_n} \rangle$
+$ \Rightarrow J$为极大理想的交,仍为极大理想$ \Rightarrow J$为根理想
+
+由于$ p_i$的无平方部分vanish at$ V(I)$, 有$ J \subset I(V(I)) = \sqrt{I}$,又由定义, $ I\subset J\Rightarrow J\subset \sqrt{I}\subset \sqrt{J}$
+
+于是由$ J= \sqrt{J}$可知$ J = \sqrt{I}$.得证.
 

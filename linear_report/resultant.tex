@@ -1,0 +1,98 @@
+% $File: resultant.tex
+% $Date: Tue May 15 09:59:21 2012 +0800
+% Author: WuYuxin <ppwwyyxxc@gmail.com>
+\section{结式}
+\subsection{概述}
+	消元是解方程组的基本原理.
+	在解线性方程组时,由于方程只有一次,可以通过直接将一变元用其余变元表出,再代入消元.
+	但对于多项式方程组,由于很多类型的高次方程无根式解,即使有也大多极其复杂,难以通过传统的消元手段进行代入消元.
+	因此需要引入其他的消元方法,结式(Resultant)就是一种.
+
+\subsection{原理}
+	首先考虑复数域上关于$ x$的两个多项式方程构成的方程组
+	\[  \begin{cases} 
+			f(x)=\sum_{i=0}^{n}{a_ix^{n-i}}=0 \\
+			g(x)=\sum_{i=0}^{m}{b_ix^{m-i}}=0
+	\end{cases} , \texttt{其中} a_0b_0\ne0\]
+
+	这个方程组的解,实际上就是两多项式的公共复根.
+
+%为$ K[x]$中两个多项式,$ m,n>0$,则
+%$ Res(f,g)=0\Leftrightarrow a_0=b_0=0$或$ f(x),g(x)$有公共复根
+
+	$ f(x)=0,g(x)=0$有公共复根
+
+	$ \Leftrightarrow \exists f_1(x), g_1(x), \deg f_1(x) < n, \deg g_1(x) < m, \dfrac{f(x)}{f_1(x)} = \dfrac{g(x)}{g_1(x)}$
+
+	$ \Leftrightarrow \exists f_1(x),g_1(x),\deg f_1(x)<n,\deg g_1(x)<m,f(x)g_1(x)=g(x)f_1(x)$
+
+	于是设$ f_1(x)=\sum_{i=0}^{n-1}{u_ix^{n-1-i}},g_1(x)=\sum_{i=0}^{m-1}{v_ix^{m-1-i}}$,
+	代入上式,比较所有$ m+n$个项的系数,可得
+
+	\[ \left \{  \begin{array}{lrclr}
+	a_0v_0		&			&= &b_0u_0		&		\\
+	a_1v_0+a_0v_1&			&= &b_1u_0+b_0u_1&		\\
+	\cdots \cdots &\cdots	&= & \cdots\cdots &\cdots		\\
+			&{a_nv_{m-2}+a_{n-1}v_{m-1}}&=&		&b_mu_{n-2}+b_{m-1}u_{n-1}\\
+			& a_nv_{m-1}&= &				&b_mu_{n-1}\\
+	\end{array}\right . \]
+
+	这个关于$(v_0,\cdots,v_{m-1},u_0,\cdots,u_{n-1})$ 的$ m+n$元齐次线性方程组有非零解
+	
+	$ \Leftrightarrow $ 其系数行列式
+	
+	\[ A=\begin{vmatrix} 
+		a_0	&	&	&	&	 &		& b_0 &		&	 &	\\
+		a_1	&a_0&	&	&			&	& b_1 & b_0	&	&	\\
+  \cdots &\cdots &\cdots &\cdots	&  \cdots&	& \cdots &\cdots	&	\cdots	&	\\
+		 &	&	&	&a_n &a_{n-1}   &		&	& b_m  & b_{m-1} \\
+		 &	&	&	&	 &a_n		&		&	&	  & b_m\\
+	\end{vmatrix} = 0\]
+
+	也即其转置
+	\[A^{T}= \begin{vmatrix}
+	a_0 & a_1 & \cdots & \cdots & \cdots & \cdots & a_n		&		&	&   \\
+		& a_0 & a_1	   & \cdots & \cdots & \cdots & \cdots  &a_n   &	&	\\
+		&	  & \cdots & \cdots & \cdots & \cdots & \cdots &		&	&	\\
+		&	  &		   & a_0	& a_1	 & \cdots & \cdots & \cdots &	& a_n\\
+	b_0 & b_1 & \cdots & b_m	&		 &		  &		   &		&	&   \\
+		& b_0 & b_1	   & \cdots  &b_m   &	    	&		&		&	&	\\
+		&	  & \cdots & \cdots & \cdots & \cdots & \cdots &		&	&	\\
+		&	  &		   &		&		&		& b_0		& b_1	& \cdots & b_m\\
+	\end{vmatrix} =0\]
+	注意到$ A^{T}$由多项式$ f,g$的系数决定,可记$ Res(f,g)=|A^{T}|,$
+	称其为多项式$ f,g$的{\bf 结式(Resultant) },也叫Sylvester结式.
+
+	根据上述讨论,我们有结论:$ f(x),g(x)$有重根$ \Leftrightarrow Res(f,g) = 0$
+
+	再考虑二元多项式方程组:
+
+	$ \begin{cases}
+		f(x,y)=0 \\g(x,y)=0 
+	\end{cases}$,以$ x$为主元,视$ y$为常数,可求得结式$ P(y) = R_x(f,g)$,是$ y$的多项式
+
+	由上述结论可得,
+	对$ P(y)$的每个零点$ y_0,f(x,y_0),g(x,y_0)$有公共复根.
+	反之,对于原方程组的每个解$ (x_0,y_0), $必有$ P(y_0) = 0$
+
+	于是,对原方程组的求解转化为对一元方程$ P(y) = 0$的求解,成功实现了消元,降低了问题的难度.
+
+	对两个方程构成的含有多个变元的方程组,可以使用相同手段消去其中某个变元.
+	而对于超过两个方程构成的方程组,结式系统理论中描述了多元结式,可用于多方程的联合消元.
+
+\subsection{应用}
+	一元方程组求解中的结式理论的一个重要应用是判断多项式是否有重根.
+	考虑多项式$ f(x) = \prod_{i=1}^{k}{(x-x_i)^{r_i}}$,
+	显然对于每个大于1的$ r_i$,有$ f'(x_i) = 0,$即$ x_i $ 是$f(x)$与$ f'(x)$的公共复根,
+	也即$ f(x)=0$有重根$ \Leftrightarrow Res(f,f')=0$.
+
+	上述的二元方程组的结式求解方法可应用于实际问题中常常能遇到的一类代数曲面/曲线隐式化.
+	例如,用参数方程表示的曲线
+	$ \begin{cases}x=\dfrac{-t^2+2t}{t^2+1} \\ y=\dfrac{2t^2+2t}{t^2+1} \end{cases}$
+
+	将两式都写为关于$ t$的多项式: 
+	$\begin{cases}f(t)=(x+1)t^2 -2t +x\\ g(t)=(y-2)t^2-2t+y \end{cases}$
+
+	排除掉$ x+1=y-2=0$的情形,计算结式$ Res(f,g)= 8x^2-4xy+5y^2+12x-12y$ 
+	
+	于是$8x^2-4xy+5y^2+12x-12y=0,(x,y) \ne (-1,2)$为曲线隐式化后的结果.

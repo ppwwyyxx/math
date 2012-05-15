@@ -1,5 +1,5 @@
-% $File: abstract.tex
-% $Date: Tue May 08 21:21:52 2012 +0800
+% $File: report.tex
+% $Date: Tue May 15 12:08:29 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -22,8 +22,6 @@
 \newcommand{\figref}[1]{\hyperref[fig:#1]{图\ref*{fig:#1}}}
 % \secref{label}: reference to a section
 \newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
-\DeclareMathOperator{\LM}{\tiny{LM}}
-\DeclareMathOperator{\LT}{\tiny{LT}}
 \DeclareMathOperator{\rank}{\tiny{rank}}
 
 \let\Oldsum\sum
@@ -33,19 +31,18 @@
 
 \input{mint-defs.tex}
 
-\title{Abstract}
-\author{\\(ppwwyyxxc@gmail.com)}
+\title{线性代数与多项式方程组求解}
+\author{\\()}
 
 \begin{document}
 \maketitle
 
 \tableofcontents
-%\input{structure.tex}
-%\input{order.tex}
-%\input{polymial_ring.tex}
-%\input{root.tex}
-%\input{polymial_field.tex}
+\input{intro.tex}
 \input{resultant.tex}
+\input{abstract.tex}
+\input{application.tex}
+\input{summary.tex}
 \printbibliography
 %\input{appendix.tex}
 
