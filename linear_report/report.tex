@@ -1,16 +1,15 @@
 % $File: report.tex
-% $Date: Tue May 15 12:08:29 2012 +0800
+% $Date: Sat Jun 02 17:50:07 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
-\usepackage{fontspec,amsmath,amssymb,zhspacing,verbatim,minted}
+\usepackage{fontspec,amsmath,amssymb,zhspacing,minted}
 \usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
 \usepackage[sorting=none]{biblatex}
 \usepackage[dvips]{graphicx}
-\usepackage{subfigure}
 \usepackage{indentfirst}
+\newfontfamily\zhfont[BoldFont=SimHei,ItalicFont=KaiTi_GB2312]{SimSun}
 \zhspacing
-
 
 \renewcommand{\abstractname}{摘要}
 \renewcommand{\contentsname}{目录}
@@ -32,12 +31,14 @@
 \input{mint-defs.tex}
 
 \title{线性代数与多项式方程组求解}
-\author{\\()}
+\author{\small 清华大学计算机系~计14班 \\\small 吴育昕(2011011271) 李铁峥(2011011268)}
+\date{}
 
 \begin{document}
 \maketitle
 
 \tableofcontents
+\nocite{adv_alg}\nocite{ideals}\nocite{using}\nocite{lc}\nocite{poly_alg}
 \input{intro.tex}
 \input{resultant.tex}
 \input{abstract.tex}

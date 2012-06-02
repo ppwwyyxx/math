@@ -1,8 +1,9 @@
 % $File: abstract.tex
-% $Date: Tue May 29 11:12:55 2012 +0800
+% $Date: Sat Jun 02 17:50:58 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{抽象代数方法简述}
 	本节主要将抽象代数方法里的一个基本概念与线性代数进行类比.
+
 	为了求解线性方程组,我们首先学习了秩,线性相关等概念.
 
 	对于方程组$ \begin{cases}
@@ -12,22 +13,25 @@
 		\vdots\\
 	\end{cases}$
 	
-	它是一个线性方程组时,若$ f_3=p_1f_1+p_2f_2,p_1,p_2\in \mathbb{R}$,那么在原方程组中,$ f_3=0$是一个"没用"的方程.
+	它是一个线性方程组时,若$ f_3=p_1f_1+p_2f_2,p_1,p_2\in \mathbb{C}$,那么在原方程组中,$ f_3=0$是一个"没用"的方程.
 	反映在对应的系数矩阵中,
 	设$ \overrightarrow b_1,\overrightarrow b_2,\cdots $为行向量,则
 	$ \overrightarrow b_3$可由$ \overrightarrow b_1,\overrightarrow b_2$线性表出,或称
 	$ \overrightarrow b_3$在$ \overrightarrow b_1,\overrightarrow b_2$生成的线性空间中.
 
 	线性相关的概念描述了在线性方程组中哪些方程是"没用"的,秩的概念进一步给出了线性方程组中"有用"的方程个数.
+	搞清楚这一点,是系统化地解方程组的基本思路.
 	多项式方程组求解首先也需解决这一问题.
 
-	将上述方程组视作一个多项式方程组,设$ K[x_1,\cdots, x_n]$为关于$ (x_1,\cdots , x_n)$的多项式集合.
+	若将上述方程组视作一个多项式方程组,设$ K[x_1,\cdots, x_n]$为关于$ (x_1,\cdots , x_n)$的多项式集合.
 	则若有$ f_3 = p_1f_1 + p_2f_2,p_1,p_2\in K[x_1,\cdots, x_n]$,
-	那么$ f_3=0$是一个"没用"的方程.
+	那么$ f_3=0$是一个"没用"的方程.  
+	于是,类比线性表出与线性相关的概念,我们很自然的给出了多项式"理想(Ideals)"的定义.
 
-	于是,类比线性表出的概念,我们很自然需要多项式"理想(Ideals)"的定义.
 	$ f_1,\cdots,f_s $的生成理想定义为: 
-	$ I=\langle f_1,\cdots,f_s \rangle = \{p_1f_1+\cdots+p_sf_s,p_i\in K[x_1,\cdots,x_n]\}$.
+
+\[ I=\langle f_1,\cdots,f_s \rangle = \{p_1f_1+\cdots+p_sf_s,p_i\in K[x_1,\cdots,x_n]\}.\]
+
 	于是,$ f=0$是一个"没用"的方程当且仅当它在其余多项式的生成理想中.
 	因此,只需将方程组中全部多项式的生成理想用简单的形式表出,或者说,用一组性质较好的多项式生成,就容易将问题简化.
 
@@ -35,10 +39,12 @@
 	在线性空间中我们通过找一组基来描述整个空间的性质,在理想中,可以通过Grobner基这种特殊的基,来描述整个理想.
 
 	Grobner基是对理想的一种很好的表示,具有很多极好的性质,因此用于多项式方程组求解中的效率更高.
-	当前的许多符号计算软件,如Maple,Mathematica,maTH$ \mu$ 都使用Grobner基方法实现多项式方程组求解.
+	当前的许多符号计算软件,如Maple\footnote{Maple官方对Solve命令实现方式的介绍:
+		\url{http://www.maplesoft.com/support/help/Maple/view.aspx?path=Groebner\%2fSolve}}
+	,Mathematica\footnote{Wolfram官方对Solve命令实现方式的介绍:
+		\url{http://reference.wolfram.com/mathematica/tutorial/SomeNotesOnInternalImplementation.html\#24488}},
+	maTH$ \mu$都使用Grobner基方法实现多项式方程组求解.
 
-	以下为清华大学maTH$ \mu$协会自主开发的符号计算软件maTH$ \mu$中Grobner基部分的代码接口:
-	\footnote{产品主页\url{http://mathmu.cn},项目主页\url{http://trac.mathmu.cn}}
-
+	以下为清华大学maTH$ \mu$协会自主开发的符号计算软件maTH$ \mu$\footnote{主页\url{http://mathmu.cn/}} 中Grobner基部分的代码接口:
 	\txtsrc{res/multigroebner.cpp}
 
