@@ -1,5 +1,5 @@
 % $File: resultant.tex
-% $Date: Sat Jun 02 17:24:14 2012 +0800
+% $Date: Sun Jun 03 17:59:27 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{结式方法}
 \subsection{原理}
@@ -51,10 +51,10 @@
 		& a_0 & a_1	   & \cdots & \cdots & \cdots & \cdots  &a_n   &	&	\\
 		&	  & \cdots & \cdots & \cdots & \cdots & \cdots &		&	&	\\
 		&	  &		   & a_0	& a_1	 & \cdots & \cdots & \cdots &	& a_n\\
-	b_0 & b_1 & \cdots & b_m	&		 &		  &		   &		&	&   \\
-		& b_0 & b_1	   & \cdots  &b_m   &	    	&		&		&	&	\\
+	b_0 & b_1 & \cdots & b_{m-1}& b_m		 &		  &		   &		&	&   \\
+		& b_0 & b_1	   & \cdots  &\cdots &b_m   	&		&		&	&	\\
 		&	  & \cdots & \cdots & \cdots & \cdots & \cdots &		&	&	\\
-		&	  &		   &		&		&		& b_0		& b_1	& \cdots & b_m\\
+		&	  &		   &		&		&   b_0   & b_1		& b_2	& \cdots & b_m\\
 	\end{vmatrix} =0\]
 	注意到$ A^{T}$仅由多项式$ f,g$的系数决定,可记$ Res_x(f,g)=|A^{T}|,$
 	称其为多项式$ f,g$的{\bf Sylvester结式(Sylvester's Resultant) },简称结式.
@@ -103,6 +103,7 @@
 	将两式都写为关于$ t$的多项式: 
 	$\begin{cases}f(t)=(x+1)t^2 -2t +x\\ g(t)=(y-2)t^2-2t+y \end{cases}$
 
+	\vspace{5pt}
 	排除掉$ x+1=y-2=0$的情形,计算结式$ Res_t(f,g)= 8x^2-4xy+5y^2+12x-12y$ 
 	
 	于是$8x^2-4xy+5y^2+12x-12y=0,(x,y) \ne (-1,2)$为曲线隐式化后的结果.

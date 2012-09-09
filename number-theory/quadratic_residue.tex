@@ -1,5 +1,5 @@
 % $File: quadratic_residue.tex
-% $Date: Tue Apr 03 11:39:23 2012 +0800
+% $Date: Thu Aug 02 18:26:01 2012 +0800
 % Author: WuYuxin <ppwwyyxxc@gmail.com>
 \section{Quadratic Residue}
 Def: $ \exists x,x^2\equiv d \pmod p,d<p,p$为奇素数.
@@ -35,3 +35,19 @@ $ \Rightarrow (\dfrac{p-1}{2})!d^{\frac{p-1}{2}}\equiv \prod_{i=1}^{\frac{p-1}{2
 $\prod_{i=1}^{k}{s_i}\prod_{i=1}^{n}{r_i}\equiv (-1)^n\prod_{i=1}^{k}{s_i}\prod_{i=1}^{n}{(p-r_i)}\equiv (-1)^n(\dfrac{p-1}{2})!$
 
 $ \Rightarrow (\dfrac{d}{p})=d^{\frac{p-1}{2}}\equiv(-1)^n$
+
+特别地,$ d=2$时,对$ 1\le j < \dfrac{p}{4}, 1\le t_j = 2j < \dfrac{p}{2}$;对$ \dfrac{p}{4} < j < \dfrac{p}{2}, \dfrac{p}{2}< t_j = 2j <p, $ 
+
+$ \therefore n = \dfrac{p-1}{2}-[ \dfrac{p}{4}] \Rightarrow ( \dfrac{2}{p}) = (-1)^{\frac{p^2-1}{8}}$
+
+T4: $ x$取遍缩系,则$ x^2$取遍缩系中的一半值.
+{\bf 证}: 由T1即得.
+\\
+
+$ 4k+1$型素数有无穷多: 假设有穷,考虑$ 4(p_1 p_2 \cdots p_k)^2 + 1$,若为素数则矛盾,若为合数则必有$ 4k+1$型因子.
+\\
+
+$ x^4+1$的因子必位$ 8k+1$型: 显然为$ 4k+1$型,又$ 1 = (\dfrac{(x^2+1)^2}{p}) =
+(\dfrac{(x^2+1)^2 - (x^4+1)}{p}) = (\dfrac{2x^2}{p}) = (\dfrac{2}{p}) = (-1)^{\frac{p^2-1}{8}}$
+
+推论:$ 8k+1$型素数无穷多,否则考虑$ (2p_1\cdots p_k)^4 +1$

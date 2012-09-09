@@ -1,5 +1,5 @@
 % $File: application.tex
-% $Date: Sat Jun 02 17:46:02 2012 +0800
+% $Date: Sun Jun 03 17:58:20 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{多项式方程组求解的实际应用}
 \subsection{几何定理的机器证明}
@@ -20,7 +20,7 @@
 	\[  \begin{cases}
 		PABC\texttt{共圆} &\Leftrightarrow y_cy_p^2-(y_c^2+x_c^2-x_a^2)y_p+y_c(x_p^2-x_a^2) =0\\
 		PM\perp BC &\Leftrightarrow (x_c+x_a)(x_m-x_p)+y_c(y_m-y_p) =0\\
-		M \in BC &\Leftrightarrow (x_c + x_a)y_n - y_c(x_n+x_a) =0\\
+		M \in BC &\Leftrightarrow (x_c + x_a)y_m - y_c(x_m+x_a) =0\\
 		PL \perp AC &\Leftrightarrow (x_c-x_a)(x_l-x_p) + y_c(y_l-y_p) = 0\\
 		L \in AC &\Leftrightarrow (x_c-x_a)y_l - y_c(x_l-x_a)  = 0
 	\end{cases}\]
@@ -32,10 +32,10 @@
 	吴文俊院士提出的机器证明方法,就是针对平面几何问题的特殊性提出的判断一多项式是否属于一个理想的快速方法.
 
 \subsection{计算机图形学中的曲面拼接}
-	在本学期选修的计算机系"计算机图形学基础"课程中,作者了解到多项式方程组求解在计算机几何造型的曲面拼接中的重要作用.
+	在本学期选修的计算机系``计算机图形学基础''课程中,作者了解到多项式方程组求解在计算机几何造型的曲面拼接中的重要作用.
 
 	对于一个参数曲面,传统的分析学中对连续性的定义不适用于图形学中
-	,考虑参数方程表示的以下曲线\footnote{此例改编自胡事民老师"计算机图形学基础"课件}:
+	,考虑参数方程表示的以下曲线\footnote{此例改编自胡事民老师``计算机图形学基础''课件}:
 	\[  f(t) = \begin{cases} \dfrac{\overrightarrow X - \overrightarrow Y}{3}t,0\le t \le 1 \\
 		\dfrac{\overrightarrow X - \overrightarrow Y}{3} + (t-1)\dfrac{2(\overrightarrow X - \overrightarrow Y)}{3},1 \le t \le 2
 	\end{cases}\]
