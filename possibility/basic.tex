@@ -1,0 +1,114 @@
+% File: basic.tex
+% Date: Fri Sep 14 15:02:56 2012 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+一次随机试验中每一种可能的结果称为一个{\bf 基本事件}或{\bf 样本点$ \omega$},所有基本事
+件的全体为该试验的样本空间$ \Omega$
+
+同一试验的样本空间可能不唯一,因为观察结果的角度不同.对扔两次色子,$ \Omega_1 =
+\{++,+-,--,-+\}, \Omega_2 = \{\texttt{两正,两负,一正一负}\}$
+
+$ \Omega$的可测子集$ A$称为事件.对结果$ \omega \in A$,则称事件A发生了.
+
+$ A \subset B \Rightarrow $A发生了B必发生.
+
+运算:Morgan律.$ (\cup A_i)^c = \cap A_i^c$
+
+古典概型: 基本事件只有有限个且概率相同.
+
+掷硬币$ n$次,取每种排列为基本事件,即为古典概型.$ P(\texttt{首次正面出现在k次}=\dfrac{1}{2^k})$
+
+掷硬币直到出现正面为止,基本事件$ \omega_k$为``首次正面出现在第k次'',则有无穷个基本事件,且
+概率不同. 
+利用可数可加性,$ \omega_{\infty} = 0$,但不是不可能事件.
+
+一般地,对于至多可数集合$ \Omega$,每个基本事件的概率都可求出时,$ \forall A
+\subset \Omega, P(A) = \sum_{\omega \in A}P(\omega)$
+
+若无限抛掷硬币,将排列作为基本事件,则有不可数个基本事件,此时若考虑等可能分析,则
+每个基本事件概率为0.无法求出某个事件的概率(因为不可数个实数的和没有意义).
+\\
+
+古典/几何概型的另一个问题:Bertrand悖论--圆内一弦长度超过正三角形边长的概率由三
+种解释.
+
+原因:当可能结果有无穷个时,难以规定``等可能''这一概念.
+
+概率空间$ (\Omega, \mathcal{F}, P)$:
+
+$\Omega$ 是全体可能结果组成的集合.$ \mathcal{F}$是全体可观测事件组成的事件族.$ P:\mathcal{F} \rightarrow [0,1]$是求事件的概率的运算.
+
+当$ \mathcal{F}$满足以下条件时,称其为{\bf $ \sigma -$代数}:
+\begin{enumerate}
+	\item $ \Omega \in \mathcal{F}$
+	\item $ A\in \mathcal{F} \Rightarrow A^c \in \mathcal{F}$
+	\item 可数并:$ A_1 \cdots \in \mathcal{F} \Rightarrow  \cup_{i = 1}^{\infty}{A_i}
+		\in \mathcal{F}$
+\end{enumerate}
+事实上,由可数并,可推出有限并,可数交,有限交$ \in \mathcal{F}$.
+
+当$ \Omega$为至多可数集时,总可取$ \Omega$的所有子集族作为$ \mathcal{F}$.
+当$ \Omega$不可数时,取这样的$ \mathcal{F}$会造成数学上的困难,因此只取感兴趣的,
+可以知道概率的事件的最小$ \sigma$-代数
+
+对每个事件$ A\in \mathcal{F},$定义实数$ P(A)$,满足以下条件:
+\begin{enumerate}
+	\item 非负性:$ P(A) \ge 0$
+	\item 规范性: $ P(\Omega) = 1$
+	\item 可数可加性:
+
+		对两两互不相容的事件$ A_1 \cdots \in \mathcal{F}, P(\cup{A_n}) =
+		\sum{P(A_n)}$
+\end{enumerate}
+
+试验的样本空间,事件$ \sigma$代数及定义在其上的概率构成的三元组$ (\Omega,
+\mathcal{F}, P)$称为描述一个随机试验的{\bf 概率空间}.
+\\
+
+事件序列的极限定义:
+$ \overline {\lim \limits_{n \to \infty}}A_n  = \bigcap_{n
+=1}^{\infty}\bigcup_{k=n}^{\infty}A_k $(当且仅当有无穷个$ A_n$发生)
+
+$ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
+=1}^{\infty}\bigcap_{k=n}^{\infty}A_k$(当且仅当至多有有限个$ A_n$不发生)
+
+当上下极限相等时(如对于单调事件序列),称为序列$ A_n$的极限.
+\\
+
+利用可数可加,可得到如下结论:
+\begin{enumerate}
+	\item $ P(\empty) = 0:
+		P(\Omega) = P(\Omega \cup \empty \cup \empty \cdots) = P(\Omega) +
+		P(\empty) + \cdots$
+	\item 有限可加
+	\item 求逆:$ P(A) + P(A^c) = 1$
+	\item Jordan公式(容斥),归纳证明
+	\item $ P(A - B) = P(A) - P(A\cap B)$,特别地,$ B \subset A \Rightarrow
+		P(B) \le P(A)$
+	\item 下连续性:设$ A_i$单调增($ A_1 \subset A_2 \subset \cdots$),则$
+		P(\lim \limits_{n \to \infty }{A_n}) = \lim \limits_{n \to
+		\infty}{P(A_n)}$.
+
+		$ P(\cup A_n) = P(A_1) + \sum_{i = 1}^{\infty}{P(A_{i+1} - A_i)} =
+		P(A_1) = \lim \limits_{n \to \infty}\sum_{i = 1}^{n-1}{[P(A_{i+1} -
+		P(A_i))]} = \lim \limits_{n \to \infty}P(A_n)$
+
+	\item 上连续性:设$ A_i$单调减,则$ P(\lim \limits_{n \to \infty} A_n ) =
+		\lim \limits_{n \to \infty} P(A_n)$
+
+		$ 1 - \lim \limits_{n \to \infty}P(A_n) = \lim \limits_{n \to
+		\infty}P(A_n^c)=P(\bigcup_{n=1}^{\infty}A_n^c) =
+		P((\bigcap_{n=1}^{\infty}A_n)^c) = 1-P(\bigcap_{n=1}^{\infty}A_n)$
+	
+		概率的上下连续性等价,统称为连续性.
+
+	\item	有限可加+下连续$ \Leftrightarrow $可数可加.
+
+		由下连续性,\[  P(\bigcup_{n=1}^{\infty}A_n) =
+		P(\bigcup_{n=1}^{\infty}F_n) \mathop{=}\limits_{\texttt{下连续}}\lim\limits_{n \to \infty}P(F_n)=
+		\lim\limits_{n\to\infty}P(\bigcup_{i=1}^nA_i)
+		\mathop{=}\limits_{\texttt{有限可加}}
+		\lim\limits_{n\to\infty}\sum_{i=1}^n{P(A_i)}\mathop{=} \limits_{\texttt{收敛}}
+	\sum_{i=1}^{\infty}P(A_i)\]
+\end{enumerate}
+
