@@ -1,38 +1,24 @@
 % File: basic.tex
-% Date: Fri Sep 14 15:02:56 2012 +0800
+% Date: Mon Sep 17 13:05:56 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
+\section{事件与概率}
+\subsection{事件}
 一次随机试验中每一种可能的结果称为一个{\bf 基本事件}或{\bf 样本点$ \omega$},所有基本事
 件的全体为该试验的样本空间$ \Omega$
 
 同一试验的样本空间可能不唯一,因为观察结果的角度不同.对扔两次色子,$ \Omega_1 =
 \{++,+-,--,-+\}, \Omega_2 = \{\texttt{两正,两负,一正一负}\}$
 
+至多可数的样本空间称为离散样本空间,不可数称为连续样本空间.
+
 $ \Omega$的可测子集$ A$称为事件.对结果$ \omega \in A$,则称事件A发生了.
 
 $ A \subset B \Rightarrow $A发生了B必发生.
 
-运算:Morgan律.$ (\cup A_i)^c = \cap A_i^c$
+Morgan律:$ (\cup A_i)^c = \cap A_i^c$
 
-古典概型: 基本事件只有有限个且概率相同.
-
-掷硬币$ n$次,取每种排列为基本事件,即为古典概型.$ P(\texttt{首次正面出现在k次}=\dfrac{1}{2^k})$
-
-掷硬币直到出现正面为止,基本事件$ \omega_k$为``首次正面出现在第k次'',则有无穷个基本事件,且
-概率不同. 
-利用可数可加性,$ \omega_{\infty} = 0$,但不是不可能事件.
-
-一般地,对于至多可数集合$ \Omega$,每个基本事件的概率都可求出时,$ \forall A
-\subset \Omega, P(A) = \sum_{\omega \in A}P(\omega)$
-
-若无限抛掷硬币,将排列作为基本事件,则有不可数个基本事件,此时若考虑等可能分析,则
-每个基本事件概率为0.无法求出某个事件的概率(因为不可数个实数的和没有意义).
-\\
-
-古典/几何概型的另一个问题:Bertrand悖论--圆内一弦长度超过正三角形边长的概率由三
-种解释.
-
-原因:当可能结果有无穷个时,难以规定``等可能''这一概念.
+\subsection{概率空间}
 
 概率空间$ (\Omega, \mathcal{F}, P)$:
 
@@ -49,9 +35,10 @@ $\Omega$ 是全体可能结果组成的集合.$ \mathcal{F}$是全体可观测�
 
 当$ \Omega$为至多可数集时,总可取$ \Omega$的所有子集族作为$ \mathcal{F}$.
 当$ \Omega$不可数时,取这样的$ \mathcal{F}$会造成数学上的困难,因此只取感兴趣的,
-可以知道概率的事件的最小$ \sigma$-代数
+可以知道概率的事件的最小$ \sigma$-代数.
+\\
 
-对每个事件$ A\in \mathcal{F},$定义实数$ P(A)$,满足以下条件:
+{\bf 概率的定义:}对每个事件$ A\in \mathcal{F},$定义实数$ P(A)$,满足以下条件:
 \begin{enumerate}
 	\item 非负性:$ P(A) \ge 0$
 	\item 规范性: $ P(\Omega) = 1$
@@ -61,9 +48,9 @@ $\Omega$ 是全体可能结果组成的集合.$ \mathcal{F}$是全体可观测�
 		\sum{P(A_n)}$
 \end{enumerate}
 
-试验的样本空间,事件$ \sigma$代数及定义在其上的概率构成的三元组$ (\Omega,
+试验的样本空间,事件域($ \sigma$代数)及定义在其上的概率构成的三元组$ (\Omega,
 \mathcal{F}, P)$称为描述一个随机试验的{\bf 概率空间}.
-\\
+\subsection{概率的性质}
 
 事件序列的极限定义:
 $ \overline {\lim \limits_{n \to \infty}}A_n  = \bigcap_{n
@@ -110,5 +97,88 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 		\mathop{=}\limits_{\texttt{有限可加}}
 		\lim\limits_{n\to\infty}\sum_{i=1}^n{P(A_i)}\mathop{=} \limits_{\texttt{收敛}}
 	\sum_{i=1}^{\infty}P(A_i)\]
+
+\item 推广可数可加:
+	$ A_1,A_2\cdots $满足$ P(A_iA_j)=0$(弱于互斥),则$ P(A) = \sum{P(A_n)}$
 \end{enumerate}
 
+\subsection{古典概型与几何概型}
+
+{\bf 古典概型}: 基本事件只有有限个且概率相同.
+
+掷硬币$ n$次,取每种排列为基本事件,即为古典概型:
+\[  P(\texttt{首次正面出现在k次}=\dfrac{1}{2^k})\]
+
+掷硬币直到出现正面为止,基本事件$ \omega_k$为``首次正面出现在第k次'',则有无穷个基本事件,且
+概率不同. 
+利用可数可加性,$ \omega_{\infty} = 0$,但不是不可能事件.
+
+一般地,对于至多可数集合$ \Omega$,每个基本事件的概率都可求出时,$ \forall A
+\subset \Omega, P(A) = \sum_{\omega \in A}P(\omega)$
+
+若无限抛掷硬币,将排列作为基本事件,则有不可数个基本事件,此时若考虑等可能分析,则
+每个基本事件概率为0.无法求出某个事件的概率(因为不可数个实数的和没有意义).
+
+{\bf 几何概型}:随机现象的 样本空间充满某个可测区域,且任一点落在度量相同的子区域
+内是等可能的.
+
+{\bf Buffon投针的分析做法}:设针中点与最近平行线距$ x\in [0, \dfrac{d}{2}]$,与
+直线成角$ \varphi\in[0,\pi]$,在上区域中求$ x \le \dfrac{l}{2}\sin{\varphi}$
+部分的概率. $ P(A) =
+\dfrac{\int_{0}^{\pi}{\dfrac{l}{2}\sin{\varphi}\mathrm{d}{\varphi}}}{\dfrac{d}{2}\pi}
+= \dfrac{2l}{d\pi}$
+
+古典/几何概型的另一个问题:Bertrand悖论--圆内一弦长度超过正三角形边长的概率由三
+种解释.
+
+原因:当可能结果有无穷个时,难以规定``等可能''这一概念,因此概率空间被模糊定义了.
+
+\subsection{条件概率}
+概率空间$( \Omega, \mathcal{F}, P)$中$ P(B) > 0$.定义$ P_B(A) = P(A | B) = \dfrac{P(A\cap B)}{P(B)}$,
+则可证$ (\Omega, \mathcal{F}, P_B)$也是概率空间.
+
+{\bf 乘法公式:}$ P(\bigcap_{i=1}^{n-1}A_i)>0$ (使得条件概率有意义),由定义归纳可得
+
+\[ \Rightarrow P(\bigcap_{i=1}^nA_i) = \prod_{i=1}^n{P(A_i | \bigcap_{j=1}^{i-1}A_j)}\]
+
+{\bf 可靠性函数与风险率:}设前$ t$时刻正常,$[t, t+\Delta t]$时段失效的概率为$ \lambda(t)\Delta t + o(\Delta t)$,求
+设备在$ (0,t)$上无故障的概率.
+
+设$ A_t$表示设备在$ (0,t)$内正常,$ P(\overline{A_{t+\Delta t}} | A_t) = \lambda(t)\Delta t + o(\Delta t)$.
+\[ p(t + \Delta t) = P(A_t)P(A_{t+\Delta t}|A_t) = p(t)[1 - \lambda(t)\Delta t + o(\Delta t)]\Rightarrow \dfrac{dp(t)}{dt}=-\lambda(t)p(t)\]
+
+注意到$ p(0)=1,$有$ p(t) = e^{-\Oldint_0^t{\lambda(s)ds}}$
+
+{\bf 全概率公式:}设$ B_1,B_2\cdots$为样本空间$ \Omega$的一个正划分,则
+\[ P(A) =\sum_{i=1}^{\infty}{P(AB_i)}= \sum_{i=1}^{\infty}{P(B_i)P(A|B_i)}\]
+
+{\bf 赌徒输光:}两人各有赌资$ i, n-i$,每次赌博胜者拿走对方1元,胜率分别为$ p,1-p$.
+
+设$ A_i$表示甲有$ i$元,最终破产.$ B$表示某次甲胜,$ P(B) = p$,则有$ P(A_i|B)=P(A_{i+1}),P(A_i|\overline{B})=P(A_{i-1})$
+
+于是$ P(A_i)=pP(A_{i+1}) + (1-p)P(A_{i-1})$,边界$ P(A_0)=1,P(A_n)=0$.
+
+\[  P(A_i)=\left\{ \begin{array}{lc} 1-\dfrac{1-r^i}{1-r^n}  & p \ne \dfrac{1}{2} \\ 1-\dfrac{i}{n}& p = \dfrac{1}{2} \end{array}  \right.r = \dfrac{1-p}{p} \]
+
+对赌场$ (n \to \infty)$,甲最终会输光的概率为$ P(A_i) = \min\{1,r^i\}$
+\\
+
+{\bf Polya 模型}:从黑球,红球中任取若干次.取出的红球与黑球个数确定的情形下,概率是否与次序相关.
+
+若放回抽样,结果不影响下次,故概率相等.
+
+若不放回抽样,前次结果影响后次,但概率仍与次序无关.
+
+若放回若干同色球(传染病模型),每次取出会增加下次取出同色球的概率. 但结果与次序无关.
+
+若放回若干异色球(安全模型),结果才与次序有关.
+\\
+
+{\bf 敏感问题问卷调查:}在问卷上要求每个人准备一枚硬币,对于指定的隐私题目,请填写人投掷一次硬币:如果正
+面朝上,则如实填写个人的真实情况;如果反面朝上,那么就再投掷一次硬币,正面就填"是",反面就填"否".当然,若
+第一次投掷硬币为正的话,填写人完全可以假装再投一次硬币来掩人耳目.
+
+假设回收后有效问卷有$M$份,其中该问题答"是"的有$N$个人.如实填写了该问题的人平均有$\dfrac{M}{2}$个;在另
+外$ \dfrac{M}{2}$人中,平均有$ \dfrac{M}{4}$人答的"是".因此,我们所需要的最终结果应该为$ \dfrac{(N-M)/4}{M/2} $
+
+{\bf Bayes:}$ P(B_i|A) = \dfrac{P(B_i)P(A|B_i)}{P(A)} = \dfrac{P(B_i)P(A|B_i)}{\sum_{t=1}^n{P(B_t)P(A|B_t)}}$
