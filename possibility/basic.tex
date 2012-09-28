@@ -1,5 +1,5 @@
 % File: basic.tex
-% Date: Mon Sep 17 13:05:56 2012 +0800
+% Date: Fri Sep 28 14:15:17 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{事件与概率}
@@ -148,6 +148,7 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 \[ p(t + \Delta t) = P(A_t)P(A_{t+\Delta t}|A_t) = p(t)[1 - \lambda(t)\Delta t + o(\Delta t)]\Rightarrow \dfrac{dp(t)}{dt}=-\lambda(t)p(t)\]
 
 注意到$ p(0)=1,$有$ p(t) = e^{-\Oldint_0^t{\lambda(s)ds}}$
+\\
 
 {\bf 全概率公式:}设$ B_1,B_2\cdots$为样本空间$ \Omega$的一个正划分,则
 \[ P(A) =\sum_{i=1}^{\infty}{P(AB_i)}= \sum_{i=1}^{\infty}{P(B_i)P(A|B_i)}\]
@@ -180,5 +181,28 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 
 假设回收后有效问卷有$M$份,其中该问题答"是"的有$N$个人.如实填写了该问题的人平均有$\dfrac{M}{2}$个;在另
 外$ \dfrac{M}{2}$人中,平均有$ \dfrac{M}{4}$人答的"是".因此,我们所需要的最终结果应该为$ \dfrac{(N-M)/4}{M/2} $
+\\
 
 {\bf Bayes:}$ P(B_i|A) = \dfrac{P(B_i)P(A|B_i)}{P(A)} = \dfrac{P(B_i)P(A|B_i)}{\sum_{t=1}^n{P(B_t)P(A|B_t)}}$
+
+\subsection{独立性}
+{\bf 定义:}$ P(AB)=P(A)P(B)$. 实际中以经验判断.
+
+$ A,B$独立$ \Rightarrow A与\mathcal{F}_B$中任一事件独立.
+
+多个事件相互独立:直观想法--$ A与\mathcal{F}_{B,C\cdots}$中任一事件独立.
+
+定义:其中任意$ k$个事件的交的概率等于概率的乘积.
+
+无穷个事件相互独立:任意有限个事件相互独立.
+
+$ A_1\cdots A_n$ 相互独立,则任意对其分组,各组事件分别产生的事件域相互独立.
+
+相关系数:$ r(A,B)=\dfrac{P(AB)- P(A)P(B)}{\sqrt{P(A)[1-P(A)]P(B)[1-P(B)]}}$
+
+$ \left \{\begin{matrix}-P(A)P(B)\\  -[1-P(A)][1-P(B)]\end{matrix} \right . \le P(AB)-P(A)P(B) \le \left \{ \begin{matrix} P(A)[1-P(B)]\\ P(B)[1-P(A)]\end{matrix}\right . 
+			\Rightarrow  |r(A,B)| \le 1$ 
+
+$ r(A,B)=1\Leftrightarrow P(A)=P(AB)=P(B)$
+
+$ r(A,B)>0\Leftrightarrow P(A|B)>P(A)\Leftrightarrow P(B|A)>P(B)$

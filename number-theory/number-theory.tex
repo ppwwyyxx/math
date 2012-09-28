@@ -1,9 +1,9 @@
 % $File: number-theory.tex
-% $Date: Thu Aug 02 18:26:25 2012 +0800
+% $Date: Tue Sep 18 21:07:22 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
-\usepackage{fontspec,zhspacing,amsmath,amssymb,verbatim,minted}
+\usepackage{fontspec,zhspacing,amsmath,amssymb,verbatim,minted,zhmath}
 \usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
 \usepackage[sorting=none]{biblatex}
 %\usepackage[dvips]{graphicx}
@@ -32,6 +32,7 @@
 \renewcommand{\sum}{\displaystyle\Oldsum}
 \let\Oldprod\prod
 \renewcommand{\prod}{\displaystyle\Oldprod}
+\newcommand{\qed}{\hfill \ensuremath{\Box}}
 
 \newenvironment{proof}[1][Proof]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}

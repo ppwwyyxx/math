@@ -1,5 +1,5 @@
 % $File: sum_of_square.tex
-% $Date: Sun Sep 16 17:22:28 2012 +0800
+% $Date: Thu Sep 20 20:56:08 2012 +0800
 % Author: ppwwyyxxc@gmail.com
 
 \section{Sum of Square}
@@ -10,4 +10,66 @@ i) 设有解$ x_0, y_0,$显然$ x_0,y_0,p$两两互素.设$ y_0y_0^{-1} \equiv 1
 
 原方程 $ \Rightarrow (x_0y_0^{-1})^2 + 1 \equiv p(y_0^{-1})^2 \equiv 0\pmod p\Rightarrow (\dfrac{-1}{p}) = 1\Rightarrow p = 4k +  1$
 
-ii)
+ii) 若$ (\dfrac{-1}{p}) = 1, $则$ \exists x\in [-\dfrac{p-1}{2},\dfrac{p-1}{2}]$,使$ x^2+1=mp$.也即$ \exists 1 \le m < p,\texttt{s.t.} x^2+y^2=mp$.
+
+设满足以上条件的最小的$ m$为$ m_0$,则必须$ (x,y) = 1,$否则$ \dfrac{m}{(x,y)}$更小.假设$ m_0>1$,取绝对(值)最小剩余
+$ \left \{ \begin{matrix}u \equiv x \\ v \equiv y \end{matrix}\right .\pmod {m_0}, |u|,|v|\le \dfrac{m_0}{2}$ 
+
+$ \Rightarrow 0 < u^2 + v^2 \le \dfrac{m_0^2}{2}, u^2 + v^2 \equiv x^2+y^2\pmod {m_0}$
+
+设$ u^2+v^2=m_1p,$则$ (u^2+v^2)(x^2+y^2)=m_1m_0^2p = (ux+vy)^2 +(uy-vx)^2$.
+
+由$ ux+vy \equiv x^2+y^2\equiv0, uy-vx\equiv 0$,可知$ (\dfrac{ux+vy}{m_0})^2+(\dfrac{uy-vx}{m_0})^2=m_1p,$
+其中$ m_1=\dfrac{u^2+v^2}{p}\le \dfrac{m_0^2}{2p}<m_0,$与最小性矛盾.于是$ m_0=1$.\qed
+\\
+
+{\bf T2:}$ x^2+y^2=n=d^2m$有解($ m$无平方因子)$ \Leftrightarrow m$不含$ 4k+3$因子.
+
+$ \Leftarrow ):d^2$显然可表,$ m$的所有因子可表,于是$ n$可表.
+
+$ \Rightarrow ):$设$ p=4k+3 \mid n$.假设$ p\nmid x\Rightarrow p\nmid y$,则$ (xy^{-1})^2 \equiv -1 \pmod p$与$ p=4k+3$矛盾.
+
+$ \therefore p\mid \Rightarrow p\mid y \Rightarrow p^2\mid n \Rightarrow  p \nmid m$.\qed
+\\
+
+{\bf T3:}$ x^2+y^2=n$有互素解$\Leftrightarrow n $只含$ 4k+1$型奇素因子且$ V_2(n)\le 1$
+
+$ \Rightarrow ):$若$ 4\mid n$,则$ 4\mid x^2+y^2\Rightarrow x,y$为偶数,矛盾;
+
+若$ p=4k+3 \mid n,$由T2知$ p\mid x, p\mid y,$矛盾.
+
+$ \Leftarrow ):${\bf 引理1:}方程$ x^2 + y^2=p^\alpha, p = 4k+1$有互素解:
+
+对$ \alpha $归纳,设已有$ x_k^2 +y_k^2=p^k, (x_k,y_k)=1$,又因为存在$ x_1^2+y_1^2=p,(x_1,y_1)=1$,可得
+$ (x_1x_k+y_1y_k)^2+(x_1y_k-y_1x_k)^2=(x_1x_k-y_1y_k)^2+(x_1y_k+y_1x_k)^2=p^{k+1}$
+
+考虑上式中两对数的最大公约数$ d_1,d_2,$若$ d_1,d_2>1$,则由$ d|p^{k+1}\Rightarrow p|d_1,d_2\Rightarrow p|2x_1x_k\Rightarrow p|x_1或p|x_k,矛盾$
+
+所以$ d_1,d_2$有一个为$ 1$.\qed
+
+{\bf 引理2:}$ (n_1,n_2)=1,\left\{ \begin{matrix} x_1^2+y_1^2=n_1,(x_1,y_1)=1 \\
+	x_2^2+y_2^2=n_2,(x_2,y_2)=1\end{matrix} \right .$ 则$ d=(x_1x_2+y_1y_2,x_1y_2-x_2y_1)=1$
+
+假设$ d>1,$取素因子$ q$,进行假设分析可知$ q\nmid x,y$.
+
+于是由$\left \{\begin{matrix}x_1x_2 \equiv -y_1y_2 \\ x_1y_2\equiv x_2y_1 \end{matrix}\right.\pmod q$
+	两式相乘后可得$ \left \{ \begin{matrix}x_1^2+y_1^2\equiv 0 \\ x_2^2+y_2^2\equiv 0 \end{matrix}\right.\pmod q$,与$ (n_1,n_2)=1$矛盾. \qed
+
+由上述两引理立刻可得定理.\qed
+
+{\bf Lagrange四平方定理:}
+
+{\bf 引理:}$ x^2+y^2\equiv -1\pmod p,0\le x,y\le \dfrac{p-1}{2}$有解,且$ 1\le \dfrac{x^2+y^2+1}{p}<p$.
+
+{\bf 证:}$ \dfrac{p+1}{2}个数a^2(a=0,1\cdots,\dfrac{p-1}{2})$对$ p$不同余;$ \dfrac{p+1}{2}个数-b^2-1(b=0,1,\cdots,\dfrac{p-1}{2})$对$ p$不同余.
+
+共$ p+1$个数.$ \therefore \exists a_0,b_0, a_0^2\equiv -b_0^2-1$.且显然有$ a_0^2+b_0^2+1\le 2(\dfrac{p-1}{2})^2+1<p^2$.\qed
+
+{\small 事实上,将$ -1$换成$ a$,可证$ x^2+y^2$跑遍$ \pmod p$的完系.}
+
+下证定理:取$ m_0=\min\{m,mp = x_1^2+x_2^2+x_3^2+x_4^2\},m<p$.引理保证了这样的$ m$的存在性.  
+由最小性可得$ (x_1,x_2,x_3,x_4)=1$.
+
+假设$ m_0$为偶,则
+
+
