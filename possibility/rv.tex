@@ -1,0 +1,22 @@
+% File: rv.tex
+% Date: Sun Oct 21 00:35:39 2012 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+\section{随机变量}
+样本空间$ \Omega \rightarrow \mathbb{R}$的函数$ X = X(\omega)$称为随机变量.值域有限或可列称为离散随机变量,值域充满数
+轴上的某个区间,称为连续随机变量.记$ F(x) = P(X \le x)$为$ X$的分布函数.
+
+显然,$ F$是$ (-\infty, \infty)$的单调不减函数,有界,于是各点有左右极限,且无穷处有极限.
+
+\begin{equation*}
+\begin{split} 
+	 F(b) - F(c + 0) & = F(b) - \lim \limits_{a \to c^{+}} F(a) =\lim \limits_{a \to c^{+}}P(a < X \le b) \\
+	                 & = P(\bigcup_{a \to c^{+}}\{a < X \le b\}) = P(c < X \le b)                         \\
+	 F(d - 0) - F(a) & = P(a < X < d)
+\end{split}
+\end{equation*}
+
+即$ F(c + 0) = F(c), F(d - 0) = P(X<d), 且可得F(-\infty) = 0, F(\infty) = 1$.
+
+满足以上性质的函数$ F$必定为某随机变量的分布函数.
+
+任意Borel集$ B\subset \mathbb{R}, P(X \in B) 可由F$ 计算得到.特别的,$ P(X=x) = F(x) - F(x - 0),若F在x连续,则P(X=x) = 0$
