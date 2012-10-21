@@ -1,22 +1,152 @@
 % File: rv.tex
-% Date: Sun Oct 21 00:35:39 2012 +0800
+% Date: Sun Oct 21 21:11:06 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{随机变量}
-样本空间$ \Omega \rightarrow \mathbb{R}$的函数$ X = X(\omega)$称为随机变量.值域有限或可列称为离散随机变量,值域充满数
-轴上的某个区间,称为连续随机变量.记$ F(x) = P(X \le x)$为$ X$的分布函数.
+\subsection{Random Variables}
+样本空间$ \Omega \rightarrow \mathbb{R}$的函数$ X = X(\omega)$称为\textbf{随机变量}.值域有限或可列称为离散随机变量,值域充满数
+轴上的某个区间,称为连续随机变量.记$ F(x) = P(X \le x)$为$ X$的\textbf{分布函数}.
 
 显然,$ F$是$ (-\infty, \infty)$的单调不减函数,有界,于是各点有左右极限,且无穷处有极限.
 
 \begin{equation*}
-\begin{split} 
-	 F(b) - F(c + 0) & = F(b) - \lim \limits_{a \to c^{+}} F(a) =\lim \limits_{a \to c^{+}}P(a < X \le b) \\
-	                 & = P(\bigcup_{a \to c^{+}}\{a < X \le b\}) = P(c < X \le b)                         \\
-	 F(d - 0) - F(a) & = P(a < X < d)
-\end{split}
+	\begin{split} 
+		F(b) - F(c + 0) & = F(b) - \lim \limits_{a \to c^{+}} F(a) =\lim \limits_{a \to c^{+}}P(a < X \le b) \\
+		                & = P(\bigcup_{a \to c^{+}}\{a < X \le b\}) = P(c < X \le b)                         \\
+		F(d - 0) - F(a) & = P(a < X < d)
+	\end{split}
 \end{equation*}
 
 即$ F(c + 0) = F(c), F(d - 0) = P(X<d), 且可得F(-\infty) = 0, F(\infty) = 1$.
 
 满足以上性质的函数$ F$必定为某随机变量的分布函数.
 
-任意Borel集$ B\subset \mathbb{R}, P(X \in B) 可由F$ 计算得到.特别的,$ P(X=x) = F(x) - F(x - 0),若F在x连续,则P(X=x) = 0$
+任意Borel集$ B\subset \mathbb{R}, P(X \in B) 可由F$ 计算得到.
+特别的,$ P(X=x) = F(x) - F(x - 0),若F在x连续,则P(X=x) = 0$
+
+\textbf{$p$-分位数:}满足$ P(X \le x) \ge p, P(X <x) \le p 的x. $ 
+
+$ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le F(x) \le \dfrac{1}{2} + P(X=x) $
+
+统计意义:使得$E|X-a|$最小的$a$
+\\
+
+存在非负可积函数,使得$ F(x) = \int_{-\infty}^{x}{p(t)dt}$,则称$ p(x)$为$ X$的\textbf{概率密度函数}.
+
+在$ F(x)$导数存在的点有$ p(x) = F'(x)$,其余点处$ p(x)$可任意取值.
+
+\subsection{Expectation \& Variance}
+\begin{equation*} \begin{split}
+	E(X) & = \int_{\mathbb{R}}{x\mathrm{d}F(x)},其中积分为Lebsegue积分. \\
+			& = \left\{  \begin{matrix}
+	\sum{x_ip(x_i)} = \sum_{n=0}^{\infty}{P(X>n) - P(X<-n)}, 离散,\sum{|x_i|}P(X = x_i)< \infty \\
+	\int_{\mathbb{R}}{xp(x)\mathrm{d}x} = \int_{\mathbb{R^+}}{P(X>x)\mathrm{d}x} - \int_{\mathbb{R^-}}{P(X<x)\mathrm{d}x},连续,\int_{\mathbb{R}}{|x|p(x)\mathrm{d}x} < \infty 
+\end{matrix}\right.
+\end{split} \end{equation*}
+
+$\bullet$ 绝对收敛保证了和的存在且与顺序无关.
+\\
+
+当期望存在时: $nP(X > n) = n\int_n^{\infty}\mathrm{d}F(x)\le \int_n^{\infty}x\mathrm{d}F(x)$
+
+上式取极限$n\to \infty, 得 nP(X>n) \to 0 ,即 \lim \limits_{x\to \infty}x(1-F(x)) = 0$
+
+同理有$\lim \limits_{x \to -\infty}xF(x) = \lim \limits_{x\to \infty}x(1-F(x)) = 0$
+
+由此极限可推出\textbf{期望的几何意义:} $\int_{-\infty}^{EX}{F(x)\mathrm{d}x} = \int_{EX}^{\infty}{(1-F(x))\mathrm{d}x}$
+
+即:$y=F(x), x=EX, 将0\le y \le 1$分成面积相等的两部分.
+
+\textbf{证:}对两边进行分部积分即可.
+\\
+
+\textbf{期望的统计意义:}
+
+$E(X-a)^2 =E(X-EX)^2 + 2 E(X-EX)(EX-a) + (EX-a)^2= E(X-EX)^2 + (EX-a)^2 \ge E(X-EX)^2. $
+
+若$ E(X^2)$存在,则定义$ Var(X) = E(X - E(X))^2 = \left \{ \begin{matrix}\sum(x_i - E(X))^2p(x_i) \\ \int_{\mathbb{R}}{(x-E(X))^2p(x)\mathrm{d}x} \end{matrix}\right.$
+
+变异系数$ C_v(X) = \dfrac{\sigma(X)}{EX} = \dfrac{\sqrt{Var(X)}}{EX}$
+
+$ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
+
+\begin{flalign*}
+	\textbf{(Chebyshev)} & \forall \varepsilon > 0, P(|X-EX| \ge \varepsilon)          \\
+	=                    & \int_{|x- EX| \ge \varepsilon}{p(x)\mathrm{d}x} \le \int_{|x-EX| \ge \varepsilon}{\dfrac{(x-EX)^2}{\varepsilon^2}p(x)\mathrm{d}x} \\
+	\le                  & \dfrac{\int_{\mathbb{R}}{(x-EX)^2}p(x)\mathrm{d}x}{\varepsilon^2} = \dfrac{Var(X)}{\varepsilon^2}\\
+	统计意义:&与均值的距离远近对概率的限定.
+\end{flalign*} 
+
+\subsection{常用分布}
+\begin{enumerate}
+	\item \textbf{二项分布}$ b(n,p)$
+
+		$	b(n,p)  = n * b(1,p)$
+		$ P(X = k) = C_n^kp^k(1-p)^{n-k}, k = 0,\cdots,n$
+
+		$ EX = np, Var(X) = E[X(X-1)]+EX-(EX)^2 = np(1-p)$
+
+	二项分布的最大值发生在$ k = \left \{ \begin{matrix}
+			(n+1)p 或 (n+1)p - 1 &, (n+1)p \in \mathbb{N} \\
+			\lfloor(n+1)p\rfloor&,  (n+1)p \not \in \mathbb{N}
+		\end{matrix}\right.$
+
+	\item \textbf{Poisson 分布} $ P(\lambda),(\lambda > 0)$
+
+		$ P(X = k) = \dfrac{\lambda^k}{k!}e^{-\lambda}$
+
+		$ EX = Var(X) = \lambda$
+
+		\textbf{Poisson 定理},对二项分布$ b(n,p_n),\lim \limits_{n\to \infty} np_n = \lambda > 0$,
+		\begin{flalign*} 
+			P(X = k) & = C_n^kp_n^k(1-p_n)^{n-k}                                                                                \\
+						   & =\dfrac{n(n-1)\cdots(n-k+1)}{k!n^k}(np_n)^k(1-\dfrac{np_n}{n})^{n-k}                                     \\
+						& =(1-\dfrac{1}{n})\cdots(1-\dfrac{k-1}{n})\dfrac{[\lambda + o(1)]^k}{k!}[1-\dfrac{\lambda+o(1)}{n}]^{n-k} \\
+					 & \rightarrow \dfrac{\lambda^k}{k!}e^{-\lambda}, n\to \infty
+		\end{flalign*}
+
+	\item \textbf{几何分布}$ G(p)$
+
+		$ P(X=k) = p(1-p)^{k-1}, k \in \mathbb{N^+}$
+
+		$ EX = \sum_{n=1}^{\infty}\sum_{k=1}^{n}{p(1-p)^{n-1}}=
+		\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}{p(1-p)^{n-1}}= \dfrac{1}{p}$
+
+		类似方法使用两次求出$ E(X(X-1)),Var(X) = \dfrac{1-p}{p^2}$
+
+		尾概率$ P(X>m) = (1-p)^m$
+
+		无记忆性 $\Leftrightarrow P(X>m+n) = P(X>m)P(X>n)\Leftrightarrow X\sim G(P(X\le 1)) $
+
+		(即解Cauchy方程)
+
+	\item \textbf{超几何分布} $ h(n,N,M),(n, M\le N)$
+
+		意义:$ N$件物品含有$ M$件次品,不放回抽取$ n$次得到的次品数.
+
+		$ P(X=k) = \dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}, k \in [\max\{0, n-N + M\}, \min\{M,n\}]$
+
+		$ EX = \sum_{k}{k\dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}}  = \dfrac{Mn}{N}\sum_{k}{\dfrac{C_{M-1}^{k-1}C_{N-M}^{n-k}}{C_{N-1}^{n-1}}} = \dfrac{Mn}{N}$
+
+		类似地使用Vandermonde Convolution,有$ 	E[X(X-1)] = \dfrac{M(M-1)n(n-1)}{N(N-1)}$
+
+		$\Rightarrow Var(x)  = \dfrac{nM(N-M)(N-n)}{N^2(N-1)} $
+
+	\item \textbf{Pascal 分布(负二项分布)} $ Nb(r,p)$
+
+		意义:事件发生第$ r$次时的实验次数.$ Nb(r, p) = r * G(p) $
+
+		$ P(X = k) = C_{k-1}^{r-1}p^r(1-p)^{k-r}, k = r,r+1,\cdots$
+
+		$ EX = \dfrac{r}{p}, Var(x) = \dfrac{r(1-p)}{p^2}$
+
+	\item \textbf{错排问题} $ X $为匹配到自己的人数.
+
+		$ P(X = k) = \dfrac{C_n^kD_{n-k}}{n!}, 其中D_k = k!\sum_{i=0}^{k}{\dfrac{(-1)^i}{i!}}为错排数$
+
+		$ EX = \sum_{k=0}^n{\dfrac{nC_{n-1}^{n-k}D_{n-k}}{n!}} = 1. $ 
+
+		或:每个人匹配到自己的期望为$ \dfrac{1}{n},$所以总期望为$ 1$
+
+		$ E[X(X-1)] = 1, Var(X) = 1$
+\end{enumerate}
+
