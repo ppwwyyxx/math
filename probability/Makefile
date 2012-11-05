@@ -1,4 +1,4 @@
-TARGET=possibility
+TARGET=probability
 TEX=xelatex -shell-escape
 BIBTEX=bibtex
 READER=evince
@@ -15,11 +15,15 @@ output:
 	cd output && rm -f res && ln -s ../res .
 
 view: output/$(TARGET).pdf
-	$(READER) output/$(TARGET).pdf &
+
+#$(READER) output/$(TARGET).pdf &
 
 clean:
 	rm -rf output
 	rm $(TARGET).pdf
+
+run:
+	$(READER) output/$(TARGET).pdf &
 
 # compile twice to get cross reference right
 final : *.tex *.bib output

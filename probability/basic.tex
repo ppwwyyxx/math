@@ -1,9 +1,9 @@
 % File: basic.tex
-% Date: Sat Oct 20 23:52:59 2012 +0800
+% Date: Sun Nov 04 15:19:39 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
-\section{事件与概率}
-\subsection{事件}
+\section{}
+\subsection{Events}
 一次随机试验中每一种可能的结果称为一个{\bf 基本事件}或{\bf 样本点$ \omega$},所有基本事
 件的全体为该试验的样本空间$ \Omega$
 
@@ -18,7 +18,7 @@ $ A \subset B \Rightarrow $A发生了B必发生.
 
 Morgan律:$ (\cup A_i)^c = \cap A_i^c$
 
-\subsection{概率空间}
+\subsection{Probability Space}
 
 概率空间$ (\Omega, \mathcal{F}, P)$:
 
@@ -50,7 +50,7 @@ $\Omega$ 是全体可能结果组成的集合.$ \mathcal{F}$是全体可观测�
 
 试验的样本空间,事件域($ \sigma$代数)及定义在其上的概率构成的三元组$ (\Omega,
 \mathcal{F}, P)$称为描述一个随机试验的{\bf 概率空间}.
-\subsection{概率的性质}
+\subsection{Properties of Probability}
 
 事件序列的极限定义:
 $ \overline {\lim \limits_{n \to \infty}}A_n  = \bigcap_{n
@@ -86,7 +86,7 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 		$ 1 - \lim \limits_{n \to \infty}P(A_n) = \lim \limits_{n \to
 		\infty}P(A_n^c)=P(\bigcup_{n=1}^{\infty}A_n^c) =
 		P((\bigcap_{n=1}^{\infty}A_n)^c) = 1-P(\bigcap_{n=1}^{\infty}A_n)$
-	
+
 		概率的上下连续性等价,统称为连续性.
 
 	\item	有限可加+下连续$ \Leftrightarrow $可数可加.
@@ -102,7 +102,7 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 	$ A_1,A_2\cdots $满足$ P(A_iA_j)=0$(弱于互斥),则$ P(A) = \sum{P(A_n)}$
 \end{enumerate}
 
-\subsection{古典概型与几何概型}
+\subsection{Classical Definitions of Probability}
 
 {\bf 古典概型}: 基本事件只有有限个且概率相同.
 
@@ -110,7 +110,7 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 \[  P(\texttt{首次正面出现在k次}=\dfrac{1}{2^k})\]
 
 掷硬币直到出现正面为止,基本事件$ \omega_k$为``首次正面出现在第k次'',则有无穷个基本事件,且
-概率不同. 
+概率不同.
 利用可数可加性,$ \omega_{\infty} = 0$,但不是不可能事件.
 
 一般地,对于至多可数集合$ \Omega$,每个基本事件的概率都可求出时,$ \forall A
@@ -133,11 +133,11 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 
 原因:当可能结果有无穷个时,难以规定``等可能''这一概念,因此概率空间被模糊定义了.
 
-\subsection{条件概率}
+\subsection{Conditional Probability}
 概率空间$( \Omega, \mathcal{F}, P)$中$ P(B) > 0$.定义$ P_B(A) = P(A | B) = \dfrac{P(A\cap B)}{P(B)}$,
 则可证$ (\Omega, \mathcal{F}, P_B)$也是概率空间.
 
-{\bf 乘法公式:}$ P(\bigcap_{i=1}^{n-1}A_i)>0$ (使得条件概率有意义),由定义归纳可得
+  {\bf 乘法公式:}$ P(\bigcap_{i=1}^{n-1}A_i)>0$ (使得条件概率有意义)时,由定义归纳可得
 
 \[ \Rightarrow P(\bigcap_{i=1}^nA_i) = \prod_{i=1}^n{P(A_i | \bigcap_{j=1}^{i-1}A_j)}\]
 
@@ -185,7 +185,7 @@ $ \mathop{\underline \lim} \limits_{n \to \infty} A_n = \bigcup_{n
 
 {\bf Bayes:}$ P(B_i|A) = \dfrac{P(B_i)P(A|B_i)}{P(A)} = \dfrac{P(B_i)P(A|B_i)}{\sum_{t=1}^n{P(B_t)P(A|B_t)}}$
 
-\subsection{独立性}
+\subsection{Independence}
 {\bf 定义:}$ P(AB)=P(A)P(B)$. 实际中以经验判断.
 
 $ A,B$独立$ \Rightarrow A与\mathcal{F}_B$中任一事件独立.
@@ -201,8 +201,8 @@ $ A_1\cdots A_n$ 相互独立,则任意对其分组,各组事件分别产生的�
 
 相关系数:$ r(A,B)=\dfrac{P(AB)- P(A)P(B)}{\sqrt{P(A)[1-P(A)]P(B)[1-P(B)]}}$
 
-$ \left \{\begin{matrix}-P(A)P(B)\\  -[1-P(A)][1-P(B)]\end{matrix} \right . \le P(AB)-P(A)P(B) \le \left \{ \begin{matrix} P(A)[1-P(B)]\\ P(B)[1-P(A)]\end{matrix}\right . 
-			\Rightarrow  |r(A,B)| \le 1$ 
+$ \left \{\begin{matrix}-P(A)P(B)\\  -[1-P(A)][1-P(B)]\end{matrix} \right . \le P(AB)-P(A)P(B) \le \left \{ \begin{matrix} P(A)[1-P(B)]\\ P(B)[1-P(A)]\end{matrix}\right .
+			\Rightarrow  |r(A,B)| \le 1$
 
 $ r(A,B)=1\Leftrightarrow P(A)=P(AB)=P(B)$
 

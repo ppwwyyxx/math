@@ -1,5 +1,5 @@
-% $File: possibility.tex
-% $Date: Sun Oct 21 16:44:45 2012 +0800
+% $File: probability.tex
+% $Date: Mon Nov 05 17:47:51 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -9,6 +9,7 @@
 \usepackage[sorting=none]{biblatex}
 \usepackage{subfigure}
 \usepackage{indentfirst}
+\usepackage{extarrows}
 \zhspacing
 
 
@@ -24,6 +25,8 @@
 \DeclareMathOperator{\LM}{\tiny{LM}}
 \DeclareMathOperator{\LT}{\tiny{LT}}
 \DeclareMathOperator{\rank}{\tiny{rank}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Cov}{Cov}
 
 \let\Oldsum\sum
 \renewcommand{\sum}{\displaystyle\Oldsum}
@@ -46,7 +49,7 @@
 \tableofcontents
 %\input{basic.tex}
 \input{rv}
-%\input{appendix.tex}
+\input{multivariate}
 
 \end{document}
 

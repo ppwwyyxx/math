@@ -1,0 +1,203 @@
+% File: multivariate.tex
+% Date: Mon Nov 05 17:58:04 2012 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+\section{}
+\subsection{Joint Distribution}
+\textbf{联合分布函数:}$ F(x_1,x_2,\cdots, x_n) = P(X_1\le x_1,X_2\le x_2,\cdots,X_n\le x_n)$
+\\
+
+二维联合分布函数$ F(x,y)\Leftrightarrow $
+\begin{enumerate}
+  \item 对每个变元单调非减,右连续;
+
+  \item $ F(-\infty,y) = F(x,-\infty)= 0\le F(x,y)\le 1= F(\infty,\infty)$;
+
+  \item $ P(a<X\le b, c<Y\le d) = F(b,d)-F(a,d)-F(b,c)+F(a,c)\ge 0$.
+
+\end{enumerate}
+
+\textbf{边际分布函数:}$ F_X(x) = F(x,\infty), F_Y(y) = F(\infty,y)$
+
+\textbf{联合密度函数:} 存在非负函数$ p(x,y), F(x,y) = \int_{-\infty}^x{\int_{-\infty}^y{p(u,v)\mathrm{d}u\mathrm{d}v}}$
+
+\textbf{边际密度函数:}当联合密度函数存在时,每个边际分布函数对应的密度
+
+$ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\mathrm{d}x}$
+
+在$ F(x,y)$偏导数存在处有$ p(x,y) = \dfrac{\partial^2}{\partial x\partial y}F(x,y)$
+
+\textbf{独立性}:$ F(x_1,\cdots x_n)=\prod{F_i(x_i)}\Leftrightarrow \begin{cases} P(X_1=x_1,\cdots X_n=x_n)=\prod{P(X_i=x_i)}\\ p(x_1,\cdots x_n)=\prod{p_i(x_i)}\end{cases}$
+
+\subsection{Common Multivariate Distributions}
+\begin{enumerate}
+  \item \textbf{多项分布}
+
+    $ n$次实验,每次有$ r$种可能结果,概率分别为$ p_1\cdots p_r$.以各种结果出现的次数作为随机变量,有
+    $ P(X_1=n_1, \cdots X_r = n_r) = \dfrac{n!}{\Oldprod{n_i!}}\prod{p_i^{n_i}}$
+
+    概率是多项式$ (\sum p_i x_i)^n$展开式中的系数.
+    \setlength{\mathindent}{-3cm}
+    \begin{align*}
+    P(X_1=n_1)&=\dfrac{n!}{n_1!(n-n_1!)}p_1^{n_1}\sum_{n_2+\cdots +n_r=n-n_1}{\dfrac{(n-n_1)!}{\Oldprod_{i=2}^r{n_i!}}{\Oldprod_{i=2}^r{p_i^{n_i}}}} \\
+              &=\dfrac{n!}{n_1!(n-n_1!)}p_1^{n_1}(\sum_{i=2}^r{p_i})^{n-n_1}\\
+              &=\dfrac{n!}{n_1!(n-n_1!)}p_1^{n_1}(1-p_1)^{n-n_1}. 边缘分布为二项分布.
+    \end{align*}
+
+  \item \textbf{多维超几何分布}
+
+    $ N $个球中, $i$号球有$ N_i$个,任取$ n$个,其中各号球的个数作为随机变量,有
+    $ P(X_1=n_1,\cdots X_r=n_r)=\dfrac{\prod{C_{N_i}^{n_i}}}{C_N^n}$
+
+  \item \textbf{多维均匀分布} $ U(D)$
+
+    $ D $为$\mathbb{R}^n$的有界可测子集,测度为$ S_D, p(x_1\cdots x_n)=\dfrac{1}{S_D}I_D(x_1\cdots x_n)$
+
+  \item \textbf{二维指数分布}
+
+    $ F(x,y) = (1-e^{-x}-e^{-y}+e^{-x-y-\lambda xy})I_{\mathbb{R^+}\times \mathbb{R^+}}(x,y)$
+
+    边际分布为$ Exp(1)$
+
+  \item \textbf{二维正态分布} $ N(\mu_1, \mu_2,\sigma_1,\sigma_2,\rho), (|\rho| < 1)$
+
+    $ p(x,y) = \dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{Q}{2(1-\rho^2)}} $
+
+    其中$Q = \dfrac{(x-\mu_1)^2}{\sigma_1^2}-2\rho\dfrac{(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}+\dfrac{(y-\mu_2)^2}{\sigma_2^2}$
+
+    由$ |\rho|< 1$可知$ Q$为正定二次型.
+
+    \setlength{\mathindent}{-3cm}
+    \begin{align*}
+      p_X(x) = & \dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}\int_{\mathbb{R}}{e^{-\frac{Q}{2(1-\rho^2)}}\mathrm{d}y} \\
+      = & \dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}\int_{\mathbb{R}}e^{-\frac{T^2}{2}}\mathrm{d}y\quad (T = \rho\dfrac{x-\mu_1}{\sigma_1\sqrt{1-\rho^2}}-\dfrac{y-\mu_2}{\sigma_2\sqrt{1-\rho^2}})\\
+      = & \dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}\sigma_2\sqrt{1-\rho^2}\int_{\mathbb{R}}{e^{-\frac{t^2}{2}}\mathrm{d}t} \\
+      = & \dfrac{1}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}} 为一维正态分布.
+    \end{align*}
+
+    $ D=\{(x,y): Q \le t \}, 则P((X,Y)\in D) = 1-e^{-\frac{t}{2(1-\rho^2)}}$
+
+    \textbf{证:}先做变换 $ u = \dfrac{x-\mu_1}{\sigma_1}-\rho\dfrac{y-\mu_2}{\sigma_2}, v = \dfrac{y-\mu_2}{\sigma_2}\sqrt{1-\rho^2}, u^2+v^2=Q$
+
+    $ J= \begin{vmatrix} \dfrac{1}{\sigma_1} & 0 \\ -\dfrac{\rho}{\sigma_2} & \dfrac{\sqrt{1-\rho^2}}{\sigma_2} \end{vmatrix} = \dfrac{\sqrt{1-\rho^2}}{\sigma_1\sigma_2}$
+
+    于是,LHS$ =\dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}\displaystyle\iint\limits_{D}e^{-\frac{Q}{2(1-\rho^2)}}\mathrm{d}x\mathrm{d}y = \dfrac{1}{2\pi(1-\rho^2)}\displaystyle\iint\limits_{u^2+v^2\le t}e^{-\frac{u^2+v^2}{2(1-\rho^2)}}\mathrm{d}u\mathrm{d}v$
+
+    再做变换$ u = r\sin\theta, v=r\cos\theta, |J^{-1}| = r,有:$
+
+    LHS = $\dfrac{1}{2\pi(1-\rho^2)}\int_{0}^{2\pi}{\mathrm{d}\theta}\int_{0}^{\sqrt{t}}{re^{-\frac{r^2}{2(1-\rho^2)}}\mathrm{d}r}  = 1-e^{-\frac{t}{2(1-\rho^2)}}$
+
+\end{enumerate}
+
+\subsection{Sum of Random Variables}
+\textbf{和的分布(卷积):}
+
+$P(X+Y=k) = \sum_{i\in \mathbb{Z}}{P(X=i)P(y=k-i)}$
+
+$(X,Y)$的联合密度函数$ p(x,y)$,有:
+
+$F_{X+Y}(z) = \displaystyle\iint\limits_{x+y\le z}p(x,y)\mathrm{d}x\mathrm{d}y \Rightarrow p_{X+Y}(z)=\int_{\mathbb{R}}p(z-t,t)\mathrm{d}t$
+
+X,Y独立时,有: $F_{X+Y}(z) = \displaystyle\iint\limits_{x+y\le z}p_X(x)p_Y(y)\mathrm{d}x\mathrm{d}y $
+
+$\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathbb{R}}{p_X(x)p_Y(z-x)\mathrm{d}x}$
+
+\begin{enumerate}
+  \setlength{\mathindent}{-3cm}
+  \item \textbf{Poisson分布} $ P(\lambda_1)*P(\lambda_2) = P(\lambda_1+\lambda_2)$
+
+    $\Leftarrow  \sum_{i=0}^k{\dfrac{\lambda_1^ie^{-\lambda_1}}{i!}\dfrac{\lambda_2^{k-i}e^{-\lambda_2}}{(k-i)!}}= $
+      $\dfrac{e^{-\lambda_1-\lambda_2}}{k!}\sum_{i=0}^k{C_k^i\lambda_1^i\lambda_2^{k-i}}=\dfrac{e^{-\lambda_1-\lambda_2}}{k!}(\lambda_1+\lambda_2)^k$
+
+      (Raikov)独立变量的和服从Poisson分布,则每个都服从Poisson分布.
+
+  \item \textbf{二项分布} $ b(n,p)*b(m,p) = b(m+n,p)$
+    \begin{align*}
+      \Leftarrow \sum_{i=0}^k{P(X=i)P(Y=k-i)}&=\sum_{i=\max\{ 0,k-m\}}^{\min\{ n,k\}}{C_n^ip^i(1-p)^{n-i}C_m^{k-i}p^{k-i}(1-p)^{m-(k-i)}}\\
+        &= p^k(1-p)^{m+n-k}\sum{C_n^iC_m^{k-i}}\\
+        &= C_{m+n}^kp^k(1-p)^{m+n-k}
+    \end{align*}
+  \item \textbf{Gamma分布} $ \Gamma(\alpha_1,\lambda)*\Gamma(\alpha_2,\lambda) = \Gamma(\alpha_1+\alpha_2, \lambda)$
+    \begin{align*}
+      \Leftarrow p_{X+Y}(z)&=  \dfrac{\lambda^{\alpha_1+\alpha_2}e^{-\lambda(z-y)}e^{-\lambda y}}{\Gamma(\alpha_1)\Gamma(\alpha_2)}\int_{0}^{z}{(z-y)^{\alpha_1-1}y^{\alpha_2-1}\mathrm{d}y} \\
+      &\xlongequal{y=zt}       \dfrac{\lambda^{\alpha_1+\alpha_2}e^{-\lambda z}}{\Gamma(\alpha_1)\Gamma(\alpha_2)}z^{\alpha_1+\alpha_2-1}\int_{0}^{1}{(1-t)^{\alpha_1-1}t^{\alpha_2-1}\mathrm{d}t}\\
+      &=\dfrac{\lambda^{\alpha_1+\alpha_2}}{\Gamma(\alpha_1+\alpha_2)}z^{\alpha_2+\alpha_2-1}e^{\lambda z}
+    \end{align*}
+
+    $ \Rightarrow $ \textbf{卡方分布} $ \chi^2(m)*\chi^2(n) = \chi^2(m+n)$
+\item \textbf{正态分布} $ N(\mu_1,\sigma_1^2)*N(\mu_2,\sigma_2^2) = N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
+  \begin{align*}
+    \Leftarrow p_{X+Y}(z) &= \dfrac{1}{2\pi\sigma_1\sigma_2}\int_{\mathbb{R}}{e^{-\frac{Q}{2}}\mathrm{d}y}\quad(Q = \dfrac{(z-y-\mu_1)^2}{\sigma_1^2} + \dfrac{(y-\mu_2)^2}{\sigma_2^2} )\\
+      & \xlongequal{对Q配方} \dfrac{1}{2\pi\sigma_1\sigma_2}e^{-\frac{(z-\mu_1-\mu_2)^2}{2(\sigma_1^2+\sigma_2^2)}}\int_{\mathbb{R}}{e^{-\frac{A}{2}(y-T)^2}\mathrm{d}y}, (A = \dfrac{1}{\sigma_1^2} + \dfrac{1}{\sigma_2^2})\\
+      & =\dfrac{1}{2\pi\sigma_1\sigma_2}e^{-\frac{(z-\mu_1-\mu_2)^2}{2(\sigma_1^2+\sigma_2^2)}}\sqrt{\dfrac{2\pi}{A}}\\
+      &= \dfrac{1}{\sqrt{2\pi(\sigma_1^2+\sigma_2^2)}}e^{-\frac{(z-\mu_1-\mu_2)^2}{2(\sigma_1^2+\sigma_2^2)}}
+  \end{align*}
+  (Cram\'er)多个独立随机变量的和服从正态分布,则每个都服从正态分布.
+
+\end{enumerate}
+
+\subsection{Other Functions on Random Variables}
+\begin{description}
+  \item[最值:]
+    $ Y=\max\{ X_1,\cdots, X_n\}, F_Y(x) = \prod{F_i(x)}$
+
+    $ Z = \min\{ X_1,\cdots ,X_n\}, F_Z(x) = 1-\prod{(1-F_i(x))}$
+
+    当$ X_1,\cdots ,X_n$i.i.d.时,$ p_Y(x)=nF(x)^{n-1}p(x), p_Z(x)=n(1-F(x))^{n-1}p(x)$
+  \item[第$ k$小值:]设$ X_1,\cdots ,X_n$i.i.d.,设``第$ k$小值''这个随机变量为$ M_k$
+
+      $ p_{M_k}(x)=n!\dfrac{F(x)^{k-1}}{(k-1)!}\dfrac{[1-F(x)]^{n-k}}{(n-k)!}p(x)$
+
+      $i<j, p_{M_i,M_j}(x,y)=n!\dfrac{F(x)^{i-1}}{(i-1)!}\dfrac{[F(y)-F(x)]^{j-i-1}}{(j-i-1)!}\dfrac{[1-F(y)]^{n-j}}{(n-j)!}p(x)p(y)$
+
+      $ p_{M_1,\cdots ,M_n}(x_1,\cdots x_n)=\begin{cases}n!\prod{p(x_i)},if x_1<\cdots <x_n\\0,else \end{cases}$
+  \item[双射:]
+   $ \begin{cases}U=g(X,Y)\\V=h(X,Y)\end{cases},p_{U,V}(u,v) = p_{X,Y}(x(u,v),y(u,v))|\dfrac{\partial(x,y)}{\partial(u,v)}|$
+
+  \item[独立积:]$ Z=XY$\hfill
+
+   设$T = Y$,利用二维双射,有 $p_{Z,T}(z,t) = \dfrac{p_X(\frac{z}{t})p_Y(t)}{|t|}$.对$ t$积分即得$ p_Z(z)$
+
+ \item[独立商:]$ Z=\frac{X}{Y}$\hfill
+
+   设$ T=Y,p_{Z,T}(z,t)=p_X(zt)p_Y(t)|t|.$对$ t$积分.
+
+ \item[线性变换:]$ \vec Y = \mathbf{A} \vec X + \vec B$
+
+   $ p_{\vec Y}(\vec x)=p_{\vec X}(\mathbf{A}^{-1}\vec x-\mathbf{A}^{-1}\vec B)|\det \mathbf{A}^{-1}|$
+
+   正态分布的标准化:设$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho) $
+
+   做变换$\begin{pmatrix} X'\\Y'\end{pmatrix}=\begin{pmatrix}\frac{1}{\sigma_1}&0\\0&\frac{1}{\sigma_2}
+   \end{pmatrix}\begin{pmatrix}X\\Y\end{pmatrix}-\begin{pmatrix}\frac{\mu_1}{\sigma_1}\\\frac{\mu_2}{\sigma_2}\end{pmatrix}$
+
+   则$(X',Y')\sim N(0,0,1,1,\rho) $
+
+ \item[Fisher-Snedecor分布:]独立的$X\sim \chi^2(m),Y\sim\chi^2(n).F=\dfrac{X/m}{Y/n}\sim F(m,n).$
+
+   $ p_{F}(x) = \dfrac{1}{B(\frac{m}{2},\frac{n}{2})}(\dfrac{m}{n})^{\frac{m}{2}}x^{\frac{m}{2}-1}(1+\dfrac{mx}{n})^{-\frac{m+n}{2}}$
+
+   $ \dfrac{mF}{n+mF} \sim B(\dfrac{m}{2},\dfrac{n}{2})$
+
+ \item[学生t-分布]独立的$X\sim N(0,1),Y\sim\chi^2(n).t=\dfrac{X}{\sqrt{\frac{Y}{n}}}\sim t(n) $
+
+   由对称性,$ F_t(x)=F_t(0)+\dfrac{1}{2}P(t^2\le x^2)=\dfrac{1}{2}+\dfrac{1}{2}F_{t^2}(x^2)$
+
+   而$ t^2\sim F(1,n).$于是$ p_t(x)=\dfrac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})}(1+\dfrac{x^2}{n})^{-\frac{n+1}{2}}$
+
+   $t(1) = Cauchy(0,1) ;t(\infty)=N(0,1)$
+\end{description}
+
+\subsection{Characterizations}
+
+对独立的$X_1,\cdots X_n$,显然有$E(\prod{X_i})=\prod{EX_i} ,Var(\sum{a_iX_i})=\sum{a_i^2Var(X_i)}$
+
+对任意的$ X,Y,有Var(X\pm Y)=Var(X)+Var(Y)\pm2E[(X-EX)(Y-EY)]$.
+
+记协方差$ \Cov(X,Y) = E[(X-EX)(Y-EY)]$,相关系数$ r(X,Y)=\dfrac{\Cov(X,Y)}{\sigma(X)\sigma(Y)}$
+
+由于$ E(XY)$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.因此,由Cauchy's Inequality,
+
+$\Cov(X,Y)^2=|\langle X-EX, Y-EY\rangle |^2 \le |X_EX||Y-EY|=Var(X)Var(Y) $
+
+$ \Leftrightarrow |r(X,Y)|\le 1$
+
