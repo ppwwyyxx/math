@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Mon Nov 05 17:58:04 2012 +0800
+% Date: Tue Nov 06 21:26:44 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{}
 \subsection{Joint Distribution}
@@ -193,11 +193,26 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
 
 对任意的$ X,Y,有Var(X\pm Y)=Var(X)+Var(Y)\pm2E[(X-EX)(Y-EY)]$.
 
-记协方差$ \Cov(X,Y) = E[(X-EX)(Y-EY)]$,相关系数$ r(X,Y)=\dfrac{\Cov(X,Y)}{\sigma(X)\sigma(Y)}$
+记协方差$ \Cov(X,Y) = E[(X-EX)(Y-EY)] = E(XY)-EXEY(若E(XY)存在)$
+
+相关系数$ r(X,Y)=\dfrac{\Cov(X,Y)}{\sigma(X)\sigma(Y)}$
 
 由于$ E(XY)$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.因此,由Cauchy's Inequality,
 
 $\Cov(X,Y)^2=|\langle X-EX, Y-EY\rangle |^2 \le |X_EX||Y-EY|=Var(X)Var(Y) $
 
-$ \Leftrightarrow |r(X,Y)|\le 1$
+$ \Leftrightarrow |r(X,Y)|\le 1. (r$看做$X-EX, Y-EY$的夹角余弦,$EX$看做$ X$在常数子空间上的投影).
+\\
+
+\textbf{线性回归}:求使$ E[X-(aY+b)]^2$最小的$(a,b)$:
+
+考虑内积空间中垂直最小,列出$ E[X-(aY+b)]=0,E[Y(X-(aY+b))]=0. $
+
+解得$a=\dfrac{\Cov(X,Y)}{Var(Y)},b=EX-aEY. \hat{X} = \dfrac{\Cov(X,Y)}{Var(Y)}(Y-EY)+EX$
+\begin{align*}
+  此时误差 E(X-\hat{X})^2 &= E[(X-EX)-\dfrac{\Cov(X,Y)}{Var(Y)}(Y-EY)] \\
+  &= Var(X)-\dfrac{\Cov(X,Y)^2}{Var(Y)}\\
+  &=Var(X)[1-r(X,Y)^2]
+\end{align*}
+
 
