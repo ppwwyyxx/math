@@ -1,0 +1,1874 @@
+\documentclass[12pt]{report}
+\usepackage{amsthm, amssymb, amsmath}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textheight}{8.5in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{20pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{problem}[theorem]{Example}
+\newtheorem{cor}[theorem]{Corollary}
+
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\GG{\mathbb{G}}
+\def\NN{\mathbb{N}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+\def\calC{\mathcal{C}}
+\def\calE{\mathcal{E}}
+\def\calF{\mathcal{F}}
+\def\calG{\mathcal{G}}
+\def\calH{\mathcal{H}}
+\def\calL{\mathcal{L}}
+\def\catS{\mathcal{S}}
+\def\catU{\mathcal{U}}
+\def\alf{\alpha}
+\def\Lp{\left(}
+\def\Rp{\right)}
+\def\vt{\vec{t}}
+\def\vx{\vec{x}}
+\def\vy{\vec{y}}
+
+\def\be{\begin{enumerate}}
+\def\ee{\end{enumerate}}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\map#1#2#3{#1\!:\!#2 \to #3}
+\def\ii{\item}
+\def\csum{\sum_{\mathrm{cyclic}}}
+\def\ssym{\sum_{\mathrm{sym}}}
+
+\newcounter{exc}
+\numberwithin{exc}{section}
+\newenvironment{exer}{\vspace{0.1in}
+\noindent \textbf{Problems for Section~\thesection} \vspace{0.1in}
+\begin{list}{\arabic{exc}.}{\usecounter{exc}}}{\end{list}}
+
+\begin{document}
+
+%% Title page
+\begin{titlepage}
+
+\begin{center}
+$A < B$
+
+($A$ is less than $B$)
+
+\vspace{1in}
+
+Kiran Kedlaya
+
+based on notes for the Math Olympiad Program (MOP)
+
+Version 1.0, last revised August 2, 1999
+\vspace{1in}
+
+\copyright Kiran S. Kedlaya. This is an unfinished manuscript distributed for
+personal use only. In particular, any publication of all or part of this 
+manuscript without prior consent of the author is strictly prohibited.
+
+\bigskip
+
+Please send all comments and corrections
+to the author at \texttt{kedlaya@math.mit.edu}.
+Thank you!
+
+\end{center}
+
+\end{titlepage}
+	
+\chapter*{Introduction}
+These notes constitute a survey of the theory and practice of inequalities. 
+While their intended audience is high-school students, primarily 
+present and aspiring participants of the Math Olympiad Program (MOP), 
+I hope they prove informative to a wider audience. In particular, 
+those who experience inequalities via the Putnam competition, or via 
+problem columns in such journals as \textit{Crux Mathematicorum}
+or the \textit{American 
+Mathematical Monthly}, should find some benefit.
+
+Having named high-school students as my target audience, I must now 
+turn around and admit that I have not made any effort to 
+keep calculus out of the exposition, for several reasons.
+First, in certain places, rewriting to avoid calculus would make the 
+exposition a lot more awkward. Second, the calculus I invoke is for 
+the most part pretty basic, mostly properties of the first and second 
+derivative. Finally, it is my experience that many Olympiad 
+participants have studied calculus anyway. In any case, I have clearly 
+flagged uses of calculus in the text, and I've included a crash 
+course in calculus (Chapter~\ref{chap:calc}) to fill in the details.
+
+By no means is this primer a substitute for an honest treatise on 
+inequalities, such as the \emph{magnum opus} of Hardy, Littlewood 
+and P\'olya \cite{bib:ha} or its latter-day sequel \cite{bib:bmv}, 
+nor for a comprehensive catalog of problems in the area, for which we 
+have Stanley Rabinowitz' series \cite{bib:rab}.
+My 
+aim, rather than to provide complete information, is to whet the 
+reader's appetite for this beautiful and boundless subject.
+
+Also note that I have given geometric inequalities short shrift, 
+except to the extent that they can be written in an algebraic or 
+trigonometric form. ADD REFERENCE.
+
+Thanks to Paul Zeitz for his MOP 1995 notes, upon which these notes
+are ultimately based. (In particular, they are my source for symmetric
+sum notation.) Thanks also to the participants of the 1998 and 1999 MOPs for 
+working through preliminary versions of these notes.
+
+\section*{Caveat solver!}
+
+It seems easier to fool oneself by constructing a false proof of an 
+inequality than of any other type of mathematical assertion. All it 
+takes is one reversed inequality to turn an apparently correct proof 
+into a wreck. The adage ``if it seems too good to be true, it probably 
+is'' applies in full force.
+
+To impress the gravity of this point upon the reader, we provide a 
+little exercise in mathematical proofreading. Of the following X 
+proofs, only Y are correct. Can you spot the fakes?
+
+PUT IN THE EXAMPLES.
+
+\chapter{Separable inequalities}
+This chapter covers what I call ``separable'' inequalities, those 
+which can be put in the form
+\[
+f(x_{1}) + \cdots + f(x_{n}) \geq c
+\]
+for suitably constrained $x_{1}, \dots, x_{n}$. For example, if one 
+fixes the product, or the sum, of the variables, the AM-GM inequality 
+takes this form, and in fact this will be our first example.
+
+\section{Smoothing, convexity and Jensen's inequality}
+The ``smoothing principle'' states that if you have a 
+quantity of the form $f(x_{1}) + \cdots + f(x_{n})$ which 
+becomes smaller as you move two of the variables closer together 
+(while preserving some constraint, e.g.\ the sum of the variables), then 
+the quantity is minimized by making the variables all equal. This remark is best 
+illustrated with an example: the famous arithmetic mean and geometric 
+mean (AM-GM) inequality.
+
+\begin{theorem}[AM-GM]
+	Let $x_{1}, \dots, x_{n}$ be positive real numbers. Then
+	\[
+	\frac{x_{1} + \cdots + x_{n}}{n} \geq \sqrt[n]{x_{1}\cdots x_{n}},
+	\]
+	with equality if and only if $x_{1} = \cdots = x_{n}$.
+\end{theorem}
+\begin{proof}
+	We will make a series of substitutions that preserve the left-hand 
+	side while strictly increasing the right-hand side. At the end, the 
+	$x_{i}$ will all be equal and the left-hand side will equal the 
+	right-hand side; the desired inequality will follow at once. (Make 
+	sure that you understand this reasoning before proceeding!)
+	
+	If the $x_{i}$ are not already all equal to their arithmetic mean, 
+	which we call $a$ for convenience, then there must exist two indices, 
+	say $i$ and $j$, such that $x_{i} < a < x_{j}$. (If the $x_{i}$ were 
+	all bigger than $a$, then so would be their arithmetic mean, which 
+	is impossible; similarly if they were all smaller than $a$.) We will 
+	replace the pair $x_{i}$ and $x_{j}$ by
+	\[
+	x_{i}' = a, x_{j}' = x_{i} + x_{j} - a;
+	\]
+	by design, $x_{i}'$ and $x_{j}'$ have the same sum as $x_{i}$ and 
+	$x_{j}$, but since they are closer together, their product is larger. 
+	To be precise,
+	\[
+	a(x_{i} + x_{j} - a) = x_{i}x_{j} + (x_{j} - a)(a - x_{i}) > x_{i}x_{j}
+	\]
+	because $x_{j}-a$ and $a-x_{i}$ are positive numbers.
+	
+	By this replacement, we increase the number of the $x_{i}$ which are 
+	equal to $a$, preserving the left-hand side of the desired inequality 
+	by increasing the right-hand side. As noted initially, eventually 
+	this process ends when all of the $x_{i}$ are equal to $a$, and the 
+	inequality becomes equality in that case. It follows that in all 
+	other cases, the inequality holds strictly.
+\end{proof}
+Note that we made sure that the replacement procedure terminates in a finite
+number of steps. If we had proceeded more naively, replacing a pair of $x_i$
+by \emph{their} arithmetic meaon, we would get an infinite procedure, and then
+would have to show that the $x_i$ were ``converging'' in a suitable sense.
+(They do converge, but making this precise would require some additional effort
+which our alternate procedure avoids.)
+
+A strong generalization of this smoothing can be formulated for an 
+arbitrary convex function.
+Recall that a set of points in the plane is said to be convex if the 
+line segment joining any two points in the set lies entirely within 
+the set.
+A function $f$ defined on an interval (which may be open, 
+closed or infinite on either end) is said to be \emph{convex} if the 
+set
+\[
+\{ (x, y) \in \RR^{2}: y \geq f(x) \}
+\]
+is convex. We say $f$ is \emph{concave} if $-f$ is convex. (This 
+terminology was standard at one time, but today
+most calculus textbooks use ``concave up'' 
+and ``concave down'' for our ``convex'' and ``concave''. Others use 
+the evocative sobriquets ``holds water'' and ``spills water''.)
+
+A more enlightening way to state the definition might be that $f$ is
+convex if for any $t \in [0,1]$ and any $x,y$ in the domain of $f$,
+\[
+tf(x) + (1-t)f(y) \geq f(tx + (1-t)y).
+\]
+If $f$ is continuous, it suffices to check this for $t=1/2$. Conversely,
+a convex function is automatically continuous except possibly at
+the endpoints of the interval on which it is defined.
+
+DIAGRAM.
+
+\begin{theorem}
+If $f$ is a convex function, then the following statements hold:
+\begin{enumerate}
+\ii
+If $a \leq b < c \leq d$, then $\frac{f(c)-f(a)}{c-a} \leq 
+\frac{f(d)-f(b)}{d-b}$. (The slopes of secant lines through the
+graph of $f$ increase with 
+either endpoint.)
+\ii
+If $f$ is differentiable everywhere, then its derivative (that is,
+the slope of the tangent line to the graph of $f$ is an
+increasing function.)
+\end{enumerate}
+\end{theorem}
+
+The utility of convexity for proving inequalities comes from two 
+factors. The first factor is Jensen's inequality, which one may regard as 
+a formal statement of the ``smoothing principle'' for convex functions.
+\begin{theorem}[Jensen]
+Let $f$ be a convex function on an interval $I$ and let $w_{1}, 
+\dots, w_{n}$ be nonnegative real numbers whose sum is 1. Then for all 
+$x_{1}, \dots, x_{n} \in I$,
+\[
+w_{1}f(x_{1}) + \cdots + w_{n} f(x_{n}) \geq f(w_{1}x_{1} + \cdots + 
+w_{n}x_{n}).
+\]
+\end{theorem}
+\begin{proof}
+An easy induction on $n$, the case $n=2$ being the second definition
+above.
+\end{proof}
+
+The second factor is the ease with which convexity can be checked 
+using calculus, namely via the second derivative test.
+\begin{theorem}
+Let $f$ be a twice-differentiable function on an open interval $I$. 
+Then $f$ is convex on $I$ if and only if $f''(x) \geq 0$ for all $x \in I$.
+\end{theorem}
+For example, the AM-GM inequality can be proved by noting that 
+$f(x) = \log x$ is concave; its first derivative is $1/x$ and its 
+second $-1/x^{2}$. In fact, one immediately deduces a weighted AM-GM 
+inequality; as we will generalize AM-GM again later, we will not 
+belabor this point.
+
+We close this section by pointing out that separable inequalities 
+sometimes concern functions which are not necessarily convex. 
+Nonetheless one can prove something!
+
+\begin{problem}[USA, 1998]
+Let $a_0, \dots, a_n$ be numbers in the interval $(0, \pi/2)$ such that
+\[
+\tan (a_0 - \pi/4) + \tan (a_1 - \pi/4) + \cdots + \tan(a_n - \pi/4)
+\geq n-1.
+\]
+Prove that $\tan a_0 \tan a_1 \cdots \tan a_n \geq n^{n+1}$.
+\end{problem}
+\begin{proof}[Solution.]
+Let $x_i = \tan (a_i - \pi/4)$ and $y_i = \tan a_i = (1+x_i)/(1-x_i)$,
+so that $x_i \in (-1,1)$. The claim would follow immediately from
+Jensen's inequality if only the function $f(x) = \log(1+x)/(1-x)$
+were convex on the interval $(-1,1)$, but alas, it isn't. It's 
+concave on $(-1,0]$ and convex on $[0,1)$. So we have to fall back on
+the smoothing principle.
+
+What happens if we try to replace $x_i$ and $x_j$ by two numbers that have
+the same sum but are closer together? The contribution of $x_i$ and $x_j$
+to the left side of the desired inequality is
+\[
+\frac{1+x_i}{1-x_i} \cdot \frac{1+x_j}{1-x_j} = 1 + \frac{2}{\frac{x_ix_j+1}{x_i+x_j} - 1}.
+\]
+The replacement in question will increase $x_ix_j$, and so will decrease
+the above quantity provided that $x_i + x_j > 0$. So all we need to show is that
+we can carry out the smoothing process so that every pair we smooth satisfies
+this restriction.
+
+Obviously there is no problem if all of the $x_i$ are positive, so we concentrate
+on the possibility of having $x_i < 0$.
+Fortunately, we can't have more than one negative $x_i$, since
+$x_0 + \cdots + x_n \geq n-1$ and each $x_i$ is less than 1. (So if two
+were negative, the sum would be at most the sum of the remaining $n-1$
+terms, which is less than $n-1$.) Moreover, if $x_0 < 0$, we could not have
+$x_0 + x_j < 0$ for $j=1, \dots, n$, else we would have the contradiction
+\[
+x_0 + \cdots + x_n \leq (1-n)x_0 < n-1.
+\]
+Thus $x_0 + x_j > 0$ for some $j$, and we can replace these two by their
+arithmetic mean. Now all of the $x_i$ are positive and smoothing (or Jensen)
+may continue
+without further restrictions, yielding the desired inequality.
+\end{proof}
+
+\begin{exer}
+\ii
+Make up a problem by taking a standard property of convex functions, 
+and specializing to a particular function. The less evident it is 
+where your problem came from, the better!
+\ii
+Given real numbers $x_{1}, \dots, x_{n}$, what is the minimum value of 
+\[
+|x-x_{1}| + \cdots + |x-x_{n}|?
+\]
+\ii
+(via Titu Andreescu)
+If $f$ is a convex function and $x_1, x_2, x_3$ lie in its domain, 
+then
+\begin{eqnarray*}
+\lefteqn{f(x_1) + f(x_2) + f(x_3) + f\left( 
+\frac{x_1+x_2+x_3}{3}\right)} && \\
+&\geq& \frac 43 \left[ f\left(\frac{x_1+x_2}{2} \right) + 
+f\left(\frac{x_2+x_3}{2} \right) \right. \\
+&& \left. + f\left(\frac{x_3+x_1}{2} \right)
+\right].
+\end{eqnarray*}
+\ii
+(USAMO 1974/1)
+For $a,b,c>0$, prove that $a^ab^bc^c \geq (abc)^{(a+b+c)/3}$.
+\ii (India, 1995)
+Let $x_{1}, \dots, x_{n}$ be $n$ positive numbers whose sum is 1. 
+Prove that
+\[
+\frac{x_{1}}{\sqrt{1-x_{1}}} + \cdots + \frac{x_{n}}{\sqrt{1-x_{n}}} 
+\geq \sqrt{\frac{n}{n-1}}.
+\]
+\ii
+Let $A,B,C$ be the angles of a triangle. Prove that
+\be
+%\ii BLAH (i.e. circumradius is at least twice inradius)
+\ii $\sin A + \sin B + \sin C \leq 3\sqrt{3}/2$;
+\ii $\cos A + \cos B + \cos C \leq 3/2$;
+\ii $\sin A/2 \sin B/2 \sin C/2 \leq 1/8$;
+\ii
+$\cot A + \cot B + \cot C \geq \sqrt{3}$ (i.e. the Brocard angle is at
+most $\pi/6$).
+\ee
+(Beware: not all of the requisite functions are convex everywhere!)
+\ii (Vietnam, 1998)
+Let $x_{1}, \dots, x_{n}$ ($n \geq 2$) be positive numbers satisfying
+\[
+\frac{1}{x_{1}+1998} + \frac{1}{x_{2}+1998} + \cdots + 
+\frac{1}{x_{n}+1998} = \frac{1}{1998}.
+\]
+Prove that
+\[
+\frac{\sqrt[n]{x_{1}x_{2}\cdots x_{n}}}{n-1} \geq 1998.
+\]
+(Again, beware of nonconvexity.)
+\ii
+Let $x_1, x_2, \dots$ be a sequence of positive real numbers.
+If $a_k$ and $g_k$ are the arithmetic and geometric means, respectively, of 
+$x_1, \dots, x_k$, prove that
+\begin{align}
+\frac{a_n^n}{g_k^n} &\geq \frac{a_{n-1}^{n-1}}{g_k^{n-1}} \\
+n(a_n - g_n) &\geq (n-1)(a_{n-1}-g_{n-1}).
+\end{align}
+These strong versions of the AM-GM inequality are due to Rado \cite[Theorem~60]{bib:ha} and Popoviciu \cite{bib:pop}, 
+respectively. (These are just a sample of the many ways the AM-GM 
+inequality can be sharpened, as evidenced by \cite{bib:bmv}.)
+\end{exer}
+
+\section{Unsmoothing and noninterior extrema}
+
+A convex function has no interior local maximum. (If it had an interior
+local maximum at $x$, then the secant line through $(x-\epsilon,
+f(x-\epsilon))$ and $(x + \epsilon, f(x+\epsilon))$ would lie under the
+curve at $x$, which cannot occur for a convex function.)
+
+Even better, a function which is \emph{linear} in a given variable, as
+the others are held fixed, attains no extrema in either direction
+except at its boundary values.
+
+\begin{exer}
+\ii (IMO 1974/5) Determine all possible values of 
+\[ S= \frac{a}{a+b+d} + \frac{b}{a + b+c} + \frac{c}{b+c+d} + \frac{d}{a+c+d}\]
+where $a,b,c,d$ are arbitrary positive numbers.
+\ii (Bulgaria, 1995)
+Let $n \geq 2$ and $0 \leq x_{i} \leq 1$ for all $i=1,2,\dots, n$. 
+Show that
+\[
+(x_{1} + x_{2} + \cdots + x_{n}) - (x_{1}x_{2} + x_{2}x_{3} + \cdots + 
+x_{n}x_{1}) \leq \left\lfloor \frac{n}{2} \right\rfloor,
+\]
+and determine when there is equality.
+\end{exer}
+
+%\section{Convexity and trigonometric functions}
+\section{Discrete smoothing}
+The notions of smoothing and convexity can also be applied to 
+functions only defined on integers.
+
+\begin{problem}
+How should $n$ balls be put into $k$ boxes to minimize the number of 
+pairs of balls which lie in the same box?
+\end{problem}
+\begin{proof}[Solution]
+In other words, we want to minimize $\sum_{i=1}^{k} \binom{n_{i}}{2}$ 
+over sequences $n_{1}, \dots, n_{k}$ of nonnegative integers adding 
+up to $n$.
+
+If $n_{i} - n_{j} \geq 2$ for some $i,j$, then moving one ball from 
+$i$ to $j$ decreases the number of pairs in the same box by
+\[
+\binom{n_{i}}{2} - \binom{n_{i}-1}{2} + \binom{n_{j}}{2} - 
+\binom{n_{j}+1}{2} = n_{i} - n_{j} - 1 > 0.
+\]
+Thus we minimize the number of pairs by making sure no two boxes 
+differ by more than one ball; one can easily check that the boxes must 
+each contain $\lfloor n/k\rfloor$ or $\lceil n/k \rceil$ balls.
+\end{proof}
+
+\begin{exer}
+\ii (Germany, 1995)
+Prove that for all integers $k$ and $n$ with $1 \leq k \leq 2n$,
+\[
+\binom{2n+1}{k-1} + \binom{2n+1}{k+1} \geq 2 \cdot \frac{n+1}{n+2} 
+\cdot \binom{2n+1}{k}.
+\]
+\ii (Arbelos)
+Let $a_{1}, a_{2}, \dots$ be a convex sequence of real numbers, which 
+is to say $a_{k-1}+a_{k+1} \geq 2a_{k}$ for all $k \geq 2$. Prove that 
+for all $n \geq 1$,
+\[
+\frac{a_{1} + a_{3}+ \cdots + a_{2n+1}}{n+1} \geq \frac{a_{2} + 
+a_{4}+ \cdots + a_{2n}}{n}.
+\]
+\ii
+(USAMO 1993/5)
+Let $a_{0}, a_{1}, a_{2}, \dots$ be a sequence of positive real 
+numbers satisfying $a_{i-1}a_{i+1} \leq a_{i}^{2}$ for 
+$i=1,2,3,\dots$. (Such a sequence is said to be \emph{log concave}.) 
+Show that for each $n \geq 1$,
+\[
+\frac{a_{0} + \cdots + a_{n}}{n+1} \cdot \frac{a_{1} + \cdots + 
+a_{n-1}}{n-1} \geq \frac{a_{0} + \cdots + a_{n-1}}{n} \cdot 
+\frac{a_{1} + \cdots + a_{n}}{n}.
+\]
+\ii (MOP 1997)
+Given a sequence $\{x_n\}_{n=0}^\infty$ with $x_n > 0$ for all $n\geq0$,
+such that the sequence $\{a^n x_n\}_{n=0}^\infty$ is convex for all $a>0$,
+show that the sequence $\{\log x_n\}_{n=0}^\infty$ is also convex.
+\ii
+How should the numbers $1, \dots, n$ be arranged in a circle to make 
+the sum of the products of pairs of adjacent numbers as large as 
+possible? As small as possible?
+\end{exer}
+
+\chapter{Symmetric polynomial inequalities}
+This section is a basic guide to polynomial inequalities, which is to 
+say, those inequalities which are in (or can be put into) the form 
+$P(x_{1}, \dots, x_{n}) \geq 0$ with $P$ a symmetric polynomial in the real (or 
+sometimes nonnegative) variables $x_{1}, \dots, x_{n}$.
+
+
+\section{Introduction to symmetric polynomials}
+Many inequalities express some symmetric relationship between a 
+collection of numbers. For this reason, it seems worthwhile to brush 
+up on some classical facts about symmetric polynomials.
+
+For arbitrary $x_{1}, \dots, x_{n}$, the coefficients $c_{1}, \dots, 
+c_{n}$ of the polynomial
+\[
+(t + x_{1})\cdots (t + x_{n}) = t^{n} + c_{1} t^{n-1} + \cdots + 
+c_{n-1}t + c_{n}
+\]
+are called the \emph{elementary symmetric functions} of the $x_{i}$. 
+(That is, $c_{k}$ is the sum of the products of the $x_{i}$ taken $k$ 
+at a time.)
+Sometimes it proves more convenient to work with the \emph{symmetric 
+averages}
+\[
+d_{i} = \frac{c_{i}}{\binom ni}.
+\]
+For notational convenience, we put $c_{0} = d_{0} = 1$ and $c_{k} = 
+d_{k} = 0$ for $k > n$.
+
+Two basic inequalities regarding symmetric functions are the following. (Note
+that the second follows from the first.)
+\begin{theorem}[Newton]
+If $x_1, \dots, x_n$ are nonnegative, then %% real??
+\[
+d_i^2 \geq d_{i-1} d_{i+1} \qquad i = 1, \dots, n-1.
+\]
+\end{theorem}
+\begin{theorem}[Maclaurin]
+If $x_{1}, \dots, x_{n}$ are positive, then
+\[
+d_{1} \geq d_{2}^{1/2} \geq \cdots \geq d_{n}^{1/n},
+\]
+with equality if and only if $x_{1} = \cdots = x_{n}$.
+\end{theorem}
+These inequalities and many others can be proved using the following trick.
+\begin{theorem} \label{trick}
+Suppose the inequality
+\[
+f(d_{1}, \dots, d_{k}) \geq 0
+\]
+holds for all real (resp. positive) $x_{1}, \dots, x_{n}$ for some 
+$n \geq k$. Then it also holds for all real (resp. positive) 
+$x_{1}, \dots, x_{n+1}$.
+\end{theorem}
+\begin{proof}
+Let
+\[
+P(t) = (t + x_{1})\cdots (t+x_{n+1}) = \sum_{i=0}^{n+1} 
+\binom{n+1}{i} d_{i} t^{n+1-i}
+\]
+be the monic polynomial 
+with roots $-x_{1}, \dots, -x_{n}$. Recall that between any two zeros 
+of a differentiable function, there lies a zero of its derivative 
+(Rolle's theorem). Thus the roots of $P'(t)$ are all real if the 
+$x_{i}$ are real, and all negative if the $x_{i}$ are positive. Since
+\[
+P'(t) = \sum_{i=0}^{n+1} (n+1-i) \binom{n+1}{i} d_{i} t^{n-i}
+= (n+1) \sum_{i=0}^{n} \binom{n}{i} d_{i} t^{n-i},
+\]
+we have by assumption $f(d_{1}, \dots, d_{k}) \geq 0$.
+\end{proof}
+Incidentally, the same trick can 
+also be used to prove certain polynomial identities.
+
+\begin{exer}
+\ii
+Prove that every symmetric polynomial in $x_{1}, \dots, x_{n}$
+can be (uniquely) expressed as a 
+polynomial in the elementary symmetric polynomials.
+\ii
+Prove Newton's and Maclaurin's inequalities.
+\ii
+Prove Newton's identities: if $s_{i} = x_{1}^{i} + \cdots + 
+x_{n}^{i}$, then
+\[
+c_{0} s_{k} + c_{1} s_{k-1} + \cdots + c_{k-1} s_{1} + k c_{k} = 0.
+\]
+(Hint: first consider the case $n=k$.)
+\ii (Hungary) Let $f(x)=x^n+a_{n-1}x^{n-1}+\cdots +a_1x+1$ be a
+polynomial  with non-negative real coefficients and $n$ real roots. 
+ Prove that $f(x) \geq (1+x)^n$ for all $x\geq 0$.
+\ii (Gauss-??)
+Let $P(z)$ be a polynomial with complex coefficients. Prove that the 
+(complex) zeroes of $P'(z)$ all lie in the convex hull of the zeroes 
+of $P(z)$. Deduce that if $S$ is a convex subset of 
+the complex plane (e.g., the unit disk), and if $\Re f(d_{1}, \dots, 
+d_{k}) \geq 0$ holds for all $x_{1}, \dots, x_{n} \in S$ for some $n 
+\geq k$, then the same holds for $x_{1}, \dots, x_{n+1} \in S$.
+\ii
+Prove Descartes' Rule of Signs: let $P(x)$ be a polynomial with real 
+coefficients written as
+$P(x) = \sum a_{k_{i}} x^{k_{i}}$, where all of the $a_{k_{i}}$ are nonzero. 
+Prove that the number of positive roots of $P(x)$, counting
+multiplicities, is equal to the 
+number of sign changes (the number of $i$ such that 
+$a_{k_{i-1}}a_{k_{i}} < 0$) minus a nonnegative even integer. (For 
+negative roots, apply the same criterion to $P(-x)$.)
+\end{exer}
+
+\section{The idiot's guide to homogeneous inequalities}
+Suppose one is given a homogeneous symmetric polynomial $P$ and asked 
+to prove that $P(x_{1}, \dots, x_{n}) \geq 0$. How should one proceed?
+
+Our first step is purely formal, but may be psychologically helpful. We 
+introduce the following notation:
+\[
+\ssym Q(x_{1}, \dots, x_{n}) = \sum_{\sigma}
+Q(x_{\sigma(1)}, \dots, x_{\sigma(n)})
+\]
+where $\sigma$ runs over all permutations of $1, \dots, n$ (for a 
+total of $n!$ terms).
+For example, if $n = 3$, and we write $x,y,z$ for $x_{1}, x_{2}, 
+x_{3}$,
+\begin{align*}
+\ssym x^{3} &= 2x^{3} + 2y^{3} + 2z^{3} \\
+\ssym x^{2}y &= x^{2}y + y^{2}z + z^{2}x + x^{2}z + y^{2}x + z^{2}y \\
+\ssym xyz &= 6xyz.
+\end{align*}
+Using symmetric sum notation can help prevent errors, particularly 
+when one begins with rational functions whose denominators must first 
+be cleared. Of course, it is always a good algebra check to make sure that 
+equality continues to hold when it's supposed to.
+
+In passing, we note that other types of symmetric sums can be useful 
+when the inequalities in question do not have complete symmetry, most 
+notably cyclic summation
+\[
+\csum x^{2}y = x^{2}y + y^{2}z + z^{2}x.
+\]
+However, it is probably a bad idea to mix, say, cyclic and symmetric 
+sums in the same calculation!
+
+Next, we attempt to ``bunch'' the terms of $P$ into expressions which 
+are nonnegative
+for a simple reason. For example, 
+\[
+\ssym (x^{3} - xyz) \geq 0
+\]
+by the AM-GM inequality, while
+\[
+\ssym (x^{2}y^{2} - x^{2}yz) \geq 0
+\]
+by a slightly jazzed-up but no more sophisticated argument: we have 
+$x^{2}y^{2} + x^{2}z^{2} \geq x^{2}yz$ again by AM-GM. 
+
+We can formalize what we are doing using the notion of majorization. 
+If $s = (s_{1}, \dots, s_{n})$ and $t = (t_{1}, \dots, t_{n})$ are two 
+nonincreasing sequences, we say that $s$ \emph{majorizes} $t$ if
+$s_{1} + \cdots + s_{n} = t_{1} + \cdots + t_{n}$ and $s_{1} + 
+\cdots + s_{i} \geq t_{1} + \cdots + t_{i}$ for $i = 1, \dots, n$. 
+\begin{theorem}[``Bunching'']
+If $s$ and $t$ are sequences of nonnegative reals such that $s$ 
+majorizes $t$, then
+\[
+\ssym x_{1}^{s_{1}} \cdots x_{n}^{s_{n}} \geq \ssym x_{1}^{t_{1}} 
+\cdots x_{n}^{t_{n}}.
+\]
+\end{theorem}
+\begin{proof}
+One first shows that if $s$ majorizes $t$, then there exist
+nonnegative constants
+$k_{\sigma}$, as $\sigma$ ranges over the permutations of $\{1, \dots,
+n\}$, whose sum is 1 and such that
+\[
+\sum_\sigma k_{\sigma} (s_{\sigma_1}, \dots, s_{\sigma_n})
+= (t_1, \dots, t_n)
+\]
+(and conversely). Then apply weighted AM-GM as follows:
+\begin{eqnarray*}
+\sum_{\sigma} x_1^{s_{\sigma(n)}} \cdots x_n^{s_{\sigma(n)}} &=&
+\sum_{\sigma,\tau} k_{\tau} x_1^{s_{\sigma(\tau(1))}} \cdots 
+x_n^{s_{\sigma(\tau(n))}} \\
+&\geq& \sum_{\sigma} x_1^{\sum_\tau k_\tau s_{\sigma(\tau(1))}}
+\cdots x_n^{\sum_\tau k_\tau s_{\sigma(\tau(n))}}\\
+&=& \sum_{\sigma} x_1^{t_{\sigma(1)}} \cdots x_n^{t_{\sigma(n)}}.
+\end{eqnarray*}
+\end{proof}
+If the indices in the above proof are too bewildering, here's an 
+example to illustrate what's going on: for $s = (5,2,1)$ and $t = 
+(3,3,2)$, we have
+\[
+(3,3,2) = (5,2,1) + 
+\]
+and so BLAH.
+
+%More generally, this argument shows that if
+%$f(t_{1}, \dots, t_{n})$ is a convex symmetric function and
+%$s$ majorizes $t$, then $f(s) \geq f(t)$. (See Section LATER
+%for the definition of convexity of a multivariate function.)
+
+\begin{problem}[USA, 1997]
+Prove that, for all positive real numbers $a,b,c$,
+\[
+\frac{1}{a^{3}+b^{3}+abc} + \frac{1}{b^{3}+c^{3}+abc} 
++ \frac{1}{c^{3}+a^{3}+abc} \leq \frac{1}{abc}.
+\]
+\end{problem}
+\begin{proof}[Solution]
+Clearing denominators and multiplying by 2, we have
+\[
+\ssym (a^{3}+b^{3}+abc)(b^{3}+c^{3}+abc)abc \leq 
+2(a^{3}+b^{3}+abc)(b^{3}+c^{3}+abc)(c^{3}+a^{3}+abc),
+\]
+which simplifies to
+\[
+\ssym a^{7}bc + 3 a^{4}b^{4}c + 4 a^{5}b^{2}c^{2} + a^{3}b^{3}c^{3}
+\leq \ssym a^{3}b^{3}c^{3} + 2 a^{6}b^{3} + 3  a^{4}b^{4}c + 
+2a^{5}b^{2}c^{2} + a^{7}bc,
+\]
+and in turn to
+\[
+\ssym 2 a^{6}b^{3} - 2 a^{5}b^{2}c^{2} \geq 0,
+\]
+which holds by bunching.
+\end{proof}
+
+In this case we were fortunate that after slogging through the 
+algebra, the resulting symmetric polynomial inequality was quite 
+straightforward. Alas, there are cases where bunching will not 
+suffice, but for these we have the beautiful inequality of Schur.
+
+Note the extra equality condition in Schur's inequality; this
+is a much stronger result than AM-GM, and so cannot follow from
+a direct AM-GM argument. In general, one can avoid false leads by
+remembering that all of the steps in the proof of a given inequality
+must have equality conditions at least as permissive as those of
+the desired result!
+\begin{theorem}[Schur]
+Let $x, y, z$ be nonnegative real numbers. Then for any $r>0$,
+\[
+x^{r} (x-y)(x-z) + y^{r}(y-z)(y-x) + z^{r}(z-x)(z-y) \geq 0.
+\]
+Equality holds if and only if $x=y=z$, or if two of $x,y,z$ are
+equal and the third is zero.
+\end{theorem}
+\begin{proof}
+Since the inequality is symmetric in the three variables, we may 
+assume without loss of generality that $x \geq y \geq z$. Then the 
+given inequality may be rewritten as
+\[
+(x-y)[x^{r}(x-z) - y^{r}(y-z)] + z^{r}(x-z)(y-z) \geq 0,
+\]
+and every term on the left-hand side is clearly nonnegative.
+\end{proof}
+Keep an eye out for the trick we just used: creatively rearranging a 
+polynomial into the sum of products of obviously nonnegative terms.
+
+The most commonly used case of Schur's inequality is $r=1$, which, 
+depending on your notation, can be written
+\[
+3d_{1}^{3} + d_{3} \geq 4d_{1}d_{2} \quad \mbox{or} \quad
+\ssym x^{3} - 2x^{2}y + xyz \geq 0.
+\]
+If Schur is invoked with no mention $r$, you should assume $r=1$.
+
+\begin{problem}
+(Japan, 1997)
+\item (Japan, 1997)
+Let $a,b,c$ be positive real numbers, Prove that
+\[
+\frac{(b+c-a)^2}{(b+c)^2+a^2} +
+\frac{(c+a-b)^2}{(c+a)^2+b^2} +
+\frac{(a+b-c)^2}{(a+b)^2+c^2} \geq \frac 35.
+\]
+\end{problem}
+\begin{proof}[Solution]
+We first simplify slightly, and introduce symmetric sum notation:
+\[
+\ssym \frac{2ab + 2ac}{a^{2}+b^{2}+c^{2}+2bc} \leq \frac{24}{5}.
+\]
+Writing $s = a^{2}+b^{2}+c^{2}$, and clearing denominators, this 
+becomes
+\[
+5 s^{2} \ssym ab + 10 s \ssym a^{2}bc + 20 \ssym a^{3}b^{2}c
+\leq 6 s^{3} + 6 s^{2} \ssym ab + 12 s \ssym a^{2}bc + 48
+a^{2}b^{2}c^{2}
+\]
+which simplifies a bit to
+\[
+6s^{3} + s^{2} \ssym ab + 2s \ssym a^2bc + 8 \ssym a^{2}b^{2}c^{2}
+\geq 10 s \ssym a^{2}bc + 20 \ssym a^{3}b^{2}c.
+\]
+Now we multiply out the powers of $s$:
+\[
+\ssym 3a^{6} + 2a^{5}b -2 a^{4}b^{2} + 3a^{4}bc + 2a^{3}b^{3} - 12
+a^{3}b^{2}c + 4 a^{2}b^{2}c^{2} \geq 0.
+\]
+The trouble with proving this by AM-GM alone is the $a^{2}b^{2}c^{2}$ with a
+\emph{positive} coefficient, since it is the term with the most evenly 
+distributed exponents. We save face using Schur's inequality
+(multiplied by $4abc$:)
+\[
+\ssym 4a^{4}bc - 8a^{3}b^{2}c + 4a^{2}b^{2}c^{2} \geq 0,
+\]
+which reduces our claim to
+\[
+\ssym 3a^{6} + 2a^{5}b -2 a^{4}b^{2} - a^{4}bc + 2a^{3}b^{3} - 4
+a^{3}b^{2}c \geq 0.
+\]
+Fortunately, this is a sum of four expressions which are nonnegative 
+by weighted AM-GM:
+\begin{eqnarray*}
+0 &\leq& 2\ssym (2a^6 + b^6)/3 - a^4b^2 \\
+0 &\leq& \ssym (4a^6+b^6+c^6)/6 - a^4bc \\
+0 &\leq& 2\ssym (2a^3b^3+c^3a^3)/3 - a^3b^2c \\
+0 &\leq& 2 \ssym (2a^5b+a^5c+ab^5+ac^5)/6 - a^3b^2c.
+\end{eqnarray*}
+Equality holds in each case of AM-GM, and in Schur, if and only if $a=b=c$.
+\end{proof}
+
+\begin{exer}
+\ii
+Suppose $r$ is an even integer. Show that Schur's inequality still 
+holds when $x,y,z$ are allowed to be arbitrary real numbers (not 
+necessarily positive).
+\ii
+(Iran, 1996) Prove the following inequality for positive real numbers 
+$x,y,z$:
+\[
+(xy + yz + zx) \left( \frac{1}{(x+y)^{2}} + \frac{1}{(y+z)^{2}} + 
+\frac{1}{(z+x)^{2}} \right) \geq \frac 94.
+\]
+\ii
+The author's solution to the USAMO 1997 problem also uses bunching, 
+but in a subtler way. Can you find it? (Hint: try replacing each 
+summand on the left with one that factors.)
+\ii (MOP 1998)
+\ii
+Prove that for $x,y,z > 0$,
+\[
+\frac{x}{(x+y)(x+z)} + \frac{y}{(y+z)(y+x)} + \frac{z}{(z+x)(z+y)} 
+\leq \frac{9}{4(x+y+z)}.
+\]
+\end{exer}
+
+\section{Variations: inhomogeneity and constraints}
+One can complicate the picture from the previous section in two ways: 
+one can make the polynomials inhomogeneous, or one can add 
+additional constraints. In many cases, one can reduce to a 
+homogeneous, unconstrained inequality by creative manipulations or 
+substitutions; we illustrate this process here.
+
+\begin{problem}[IMO 1995/2] \label{imo1995}
+Let $a,b,c$ be 
+positive real numbers such that $abc = 1$. Prove that
+\[
+\frac{1}{a^{3}(b+c)} + \frac{1}{b^{3}(c+a)} + \frac{1}{c^{3}(a+b)} 
+\geq \frac{3}{2}.
+\]
+\end{problem}
+\begin{proof}[Solution.]
+We eliminate both the nonhomogeneity and the constraint by instead 
+proving that
+\[
+\frac{1}{a^{3}(b+c)} + \frac{1}{b^{3}(c+a)} + \frac{1}{c^{3}(a+b)} 
+\geq \frac{3}{2(abc)^{4/3}}.
+\]
+This still doesn't look too appetizing; we'd prefer to have simpler
+denominators. So we make the additional substitution $a = 1/x, b = 
+1/y, c = 1/z$
+$a = x/y$, $b = y/z$, $c = z/x$, in which case the inequality becomes
+\begin{equation} \label{imo95}
+\frac{x^{2}}{y+z} + \frac{y^{2}}{z+x} + \frac{z^{2}}{x+y} \geq 
+\frac{3}{2}(xyz)^{1/3}.
+\end{equation}
+Now we may follow the paradigm: multiply out and bunch. We leave the 
+details to the reader. (We will revisit this inequality several times 
+later.)
+\end{proof}
+
+On the other hand, sometimes more complicated maneuvers are required,
+as in this offbeat example.
+\begin{problem}[Vietnam, 1996]
+Let $a,b,c,d$ be four nonnegative real numbers satisfying the 
+conditions
+\[
+2(ab+ac+ad+bc+bd+cd) + abc + abd + acd + bcd = 16.
+\]
+Prove that
+\[
+a+b+c+d \geq \frac 23 (ab+ac+ad+bc+bd+cd)
+\]
+and determine when equality holds.
+\end{problem}
+\begin{proof}[Solution (by Sasha Schwartz).]
+Adopting the notation from the previous section, we want to show that
+\[
+3d_{2} + d_{3} = 4 \implies d_{1} \geq d_{2}.
+\]
+Assume on the contrary that we have $3d_2 + d_3 = 4$ but $d_1 < d_2$.
+By Schur's inequality plus Theorem~\ref{trick}, we have
+\[
+3d_1^3 + d_3 \geq 4d_1 d_2.
+\]
+Substituting $d_3 = 4-3d_2$ gives
+\[
+3d_1^3 + 4 \geq (4d_1 + 3)d_2 > 4d_1^2 + 3d_1,
+\]
+which when we collect and factor implies $(3d_1-4)(d_1^2-1) > 0$.
+However, on one hand $3d_1 - 4 < 3d_2 - 4 = -d_3 < 0$; on the
+other hand, by Maclaurin's inequality $d_1^2 \geq d_2 > d_1$, so
+$d_1 > 1$. Thus $(3d_1 - 4)(d_1^2-1)$ is negative,
+a contradiction. As for equality, we see it implies $(3d_1 
+-4)(d_1^2-1) = 0$ as well as equality in Maclaurin and Schur, so 
+$d_1 = d_2 = d_3 = 1$.
+%Of course equality should occur when all of the variables are equal; 
+%one checks that the only possible common value is $a=b=c=d=1$.
+\end{proof}
+
+\begin{exer}
+\ii (IMO 1984/1) Prove that $0\leq yz+zx+xy-2xyz\leq 7/27$, where $x,y$
+and $z$ are non-negative real numbers for which $x+y+z=1$.
+\ii (Ireland, 1998)
+Let $a,b,c$ be positive real numbers such that $a+b+c \geq abc$. 
+Prove that $a^2+b^2+c^2 \geq abc$. (In fact, the right hand side can
+be improved to $\sqrt{3}abc$.)
+\ii (Bulgaria, 1998)
+Let $a,b,c$ be positive real numbers such that $abc=1$. Prove that
+\[
+\frac{1}{1+a+b} + \frac{1}{1+b+c} + \frac{1}{1+c+a}
+\leq \frac{1}{2+a} + \frac{1}{2+b} + \frac{1}{2+c}.
+\]
+\end{exer}
+
+\section{Substitutions, algebraic and trigonometric}
+Sometimes a problem can be simplified by making a suitable 
+substition. In particular, this technique can often be used to 
+simplify unwieldy constraints.
+
+One particular substitution occurs frequently in problems of 
+geometric origin. The condition that the numbers $a,b,c$ are the 
+sides of a triangle is equivalent to the constraints
+\[
+a+b > c, \quad b+c >a, \quad c+a >b
+\]
+coming from the triangle inequality. If we let $x = (b+c-a)/2, y = 
+(c+a-b)/2, z= (a+b-c)/2$, then the constraints become $x,y,z > 0$, and 
+the original variables are also easy to express:
+\[
+a = y+z, \quad b = z+x, \quad c = x+y.
+\]
+%EXAMPLE.
+
+A more exotic substitution can be used when the constraint 
+$a+b+c=abc$ is given. Put
+\[
+\alpha = \arctan a, \quad \beta = \arctan b, \quad \gamma = \arctan c;
+\]
+then $\alpha + \beta + \gamma$ is a multiple of $\pi$. (If $a,b,c$ are 
+positive, one can also write them as the cotangents of three angles 
+summing to $\pi/2$.)
+
+\begin{exer}
+\ii (IMO 1983/6)  Let $a,b,c$ be the lengths of the sides of a triangle. 
+Prove that
+\[a^2b(a-b)+b^2 c(b-c) + c^2a(c-a) \geq 0,\] and determine when equality
+occurs.
+\ii (Asian Pacific, 1996)
+Let $a,b,c$ be the lengths of the sides of a triangle. Prove that
+\[
+\sqrt{a+b-c} + \sqrt{b+c-a} + \sqrt{c+a-b}
+\leq \sqrt{a} + \sqrt{b} + \sqrt{c}.
+\]
+\ii (MOP, 1999)
+Let $a,b,c$ be lengths of the the sides of a triangle. Prove that
+\[
+a^3 + b^3 + c^3 - 3abc \geq 2 \max \{|a-b|^3, |b-c|^3, |c-a|^3\}.
+\]
+\ii (Arbelos)
+Prove that if $a,b,c$ are the sides of a triangle and
+\[
+2(ab^{2}+bc^{2}+ca^{2}) = a^{2}b+b^{2}c+c^{2}a + 3abc,
+\]
+then the triangle is equilateral.
+\ii (Korea, 1998)
+For positive real numbers $a,b,c$ with $a+b+c=abc$, show that
+\[
+\frac{1}{\sqrt{1+a^{2}}} + \frac{1}{\sqrt{1+b^{2}}} + 
+\frac{1}{\sqrt{1+c^{2}}} \leq \frac{3}{2},
+\]
+and determine when equality occurs. (Try proving this by 
+dehomogenizing and you'll appreciate the value of the trig 
+substitution!)
+\end{exer}
+
+\chapter{The toolbox}
+In principle, just about any inequality can be reduced to the basic 
+principles we have outlined so far. This proves to be fairly 
+inefficient in practice, since once spends a lot of time repeating the 
+same reduction arguments. More convenient is to invoke as necessary 
+some of the famous classical inequalities described in this chapter.
+
+We only barely scratch the surface here of the known body of 
+inequalities; already \cite{bib:ha} provides further 
+examples, and \cite{bib:bmv} more still.
+
+\section{Power means}
+The power means constitute a simultaneous generalization of the 
+arithmetic and geometric means; the basic inequality governing them 
+leads to a raft of new statements, and exposes a symmetry in the AM-GM 
+inequality that would not otherwise be evident.
+
+For any real number $r \neq 0$, and any positive reals $x_{1}, \dots, 
+x_{n}$, we define the $r$-th power mean of the $x_{i}$ as
+\[
+M^{r}(x_{1}, \dots, x_{n}) = \left( \frac{x_{1}^{r} + \cdots + 
+x_{n}^{r}}{n} \right)^{1/r}.
+\]
+More generally, if $w_{1}, \dots, w_{n}$ are positive real numbers 
+adding up to 1, we may define the weighted $r$-th power mean
+\[
+M^{r}_{w}(x_{1}, \dots, x_{n}) = \left( w_{1} x_{1}^{r} + \cdots + 
+w_{n} x_{n}^{r} \right)^{1/r}.
+\]
+Clearly this quantity is continuous as a function of $r$ (keeping 
+the $x_{i}$ fixed), so it makes sense to define $M^{0}$ as
+\begin{align*}
+\lim_{r \to 0} M^{r}_{w} &=  \lim_{r \to 0} \left( \frac{1}{r} \exp
+\log (w_{1} x_{1}^{r} + \cdots + w_{n} x_{n}^{r} \right) \\
+ &= \exp \left. \frac{d}{dr} \right|_{r=0}
+ \log (w_{1} x_{1}^{r} + \cdots + w_{n} x_{n}^{r} ) \\
+ &= \exp \frac{w_{1} \log x_{1} + \cdots + w_{n} \log x_{n}}{w_{1} + 
+ \cdots + w_{n}} = x_{1}^{w_{1}} \cdots x_{n}^{w_{n}}
+\end{align*}
+or none other than the weighted geometric mean of the $x_{i}$.
+
+\begin{theorem}[Power mean inequality]
+If $r > s$, then
+\[
+M^{r}_{w}(x_{1}, \dots, x_{n}) \geq M^{s}_{w}(x_{1}, \dots, x_{n})
+\]
+with equality if and only if $x_{1} = \cdots = x_{n}$.
+\end{theorem}
+\begin{proof}
+Everything will follow from the convexity of the function $f(x) = 
+x^{r}$ for $r \geq 1$ (its second derivative is $r(r-1)x^{r-2}$), but 
+we have to be a bit careful with signs. Also, we'll assume neither 
+$r$ nor $s$ is nonzero, as these cases can be deduced by taking limits.
+
+First suppose $r >s > 0$. Then 
+Jensen's inequality for the convex function $f(x) = x^{r/s}$ applied to 
+$x_{1}^{s}, \dots, x_{n}^{s}$ gives
+\[
+w_{1} x_{1}^{r} + \cdots + w_{n} x_{n}^{r} \geq
+\left( w_{1} x_{1}^{s} + \cdots + w_{n} x_{n}^{s} \right)^{r/s}
+\]
+and taking the $1/r$-th power of both sides yields the desired 
+inequality.
+
+Now suppose $0 > r > s$. Then $f(x) = x^{r/s}$ is concave, so Jensen's 
+inequality is reversed; however, taking $1/r$-th powers reverses the 
+inequality again.
+
+Finally, in the case $r > 0 > s$, $f(x) = x^{r/s}$ is again convex, 
+and taking $1/r$-th powers preserves the inequality. (Or this case can 
+be deduced from the previous ones by comparing both power means to the 
+geometric mean.)
+\end{proof}
+
+Several of the power means have specific names. Of course $r=1$ yields 
+the arithmetic mean, and we defined $r=0$ as the geometric mean. The 
+case $r=-1$ is known as the \emph{harmonic mean}, and the case $r=2$ 
+as the \emph{quadratic mean} or \emph{root mean square}.
+%
+%RMS-AM-GM-HM.
+
+\begin{exer}
+	\ii (Russia, 1995)
+	Prove that for $x,y > 0$,
+	\[
+	\frac{x}{x^{4} + y^{2}} + \frac{y}{y^{4} + x^{2}} \leq \frac{1}{xy}.
+	\]
+	\ii (Romania, 1996)
+	Let $x_{1}, \dots, x_{n+1}$ be positive real numbers such that 
+	$x_{1} + \cdots + x_{n} = x_{n+1}$. Prove that
+	\[
+	\sum_{i=1}^{n} \sqrt{x_{i}(x_{n+1}-x_{i})} \leq \sqrt{\sum_{i=1}^{n} 
+	x_{n+1}(x_{n+1}-x_{i})}.
+	\]
+\ii
+(Poland, 1995)
+For a fixed integer $n \geq 1$ compute the minimum value of the sum
+\[
+x_{1} + \frac{x_{2}^{2}}{2} + \cdots + \frac{x_{n}^{n}}{n}
+\]
+given that $x_{1}, \dots, x_{n}$ are positive numbers subject to the 
+condition
+\[
+\frac{1}{x_{1}} + \cdots + \frac{1}{x_{n}} = n.
+\]
+\ii Let $a,b,c,d\geq0$.  Prove that 
+\[\frac 1a+\frac 1b+\frac 4c + \frac{16}{d}\geq\frac{64}{a+b+c+d}.\]
+\ii
+Extend the Rado/Popoviciu inequalities to power means by proving that
+\[
+\frac{M^{r}_{w}(x_{1}, \dots, x_{n})^{k} - M^{s}_{w}(x_{1}, \dots, 
+x_{n})^{k}}{w_n} \geq \frac{M^{r}_{w'}(x_{1}, \dots, x_{n-1})^{k} -
+M^{s}_{w'}(x_{1}, \dots, x_{n-1})^{k}}{w'_{n-1}}
+\]
+whenever $r \geq k \geq s$. Here the weight vector $w' = (w'_1, \dots, w'_{n-1})$
+is given by $w'_i = w_i/(w_1 + \cdots + w_{n-1})$.
+(Hint: the general result can be easily 
+deduced from the cases $k=r,s$.)
+\ii
+Prove the following ``converse'' to the power mean inequality: if $r >
+s> 0$, then
+\[\Lp\sum_i x_i^r\Rp^{1/r} \leq\Lp\sum_i x_i^s\Rp^{1/s}.\]
+%\ii
+%Give another proof of the power mean inequality by showing directly
+%that the derivative in $r$ of $M_w^r(x_1,\dots, x_n)$ is nonnegative.
+\end{exer}
+
+\section{Cauchy-Schwarz, H\"older and Minkowski inequalities}
+This section consists of three progressively stronger inequalities, 
+beginning with the simple but versatile
+Cauchy-Schwarz inequality.
+\begin{theorem}[Cauchy-Schwarz]
+For any real numbers 
+$a_{1}, \dots, a_{n}$, $b_{1}, \dots, b_{n}$,
+	\[
+	(a_{1}^{2} + \cdots + a_{n}^{2})(b_{1}^{2} + \cdots + b_{n}^{2})
+	\geq (a_{1}b_{1} + \cdots + a_{n}b_{n})^{2},
+	\]
+with equality if the two sequences are proportional.
+\end{theorem}
+\begin{proof}
+The difference between the two sides is
+\[
+\sum_{i<j} (a_{i}b_{j} - a_{j}b_{i})^{2}
+\]
+and so is nonnegative, with equality iff $a_{i}b_{j} = a_{j}b_{i}$ for 
+all $i,j$.
+\end{proof}
+
+The ``sum of squares'' trick used here is an important one; look for other
+opportunities to use it.
+A clever example of the use of Cauchy-Schwarz is the proposer's solution
+of Example~\ref{imo1995}, in which the $xyz$-form of the desired
+equation is deduced as follows: start with the inequality
+\[
+\left( \frac{x^2}{y+z} + \frac{y^2}{z+x} + \frac{z^2}{x+y} \right)
+((y+z)+(z+x)+(x+y)) \geq (x+y+z)^2
+\]
+which follows from Cauchy-Schwarz, cancel $x+y+z$ from both sides, then
+apply AM-GM to replace $x+y+z$ on the right side with $3(xyz)^{1/3}$.
+
+A more flexible variant of Cauchy-Schwarz is the following.
+\begin{theorem}[H\"older]
+Let $w_{1}, \dots, w_{n}$ be positive real numbers whose sum is 1. For 
+any positive real numbers $a_{ij}$,
+\[
+\prod_{i=1}^{n} \left( \sum_{j=1}^{m} a_{ij} \right)^{w_{i}}
+\geq \sum_{j=1}^{m} \prod_{i=1}^{n} a_{ij}^{w_{i}}.
+\]
+\end{theorem}
+\begin{proof}
+By induction, it suffices to do the case $n=2$, in 
+which case we'll write $w_{1} = 1/p$ and $w_{2} = 1/q$. Also without 
+loss of generality, we may rescale the $a_{ij}$ so that $\sum_{j=1}^{m} 
+a_{ij} = 1$ for $i=1,2$. In this case, we need to prove
+\[
+1 \geq \sum_{j=1}^{m} a_{1j}^{1/p} a_{2j}^{1/q}.
+\]
+On the other hand, by weighted AM-GM,
+\[
+\frac{a_{1j}}{p} + \frac{a_{2j}}{q} \geq a_{1j}^{1/p} a_{2j}^{1/q}
+\]
+and the sum of the left side over $j$ is $1/p + 1/q = 1$, so the 
+proof is complete. (The special case of weighted AM-GM we just used is
+sometimes called Young's inequality.)
+\end{proof}
+
+Cauchy-Schwarz admits a geometric interpretation, as
+the triangle inequality for 
+vectors in $n$-dimensional Euclidean space:
+\[
+\sqrt{x_{1}^{2} + \cdots + x_{n}^{2}} + \sqrt{y_{1}^{2} + \cdots + 
+y_{n}^{2}} \geq \sqrt{(x_{1}+y_{1})^{2} + \cdots + (x_{n}+y_{n})^{2}}.
+\]
+One can use this 
+interpretation to prove Cauchy-Schwarz by reducing it to the case in 
+two variables, since two nonparallel vectors span a plane. Instead, we 
+take this as a starting point for our next generalization of 
+Cauchy-Schwarz (which will be the case  $r=2, s=1$ of Minkowski's 
+inequality).
+\begin{theorem}[Minkowski] \label{minkowski}
+Let $r > s$ be nonzero real numbers. Then for
+any positive real numbers $a_{ij}$,
+\[
+\left( \sum_{j=1}^{m} \left( \sum_{i=1}^{n} a_{ij}^{r} \right)^{s/r} 
+\right)^{1/s}
+\geq
+\left( \sum_{i=1}^{n} \left( \sum_{j=1}^{m} a_{ij}^{s} \right)^{r/s} 
+\right)^{1/r}.
+\]
+\end{theorem}
+Minkowski's theorem may be interpreted as a comparison between taking 
+the $r$-th power mean of each row of a matrix, then taking the $s$-th 
+power mean of the results, versus taking the $s$-th power mean of 
+each column, then taking the $r$-th power mean of the result. If 
+$r>s$, the former result is larger, which should not be surprising 
+since there we only use the smaller $s$-th power mean operation once.
+
+This interpretation also tells us what Minkowski's theorem should say in
+case one of $r,s$ is zero. The result is none other than H\"older's
+inequality!
+\begin{proof}
+First suppose $r>s>0$.
+Write $L$ and $R$ for the left and right sides, respectively,
+and for convenience, write $t_i = \sum_{j=1}^m a_{ij}^s$. Then
+\begin{eqnarray*}
+R^r &=&  \sum_{i=1}^n t_i^{r/s} =  \sum_{i=1}^n t_i t_i^{r/s - 1} \\
+&=& \sum_{j=1}^m \left( \sum_{i=1}^n a_{ij}^s t_i^{r/s - 1} \right) \\
+&\leq& \sum_{j=1}^m \left( \sum_{i=1}^n a_{ij}^r \right)^{s/r}
+\left( \sum_{i=1}^n t_i^{r/s} \right)^{1-s/r} = L^s R^{r-s},
+\end{eqnarray*}
+where the one inequality is a (term-by-term) invocation of H\"older.
+
+Next suppose $r>0>s$. Then the above proof carries through provided
+we can prove a certain variation of H\"older's inequality with the
+direction reversed. We have left this to you (Problem~\ref{backholder}).
+
+Finally suppose $0>r>s$. Then replacing $a_{ij}$ by $1/a_{ij}$ for all $i,j$
+turns the desired inequality into another instance of Minkowski, with $r$ and $s$ replaced by $-s$ and $-r$. This instance follows from what we proved above.
+\end{proof}
+
+\begin{exer}
+\ii
+(Iran, 1998)
+Let $x,y,z$ be real numbers not less than 1, such that $1/x + 1/y + 
+1/z = 2$. Prove that
+\[
+\sqrt{x+y+z} \geq \sqrt{x-1} + \sqrt{y-1} + \sqrt{z-1}.
+\]
+\ii \label{backholder}
+Complete the proof of Minkowski's inequality by proving that if
+$k < 0$ and $a_1, \dots, a_n$, $b_1, \dots, b_n > 0$, then
+\[
+a_1^k b_1^{1-k} + \cdots + a_n^k b_n^{1-k}
+\geq
+(a_1 + \cdots + a_n)^k (b_1 + \cdots + b_n)^{1-k}.
+\]
+(Hint: reduce to H\"older.)
+\ii
+Formulate a weighted version of Minkowski's inequality, with one weight
+corresponding to each $a_{ij}$. Then show that this apparently stronger
+result follows from Theorem~\ref{minkowski}!
+\ii (Titu Andreescu)
+Let $P$ be a polynomial with positive coefficients.  Prove that if 
+\[P\Lp\frac 1x \Rp\geq \frac{1}{P(x)}\]
+holds for $x=1$, then it holds for every $x>0$.
+\ii
+Prove that for $w,x,y,z \geq 0$,
+\[
+w^{6}x^{3} + x^{6} y^{3} + y^{6}z^{3} + z^{6}x^{3} \geq 
+w^{2}x^{5}y^{2} + x^{2}y^{5}z^{2} + y^{2}z^{5}w^{2} + z^{2}x^{5}y^{2}.
+\]
+(This can be done either with H\"older or with weighted AM-GM; try it 
+both ways.)
+\ii (China)
+Let $r_i, s_i, t_i, u_i, v_i$ be real numbers not less than 1,
+for $i=1,2,\dots, n$, and let $R,S,T,U,V$ be the respective 
+arithmetic means of the $r_i, s_i, t_i, u_i, v_i$. Prove that
+\[
+\prod_{i=1}^n \frac{r_is_it_iu_iv_i+1}{r_is_it_iu_iv_i-1}
+\leq \left( \frac{RSTUV+1}{RSTUV-1} \right)^n.
+\]
+(Hint: use H\"older and the concavity of $f(x) = (x^5-1)/(x^5+1)$.
+\ii (IMO 1992/5) Let $S$ be a finite set of points in three-dimensional
+space. Let $S_x, S_y, S_z$ be the orthogonal projections of $S$ onto the
+$yz$, $zx$, $xy$ planes, respectively. Show that 
+\[
+|S|^2 \leq |S_x| |S_y||S_z|.
+\]
+(Hint: Use Cauchy-Schwarz to prove the inequality
+\[
+\left( \sum_{i,j,k} a_{ij} b_{jk} c_{ki} \right)^2
+\leq \sum_{i,j} a_{ij}^2 \sum_{j,k} b_{jk}^2 \sum_{k,i} c_{ki}^2.
+\]
+Then apply this with each variable set to 0 or 1.)
+\end{exer}
+
+\section{Rearrangement, Chebyshev and ``arrange in order''}
+
+Our next theorem is in fact a triviality that every businessman 
+knows: you make more money by selling most of your goods at a high 
+price and a few at a low price than vice versa. Nonetheless it can be 
+useful! (In fact, an equivalent form of this theorem was on the 1975 IMO.)
+\begin{theorem}[Rearrangement]
+Given two increasing sequences $x_{1}, \dots, x_{n}$ and $y_{1}, \dots, y_{n}$ of 
+real numbers, the sum
+\[
+\sum_{i=1}^{n} x_{i}y_{\sigma(i)},
+\]
+for $\sigma$ a permutation of $\{1, \dots, n\}$, is maximized when 
+$\sigma$ is the identity permutation and minimized when $\sigma$ is 
+the reversing permutation.
+\end{theorem}
+\begin{proof}
+For $n=2$, the inequality $ac + bd \geq ad + bc$ is equivalent, after
+collecting terms and factoring, to $(a-b)(c-d) \geq 0$, and so holds
+when $a \geq b$ and $c \geq d$. 
+We leave it to the reader to deduce the general case from this by
+successively swapping pairs of the $y_i$.
+
+Another way to state this argument involves ``partial summation'' (which the 
+calculus-equipped reader will recognize as analogous to doing 
+integration by parts). Let $s_i = y_{\sigma(i)} + \cdots + 
+y_{\sigma(n)}$ for $i = 1, \dots, n$, and write
+\[
+\sum_{i=1}^n x_i y_{\sigma(i)}
+= x_1 s_1 + \sum_{j=2}^n (x_j - x_{j-1}) s_j.
+\]
+The desired result follows from this expression and the inequalities
+\[
+x_1 + \cdots + x_{n-j+1} \leq s_j \leq x_j + \cdots + x_n,
+\]
+in which the left equality holds for $\sigma$ equal to the reversing 
+permutation and the right equality holds for $\sigma$ equal to the 
+identity permutation.
+\end{proof}
+
+One important consequence of rearrangement is Chebyshev's inequality.
+\begin{theorem}[Chebyshev]
+Let $x_{1}, \dots, x_{n}$ and $y_{1}, \dots, y_{n}$ be two sequences 
+of real numbers, at least one of which consists entirely of positive 
+numbers. Assume that $x_{1} < \cdots < x_{n}$ and $y_{1} < \cdots < 
+y_{n}$. Then
+\[
+\frac{x_{1} + \cdots + x_{n}}{n} \cdot
+\frac{y_{1} + \cdots + y_{n}}{n} \leq \frac{x_{1}y_{1} + \cdots + 
+x_{n}y_{n}}{n}.
+\]
+If instead we assume $x_{1} > \cdots > x_{n}$ and $y_{1} < \cdots < 
+y_{n}$, the inequality is reversed.
+\end{theorem}
+\begin{proof}
+Apply rearrangement to $x_1, x_2, \dots, x_n$ and $y_1, \dots, y_n$, 
+but repeating each number $n$ times.
+\end{proof}
+
+The great power of Chebyshev's inequality is its ability to split a 
+sum of complicated terms into two simpler sums.
+We illustrate this ability with yet another solution to IMO 
+1995/5. Recall that we need to prove
+\[
+\frac{x^{2}}{y+z} + \frac{y^{2}}{z+x} + \frac{z^{2}}{x+y} \geq 
+\frac{x+y+z}{2}.
+\]
+Without loss of generality, we may assume $x \leq y \leq z$, in which 
+case $1/(y+z) \leq 1/(z+x) \leq 1/(x+y)$. Thus we may apply Chebyshev 
+to deduce
+\[
+\frac{x^{2}}{y+z} + \frac{y^{2}}{z+x} + \frac{z^{2}}{x+y}
+\geq \frac{x^{2}+y^{2}+z^{2}}{3} \cdot
+\left( \frac{1}{y+z} + \frac{1}{z+x} + \frac{1}{x+y} \right).
+\]
+By the Power Mean inequality,
+\begin{align*}
+\frac{x^{2} + y^{2} + z^{2}}{3} &\geq \left(\frac{x + y + 
+z}{3}\right)^{2} \\
+\frac{1}{3} \left(\frac{1}{y+z} + \frac{1}{z+x} + 
+\frac{1}{x+y}\right) \geq \frac{3}{x+y+z}
+\end{align*}
+and these three inequalities constitute the proof.
+
+The rearrangement inequality, Chebyshev's inequality, and Schur's 
+inequality are all general examples of the ``arrange in order'' 
+principle: when the roles of several variables are symmetric, it may 
+be profitable to desymmetrize by assuming (without loss of generality) 
+that they are sorted in a particular order by size.
+
+\begin{exer}
+\ii
+Deduce Schur's inequality from the rearrangement inequality.
+\ii For $a,b,c >0$, prove that $a^a b^b c^c \geq a^b b^c c^a$.
+\ii (IMO 1971/1)
+Prove that the following assertion is true for $n=3$ and $n=5$ and 
+false for every other natural number $n>2$: if $a_1, \dots, a_n$ are 
+arbitrary real numbers, then
+\[
+\sum_{i=1}^n \prod_{j \neq i} (a_i - a_j) \geq 0.
+\]
+\ii
+(Proposed for 1999 USAMO)
+Let $x,y,z$ be real numbers greater than 1. Prove that
+\[
+x^{x^2+2yz} y^{y^2+2zx} z^{z^2+2xy} \geq (xyz)^{xy+yz+zx}.
+\]
+\end{exer}
+
+\section{Bernoulli's inequality}
+The following quaint-looking inequality occasionally comes in handy.
+\begin{theorem}[Bernoulli]
+For $r >1$ and $x > -1$ (or $r$ an even integer and $x$ any real),
+$(1 + x)^{r} \geq 1 + xr$.
+\end{theorem}
+\begin{proof}
+The function $f(x) = (1+x)^{r}$ has second derivative 
+$r(r-1)(1+x)^{r-2}$ and so is convex. The claim is simply the fact 
+that this function lies above its tangent line at $x=0$.
+\end{proof}
+
+\begin{exer}
+\ii (USA, 1992)
+Let $a = (m^{m+1}+n^{n+1})/(m^m+n^n)$ for $m,n$ positive integers. Prove that
+$a^m + a^n \geq m^m + n^n$. (The problem came with the hint to consider
+the ratio $(a^N-N^N)/(a-N)$ for real $a \geq 0$ and integer $N \geq 1$.
+On the other hand, you can prove the claim for real $m,n \geq 1$
+using Bernoulli.)
+\end{exer}
+
+\chapter{Calculus} \label{chap:calc}
+To some extent, I regard this section, as should you, as analogous to sex 
+education in school--it doesn't condone or encourage you to use calculus on 
+Olympiad inequalities, but rather seeks to ensure that if you insist 
+on using calculus, that you do so properly.
+
+Having made that disclaimer, let me turn around and praise calculus as 
+a wonderful discovery that immeasurably improves our understanding of 
+real-valued functions. If you haven't encountered calculus yet in 
+school, this section will be a taste of what awaits you---but no more 
+than that; our treatment is far too compressed to give a 
+comprehensive exposition. After all, isn't that what textbooks are for? 
+
+Finally, let me advise the reader who thinks he/she knows calculus
+already not to breeze too this section too quickly. Read the text and
+make sure you can write down the proofs requested in the exercises.
+
+\section{Limits, continuity, and derivatives}
+The definition of limit attempts to formalize the idea of evaluating a 
+function at a point where it might not be defined, by taking values at 
+points ``infinitely close'' to the given point. Capturing this idea 
+in precise mathematical language turned out to be a tricky business 
+which remained unresolved until long after calculus had proven its 
+utility in the hands of Newton and Leibniz; the definition we use 
+today was given by Weierstrass.
+
+Let $f$ be a function defined on an open interval, except possibly at 
+a single point $t$. We say the \emph{limit of $f$ at $t$} exists 
+and equals $L$ if for each positive real $\epsilon$, there exists a 
+positive real $\delta$ (depending on $\epsilon$, of course) such that
+\[
+0< |x - t| < \delta \implies |f(x) - L| <\epsilon.
+\]
+We notate this $\lim_{x\to t}f(x) = L$.
+If $f$ is also defined at $t$ and $f(t) = L$, we say $f$ is 
+\emph{continuous} at $t$.
+
+Most common functions (polynomials, sine, 
+cosine, exponential, logarithm) are continuous for all real numbers 
+(the logarithm only for positive reals), and those which are not 
+(rational functions, tangent) are continuous because they go to 
+infinity at certain points, so the limits in question do not exist. 
+The first example of an ``interesting'' limit occurs in the 
+definition of the derivative.
+
+Again, let $f$ be a function defined on an open interval and $t$ a 
+point in that interval; this time we require that $f(t)$ is defined 
+as well. If the limit
+\[
+\lim_{x \to t} \frac{f(x)-f(t)}{x-t}
+\]
+exists, we call that the \emph{derivative} of $f$ at $t$ and notate 
+it $f'(t)$. We also say that $f$ is \emph{differentiable} at $t$ (the 
+process of taking the derivative is called \emph{differentiation}).
+
+For example, if $f(x) = x^2$, then for $x \neq t$, $(f(x)-f(t))/(x-t)
+= x+t$, and so the limit exists and $f'(t) = 2t$. More generally,
+you will show in the exercises that for $f(x) = x^n$, $f'(t) = nt^{n-1}$.
+On the other hand, for other functions, e.g.\ $f(x) = \sin x$, the difference
+quotient cannot be expressed in closed form, so certain inequalities must
+be established in order to calculate the derivative (as will also take place
+in the exercises).
+
+The derivative can be geometrically interpreted as the slope of the 
+tangent line to the graph of $f$ at the point $(t, f(t))$. This is 
+because the tangent line to a curve can be regarded as the limit of secant 
+lines, and the quantity $(f(x+t)-f(x))/t$ is precisely the slope of 
+the secant line through $(x,f(x))$ and $(x+t, f(x+t))$. (The first 
+half of this sentence is entirely unrigorous, but it can be 
+rehabilitated.)
+
+It is easy to see that a differentiable function must be continuous, 
+but the converse is not true; the function $f(x) = |x|$ (absolute 
+value) is continuous but not differentiable at $x=0$.
+
+An important property of continuous functions, though one we will not 
+have direct need for here, is the intermediate 
+value theorem. This theorem says
+the values of a continuous function cannot ``jump'', as the tangent 
+function does near $\pi/2$. 
+\begin{theorem}
+Suppose the function $f$ is continuous on the closed interval 
+$[a,b]$. Then for any $c$ between $f(a)$ and $f(b)$, there exists $x 
+\in [a,b]$ such that $f(x) = c$.
+\end{theorem}
+\begin{proof}
+Any proof of this theorem tends to be a bit unsatisfying, because it
+ultimately boils down to one's definition of the real numbers. For
+example, one consequence of the standard definition is that every set
+of real numbers which is bounded above has a least upper bound.  In
+particular, if $f(a) \leq c$ and $f(b) \geq c$, then the set of $x \in
+[a,b]$ such that $f(x) < c$ has a least upper bound $y$. By continuity,
+$f(x) \leq c$; on the other hand, if $f(x) > c$, then $f(x-t) > 0$
+for all $t$ less than some positive $\epsilon$, again by continuity, in
+which case $x-\epsilon$ is an upper bound smaller than $x$, a contradiction.
+Hence $f(x) = c$.
+\end{proof}
+
+Another important property of continuous functions is the ``extreme 
+value theorem''.
+\begin{theorem}
+A continuous function on a closed interval has a global maximum and 
+minimum.
+\end{theorem}
+\begin{proof}
+\end{proof}
+This statement is of course false for an open or infinite interval; 
+the function may go to infinity at one end, or may approach an extreme 
+value without achieving it. (In technical terms, a closed interval is
+\emph{compact} while an open interval is not.)
+
+\begin{exer}
+\ii
+Prove that $f(x) = x$ is continuous.
+\ii
+Prove that the product of two continuous functions is continuous, and 
+that the reciprocal of a continuous function is continuous at all 
+points where the original function is nonzero.
+Deduce that all polynomials and rational functions are continuous.
+\ii (Product rule)
+Prove that $(fg)' = fg' + f'g$ and find a similar formula for $(f/g)'$.
+(No, it's not $f'/g - f/g'$. Try again.)
+\ii (Chain rule)
+If $h(x) = f(g(x))$, prove that $h'(x) = f'(g(x)) g'(x)$.
+\ii
+Show that the derivative of $x^{n}$ is $n x^{n-1}$ for $n \in \ZZ$.
+\ii
+Prove that $\sin x < x < \tan x$ for $0 < x < \pi/2$. (Hint: use a 
+geometric interpretation, and remember that $x$ represents an angle 
+in radians!) Conclude that $\lim_{x \to 0} \sin x / x = 1$.
+\ii
+Show that the derivative of $\sin x$ is $\cos x$ and that of $\cos x$ 
+is $(-\sin x)$. While you're at it, compute the derivatives of the 
+other trigonometric functions.
+\ii
+Show that an increasing function on a closed interval satisfying the 
+intermediate value theorem must be continuous. (Of course, this can 
+fail if the function is not increasing!) In particular, the 
+functions $c^{x}$ (where $c>0$ is a constant) and $\log x$ are continuous.
+\ii
+For $c > 0$ a constant, the function $f(x) = (c^{x} - 1)/x$ is continuous 
+for $x \neq 0$ by the previous exercise. Prove that its limit at 0 
+exists. (Hint: if $c>1$, show that $f$ is increasing for $x \neq 0$; 
+it suffices to prove this for rational $x$ by continuity.)
+\ii
+Prove that the derivative of $c^{x}$ equals $k c^{x}$ for some 
+constant $k$. (Use the previous exercise.) Also show (using the chain rule) 
+that $k$ is proportional to the 
+logarithm of $c$. In fact, the base $e$ of the natural logarithms is 
+defined by the property that $k=1$ when $c=e$.
+\ii
+Use the chain rule and the previous exercise to prove that the 
+derivative of $\log x$ is $1/x$. (Namely, take the derivative of 
+$e^{\log x} = x$.)
+\ii (Generalized product rule)
+Let $f(y,z)$ be a function of two variables, and let $g(x) = f(x,x)$. 
+Prove that $g'(x)$ can be written as the sum of the derivative of $f$ 
+as a function of $y$ alone (treating $z$ as a constant function) and 
+the derivative of $f$ as a function of $z$ alone, both evaluated at 
+$y=z=x$. For example, the derivative of $x^x$ is $x^x \log x + x^x$.
+\end{exer}
+
+\section{Extrema and the first derivative}
+
+The derivative can be used to detect local extrema. A point $t$ is 
+a \emph{local maximum} (resp. minimum) for a function $f$ if $f(t) \geq 
+f(x)$ (resp. $f(t) \leq f(x)$) for all $x$ in some open interval 
+containing $t$.
+\begin{theorem}
+	If $t$ is a local extremum for $f$ and $f$ is differentiable at $t$, 
+	then $f'(t) = 0$.
+\end{theorem}
+\begin{cor}[Rolle]
+If $f$ is differentiable on the interval $[a,b]$ and $f(a)=f(b)=0$, 
+then there exists $x\in [a,b]$ such that $f'(x) = 0$.
+\end{cor}
+
+So for example, to find the extrema of a continuous function on a 
+closed interval, it suffices to evaluate it at
+\begin{itemize}
+	\ii all points where the derivative vanishes,
+	\ii all points where the derivative is not defined, and
+	\ii the endpoints of the interval,
+\end{itemize}
+since we know the function has global minima and maxima, and each of these
+must occur at one of the aforementioned points. If the interval 
+is open or infinite at either end, one must also check the limiting 
+behavior of the function there.
+
+A special case of what we have just said is independently useful: if 
+a function is positive at the left end of an interval and has 
+nonnegative derivative on the interval, it is positive on the entire 
+interval.
+
+\section{Convexity and the second derivative}
+As noted earlier, a twice differentiable function is convex if and 
+only if its second derivative is nonnegative. 
+
+\section{More than one variable}
+\textbf{Warning!} The remainder of this chapter is somewhat rougher going than 
+what came before, in part because we need to start using the language and 
+ideas of linear algebra. Rest assured that none of the following 
+material is referenced anywhere else in the notes.
+
+We have a pretty good understanding now of the relationship between 
+extremization and the derivative, for functions in a single variable. 
+However, most inequalities in nature deal with functions in more than 
+one variable, so it behooves us to extend the formalism of calculus 
+to this setting. Note that whatever we allow the domain of a function 
+to be, the \emph{range} of our ``functions'' will always be the real 
+numbers. (We have no need to develop the whole of multivariable 
+calculus when all of our functions arise from extremization 
+questions!)
+
+The formalism becomes easier to set up in the language of linear 
+algebra. If $f$ is a function from a vector space to $\RR$ defined in 
+a neighborhood of (i.e.\ a ball around) a point $\vx$, then we say the 
+limit of $f$ at $\vx$ exists and equals $L$ if for every $\epsilon > 
+0$, there exists $\delta > 0$ such that
+\[
+0 < ||\vt|| < \delta \implies |f(\vx + \vt) - L| < \epsilon.
+\]
+(The double bars mean length in the Euclidean sense, but any 
+reasonable measure of the length of a vector will give an equivalent 
+criterion; for example, measuring a vector by the maximum absolute 
+value of its components, or by the sum of the absolute values of its 
+components.) We say $f$ is continuous at $\vx$ if $\lim_{\vt \to 0} 
+f(\vx + \vt) = f(\vx)$. If $\vy$ is any vector and $\vx$ is in the 
+domain of $f$, we say the \emph{directional derivative} of $f$ along 
+$\vx$ in the direction $\vy$ exists and equals $f_{\vy}(\vx)$ if
+\[
+f_{\vy}(\vx) = \lim_{t \to 0} \frac{f(\vx + t\vy) - f(\vx)}{t}.
+\]
+If $f$ is written as a function of variables $x_1, \dots, x_n$, we 
+call the directional derivative along the $i$-th standard basis vector 
+the \emph{partial derivative} of $f$ with respect to $i$ and denote it 
+by $\frac{\partial f}{\partial x_i}$. In other words, the partial 
+derivative is the derivative of $f$ as a function of $x_i$ along, 
+regarding the other variables as constants.
+
+
+TOTAL DERIVATIVE
+
+Caveat! Since the derivative is not a ``function'' in our restricted 
+sense (it has takes values in a vector space, not $\RR$) we cannot take a 
+``second derivative''---yet.
+
+ASSUMING the derivative exists, it can be computed by taking partial 
+derivatives along a basis.
+
+\section{Convexity in several variables}
+A function $f$ defined on a convex subset of a
+vector space is said to be \emph{convex} if for all $\vx, \vy$ in the 
+domain and $t \in [0,1]$,
+\[
+tf(\vx) + (1-t)f(\vy) \geq f(t\vx + (1-t)\vy).
+\]
+Equivalently, $f$ is convex if its restriction to any line is convex. 
+Of course, we say $f$ is \emph{concave} if $-f$ is convex.
+
+The analogue of the second derivative test for convexity is the 
+Hessian criterion. A symmetric matrix $M$ (that is, one with 
+$M_{ij} = M_{ji}$ for all $i,j$) is said to be \emph{positive definite} 
+if $M\vx \cdot \vx > 0$ for all nonzero vectors $\vx$, or equivalently, if 
+its eigenvalues are all real and positive. (The first condition 
+implies the second because all eigenvalues of a symmetric matrix are 
+real. The second implies the first because if $M$ has positive 
+eigenvalues, then it has a square root $N$ which is also symmetric, 
+and $M\vx \cdot \vx = (N\vx) \cdot (N\vx) > 0$.)
+\begin{theorem}[Hessian test]
+A twice differentiable function $f(x_1, \dots, x_n)$ is convex in a 
+region if and only if the Hessian matrix
+\[
+H_{ij} = \frac{\partial^2}{\partial x_i \partial x_j}
+\]
+is positive definite everywhere in the region.
+\end{theorem}
+Note that the Hessian is symmetric because of the symmetry of mixed 
+partials, so this statement makes sense.
+\begin{proof}
+The function $f$ is convex if and only if its restriction to each line 
+is convex, and the second derivative along a line through $\vx$ in the 
+direction of $\vy$ is (up to a scale factor) just $H \vy \cdot \vy$ 
+evaluated at $\vx$. So $f$ is convex if and only if $H \vy \cdot \vy 
+>0$ for all nonzero $\vy$, that is, if $H$ is positive definite.
+\end{proof}
+
+The bad news about this criterion is that determining whether a 
+matrix is positive definite is not \emph{a priori} an easy task: one 
+cannot check $M\vx \cdot \vx \geq 0$ for every vector, so it seems 
+one must compute all of the eigenvalues of $M$, which can be quite a 
+headache. The good news is that
+there is a very nice criterion for positive definiteness of a 
+symmetric matrix, due to Sylvester, that saves a lot of work.
+\begin{theorem}[Sylvester's criterion]
+An $n \times n$ symmetric matrix of real numbers is positive definite if and only 
+if the determinant of the upper left $k \times k$ submatrix is 
+positive for $k = 1, \dots, n$.
+\end{theorem}
+\begin{proof}
+By the $M \vx \cdot \vx$ definition, the upper 
+left $k \times k$ submatrix of a positive definite matrix is positive 
+definite, and by the eigenvalue definition, a positive definite matrix 
+has positive determinant. Hence Sylvester's criterion is indeed 
+necessary for positive definiteness.
+
+We show the criterion is also sufficient by induction on $n$. BLAH.
+\end{proof}
+
+\begin{exer}
+\ii (IMO 1968/2)
+Prove that for all real numbers $x_{1}, x_{2}, y_{1}, y_{2}, z_{1}, 
+z_{2}$ with $x_{1}, x_{2} > 0$ and $x_{1}y_{1} > z_{1}^{2}$, 
+$x_{2}y_{2} > z_2$, the inequality
+\[
+\frac{8}{(x_1+x_2)(y_1+y_2) - (z_1+z_2)^2} \leq 
+\frac{1}{x_1y_1-z_1^2} + \frac{1}{x_2y_2-z_2^2}
+\]
+is satisfied, and determine when equality holds. (Yes, you really can 
+apply the material of this section to the IMO! Verify 
+convexity of the appropriate function using the Hessian and 
+Sylvester's criterion.)
+\end{exer}
+
+\section{Constrained extrema and Lagrange multipliers}
+In the multivariable realm, a new phenomenon emerges that we did not 
+have to consider in the one-dimensional case: sometimes we are asked 
+to prove an inequality in the case where the variables satisfy some 
+constraint.
+
+The Lagrange multiplier criterion for an interior local extremum of 
+the function $f(x_1, \dots, x_n)$ under the constraint $g(x_1, \dots, 
+x_n) = c$ is the existence of $\lambda$ such that
+\[
+\frac{\partial f}{\partial x_i}(x_1, \dots, x_n) =
+\lambda \frac{\partial g}{\partial x_i}(x_1, \dots, x_n).
+\]
+Putting these conditions together with the constraint on $g$, one may 
+be able to solve and thus put restrictions on the locations of the 
+extrema. (Notice that the duality of constrained 
+optimization shows up in the symmetry between $f$ and $g$ in the 
+criterion.)
+
+It is even more critical here than in the one-variable case that the 
+Lagrange multiplier condition is a necessary one only for an 
+\emph{interior} extremum. Unless one can prove that the given function is 
+convex, and thus that an interior extremum must be a global one, one 
+must also check all boundary situations, which is far from easy to do 
+when (as often happens) these extend to infinity in some direction.
+
+For a simple example, let $f(x,y,z) = ax + by + cz$ with $a,b,c$ 
+constants, not all zero, and consider the constraint $g(x,y,z)=1$, 
+where $g(x,y,z)= x^2+y^2+z^2$. Then the Lagrange multiplier condition 
+is that
+\[
+a = 2 \lambda x, b = 2 \lambda y, c = 2 \lambda z.
+\]
+The only points satisfying this condition plus the original 
+constraint are
+\[
+\pm \frac{1}{\sqrt{a^2+b^2+c^2}} (a,b,c),
+\]
+and these are indeed the minimum and maximum for $f$ under the 
+constraint, as you may verify geometrically. 
+
+%\chapter{Geometric inequalities}
+\chapter{Coda}
+
+\section{Quick reference}
+Here's a handy reference guide to the techniques we've introduced. 
+
+\begin{itemize}
+\ii Arithmetic-geometric-harmonic means
+\ii Arrange in order
+\ii Bernoulli
+\ii Bunching
+\ii Cauchy-Schwarz
+\ii Chebyshev
+\ii Convexity
+\ii Derivative test
+\ii Duality for constrained optimization
+\ii Equality conditions
+\ii Factoring
+\ii Geometric interpretations
+\ii Hessian test
+\ii H\"older
+\ii Jensen
+\ii Lagrange multipliers
+\ii Maclaurin
+\ii Minkowski
+\ii Newton
+\ii Power means 
+\ii Rearrangement
+\ii Reduction of the number of variables (Theorem~\ref{trick})
+\ii Schur
+\ii Smoothing
+\ii Substitution (algebraic or trigonometric)
+\ii Sum of squares
+\ii Symmetric sums
+\ii Unsmoothing (boundary extrema)
+\end{itemize}
+
+\section{Additional problems}
+Here is an additional collection of problems covering the entire range
+of techniques we have introduced, and one or two that you'll have to
+discover for yourselves!
+
+\begin{exer}
+\ii Let $x,y,z>0$ with $xyz=1$.  Prove that $x+y+z\leq x^2+y^2+z^2$.
+\ii The real numbers $x_1,x_2,\ldots, x_n$ belong to the interval
+$[-1,1]$ and the sum of their cubes is zero.  Prove that their sum does
+not exceed $n/3$.
+\ii (IMO 1972/2)
+Let $x_{1}, \dots, x_{5}$ be positive reals such that
+\[
+(x_{i+1}^{2}-x_{i+3}x_{i+5})(x_{i+2}^{2}-x_{i+3}x_{i+5}) \leq 0
+\]
+for $i=1,\dots, 5$, where $x_{n+5}=x_{n}$ for all $n$. Prove that 
+$x_{1} = \cdots = x_{5}$.
+\ii (USAMO 1979/3) Let $x,y,z\geq 0$ with $x+y+z=1$.  Prove that
+\[
+x^3+y^3+z^3+6xyz\geq \frac 14.
+\]
+\ii (Taiwan, 1995)
+Let $P(x) = 1+a_1x+ \cdots + a_{n-1}x^{n-1}+x^n$ be a
+polynomial with complex coefficients.  Suppose the roots of $P(x)$
+are $\alf_1,\alf_2, \ldots,\alf_n$ with
+\[|\alf_1|>1, |\alf_2|>1, \ldots,|\alf_j|>1\]
+and 
+\[|\alf_{j+1}|\leq1, |\alf_{j+2}|\leq1, \ldots,|\alf_n|\leq1.\] 
+Prove
+that 
+\[\prod_{i=1}^j |\alf_i| \leq \sqrt{|a_0|^2+|a_1|^2 + \cdots +
+|a_n|^2}.\]
+(Hint: look at the coefficients of $P(x) \overline{P}(x)$, the latter 
+being $1 + \overline{a_1} x + \cdots + \overline{a_{n-1}}x^{n-1} + 
+x^n$.)
+\ii Prove that, for any real numbers $x,y,z$,
+\[3(x^2-x+1)(y^2-y+1)(z^2-z+1)\geq (xyz)^2+xyz+1.\]
+\ii
+\be
+\ii[(a)]
+Prove that any polynomial $P(x)$ such that $P(x) \geq 0$ for all real 
+$x$ can be written as the sum of the squares of two polynomials.
+\ii[(b)]
+Prove that the polynomial
+\[
+x^2(x^2-y^2)(x^2-1) + y^2(y^2-1)(y^2-x^2) + (1-x^2)(1-y^2)
+\]
+is everywhere nonnegative, but cannot be written as the sum
+of squares of any number of polynomials.
+(One of Hilbert's problems, solved by Artin and 
+Schreier, was to prove that such a polynomial can always be written 
+as the sum of squares of rational functions.)
+\ee
+\end{exer}
+
+\begin{thebibliography}{99}
+\bibitem{bib:bmv}
+P.S. Bullen, D. Mitrinovi\'c, and P.M.Vasi\'c, \textit{Means and their
+Inequalities}, Reidel, Dordrecht, 1988.
+
+\bibitem{bib:ha}
+G. Hardy, J.E. Littlewood, and G. P\'olya, \textit{Inequalities} 
+(second edition), Cambridge University Press, Cambridge, 1951.
+
+\bibitem{bib:pop}
+T. Popoviciu, Asupra mediilor aritmetice \,si medie geometrice
+(Romanian), \textit{Gaz. Mat. Bucharest} \textbf{40} (1934), 155-160.
+
+\bibitem{bib:rab}
+S. Rabinowitz, \textit{Index to Mathematical Problems 1980-1984}, Mathpro 
+Press, Westford (Massachusetts), 1992.
+\end{thebibliography}
+
+\end{document}
