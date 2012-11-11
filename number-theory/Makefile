@@ -1,5 +1,5 @@
 TARGET=number-theory
-TEX=xelatex -shell-escape
+TEX=xelatex -shell-escape --quiet
 BIBTEX=bibtex
 
 all: view

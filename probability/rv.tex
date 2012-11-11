@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Mon Nov 05 15:57:40 2012 +0800
+% Date: Sun Nov 11 19:46:22 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{}
 \subsection{Random Variables}
@@ -226,13 +226,15 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 
     $ Beta函数:B(a,b) = \int_{0}^{1}{x^{a-1}(1-x)^{b-1}\mathrm{d}x} = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$
 
-  $ p(x) = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}x^{a-1}(1-x)^{b-1}I_{(0,1)}(x)$
+  $ p(x) = \dfrac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}I_{(0,1)}(x)$
 
-    $ EX = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\dfrac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)} = \dfrac{a}{a+b}$
+    $ EX = \dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\dfrac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)} = \dfrac{a}{a+b}$
 
-    $ EX^2 = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\dfrac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)} = \dfrac{a(a+1)}{(a+b)(a+b+1)}$
+    $ EX^2 = \dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\dfrac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)} = \dfrac{a(a+1)}{(a+b)(a+b+1)}$
 
     $ Var(X) = \dfrac{ab}{(a+b)^2(a+b+1)}$
+
+    $ p(x)=ax^{a-1}\Leftrightarrow X\sim Be(a,1)$
 
   \item \textbf{卡方分布} $ \chi^2(k).(自由度k>0)$
 
