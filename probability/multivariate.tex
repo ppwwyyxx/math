@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Sun Nov 11 17:32:55 2012 +0800
+% Date: Mon Nov 12 15:08:18 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{}
 \subsection{Joint Distribution}
@@ -83,7 +83,10 @@ $ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\
     =& \int_{\mathbb{R}}EZ\dfrac{y}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}\mathrm{d}y\\
     =& \rho EY^2 = \rho Var(Y) = \rho
     \end{align*}
-    $ \rho = 0$时易证$ p(x,y) = p_X(x)p_Y(y),$即不相关与独立等价.
+
+    事实上任意二维正态分布的相关系数为$ \rho$.
+
+    $ \rho = 0$时易证$ p(x,y) = p_X(x)p_Y(y),$即对于联合正态分布,不相关与独立等价.
 
     \textbf{椭圆域内概率:}$ D=\{(x,y): Q \le t \}, 则P((X,Y)\in D) = 1-e^{-\frac{t}{2(1-\rho^2)}}$
 
@@ -209,7 +212,9 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
 记相关系数$ r(X,Y)=\dfrac{\Cov(X,Y)}{\sigma(X)\sigma(Y)}$
 
 独立$ \Rightarrow E(XY) = EXEY\Leftrightarrow r(X,Y) = 0\Leftrightarrow 不相关$
-  \\
+
+$ r(X,Y) = \pm 1\Leftrightarrow X,Y几乎处处线性相关\Leftrightarrow P(Y=aX+b)=1$
+\\
 
 由于$ E(XY)$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.因此,由Cauchy's Inequality:
 
@@ -231,4 +236,21 @@ $  r$可看做$X-EX, Y-EY$的夹角余弦,$EX$看做$ X$在常数子空间上的
   &=Var(X)[1-r(X,Y)^2]
 \end{align*}
 
+\textbf{协方差矩阵} $ \vec{X} = (X_1,\cdots ,X_n)',每个分量期望都存在,则随机向量\vec{X}有期望$.
 
+定义协方差矩阵为$\Cov(\vec{X})= (\Cov(X_i,X_j))_{n\times n}=E[(\vec{X}-E\vec{X})(\vec{X}-E\vec{X})']$
+
+$Var(\sum{X_i})=\sum{Var(X_i)} +\sum_{1\le<i<j\le n}{\Cov(X_i,X_j)}$为$ \Cov(\vec{X})$所有元素和.
+
+$ \Cov(\vec{X})$为\textbf{半正定对称阵}:任取向量$ \vec{\alpha}$,
+\begin{align*}
+\vec{\alpha'}\Cov(\vec{X})\vec{\alpha} =& \sum_{i=1}^{n}\sum_{j=1}^{n}{\alpha_i\alpha_j\Cov(X_i,X_j)}\\
+=&\sum_{i=1}^n\sum_{j=1}^n{E[\alpha_i(X_i-EX_i)\alpha_j(X_j-EX_j)]}\\
+=&E[\sum_{i=1}^n\sum_{j=1}^n{\alpha_i(X_i-EX_i)\alpha_j(X_j-EX_j)}]\\
+=&E[\sum_{i=1}^n{\alpha_i(X_i-EX_i)}\sum_{j=1}^n{\alpha_j(X_j-EX_j)}]\\
+=&E[\sum_{i=1}^n{\alpha_i(X_i-EX_i)}]^2\ge 0
+\end{align*}
+
+\textbf{n元正态分布} $ N(E\vec{X},\Cov(\vec{X}))$
+
+$ p(\vec{x})=\dfrac{1}{(2\pi)^{\frac{n}{2}}\sqrt{|\Cov(\vec{X})|}}e^{-\dfrac{(\vec{x}-E\vec{X})'\Cov(\vec{X})^{-1}(\vec{x}-E\vec{X})}{2}}$

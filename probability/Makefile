@@ -20,7 +20,6 @@ view: output/$(TARGET).pdf
 
 clean:
 	rm -rf output
-	rm $(TARGET).pdf
 
 run:
 	$(READER) output/$(TARGET).pdf &
