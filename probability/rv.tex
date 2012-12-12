@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Sun Nov 11 19:46:22 2012 +0800
+% Date: Tue Dec 11 00:15:15 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{}
 \subsection{Random Variables}
@@ -90,14 +90,22 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 	统计意义:&与均值的距离远近对概率的限定.
 \end{flalign*}
 
+\subsection{Characteristic Function}
+$ \varphi_X(t) = E(e^{itX})$
+
+对连续型随机变量$ X, \varphi_X(t) = \int_{\mathbb{R}}e^{itx}p(x)\mathrm{d}x$为$ p(x)$的Fourier变换.
+
+于是有逆变换:
+
 \subsection{Common Discrete Distributions}
 \begin{enumerate}
 	\item \textbf{二项分布}$ b(n,p)$
 
-		$	b(n,p)  = n * b(1,p)$
 		$ P(X = k) = C_n^kp^k(1-p)^{n-k}, k = 0,\cdots,n$
 
 		$ EX = np, Var(X) = E[X(X-1)]+EX-(EX)^2 = np(1-p)$
+
+		$	b(n,p)  = n * b(1,p)\Rightarrow \varphi(t) = (1-p+pe^{it})^n$
 
 	二项分布的最大值发生在$ k = \left \{ \begin{matrix}
 			(n+1)p 或 (n+1)p - 1 &, (n+1)p \in \mathbb{N} \\
@@ -108,7 +116,7 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 
 		$ P(X = k) = \dfrac{\lambda^k}{k!}e^{-\lambda}$
 
-		$ EX = Var(X) = \lambda$
+		$ EX = Var(X) = \lambda, \varphi(t) = \sum_{k=0}^{\infty}e^{itk}\dfrac{\lambda^k}{k!}e^{-\lambda} = e^{\lambda(e^{it} - 1)}$
 
 		\textbf{Poisson 定理},对二项分布$ b(n,p_n),\lim \limits_{n\to \infty} np_n = \lambda > 0$,
 		\begin{flalign*}
@@ -126,6 +134,8 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 		\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}{p(1-p)^{n-1}}= \dfrac{1}{p}$
 
 		类似方法使用两次求出$ E(X(X-1)),Var(X) = \dfrac{1-p}{p^2}$
+
+        $ \varphi(t) = \dfrac{pe^{it}}{1-(1-p)e^{it}}$
 
 		尾概率$ P(X>m) = (1-p)^m$
 
@@ -171,6 +181,9 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 
 		$EX = \dfrac{a+b}{2}, Var(X) = \dfrac{(b-a)^2}{12}$
 
+        $ U[-1,1]$的特征函数$\varphi_{X'}(t)=\int_{0}^1{\cos(tx)\mathrm{d}x} = \dfrac{\sin t}{t}\Rightarrow \varphi(t) =
+      e^{\frac{(a+b)it}{2}}\dfrac{\sin(\frac{(b-a)t}{2})}{\frac{(b-a)t}{2}}$
+
 	\item \textbf{指数分布}$Exp(\lambda),(\lambda > 0)$
 
 		$p(x) = \lambda e^{-\lambda x}I_{\mathbb{R^+}}(x)$
@@ -185,6 +198,8 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 		= \dfrac{2EX}{\lambda} = \dfrac{2}{\lambda^2}$
 
 		$Var(X) = EX^2 - (EX)^2 = \dfrac{1}{\lambda^2}$
+
+        $ \varphi(t) = \lambda\int_{\mathbb{R}^+}e^{itx-\lambda x}\mathrm{d}x=\dfrac{\lambda}{\lambda-it}$
 
 		无记忆性 $\Leftrightarrow P(X>m+n) = P(X>m)P(X>n)\Leftrightarrow X\sim Exp(\lambda)$
 
@@ -203,13 +218,19 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 
 	利用Poisson积分,可验证$\Phi(\infty) = 1$
 
+	$ P(|Y-\mu| < k\sigma) = \Phi(k) - \Phi(-k) = 2\Phi(k)-1$
+    \\
+
   $EX = \int_{\mathbb{R}}{x\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\mathrm{d}x} = 0$
 
 	$ Var(X) = EX^2 = 1. 分部积分$
 
-	做线性逆变换可得$EY = \mu, Var(Y) = \sigma^2$
+    $\varphi_X(t) = 2\int_{\mathbb{R}^+}\cos(tx)\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\mathrm{d}x$,
 
-	$ P(|Y-\mu| < k\sigma) = \Phi(k) - \Phi(-k) = 2\Phi(k)-1$
+    求导有$ \dfrac{\mathrm{d}\varphi_X(t)}{\mathrm{d}t} = 2\int_{\mathbb{R}^+}\sin(tx)\mathrm{d}(\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}})
+    = -t\varphi_X(t)\Rightarrow \varphi_X(t) = e^{-\frac{t^2}{2}}$.
+
+    于是,$ \varphi_Y(t) = e^{i\mu t-\frac{\sigma^2t^2}{2}}$
 
 \item \textbf{Gamma分布} $\Gamma(\alpha, \lambda),(\alpha > 0为形状参数,\lambda>0为尺度参数)$
 
@@ -222,6 +243,8 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 	$ EX^2 = \dfrac{\alpha(\alpha+1)}{\lambda^2},Var(X) = \dfrac{\alpha}{\lambda^2}$
 
 	$ \Gamma(1,\lambda )= Exp(\lambda), \Gamma(\dfrac{n}{2},\dfrac{1}{2}) = \chi ^2(n)$
+
+    $ \varphi(t) = (\dfrac{\lambda-it}{\lambda})^n$
   \item \textbf{Beta分布} $ Be(a,b),(a,b>0)$
 
     $ Beta函数:B(a,b) = \int_{0}^{1}{x^{a-1}(1-x)^{b-1}\mathrm{d}x} = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$
@@ -244,6 +267,8 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
   $ p(x) = \dfrac{x^{\frac{k}{2}-1}e^{-\frac{x}{2}}}{2^{k/2}\Gamma(\frac{k}{2})} I_{[0,+\infty)(x)}$
 
     $ EX = k. Var(X) = 2k$
+
+    $ \varphi(t) = (1-2it)^{-\frac{n}{2}}$
 
   \item \textbf{对数正态分布}$ LN(\mu, \sigma^2)$
 
@@ -286,9 +311,11 @@ $ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
 \textbf{密度公式:}
 函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
 
-\textbf{证:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x} \xlongequal{x=h(z)}RHS$
+\textbf{证:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
+\xlongequal{x=h(z)}\int_{-\infty}^{y}RHS$
 
 应用: $X\sim \Gamma(\alpha, \lambda) \Rightarrow  kX \sim \Gamma(\alpha, \dfrac{\lambda}{k}), 2\lambda X \sim \chi^2(2\alpha)$
+\\
 
 \textbf{对角线:}$ F_X(x)$若为严格增的连续函数,$F_X(X) \sim U(0,1)$
 
