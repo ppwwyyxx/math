@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Mon Dec 10 18:21:24 2012 +0800
+% Date: Fri Dec 14 09:51:51 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{}
 \subsection{Joint Distribution}
@@ -102,7 +102,7 @@ $ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\
 
 \end{enumerate}
 
-\subsection{Sum of Random Variables}
+\subsection{Convolution}
 \textbf{和的分布(卷积):}
 
 $P(X+Y=k) = \sum_{i\in \mathbb{Z}}{P(X=i)P(y=k-i)}$
@@ -263,9 +263,35 @@ $ \Cov(\vec{X})$为\textbf{半正定对称阵}:任取向量$ \vec{\alpha}$,
 =&E[\sum_{i=1}^n{\alpha_i(X_i-EX_i)}]^2\ge 0
 \end{align*}
 
-\textbf{n元正态分布} $ N(E\vec{X},\Cov(\vec{X}))$
+\subsection{Gauss 分布}
+$ \vec{Z} = (Z_1,\cdots Z_n)^{T}, Z_i\sim N(0,1)相互独立,A=(a_{ij})_{m\times n}, \vec{\mu} = (\mu_1,\cdots ,\mu_m)^{T},则\vec{X} = A\vec{Z}+\vec{\mu}
+服从m$维\textbf{Gauss分布},记$\vec{X}\sim N(E\vec{X},\Cov(\vec{X})) = N(\vec{\mu}, \Sigma)$
 
-$ p(\vec{x})=\dfrac{1}{(2\pi)^{\frac{n}{2}}\sqrt{|\Cov(\vec{X})|}}e^{-\dfrac{(\vec{x}-E\vec{X})'\Cov(\vec{X})^{-1}(\vec{x}-E\vec{X})}{2}}$
+$ E\vec{X} = \vec{\mu}, Var(X_i) = \sum_{k}a_{ik}^2$
+
+$ \Cov(Z_k,Z_l) = \delta_{kl}\Rightarrow \Cov(X_i,X_j)=\sum_{k,l}a_{ik}a_{jl}\Cov(Z_k,Z_l) =
+\sum_{k}a_{ik}a_{jk}\Rightarrow \Sigma = \Cov(\vec{X})=AA^T$
+
+  $ \vec{X}服从m维$\textbf{正态分布}$\Leftrightarrow r(A)=r(AA^T)=r(\Cov(X))=m\Leftrightarrow \Cov(\vec{X})正定$
+
+$ \varphi(\vec{t})=e^{i\vec{t}^T\vec{\mu}-\frac{1}{2}\vec{t}^T\Sigma\vec{t}},$且对于每个非负实对称阵$ \Sigma$,此函数都是Gauss分布.
+
+$ \bullet $由特征函数容易证明,Gauss分布做线性变换后仍为Gauss分布.
+
+$ p(\vec{x})=\dfrac{1}{(2\pi)^{\frac{n}{2}}\sqrt{|\Sigma|}}e^{-\dfrac{(\vec{x}-\vec{\mu})^T\Sigma^{-1}(\vec{x}-\vec{\mu})}{2}}$
+\\
+
+Matrix Tricks:
+
+设$n维随机向量 \vec{X}\sim N(0,I), $
+取\textbf{正交阵}$A,使其首行为(\dfrac{1}{\sqrt{n}},\cdots ,\dfrac{1}{\sqrt{n}}),$
+则显然$ \vec{Y} = A\vec{X}\sim N(0,I)$
+\begin{flalign*}
+  \bar{X} = &\dfrac{\Oldsum{X_i}}{n}=\dfrac{Y_1}{\sqrt{n}}&\\
+  (n-1)S^2 =& \sum(X_i-\bar{X})^2=\sum{X_i^2}-n\bar{X}^2=X^TX-Y_1^2&\\
+  =& Y^TAA^{-1}Y-Y_1^2=Y_2^2+\cdots +Y_n^2\sim \chi^2(n-1) &\\
+  \Rightarrow & \bar{X}与(n-1)S^2独立&\\
+\end{flalign*}
 
 \subsection{Conditional Distribution}
 设$ A$为事件,$ F_{X|A}(x)=P(X\le x|A) = \int_{-\infty}^{x}p_{X|A}(u)\mathrm{d}u$
@@ -277,11 +303,11 @@ $ F_{X|Y}(x|y) = P(X\le x|Y=y)=\int_{-\infty}^x{\dfrac{p_{X,Y}(u,y)}{p_Y(y)}\mat
   \item [条件正态分布:]\hfill\\
     \quad $ (X,Y)\sim N(0,0,1,1,\rho)\Rightarrow X|Y=y \sim N(\rho y, 1-\rho^2)$
 
-    $\Rightarrow  E(X|Y) = \rho Y, E(X|Y=y) = \rho y$
+  $\Rightarrow  E(X|Y) = \rho Y, E(X|Y=y) = \rho y$
 
-    \quad$ (X,Y) \sim N(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho) $
+\quad$ (X,Y) \sim N(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho) $
 
-  $\Rightarrow  X|Y=y \sim N(\mu_1+\rho\dfrac{\sigma_1}{\sigma_2}(y-\mu_2), \sigma_1^2(1-\rho^2))$
+$\Rightarrow  X|Y=y \sim N(\mu_1+\rho\dfrac{\sigma_1}{\sigma_2}(y-\mu_2), \sigma_1^2(1-\rho^2))$
 
   \item [逆乘法公式:]\hfill\\
     若$p_{X,Y}(x,y) = g(y)h(x,y),且\forall y, \int_{R}h(x,y)\mathrm{d}x=1$
@@ -297,21 +323,21 @@ $ F_{X|Y}(x|y) = P(X\le x|Y=y)=\int_{-\infty}^x{\dfrac{p_{X,Y}(u,y)}{p_Y(y)}\mat
 
     $\quad E[g(X)h(Y)|Y=y] = E[g(X)h(y)|Y=y] = h(y) E[g(X)|Y=y]$
 
-  $\Rightarrow E[g(X)h(Y)|Y] = h(Y)E[g(X)|Y]$
+    $\Rightarrow E[g(X)h(Y)|Y] = h(Y)E[g(X)|Y]$
 
-  \item[重期望公式:]\hfill
-    \begin{flalign*}
-      E(X) &= \int_{\mathbb{R}}\int_{\mathbb{R}}{xp(x,y)\mathrm{d}x\mathrm{d}y} =\int_{\mathbb{R}}\int_{\mathbb{R}}xp(x|y)p_Y(y)\mathrm{d}x\mathrm{d}y &\\
-      &=\int_{\mathbb{R}}{E(X|Y=y)p_Y(y)\mathrm{d}y} = E(E(X|Y))&\\
-      E(X) &= \sum_{j}E(X|Y=y_j)P(Y=y_j) 用于很多趣题.&\\
-      推论:&随机个随机变量和.设 X_1\cdots \text{i.i.d},则有 E(\sum_{i=1}^N{X_i})=E(X)E(N)&\\
-    \end{flalign*}
-  \item [条件期望是最佳平方逼近:] $ EX^2<\infty 时,E[X-E(X|Y)]^2 =\min E[X-\varphi(Y)]^2$ \hfill\\
-    \textbf{证:}由$ E[E(X|Y)]^2\le E[E(X^2|Y)] =EX^2$知存在性.
+\item[重期望公式:]\hfill
+  \begin{flalign*}
+    E(X) &= \int_{\mathbb{R}}\int_{\mathbb{R}}{xp(x,y)\mathrm{d}x\mathrm{d}y} =\int_{\mathbb{R}}\int_{\mathbb{R}}xp(x|y)p_Y(y)\mathrm{d}x\mathrm{d}y &\\
+    &=\int_{\mathbb{R}}{E(X|Y=y)p_Y(y)\mathrm{d}y} = E(E(X|Y))&\\
+    E(X) &= \sum_{j}E(X|Y=y_j)P(Y=y_j) 用于很多趣题.&\\
+    推论:&随机个随机变量和.设 X_1\cdots \text{i.i.d},则有 E(\sum_{i=1}^N{X_i})=E(X)E(N)&
+  \end{flalign*}
+\item [条件期望是最佳平方逼近:] $ EX^2<\infty 时,E[X-E(X|Y)]^2 =\min E[X-\varphi(Y)]^2$ \hfill\\
+  \textbf{证:}由$ E[E(X|Y)]^2\le E[E(X^2|Y)] =EX^2$知存在性.
 
-    考虑期望在线性空间中的点积意义,需证$ E[[X-E(X|Y)]\varphi(Y)]=0$.
+  考虑期望在线性空间中的点积意义,需证$ E[[X-E(X|Y)]\varphi(Y)]=0$.
 
-    LHS = $ E[E([X-E(X|Y)]\varphi(Y)|Y)] = E(\varphi(Y)E[X-E(X|Y)|Y]) = E[\varphi(Y)(E(X|Y) - E[E(X|Y)|Y])] = 0$
+  LHS = $ E[E([X-E(X|Y)]\varphi(Y)|Y)] = E(\varphi(Y)E[X-E(X|Y)|Y]) = E[\varphi(Y)(E(X|Y) - E[E(X|Y)|Y])] = 0$
 
 
 \end{description}

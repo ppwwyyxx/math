@@ -1,0 +1,38 @@
+% $File: notation.tex
+% $Date: Sun Dec 16 16:49:51 2012 +0800
+% $Author: jiakai <jia.kai66@gmail.com>
+
+\section*{Notations}
+Throughout this paper, we would use the following notations:
+\begin{itemize}
+	\item $\Pr{S}$ is the probability of $S$ ($S$ is usually a set or a
+		proposition).
+	%\item $\Px{X}{x}$ is the probability distribution function for random
+		%variable $X$, and if $X$ is discrete we have $\Px{X}{x} = \Pr{X = x}$.
+		%We would write $\P{x}$ instead of $\Px{X}{x}$ if there is no ambiguity.
+	\item $\E{X}$ is the expectation of random variable $X$, which is defined
+		as the following for a discrete random variable:
+		\begin{equation*}
+			\E{X} = \sum_k k\P{k}
+		\end{equation*}
+	\item $\Var{X}$ is the variance of random variable $X$, defined as
+		\begin{equation*}
+			\Var{X} = \E{(X-\E{X})^2}
+		\end{equation*}
+	\item $\Cov[X,Y]$ is the covariance of random variable $X, Y$, defined as
+		\begin{equation*}
+			\Cov[X,Y] = \E{XY}-\E{X}\E{Y}
+		\end{equation*}
+	%\item $\T{f(n)}$ and $\O{f(n)}$ are used to describe the asymptotic behavior
+		%of functions, defined as:
+		%\begin{quote}
+			%$f(n) = \O{g(n)}$ iff $\exists N_0, c \in \real$ such that
+			%\begin{equation*}
+				%\forall n > N_0, |f(n)| < c|g(n)|
+			%\end{equation*}
+			%$f(n) = \T{g(n)}$ iff $f(n) = \O{g(n)}$ and $g(n) = \O{f(n)}$
+		%\end{quote}
+\end{itemize}
+
+% vim: filetype=tex foldmethod=marker foldmarker=f{{{,f}}}
+

@@ -1,0 +1,178 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6639,        169]
+NotebookOptionsPosition[      6211,        150]
+NotebookOutlinePosition[      6552,        165]
+CellTagsIndexPosition[      6509,        162]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"n", " ", "=", " ", "3"}], ",", " ", 
+   RowBox[{"n", " ", "<=", " ", "7"}], ",", " ", 
+   RowBox[{"n", " ", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"k", " ", "=", " ", "0"}], ",", " ", 
+     RowBox[{"k", " ", "<=", " ", "n"}], ",", 
+     RowBox[{"k", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Binomial", "[", 
+           RowBox[{"n", ",", "k"}], "]"}], 
+          RowBox[{
+           RowBox[{"Subfactorial", "[", 
+            RowBox[{"n", "-", "k"}], "]"}], "/", 
+           RowBox[{"Factorial", "[", "n", "]"}]}]}], " ", "-", " ", 
+         RowBox[{
+          RowBox[{"1", "/", 
+           RowBox[{"Factorial", "[", "k", "]"}]}], "/", "E"}]}], ",", " ", 
+        "2"}], "]"}], "]"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.564646508476974*^9, 3.564646587900242*^9}, {
+  3.564646618364917*^9, 3.5646467347922297`*^9}, {3.5646467908005457`*^9, 
+  3.564646819257284*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"n", "=", "6"}], "\[IndentingNewLine]", 
+ RowBox[{"DiscretePlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Binomial", "[", 
+       RowBox[{"n", ",", "k"}], "]"}], "*", 
+      RowBox[{
+       RowBox[{"Subfactorial", "[", 
+        RowBox[{"n", "-", "k"}], "]"}], "/", 
+       RowBox[{"Factorial", "[", "n", "]"}]}]}], " ", ",", ",", 
+     RowBox[{
+      RowBox[{"1", "/", "E"}], "/", 
+      RowBox[{"Factorial", "[", "k", "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "0", ",", "n"}], "}"}], ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"FontWeight", "\[Rule]", "\"\<Bold\>\""}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "21"}]}], "}"}]}], ",", 
+   RowBox[{"AxesOrigin", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5646469548467712`*^9, 3.5646469874426117`*^9}, {
+  3.5646470738031263`*^9, 3.564647074563538*^9}, {3.56464712302105*^9, 
+  3.56464714088527*^9}, {3.564647196142363*^9, 3.564647225622233*^9}, {
+  3.564647271095344*^9, 3.564647277919484*^9}, {3.564647311231531*^9, 
+  3.5646473178723927`*^9}, {3.564647350664764*^9, 3.564647350800095*^9}, {
+  3.564647506667416*^9, 3.564647590995397*^9}, {3.5646481878759327`*^9, 
+  3.564648213412236*^9}, {3.564648293717882*^9, 3.564648294189595*^9}, {
+  3.56464867831544*^9, 3.564648688692235*^9}, {3.564648719460496*^9, 
+  3.564648720180518*^9}, {3.564648782898601*^9, 3.564648851005369*^9}}],
+
+Cell[BoxData["6"], "Output",
+ CellChangeTimes->{{3.5646475711294737`*^9, 3.564647591314232*^9}, {
+   3.5646481884295607`*^9, 3.564648213668317*^9}, 3.564648294518449*^9, {
+   3.564648679431615*^9, 3.564648689027019*^9}, 3.564648720832098*^9, {
+   3.564648800551902*^9, 3.56464885140637*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{
+    {RGBColor[0.24720000000000014`, 0.24, 0.6], 
+     {RGBColor[0.24720000000000014`, 0.24, 0.6], Opacity[0.2], 
+      PolygonBox[{{0., 0.3680555555555556}, {1., 0.36666666666666664`}, {2., 
+        0.1875}, {3., 0.05555555555555555}, {4., 0.020833333333333332`}, {5., 
+        0.}, {6., 0.001388888888888889}, {6., 0}, {5., 0}, {4., 0}, {3., 0}, {
+        2., 0}, {1., 0}, {0., 0}},
+       VertexColors->None]}, 
+     {RGBColor[0.24720000000000014`, 0.24, 0.6], Opacity[0.2]}}, 
+    {RGBColor[0.6, 0.24, 0.4428931686004542], 
+     {RGBColor[0.6, 0.24, 0.4428931686004542], Opacity[0.2]}, 
+     {RGBColor[0.6, 0.24, 0.4428931686004542], Opacity[0.2]}}, 
+    {RGBColor[0.6, 0.5470136627990908, 0.24], 
+     {RGBColor[0.6, 0.5470136627990908, 0.24], Opacity[0.2], 
+      PolygonBox[{{0., 0.36787944117144233`}, {1., 0.36787944117144233`}, {2.,
+         0.18393972058572117`}, {3., 0.061313240195240384`}, {4., 
+        0.015328310048810096`}, {5., 0.0030656620097620196`}, {6., 
+        0.0005109436682936699}, {6., 0}, {5., 0}, {4., 0}, {3., 0}, {2., 0}, {
+        1., 0}, {0., 0}},
+       VertexColors->None]}, 
+     {RGBColor[0.6, 0.5470136627990908, 0.24], Opacity[0.2]}}}, {
+    {RGBColor[0.24720000000000014`, 0.24, 0.6], 
+     LineBox[{{{0., 0.3680555555555556}, {1., 0.36666666666666664`}, {2., 
+      0.1875}, {3., 0.05555555555555555}, {4., 0.020833333333333332`}, {5., 
+      0.}, {6., 0.001388888888888889}}}], {}, {}}, 
+    {RGBColor[0.6, 0.24, 0.4428931686004542], LineBox[{}], {}, {}}, 
+    {RGBColor[0.6, 0.5470136627990908, 0.24], 
+     LineBox[{{{0., 0.36787944117144233`}, {1., 0.36787944117144233`}, {2., 
+      0.18393972058572117`}, {3., 0.061313240195240384`}, {4., 
+      0.015328310048810096`}, {5., 0.0030656620097620196`}, {6., 
+      0.0005109436682936699}}}], {}, {}}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  BaseStyle->{FontWeight -> "Bold", FontSize -> 21},
+  ImageSize->{637., Automatic},
+  Method->{"MessagesHead" -> DiscretePlot},
+  PlotRange->{{0, 6}, {0, 0.3680555555555556}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.02]}}]], "Output",
+ CellChangeTimes->{{3.5646475711294737`*^9, 3.564647591314232*^9}, {
+   3.5646481884295607`*^9, 3.564648213668317*^9}, 3.564648294518449*^9, {
+   3.564648679431615*^9, 3.564648689027019*^9}, 3.564648720832098*^9, {
+   3.564648800551902*^9, 3.564648851413062*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{
+  3.5646483401562862`*^9, {3.5646483977252703`*^9, 3.5646483986527843`*^9}, 
+   3.5646488760450983`*^9}]
+},
+WindowSize->{1366, 746},
+WindowMargins->{{-1366, Automatic}, {Automatic, 22}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1104, 28, 69, "Input"],
+Cell[CellGroupData[{
+Cell[1686, 52, 1575, 35, 69, "Input"],
+Cell[3264, 89, 291, 4, 63, "Output"],
+Cell[3558, 95, 2483, 47, 408, "Output"]
+}, Open  ]],
+Cell[6056, 145, 151, 3, 30, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

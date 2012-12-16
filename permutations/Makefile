@@ -1,4 +1,4 @@
-TARGET=probability
+TARGET=report
 TEX=xelatex -shell-escape
 BIBTEX=bibtex
 READER=mupdf
@@ -13,6 +13,7 @@ rebuild output/$(TARGET).pdf: *.tex output
 output: 
 	mkdir output
 	cd output && rm -f res && ln -s ../res .
+	cd output && rm -f pics && ln -s ../pics .
 
 view: output/$(TARGET).pdf
 

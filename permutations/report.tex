@@ -1,0 +1,77 @@
+% $File: report.tex
+% $Date: Sun Dec 16 16:04:33 2012 +0800
+% $Author: wyx <ppwwyyxxc@gmail.com>
+
+\documentclass[a4paper]{article}
+\usepackage{fontspec,zhspacing,verbatim,minted, zhmath}
+\usepackage{amsmath}
+\usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+\usepackage{amssymb,amsthm,fontspec,graphicx,algpseudocode}
+\usepackage[sorting=none]{biblatex}
+\usepackage{subfigure}
+\usepackage{textcomp,enumerate}
+\usepackage{indentfirst}
+\usepackage{float,chngpage}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{extarrows}
+\usepackage{titlesec}
+\usepackage{caption}\captionsetup{hypcap=true}
+\usepackage{indentfirst}
+\newfontfamily\zhfont[BoldFont=SimHei,ItalicFont=KaiTi_GB2312]{SimSun}
+\zhspacing
+
+
+\changetext{}{2.2cm}{-1.1cm}{-1.1cm}{}
+\pagestyle{fancy}
+\setlength{\headheight}{15.2pt}
+\lhead[]{}\rhead[]{}
+%\chead[\em 探究人耳对语言的辨识]{\em 探究人耳对语言的辨识}
+\fancyhead[C]{\emph{Probability Features of Random Permutations}}
+
+%\renewcommand{\abstractname}{摘要}
+%\renewcommand{\contentsname}{目录}
+%\renewcommand{\figurename}{图}
+%\defbibheading{bibliography}{\section{参考文献}}
+
+\newcommand{\figref}[1]{\hyperref[fig:#1]{Figure \ref*{fig:#1}}}
+\newcommand{\eqnref}[1]{\hyperref[eqn:#1]{(\ref*{eqn:#1})}}
+\newcommand{\lemref}[1]{\hyperref[lemma:#1]{Lemma \ref*{lemma:#1}}}
+\newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
+\DeclareMathOperator{\LM}{\tiny{LM}}
+\DeclareMathOperator{\LT}{\tiny{LT}}
+\DeclareMathOperator{\rank}{\tiny{rank}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Cov}{Cov}
+
+\let\Oldsum\sum
+\renewcommand{\sum}{\displaystyle\Oldsum}
+\let\Oldprod\prod
+\renewcommand{\prod}{\displaystyle\Oldprod}
+\let\Oldcap\bigcap
+\renewcommand{\bigcap}{\displaystyle\Oldcap}
+\let\Oldcup\bigcup
+\renewcommand{\bigcup}{\displaystyle\Oldcup}
+\let\Oldint\int
+\renewcommand{\int}{\displaystyle\Oldint}
+\let\Oldiint\iint
+\renewcommand{\iint}{\displaystyle\Oldiint}
+
+\input{mint-defs.tex}
+
+\title{Probability Features of Random Permutations}
+\author{\\(ppwwyyxxc@gmail.com)}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  In this paper, we will
+
+\end{abstract}
+\tableofcontents
+\newpage
+\input{notation.tex}
+\input{fixed_points.tex}
+
+\end{document}
+
