@@ -1,0 +1,103 @@
+% File: cal_d.tex
+% Date: Tue Dec 18 19:16:40 2012 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+\section{Calculation of $ D_{n,k}$}
+\label{sec:f-calc}
+We are about to see three totally different approaches of the calculation of $ D_{n}$.
+
+Then we can easily caculate $ D_{n,k}$ by
+\[ D_{n,k} = {n\choose{k}}D_{n-k}\].
+
+\subsection{Using the Inclusion-Exclusion Principle}
+
+      Define $ A_j$ as:
+      \[ A_j =  \{ \pi \in \Pi | j \in \mathcal{F}(\pi)\}, j = 1,2,\cdots ,n\]
+
+      Then it is obvious to see that, for any $ t = 1,2,\cdots ,n$, we have
+      \[ \card{\bigcap_{i=1}^{t}A_{r_i}} = (n-t)!\]
+      where $ r_i$ is any permutation of $ (1,2,\cdots ,n).$
+
+      Therefore, $ D_n$ can be calculated by the Inclusion-Exclusion Principle:
+       \begin{align*}
+       D_n = & n! - \sum_{i=1}^n\card{A_i} + \sum_{1\le i< j\le n}{\card{A_i\cap A_j}}-\cdots +
+      (-1)^n\card{\bigcap_{i=1}^n{A_i}}\\
+      =& n! - {n\choose{1}}(n-1)! + {n\choose{2}}(n-2)!-\cdots +(-1)^n{n\choose{n}}(n-n)!\\
+      =& n!\sum_{i=0}^n{\dfrac{(-1)^i}{i!}}
+      \end{align*}
+
+      \subsection{Using Recurrence Relation}
+
+     For any permutation $\pi$ of $ (1,2,\cdots n),$ such that $ \card{\mathcal{F}(\pi)} = 0$,
+     it is obvious that $ \pi(1)$ has $ n-1$ possible values.
+     Now consider the value of $ \pi(\pi(1)):$
+
+     If $ \pi(\pi(1)) = 1, $ then $\pi'= (\pi(2),\cdots ,\pi(\pi(1)-1), \pi(\pi(1)+1), \cdots ,\pi(n))$
+     is a permutation of
+     $ (2,\cdots ,\pi(1)-1, \pi(1)+1, \cdots ,n)$, such that $\card{\mathcal{F}(\pi')} = 0$.
+     It is easy to show that this correspondence from the given $ \pi$ to $ \pi'$ is bijective.
+
+     If $ \pi(\pi(1)) \neq 1$, assume $ \pi(j) = 1$, then $ \pi' =(\pi(2), \cdots ,\pi(j-1), \pi(1), \pi(j+1), \cdots ,\pi(n))$
+     is a permutation of $ (2,\cdots ,n),$ such that $\card{\mathcal{F}(\pi')}=0$.
+     It is easy to show that this correspondence from the given $\pi$ to $ \pi'$ is also bijective.
+
+     Therefore, we have the recurrence relation
+\begin{align}
+& D_n = (n-1)(D_{n-1}+D_{n-2}) \label{eqn:recurrence}\\
+\Leftrightarrow & D_n - nD_{n-1} = - [D_{n-1}- (n-1)D_{n-2}] \label{eqn:recurrence-change}\\
+&D_2 = 1, D_1 = 0 \nonumber
+\end{align}
+
+Continue applying \eqnref{recurrence-change}, we obtain
+\begin{align*}
+ &D_n - nD_{n-1} = -[D_{n-1}-(n-1)D_{n-2}]= \cdots  =(-1)^{n-2}(D_2 - 2D_1) = (-1)^n \\
+ \Rightarrow & \dfrac{D_n}{n!} - \dfrac{D_{n-1}}{(n-1)!} = \dfrac{(-1)^n}{n!} \\
+ \Rightarrow &D_n = n! \sum_{i=0}^n{\dfrac{(-1)^i}{i!}}
+\end{align*}
+
+\subsection{Using the Inversion Formula}
+\begin{lemma}
+  \textbf{(Inversion Formula)}
+  \label{lemma:inversion}
+  Given two sequences $ \{ a_n\},\{ b_n\} $. If the formula
+  \[  b_n = \sum_{k=0}^n(-1)^k{n\choose{k}}a_k\]
+  holds for all $ n = 1,2,\cdots $, then
+  \[ a_n = \sum_{k=0}^n(-1)^k{n\choose{k}}b_k, n = 1,2,\cdots \]
+\end{lemma}
+\begin{proof}
+Note that in series $ \sum_{k=0}^n(-1)^k{n\choose{k}}(1+x)^k,$
+the coefficient of the term $ x^p$ is given by $
+\sum_{k=p}^n(-1)^k{n\choose{k}}{k\choose{p}}.$
+
+On the other hand, by \emph{Binomial Theorem},
+\[ \sum_{k=0}^n(-1)^k{n\choose{k}}(1+x)^k = [1-(1+x)]^n = (-1)^nx^n, \]
+therefore the coefficient of the term $ x^p$ is $(-1)^n\delta_{pn} $, where $ \delta_{ij}$ is the
+\emph{Kronecker delta function}:
+\[ \delta_{ij} = \begin{cases}
+  1, i = j \\ 0, i \ne j \end{cases} \]
+  Thus,
+  \[ \sum_{k=p}^n(-1)^k{n\choose{k}}{k\choose{p}} = (-1)^n\delta_{pn}\]
+
+  It follows that
+\begin{align*}
+    \sum_{k=0}^n(-1)^k{n\choose{k}}b_k &=
+    \sum_{k=0}^n(-1)^k{n\choose{k}}\left[\sum_{p=0}^k(-1)^i{k\choose{i}}a_i\right] \\
+    &=\sum_{p=0}^n(-1)^p\left[\sum_{k=p}^n(-1)^k{n\choose{k}}{k\choose{p}}a_p\right] \\
+   &=\sum_{p=0}^n(-1)^p(-1)^n\delta_{pn}a_p \\
+   &= a_n
+\end{align*} \end{proof}
+
+By definition, $ \sum_{k=0}^nD_{n,k} =\card{\Pi_n}= n!$,
+which is equivalent to
+ \begin{equation}
+ n! = \sum_{k=0}^n{n\choose{k}}D_k =
+  \sum_{k=0}^n\left[ (-1)^k{n\choose{k}}\right]\left[(-1)^kD_k\right]
+  \label{eqn:fact}
+  \end{equation}
+
+According to \lemref{inversion}, we immediately obtain:
+\begin{align*}
+&(-1)^nD_n = \sum_{k=0}^n(-1)^k{n\choose{k}}k! \\
+\Rightarrow & D_n = \sum_{k=0}^n(-1)^{n-k}\dfrac{n!}{(n-k)!} = n!\sum_{k=0}^n\dfrac{(-1)^k}{k!}
+\end{align*}
+

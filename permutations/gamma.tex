@@ -1,0 +1,33 @@
+% File: gamma.tex
+% Date: Tue Dec 18 19:29:29 2012 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+\section{Connections to Gamma Function}
+Continue working on \eqnref{f-pr}, we can obtain:
+ \begin{equation}
+ \Pr{X=k} = \dfrac{{n\choose{k}}}{n!}(n-k)!\sum_{i=0}^{n-k}{\dfrac{(-1)^i}{i!}} = \dfrac{1}{k!}\sum_{i=0}^{n-k}\dfrac{(-1)^i}{i!}
+ \label{eqn:def-p}
+ \end{equation}
+
+Introducing the \emph{incomplete gamma function} defined as:
+\[ \Gamma(s,x) = \int_{x}^{\infty}t^{s-1}e^{-t}\mathrm{d}t\]
+By integration by parts, a recurrence relation can be found:
+\[ \Gamma(s,x) = (s-1)\Gamma(s-1,x) + x^{s-1}e^{-x}\]
+Thus,
+\[\Gamma(n,x) = (n-1)! e^{-x}\sum_{i=0}^{n-1}\dfrac{x^i}{i!}, \forall n\in \mathbb{N} \]
+Then we can rewrite the previous formula in a more elegant way:
+\[ D_n = \dfrac{\Gamma(n+1, -1)}{e}\]
+\[ \Pr{X=k}=\dfrac{{n\choose{k}}\Gamma(n-k+1,-1)}{en!} =\dfrac{\Gamma(n-k+1,-1)}{ek!(n-k)!}\]
+\\
+
+Another way of rewriting $ D_n$ is:
+\[ D_n = \E{(Y-1)^n}\]
+where $ Y$ is a random variable such that $ Y\sim Exp(1),$
+here  $Exp(\lambda) $ denotes \emph{exponential distribution}.
+
+To prove this, it is sufficient to show that
+\[ \E{Y^k} = \int_{\mathbb{R}^+}x^ke^{-x} = \Gamma(k+1) = k!\]
+where $ \Gamma(x)$ is the \emph{complete gamma function}.
+
+Thus,
+\[ \E{(Y-1)^n} = \sum_{k=0}^n{n\choose{k}}\E{Y^{n-k}}(-1)^k = \sum_{k=0}^n{n\choose k}(-1)^k(n-k)! = D_n \qed\]

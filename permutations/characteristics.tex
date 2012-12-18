@@ -1,0 +1,73 @@
+% File: characteristics.tex
+% Date: Tue Dec 18 19:22:53 2012 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+\section{Characteristics of $ X$}
+\subsection{Expectation and Variance}
+\label{f-random}
+By definition, the probability mass function of $ X$ is given by
+  \begin{equation}
+  \Pr{X=k} = \dfrac{D_{n,k}}{n!}=\dfrac{{n\choose{k}}D_{n-k}}{n!}, k = 0,1,\cdots ,n
+  \label{eqn:f-pr}
+  \end{equation}
+Recall that $ \sum_{k=0}^n{n-1 \choose{n-k}}D_{n-k}=(n-1)!$ according to \eqnref{fact},
+the expectation of $ X$ can be calculated as followed:
+\begin{equation}
+ \E{X} = \sum_{k=0}^n\dfrac{k{n\choose{k}}D_{n-k}}{n!} = \sum_{k=0}^n\dfrac{n{n-1\choose{n-k}}D_{n-k}}{n!} =
+  \sum_{k=0}^n\dfrac{{n-1\choose{n-k}}D_{n-k}}{(n-1)!} = 1
+  \label{eqn:exp1}
+  \end{equation}
+
+By similiar approach, the variance can also be derived:
+\begin{align}
+ \E{X(X-1)} &= \sum_{k=0}^n\dfrac{k(k-1){n\choose k}D_{n-k}}{n!}=\sum_{k=0}^n\dfrac{n(n-1){n-2 \choose{n-k}}D_{n-k}}{n!} = 1 \label{eqn:exp2} \\
+ \Var{X} &= \E{X(X-1)} + \E{X}-\E{X}^2 = 1 \nonumber
+\end{align}
+\\
+
+Another way of calculating expectation and variance is by treating $ X$ as a sum of $ n $ identical
+random variable $ S_i$, where $ S_i$ is defined by:
+\[ S_i = \begin{cases}1, \pi(i)=i\\0,\pi(i)\neq i\end{cases}.\]
+
+Obviously $ X = \sum_{i=1}^nS_i$ and $ S_i\sim b(1,\dfrac{1}{n})$, where $ b(n,p)$ denotes the
+\emph{binomial distribution} with sample size $ n$ and success probability $ p$.
+
+It can be easily shown that for $ i\neq j, \Pr{S_iS_j=1}=\dfrac{(n-2)!}{n!}=\dfrac{1}{n(n-1)} $, therefore $S_iS_j \sim b(1, \dfrac{1}{n(n-1)})$.
+Then we can obtain:
+\[ \E{X} = \sum_{i=1}^n\E{S_i} = 1\]
+\[ \Cov[S_i,S_j]=\E{S_iS_j}-\E{S_i}\E{S_j}=\dfrac{1}{n^2(n-1)}\]
+\[ \Var{X} = \sum_{i=1}^n\Var{S_i}+\sum_{i\neq j}\Cov[S_i,S_j] = 1\]
+
+\subsection{Moments}
+\label{sec:moments}
+Next, we calculate the moments of $ X$.
+
+Introducing the \emph{Stirling number of the second kind}  $ \Stir{m}{k} $ , it is well-known that:
+\[ \sum_{k=0}^m\Stir{m}{k}x^{\underline{k}} = x^m\]
+where $ x^{\underline{k}}$ is the $ k$th \emph{falling factorial} of $ x$ defined by:
+\[ x^{\underline{k}} = x(x-1)\cdots (x-k+1). \quad x^{\underline{0}} = 1, \text{in particular}\]
+
+Therefore, we have
+\[ \sum_{k=0}^m\Stir{m}{k}\E{X^{\underline{k}}} = \E{X^m}\]
+
+To calculate the moments, we only have to calculate $ \E{X^{\underline{k}}}$.
+Continue the derivation in \eqnref{exp1} and \eqnref{exp2}, it is easy to show that
+\[ \E{X^{\underline{k}}} =\begin{cases} 1, 0\le k\le n\\
+0,  k>n.\end{cases} \]
+(Another proof
+will be shown in \secref{gf}).
+
+As a result,
+ \begin{equation}
+ \E{X^m} =\begin{cases} \sum_{k=0}^m\Stir{m}{k} = B_m, m = 1,2,\cdots n \\
+   \\
+  \sum_{k=0}^n\Stir{m}{k}, m  = n+1, n+2,\cdots \end{cases}
+  \end{equation}
+where $ B_m$ is the $ m$th \emph{Bell number}.
+
+Note that $ \Stir{m}{k} = 0$ for $ m < k$. It is reasonable to rewrite the above formula as follows:
+\begin{equation}
+  \E{X^m} = \sum_{k=0}^n\Stir{m}{k}, m=1,2,\cdots
+  \label{eqn:moments}
+\end{equation}
+

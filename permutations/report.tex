@@ -1,5 +1,5 @@
 % $File: report.tex
-% $Date: Sun Dec 16 16:04:33 2012 +0800
+% $Date: Tue Dec 18 19:04:31 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -27,7 +27,7 @@
 \setlength{\headheight}{15.2pt}
 \lhead[]{}\rhead[]{}
 %\chead[\em 探究人耳对语言的辨识]{\em 探究人耳对语言的辨识}
-\fancyhead[C]{\emph{Probability Features of Random Permutations}}
+\fancyhead[C]{\emph{Number of Fixed Points in Random Permutations}}
 
 %\renewcommand{\abstractname}{摘要}
 %\renewcommand{\contentsname}{目录}
@@ -37,7 +37,7 @@
 \newcommand{\figref}[1]{\hyperref[fig:#1]{Figure \ref*{fig:#1}}}
 \newcommand{\eqnref}[1]{\hyperref[eqn:#1]{(\ref*{eqn:#1})}}
 \newcommand{\lemref}[1]{\hyperref[lemma:#1]{Lemma \ref*{lemma:#1}}}
-\newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
+\newcommand{\secref}[1]{\hyperref[sec:#1]{Section \ref*{sec:#1}}}
 \DeclareMathOperator{\LM}{\tiny{LM}}
 \DeclareMathOperator{\LT}{\tiny{LT}}
 \DeclareMathOperator{\rank}{\tiny{rank}}
@@ -59,19 +59,28 @@
 
 \input{mint-defs.tex}
 
-\title{Probability Features of Random Permutations}
-\author{\\(ppwwyyxxc@gmail.com)}
+\title{Number of Fixed Points in Random Permutations}
+\author{Yuxin Wu~(2011011271)\\<ppwwyyxxc@gmail.com>}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-  In this paper, we will
-
+  In this paper, we will research on various features of the random variable $X$
+  defined by the number of fixed points in random permutations.
+  Several forms of the distribution of $X$ is given, an approximate distribution is discussed.
+  The moments as well as the generating functions of $X$ are also calculated.
 \end{abstract}
 \tableofcontents
 \newpage
 \input{notation.tex}
-\input{fixed_points.tex}
+\input{intro.tex}
+\input{cal_d.tex}
+\input{characteristics.tex}
+\input{gamma.tex}
+\input{approx.tex}
+\input{gf.tex}
+%\section{Cycles}
+%\section{Inversions}
 
 \end{document}
 
