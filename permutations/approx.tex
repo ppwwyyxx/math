@@ -1,11 +1,12 @@
 % File: approx.tex
-% Date: Tue Dec 18 19:33:15 2012 +0800
+% Date: Tue Dec 18 20:01:48 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Approximation}
 Note that $ e^{-1} = \sum_{i=0}^{\infty}\dfrac{(-1)^i}{i!}$,
 which indicates that $\Pr{X=k}\approx \dfrac{e^{-1}}{k!},D_n \approx e^{-1}n! $. Now we focus on this two approximations.
 
+\subsection{Approximation of $ \Pr{X=k}$}
 Let $ Y$ be a random variable such that $ Y\sim \text{Poisson}(1)$, then
 we have $ \Pr{Y=k} = \dfrac{1}{ek!}$.
 Therefore when $ n$ is large enough,
@@ -39,8 +40,8 @@ It is worth mentioning that since we have
 \[ \dfrac{1}{e}\sum_{k=0}^{\infty}\dfrac{k^n}{k!} = B_n\]
 by the famous \emph{Dobinski's formula}, therefore $\E{Y^n} = B_n$. This indicates that $ X$ and
 $ Y$ also have the same first $ n$ moments.
-\\
 
+\subsection{Approximation of $ D_n$}
 Inspired by the previous discussion, we now consider the difference between $ D_n $ and $ e^{-1}n!$.
 
 It is obvious that

@@ -26,11 +26,9 @@ run:
 	$(READER) output/$(TARGET).pdf 
 
 # compile twice to get cross reference right
-final : *.tex *.bib output
-	cd output && rm -f *.tex *.bib && ln -s ../*.tex ../*.bib .
-	cd output && $(TEX) $(TARGET).tex && $(BIBTEX) $(TARGET).aux && \
-		$(TEX) $(TARGET).tex && $(TEX) $(TARGET).tex
-	ps2pdf14 output/$(TARGET).pdf ./$(TARGET).pdf
+final : *.tex  output
+	cd output && rm -f *.tex && ln -s ../*.tex  .
+	cd output && $(TEX) $(TARGET).tex  && $(TEX) $(TARGET).tex
 
 count:
 	@word_count *.tex

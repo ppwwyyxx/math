@@ -1,5 +1,5 @@
 % File: characteristics.tex
-% Date: Tue Dec 18 19:22:53 2012 +0800
+% Date: Wed Dec 19 10:14:20 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Characteristics of $ X$}
@@ -53,16 +53,16 @@ Therefore, we have
 To calculate the moments, we only have to calculate $ \E{X^{\underline{k}}}$.
 Continue the derivation in \eqnref{exp1} and \eqnref{exp2}, it is easy to show that
 \[ \E{X^{\underline{k}}} =\begin{cases} 1, 0\le k\le n\\
-0,  k>n.\end{cases} \]
+0,  k>n\end{cases} \]
 (Another proof
 will be shown in \secref{gf}).
 
 As a result,
- \begin{equation}
+ \begin{equation*}
  \E{X^m} =\begin{cases} \sum_{k=0}^m\Stir{m}{k} = B_m, m = 1,2,\cdots n \\
    \\
   \sum_{k=0}^n\Stir{m}{k}, m  = n+1, n+2,\cdots \end{cases}
-  \end{equation}
+  \end{equation*}
 where $ B_m$ is the $ m$th \emph{Bell number}.
 
 Note that $ \Stir{m}{k} = 0$ for $ m < k$. It is reasonable to rewrite the above formula as follows:

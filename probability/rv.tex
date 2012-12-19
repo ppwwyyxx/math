@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Fri Dec 14 23:47:19 2012 +0800
+% Date: Tue Dec 18 20:41:51 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{}
 \subsection{Random Variables}
@@ -354,6 +354,11 @@ $ EX = \lambda \Gamma(1+\dfrac{1}{k}), Var(X) = \lambda^2\Gamma(1+\dfrac{2}{k})-
       $ X,Y\sim Exp(\frac{1}{\lambda})\Rightarrow X-Y\sim L(0,\lambda), |X-Y|\sim Exp(\dfrac{1}{\lambda})$
 
     $ X,Y\sim \chi^2(1)\Rightarrow X-Y\sim L(0,1)$
+
+  \item \textbf{Pareto分布}
+    $ p(x) = (\alpha-1)x_0^{\alpha-1}x^{-\alpha}I_{[x_0,+\infty]}, \alpha>2, x_0>0$
+
+    $ EX = \dfrac{\alpha-1}{\alpha-2}x_0, Var(X) = \dfrac{(\alpha-1)x_0^2}{(\alpha-3)(\alpha-2)^2}(如果 \alpha>3)$
 
 \end{enumerate}
 

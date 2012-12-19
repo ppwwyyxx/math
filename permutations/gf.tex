@@ -1,5 +1,5 @@
 % File: gf.tex
-% Date: Tue Dec 18 19:53:07 2012 +0800
+% Date: Wed Dec 19 10:18:21 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Generating Function}
@@ -13,7 +13,7 @@ The following formulae are obvious:
  \dfrac{\mathrm{d}(xy)}{\mathrm{d}x} &=D_0+2D_1x+3D_2x^2+\cdots \\
  \dfrac{\mathrm{d}(y+xy)}{\mathrm{d}x} &= (D_0 +D_1) + 2(D_1+D_2)x+3(D_2+D_3)x^2+\cdots \\
  &=\sum_{k=0}^{\infty}(k+1)(D_{k}+D_{k+1})x^k \\
- &=\sum_{k=2}^{\infty}D_kx^{k-2} \quad (\text{applying} \eqnref{recurrence}) \\
+ &=\sum_{k=2}^{\infty}D_kx^{k-2} \quad (\text{applying}\; \eqnref{recurrence}) \\
  &=\dfrac{y-D_1x-D_0}{x^2}\\
  &=\dfrac{y-1}{x^2}
 \end{align*}
@@ -54,7 +54,11 @@ We obtain an ODE:
 \[ \dfrac{\mathrm{d}y}{\mathrm{d}x}\dfrac{x-1}{x}+y = 0\Leftrightarrow \dfrac{\mathrm{d}y}{y}=\dfrac{x\mathrm{d}x}{1-x}\]
   This can be easily solved:
   \[ \ln y = -x-\ln(1-x) +C\Rightarrow y = C'\dfrac{e^{-x}}{1-x} \]
-and $ C'=1$ since $ y(0) = D_0=1$. Then we can conclude $ y(x) = \dfrac{e^{-x}}{1-x}$
+and $ C'=1$ since $ y(0) = D_0=1$. Then we can conclude
+  \begin{equation}
+  y(x) = \sum_{k=0}^{\infty}D_k\dfrac{x^k}{k!} = \dfrac{e^{-x}}{1-x}
+  \label{eqn:egf}
+  \end{equation}
 
 \subsection{Probability Generating Function}
 \label{sec:gf}
@@ -65,16 +69,17 @@ Using \eqnref{f-pr}, we have
 Therefore, for a given $x$, the sequence $ \{ y_n\}, y_n = y(n,x)$ is the \emph{convolution} of
 $ \{ \dfrac{D_n}{n!}\}$ and $ \{ \dfrac{x^n}{n!} \}$.
 
-By the convolution formula, we have
+By the \emph{convolution formula}, we have
 \begin{align*}
   \sum_{n=0}^{\infty} y(n,x)t^n &= \left( \sum_{k=0}^{\infty}\dfrac{D_k}{k!}t^k\right)\left( \sum_{k=0}^{\infty}\dfrac{x^k}{k!}t^k\right) \\
-  &=\dfrac{e^{-t}}{1-t}e^{xt} \\
+  &=\dfrac{e^{-t}}{1-t}e^{xt} \quad (\text{applying} \; \eqnref{egf})\\
   &= \dfrac{e^{xt-t}}{1-t}
 \end{align*}
 
 Denote $ [x^k]g(x)$ as the coefficient of the term $ x^k$ in $ g(x)$, then we have
 \[ y(n,x) = [t^n]\dfrac{e^{xt-t}}{1-t}\]
-Using the probability generating function, it's easy to calculate the moments of $ X$ again by:
+
+Using the probability generating function, we can calculate the moments of $ X$ again by:
 \begin{align*}
   \E{X^{\underline{k}}} &= \left. \left( \dfrac{\mathrm{d}^k y(n,x)}{\mathrm{d}x^k}\right) \right|_{x=1} \\
   & = [t^n]\left. \left( \dfrac{\mathrm{d}^k(\frac{e^{xt-t}}{1-t})}{\mathrm{d}x^k}\right)\right|_{x=1}\\
@@ -92,9 +97,10 @@ Let the \emph{moment generating function} of $ X$ be
 It can be calculated as followed:
 \begin{align*}
   \E{e^{tX}} &=\sum_{k=0}^n\dfrac{1}{k!}\sum_{i=0}^{n-k}\dfrac{(-1)^i}{i!}e^{tk} \\
-  &\xlongequal{s=k+i}\sum_{s=0}^n\sum_{k=0}^s\dfrac{1}{k!}\dfrac{(-1)^{s-k}}{(s-k)!}e^{tk} \\
+  &=\sum_{s=0}^n\sum_{k=0}^s\dfrac{1}{k!}\dfrac{(-1)^{s-k}}{(s-k)!}e^{tk} \quad (\text{let}\; s = k+i)\\
   &=\sum_{s=0}^n\dfrac{1}{s!}\sum_{k=0}^{s}{s\choose k}e^{tk}(-1)^{s-k} \\
-  &=\sum_{s=0}^n\dfrac{(e^t-1)^s}{s!}
+  &=\sum_{s=0}^n\dfrac{(e^t-1)^s}{s!}\\
+  &=\dfrac{e^{e^t-1}}{n!}\Gamma(n+1, e^t-1) \quad (\text{applying}\; \eqnref{rec-gamma})
 \end{align*}
 
 Another way of calculating $y(n,t)$ is by using
@@ -102,9 +108,11 @@ $ \E{e^{tX}} = \sum_{k=0}^{\infty}\dfrac{t^k}{k!}\E{X^k}$ and \eqnref{moments}, 
 \[ \E{e^{tX}} = \sum_{i=0}^n\sum_{k=0}^{\infty}\Stir{k}{i}\dfrac{t^k}{k!} \xlongequal{def}\sum_{i=0}^nf_i(t).\]
 Since Stirling numbers of the second kind satisfy the following recurrence relation:
 \[ i\Stir{k}{i} = \Stir{k+1}{i}-\Stir{k}{i-1}\]
-we have an equation $ if_i(t) = \dfrac{\mathrm{d}f_i(t)}{\mathrm{d}t}-f_{i-1}(t)$, which has the solution
-$ f_i(t) = \dfrac{(e^t-1)^i}{i!}$ , which brings with the desired result.
-Limited by the length of the paper, the details are left over.
+we have an equation $ if_i(t) = \dfrac{\mathrm{d}f_i(t)}{\mathrm{d}t}-f_{i-1}(t)$. The solution of this equation is
+$ f_i(t) = \dfrac{(e^t-1)^i}{i!}, $ which brings with the desired result.
+Limited by the length of the paper, the details are left out.
+\\
 
 It follows easily that the \emph{characteristic function} of $ X$ is:
-\[ \varphi_n(t)=\E{e^{itX}}  =\sum_{k=0}^n\dfrac{(e^{it}-1)^k}{k!}\]
+\[ \varphi_n(t)=\E{e^{itX}}  =\sum_{k=0}^n\dfrac{(e^{it}-1)^k}{k!} =\dfrac{e^{e^{it}-1}}{n!}\Gamma(n+1, e^{it}-1) \]
+Note that the incomplete gamma function can be generalized to be defined on complex numbers.
