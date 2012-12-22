@@ -1,34 +1,29 @@
 TARGET=report
-TEX=xelatex -shell-escape
+TEX=xelatex -shell-escape -output-directory=output
 BIBTEX=bibtex
 READER=mupdf
 
 all: view
 
-rebuild output/$(TARGET).pdf: *.tex output
-	cd output && rm -f *.tex && ln -s ../*.tex .
-	cd output && $(TEX) $(TARGET).tex 
-
+rebuild output/$(TARGET).pdf: *.tex *.bib output
+	$(TEX) $(TARGET) && cd output && ln ../*.bib ./ -f && $(BIBTEX) $(TARGET) 
 
 output: 
 	mkdir output
 	cd output && rm -f res && ln -s ../res .
-	cd output && rm -f pics && ln -s ../pics .
 
 view: output/$(TARGET).pdf
-
-#$(READER) output/$(TARGET).pdf 
+	$(READER) output/$(TARGET).pdf &
 
 clean:
+	rm *.pyg
 	rm -rf output
-
-run:
-	$(READER) output/$(TARGET).pdf 
+	rm $(TARGET).pdf
 
 # compile twice to get cross reference right
-final : *.tex  output
-	cd output && rm -f *.tex && ln -s ../*.tex  .
-	cd output && $(TEX) $(TARGET).tex  && $(TEX) $(TARGET).tex
+final : *.tex *.bib output
+	$(TEX) $(TARGET) && cd output && ln ../*.bib ./ -f && $(BIBTEX) $(TARGET) 
+	$(TEX) $(TARGET)
 
 count:
 	@word_count *.tex
