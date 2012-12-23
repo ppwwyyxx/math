@@ -1,5 +1,5 @@
 % File: cal_d.tex
-% Date: Tue Dec 18 19:16:40 2012 +0800
+% Date: Sun Dec 23 15:39:45 2012 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Calculation of $ D_{n,k}$}
@@ -18,7 +18,7 @@ Then we can easily caculate $ D_{n,k}$ by
       \[ \card{\bigcap_{i=1}^{t}A_{r_i}} = (n-t)!\]
       where $ r_i$ is any permutation of $ (1,2,\cdots ,n).$
 
-      Therefore, $ D_n$ can be calculated by the Inclusion-Exclusion Principle:
+      Therefore, $ D_n$ can be calculated by the Inclusion-Exclusion Principle :
        \begin{align*}
        D_n = & n! - \sum_{i=1}^n\card{A_i} + \sum_{1\le i< j\le n}{\card{A_i\cap A_j}}-\cdots +
       (-1)^n\card{\bigcap_{i=1}^n{A_i}}\\

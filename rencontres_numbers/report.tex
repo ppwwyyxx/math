@@ -1,14 +1,15 @@
 % $File: report.tex
-% $Date: Sun Dec 23 01:42:52 2012 +0800
+% $Date: Sun Dec 23 17:05:16 2012 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
-\usepackage{fontspec,zhspacing,verbatim,minted, zhmath}
+\usepackage{fontspec,zhspacing,verbatim, zhmath}
 \usepackage{amsmath}
 \usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+%\usepackage{url}
+%\usepackage{cite}
+\usepackage[sorting=none]{biblatex}
 \usepackage{amssymb,amsthm,fontspec,graphicx,algpseudocode}
-%\usepackage[sorting=none]{biblatex}
-\usepackage{cite}
 \usepackage{subfigure}
 \usepackage{textcomp,enumerate}
 \usepackage{indentfirst}
@@ -33,7 +34,7 @@
 %\renewcommand{\abstractname}{摘要}
 %\renewcommand{\contentsname}{目录}
 %\renewcommand{\figurename}{图}
-%\defbibheading{bibliography}{\section{References}}
+\defbibheading{bibliography}{\section{References}}
 
 \newcommand{\figref}[1]{\hyperref[fig:#1]{Figure \ref*{fig:#1}}}
 \newcommand{\eqnref}[1]{\hyperref[eqn:#1]{(\ref*{eqn:#1})}}
@@ -57,6 +58,8 @@
 \renewcommand{\int}{\displaystyle\Oldint}
 \let\Oldiint\iint
 \renewcommand{\iint}{\displaystyle\Oldiint}
+
+\bibliography{refs.bib}
 
 \input{mint-defs.tex}
 
@@ -83,11 +86,14 @@
 \input{gamma.tex}
 \input{approx.tex}
 \input{gf.tex}
-%\section{Cycles}
-%\section{Inversions}
-\cite{ideals}
-\bibliography{refs}{}
-\bibliographystyle{plain}
+\nocite{inverse}
+\nocite{set}
+\nocite{bigbook}
+\nocite{feller}
+\nocite{textbook}
+%\bibliographystyle{plain}
+%\bibliography{refs}{}
+\printbibliography
 
 \end{document}
 
