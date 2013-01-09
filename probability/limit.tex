@@ -1,7 +1,18 @@
 % File: limit.tex
-% Date: Thu Dec 27 23:10:04 2012 +0800
+% Date: Tue Jan 08 19:47:04 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Analytic Topics}
+\subsection{Estimation}
+\begin{flalign*}
+	\textbf{(Chebyshev)} & \forall \varepsilon > 0, P(|X-\Ex{X}| \ge \varepsilon)          \\
+	=                    & \int_{|x- \Ex{X}| \ge \varepsilon}{p(x)\mathrm{d}x}
+    \le \int_{|x-\Ex{X}| \ge \varepsilon}{\dfrac{(x-\Ex{X})^2}{\varepsilon^2}p(x)\mathrm{d}x} \\
+	\le                  &
+    \dfrac{\int_{\mathbb{R}}{(x-\mu)^2}p(x)\mathrm{d}x}{\varepsilon^2} =
+    \dfrac{\sigma^2}{\varepsilon^2}\\
+	统计意义:&与均值的距离远近对概率的限定.
+\end{flalign*}
+
 \subsection{Convergence}
 依概率收敛:$\forall \varepsilon>0, P(|X_n-X|\ge \varepsilon)\to 0 (n\to \infty),\Leftrightarrow  X_n\overset{P}{\rightarrow}X$
 
@@ -17,7 +28,8 @@
 
       \textbf{Chebyshev}: $X_n $两两不相关,方差一致有界
 
-      \textbf{Markov:}$ X_n$两两不相关,$ \lim\limits_{n\to\infty}\dfrac{1}{n^2} Var(\sum{X_i})= 0(Markov条件)$
+      \textbf{Markov:}$ X_n$两两不相关,$ \lim\limits_{n\to\infty}\dfrac{1}{n^2}
+      \Var{\sum{X_i}}= 0(Markov条件)$
 
       \textbf{Bernstein}:只需$ X_n$渐进不相关($ \lim\limits_{|k-l|\to \infty}\Cov(X_k,X_l)=0$),方差一致有界
 
@@ -28,11 +40,12 @@
 
     意义:概率是频率的极限
 
-    \item 强大数定律:$ P(\lim\limits_{n\to\infty}\dfrac{\Oldsum{X_i}}{n}=\dfrac{\Oldsum{EX_i}}{n}) = 1$
+    \item 强大数定律:$
+      P(\lim\limits_{n\to\infty}\dfrac{\Oldsum{X_i}}{n}=\dfrac{\Oldsum{\Ex{X_i}}}{n}) = 1$
 
-      \textbf{Borel:}$ X_n$i.i.d.,$ EX^4<+\infty$
+      \textbf{Borel:}$ X_n$i.i.d.,$ \Ex{X^4}<+\infty$
 
-      \textbf{Kolmogorov:}$ X_n$独立,$ \sum{\dfrac{Var(X_i)}{i^2}}<+\infty$
+      \textbf{Kolmogorov:}$ X_n$独立,$ \sum{\dfrac{\Var{X_i}}{i^2}}<+\infty$
 
 \end{enumerate}
 
@@ -44,7 +57,8 @@
     \item \textbf{Lindeberg/Lyapunov:}$ X_n独立,设B_n=\sqrt{\Oldsum{\sigma_i^2}},若满足$Lindeberg条件:
       \[ \forall t>0,\lim\limits_{n\to\infty}\dfrac{1}{B_n^2}\sum_{i=1}^n{\int_{|x-\mu_i|>tB_n}{(x-\mu_i)^2p_i(x)\mathrm{d}x}=0} \]
       或Lyapunov条件(弱于Lindeberg):
-      \[ \exists t>0,\lim\limits_{n\to\infty}[\sum_{i=1}^n{Var(X_i)}]^{-t}\sum_{i=1}^nE(|X_i-\mu_i|^{2+t})=0 \]
+      \[ \exists
+        t>0,\lim\limits_{n\to\infty}(\sum_{i=1}^n{\Var{X_i}})^{-t}\sum_{i=1}^n\E{|X_i-\mu_i|^{2+t}}=0 \]
       则$ \dfrac{1}{B_n}\sum{(X_i-\mu_i)}\overset{L}{\rightarrow}N(0,1)$.
 
 \end{enumerate}

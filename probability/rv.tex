@@ -1,13 +1,13 @@
 % File: rv.tex
-% Date: Thu Dec 27 23:09:19 2012 +0800
+% Date: Tue Jan 08 19:47:20 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
-\section{Random Variables and Distributions}
-\subsection{Random Variables}
+
+\section{Random Variables}
+\subsection{Definition}
 样本空间$ \Omega \rightarrow \mathbb{R}$的函数$ X = X(\omega)$称为\textbf{随机变量}.值域有限或可列称为离散随机变量,值域充满数
 轴上的某个区间,称为连续随机变量.记$ F(x) = P(X \le x)$为$ X$的\textbf{分布函数}.
 
 显然,$ F$是$ (-\infty, \infty)$的单调不减函数,有界,于是各点有左右极限,且无穷处有极限.
-
 \begin{equation*}
 	\begin{split}
 		F(b) - F(c + 0) & = F(b) - \lim \limits_{a \to c^{+}} F(a) =\lim \limits_{a \to c^{+}}P(a < X \le b) \\
@@ -30,18 +30,31 @@
 
 $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le F(x) \le \dfrac{1}{2} + P(X=x) $
 
-中位数的统计意义:使得$E|X-a|$最小的$a$
+中位数的统计意义:使得$\Ex{|X-a|}$最小的$a$
 \\
 
 存在非负可积函数,使得$ F(x) = \int_{-\infty}^{x}{p(t)dt}$,则称$ p(x)$为$ X$的\textbf{概率密度函数}.
 
 在$ F(x)$导数存在的点有$ p(x) = F'(x)$,其余点处$ p(x)$可任意取值.
 
+\textbf{密度公式:}
+函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
+
+\textbf{证:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
+\xlongequal{x=h(z)}\int_{-\infty}^{y}RHS$
+
+应用: $X\sim \Gamma(\alpha, \lambda) \Rightarrow  kX \sim \Gamma(\alpha, \dfrac{\lambda}{k}), 2\lambda X \sim \chi^2(2\alpha)$
+\\
+
+\textbf{对角线:}$ F_X(x)$若为严格增的连续函数,$F_X(X) \sim U(0,1)$
+
+\textbf{证}:$ F_{F_X(X)}(x) = P(F_X(X)\le x) = P(X \le F_X^{-1}(x)) = F_X(F_X^{-1}(x)) =x$
+
 \subsection{Expectation \& Variance}
 \begin{equation*} \begin{split}
-	E(X) & = \int_{\mathbb{R}}{x\mathrm{d}F(x)},其中积分为Lebsegue积分. \\
+    \E{X} & = \int_{\mathbb{R}}{x\mathrm{d}F(x)},其中积分为Lebsegue积分. \\
 			& = \left\{  \begin{matrix}
-	\sum{x_ip(x_i)} = \sum_{n=0}^{\infty}{P(X>n) - P(X<-n)}, 离散,\sum{|x_i|}P(X = x_i)< \infty \\
+	\sum{x_ip(x_i)} = \sum_{n=0}^{\infty}[{P(X>n) - P(X<-n)}], 离散,\sum{|x_i|}P(X = x_i)< \infty \\
 	\int_{\mathbb{R}}{xp(x)\mathrm{d}x} = \int_{\mathbb{R^+}}{P(X>x)\mathrm{d}x} - \int_{\mathbb{R^-}}{P(X<x)\mathrm{d}x},连续,\int_{\mathbb{R}}{|x|p(x)\mathrm{d}x} < \infty
 \end{matrix}\right.
 \end{split} \end{equation*}
@@ -55,64 +68,62 @@ $\bullet$ 绝对收敛保证了和的存在且与顺序无关.
 
 同理有$\lim \limits_{x \to -\infty}xF(x) = \lim \limits_{x\to \infty}x(1-F(x)) = 0$
 
-由此极限可推出\textbf{期望的几何意义:} $\int_{-\infty}^{EX}{F(x)\mathrm{d}x} = \int_{EX}^{\infty}{(1-F(x))\mathrm{d}x}$
+由此极限可推出\textbf{期望的几何意义:} $\int_{-\infty}^{\Ex{X}}{F(x)\mathrm{d}x}
+= \int_{\Ex{X}}^{\infty}{(1-F(x))\mathrm{d}x}$
 
-即:$y=F(x), x=EX, 将0\le y \le 1$分成面积相等的两部分.
+即:$y=F(x), x=\Ex{X}, 将0\le y \le 1$分成面积相等的两部分.
 
 \textbf{证:}对两边进行分部积分即可.
 \\
 
 \textbf{Cauchy-Schwartz:}
 
-$E(X^2),E(Y^2) < \infty, 则(E(XY))^2 \le E(X^2)E(Y^2)$
+$\E{X^2},\E{Y^2} < \infty, 则(\E{XY})^2 \le \E{X^2}\E{Y^2}$
 
-\textbf{证:}考虑$ f(u) = E(Xu+Y)^2 = (EX^2)u^2 + 2E(XY)u+EY^2$的判别式即可.
+\textbf{证:}考虑$ f(u) = \E{Xu+Y}^2 = (\E{X^2})u^2 + 2\E{XY}u+\E{Y^2}$的判别式即可.
 \\
 
 \textbf{期望的统计意义:}
 
-$E(X-a)^2 =E(X-EX)^2 + 2 E(X-EX)(EX-a) + (EX-a)^2= E(X-EX)^2 + (EX-a)^2 \ge E(X-EX)^2. $
+$\E{(X-a)^2} =\E{(X-\Ex{X})^2} + 2 \E{(X-\Ex{X})(\Ex{X}-a)} + (\Ex{X}-a)^2=
+\E{(X-\Ex{X})^2} +
+(\Ex{X}-a)^2 \ge \E{(X-\Ex{X})^2}. $
 \\
 
-\textbf{方差:}
+若$ \E{X^2}$存在,则定义$ \Var{X} = \E{X - \Ex{X}}^2 = \left \{
+  \begin{matrix}\sum(x_i - \Ex{X})^2p(x_i) \\ \int_{\mathbb{R}}{(x-\Ex{X})^2p(x)\mathrm{d}x} \end{matrix}\right.$
 
-若$ E(X^2)$存在,则定义$ Var(X) = E(X - E(X))^2 = \left \{ \begin{matrix}\sum(x_i - E(X))^2p(x_i) \\ \int_{\mathbb{R}}{(x-E(X))^2p(x)\mathrm{d}x} \end{matrix}\right.$
-
-$ Var(X) = E(X^2 - 2XE(X) + (E(X))^2) = E(X^2) - (E(X))^2$
+$ \Var{X} = \E{X^2 - 2X\Ex{X} + (\Ex{X})^2} = \Ex{X^2} - (\Ex{X})^2$
 \\
 
 \textbf{其他统计量:}
 
-变异系数$ C_v(X) = \dfrac{\sigma(X)}{EX} = \dfrac{\sqrt{Var(X)}}{EX}$.消去了量纲的影响.
+变异系数$ C_v(X) = \dfrac{\sigma(X)}{\Ex{X}} = \dfrac{\sqrt{\Var{X}}}{\Ex{X}}$.消去了量纲的影响.
 
-偏度系数$ \beta_{s} = \dfrac{E(X-EX)^3}{(Var(X))^{\frac{3}{2}}}$.描述偏离对称性的程度.
+偏度系数$ \beta_{s} = \dfrac{\E{X-\Ex{X}}^3}{(\Var{X})^{\frac{3}{2}}}$.描述偏离对称性的程度.
 
-峰度系数$ \beta_{k} = \dfrac{E(X-EX)^4}{(Var(X))^2} - 3$.描述相比于正态分布的尖峭程度(尾部粗细).正态分布峰度为0.
-
-\begin{flalign*}
-	\textbf{(Chebyshev)} & \forall \varepsilon > 0, P(|X-EX| \ge \varepsilon)          \\
-	=                    & \int_{|x- EX| \ge \varepsilon}{p(x)\mathrm{d}x} \le \int_{|x-EX| \ge \varepsilon}{\dfrac{(x-EX)^2}{\varepsilon^2}p(x)\mathrm{d}x} \\
-	\le                  & \dfrac{\int_{\mathbb{R}}{(x-EX)^2}p(x)\mathrm{d}x}{\varepsilon^2} = \dfrac{Var(X)}{\varepsilon^2}\\
-	统计意义:&与均值的距离远近对概率的限定.
-\end{flalign*}
+峰度系数$ \beta_{k} = \dfrac{\E{X-\Ex{X}}^4}{(\Var{X})^2} - 3$.描述相比于正态分布的尖峭程度(尾部粗细).正态分布峰度为0.
 
 \subsection{Characteristic Function}
-$ \varphi_X(t) = E(e^{itX})$
+$ \varphi_X(t) = \E{e^{itX}}$
 
-$ \varphi_{\vec{X}}(\vec{t}) = Ee^{i\vec{t}^T\vec{X}}$
+$ \varphi_{\vec{X}}(\vec{t}) = \E{e^{i\vec{t}^T\vec{X}}}$
 
 \begin{description}
 
-  \item[界:]$ |\varphi_X(t)| = |Ee^{itX}| \le E|e^{itX}| = 1$
+  \item[界:]$ |\varphi_X(t)| = |\E{e^{itX}}| \le \E{|e^{itX}|} = 1$
 
-  \item[对称性:] $ \varphi_X(t)是实偶函数 \Leftrightarrow \varphi_X(t) = \overline{\varphi_X(t)} = E\overline{e^{itX}}=Ee^{-itX} = \varphi_X(-t) = \varphi_{-X}(t)
+  \item[对称性:] $ \varphi_X(t)是实偶函数 \Leftrightarrow \varphi_X(t) =
+      \overline{\varphi_X(t)} = \E{\overline{e^{itX}}}=\E{e^{-itX}} = \varphi_X(-t) = \varphi_{-X}(t)
       \Leftrightarrow F_X(x) = F_{-X}(x)为对称分布\Leftrightarrow F_X(x)关于(0,\dfrac{1}{2})对称$
 
         \item[线性变换:] $ \varphi_{a+bX}(t) = e^{iat}\varphi_X(bt)$
 
-        \item[卷积变乘积:] $ X,Y$独立,$ \varphi_{X+Y}(t) = Ee^{it(X+Y)} = \varphi_X(t)\varphi_Y(t)$
+        \item[卷积变乘积:] $ X,Y$独立,$ \varphi_{X+Y}(t) = \E{e^{it(X+Y)}} = \varphi_X(t)\varphi_Y(t)$
 
-          \item[矩的计算:] $ \varphi^{(k)}(t) = \int_{\mathbb{R}}i^kx^ke^{itx}p(x)\mathrm{d}x = i^kE[X^ke^{itX}]\Rightarrow \varphi^{(k)}(0) = i^kEX^k$
+          \item[矩的计算:] $ \varphi^{(k)}(t) =
+            \int_{\mathbb{R}}i^kx^ke^{itx}p(x)\mathrm{d}x =
+            i^k\E{X^ke^{itX}}\Rightarrow \varphi^{(k)}(0) = i^k\Ex{X^k}$
 
           \item[独立性判定:] $ X_1,\cdots ,X_n独立\Leftrightarrow \varphi_{\vec{X}}(\vec{t})=\prod_{k=1}^n{\varphi_{X_k}(t_k)}$
 
@@ -130,247 +141,3 @@ $\hspace{2.3cm} p(x) = \dfrac{1}{2\pi}\int_{\mathbb{R}}e^{-itx}\varphi_X(t)\math
 表明这种对应关系也是连续的
       \end{description}
 
-
-\subsection{Common Discrete Distributions}
-\begin{enumerate}
-  \item \textbf{Bernoulli分布(二项分布)}$ b(n,p)$
-
-    $ P(X = k) = C_n^kp^k(1-p)^{n-k}, k = 0,\cdots,n$
-
-    $ EX = np, Var(X) = E[X(X-1)]+EX-(EX)^2 = np(1-p)$
-
-    $	b(n,p)  = n * b(1,p)\Rightarrow \varphi(t) = (1-p+pe^{it})^n$
-
-  二项分布的最大值发生在$ k = \left \{ \begin{matrix}
-      (n+1)p , (n+1)p - 1 &, (n+1)p \in \mathbb{N} \\
-      \lfloor(n+1)p\rfloor&,  (n+1)p \not \in \mathbb{N}
-    \end{matrix}\right.$
-
-\item \textbf{Poisson 分布} $ P(\lambda),(\lambda > 0)$
-
-  $ P(X = k) = \dfrac{\lambda^k}{k!}e^{-\lambda}$
-
-  最大值发生在$ k = \lfloor \lambda \rfloor$
-
-  $ EX = Var(X) = \lambda, \varphi(t) = \sum_{k=0}^{\infty}e^{itk}\dfrac{\lambda^k}{k!}e^{-\lambda} = e^{\lambda(e^{it} - 1)}$
-
-  \textbf{Poisson 定理},对二项分布$ b(n,p_n),\lim \limits_{n\to \infty} np_n = \lambda > 0$,
-  \begin{flalign*}
-    P(X = k) & = C_n^kp_n^k(1-p_n)^{n-k}                                                                                \\
-    & =\dfrac{n(n-1)\cdots(n-k+1)}{k!n^k}(np_n)^k(1-\dfrac{np_n}{n})^{n-k}                                     \\
-    & =(1-\dfrac{1}{n})\cdots(1-\dfrac{k-1}{n})\dfrac{[\lambda + o(1)]^k}{k!}[1-\dfrac{\lambda+o(1)}{n}]^{n-k} \\
-    & \rightarrow \dfrac{\lambda^k}{k!}e^{-\lambda}, n\to \infty
-\end{flalign*}
-
-    \item \textbf{几何分布}$ G(p)$
-
-      $ P(X=k) = p(1-p)^{k-1}, k \in \mathbb{N^+}$
-
-      $ EX = \sum_{n=1}^{\infty}\sum_{k=1}^{n}{p(1-p)^{n-1}}=
-      \sum_{k=1}^{\infty}\sum_{n=k}^{\infty}{p(1-p)^{n-1}}= \dfrac{1}{p}$
-
-      类似方法使用两次求出$ E(X(X-1)),Var(X) = \dfrac{1-p}{p^2}$
-
-      $ \varphi(t) = \dfrac{pe^{it}}{1-(1-p)e^{it}}$
-
-      尾概率$ P(X>m) = (1-p)^m$
-
-      无记忆性 $\Leftrightarrow P(X>m+n) = P(X>m)P(X>n)\Leftrightarrow X\sim G(P(X\le 1)) $
-
-          (即解Cauchy方程)
-
-        \item \textbf{超几何分布} $ h(n,N,M),(n, M\le N)$
-
-          意义:$ N$件物品含有$ M$件次品,不放回抽取$ n$次得到的次品数.
-
-          $ P(X=k) = \dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}, k \in [\max\{0, n-N + M\}, \min\{M,n\}]$
-
-          $ EX = \sum_{k}{k\dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}}  = \dfrac{Mn}{N}\sum_{k}{\dfrac{C_{M-1}^{k-1}C_{N-M}^{n-k}}{C_{N-1}^{n-1}}} = \dfrac{Mn}{N}$
-
-          类似地使用Vandermonde Convolution,有$ 	E[X(X-1)] = \dfrac{M(M-1)n(n-1)}{N(N-1)}$
-
-          $\Rightarrow Var(x)  = \dfrac{nM(N-M)(N-n)}{N^2(N-1)} $
-
-        二项逼近:当$N\to\infty, \frac{M}{N}\to p $时,$ h(n,N,M)\to b(N,p)$
-
-      \item \textbf{Pascal 分布(负二项分布)} $ Nb(r,p)$
-
-        意义:事件发生第$ r$次时的实验次数.$ Nb(r, p) = r * G(p) $
-
-        $ P(X = k) = C_{k-1}^{r-1}p^r(1-p)^{k-r}, k = r,r+1,\cdots$
-
-        $ EX = \dfrac{r}{p}, Var(x) = \dfrac{r(1-p)}{p^2}$
-
-        $ \varphi(t) = (\dfrac{pe^{it}}{1-(1-p)e^{it}})^r$
-
-      \item \textbf{错排问题} $ X $为匹配到自己的人数.
-
-        $ P(X = k) = \dfrac{C_n^kD_{n-k}}{n!}, 其中D_k = k!\sum_{i=0}^{k}{\dfrac{(-1)^i}{i!}}为错排数$
-
-        $ EX = \sum_{k=0}^n{\dfrac{nC_{n-1}^{n-k}D_{n-k}}{n!}} = 1. $
-
-        或:每个人匹配到自己的期望为$ \dfrac{1}{n},$所以总期望为$ 1$
-
-        $ E[X(X-1)] = 1, Var(X) = 1$
-    \end{enumerate}
-    \subsection{Common Continuous Distributions}
-    \begin{enumerate}
-      \item \textbf{均匀分布} $U[a,b]$
-
-        $p(x) = \dfrac{1}{b-a}I_{[a,b]}(x) = \left \{ \begin{matrix}\dfrac{1}{b-a}, & a\le x \le b \\0, &  \text{else}\end{matrix}\right.$
-
-        $EX = \dfrac{a+b}{2}, Var(X) = \dfrac{(b-a)^2}{12}$
-
-        $ U[-1,1]$的特征函数$\varphi_{X'}(t)=\int_{0}^1{\cos(tx)\mathrm{d}x} = \dfrac{\sin t}{t}\Rightarrow \varphi(t) =
-      e^{\frac{(a+b)it}{2}}\dfrac{\sin(\frac{(b-a)t}{2})}{\frac{(b-a)t}{2}}$
-
-      或:$ \varphi(t) = \int_{a}^b{\dfrac{e^{itx}}{b-a}\mathrm{d}x} = \dfrac{e^{ibt}-e^{iat}}{it(b-a)}$
-
-    \item \textbf{指数分布}$Exp(\lambda),(\lambda > 0)$
-
-      $p(x) = \lambda e^{-\lambda x}I_{\mathbb{R^+}}(x)$
-
-      $F(x) = 1-e^{-\lambda t}$
-
-      设备在时刻$t$的失效率$\lambda(t) = \lambda$为常数,则寿命$X\sim Exp(\lambda)$
-
-      $EX = \int_{\mathbb{R^+}}{P(X>x)\mathrm{d}x} = \int_{\mathbb{R^+}}{e^{-\lambda x}\mathrm{d}x} = \dfrac{1}{\lambda}$
-
-      $ EX^2 = \int_{\mathbb{R^+}}{P(X^2 > x)\mathrm{d}x} \xlongequal{x = u^2} \dfrac{2}{\lambda}\int_{\mathbb{R^+}}{u\lambda e^{-\lambda u}\mathrm{d}u}
-      = \dfrac{2EX}{\lambda} = \dfrac{2}{\lambda^2}$
-
-      $Var(X) = EX^2 - (EX)^2 = \dfrac{1}{\lambda^2}$
-
-      $ \varphi(t) = \lambda\int_{\mathbb{R}^+}e^{itx-\lambda x}\mathrm{d}x=\dfrac{\lambda}{\lambda-it}$
-
-      无记忆性 $\Leftrightarrow P(X>m+n) = P(X>m)P(X>n)\Leftrightarrow X\sim Exp(\lambda)$
-
-          $(0,t]$发生的次数$\sim P(\lambda t),$则第一次发生的时间$\sim Exp(\lambda)$
-
-          $ X\sim U(0,1)\Rightarrow  \dfrac{-\ln X}{\lambda}\sim Exp(\lambda)$
-
-
-      \item \textbf{一维Gauss分布(正态分布)}$N(\mu, \sigma^2)$
-
-        $p(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
-
-        对$Y\sim N(\mu, \sigma^2), $标准化:$X = \dfrac{Y - \mu}{\sigma},则 X\sim N(0,1)$
-
-        $ P(X \le x) = \int_{-\infty}^{x}{\frac{1}{\sqrt{2\pi}}e^{-\frac{u^2}{2}}\mathrm{d}u} \xlongequal{def}\Phi(x)$
-
-        利用Poisson积分,可验证$\Phi(\infty) = 1$
-
-        $ P(|Y-\mu| < k\sigma) = \Phi(k) - \Phi(-k) = 2\Phi(k)-1$
-        \\
-
-        $EX = \int_{\mathbb{R}}{x\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\mathrm{d}x} = 0$
-
-        $ Var(X) = EX^2 = 1. 分部积分$
-
-        $ EX^{2k+1} =0, EX^{2k} = (2k-1)!!$
-
-        $\varphi_X(t) = 2\int_{\mathbb{R}^+}\cos(tx)\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\mathrm{d}x$,
-
-        求导有$ \dfrac{\mathrm{d}\varphi_X(t)}{\mathrm{d}t} = 2\int_{\mathbb{R}^+}\sin(tx)\mathrm{d}(\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}})
-        = -t\varphi_X(t)\Rightarrow \varphi_X(t) = e^{-\frac{t^2}{2}}$.
-
-      于是,$ \varphi_Y(t) = e^{i\mu t-\frac{\sigma^2t^2}{2}}$
-      \\
-
-      误差函数:$ Erf(x) = 2\Phi(x\sqrt{2})-1$
-
-    \item \textbf{Gamma分布} $\Gamma(\alpha, \lambda),(\alpha > 0为形状参数,\lambda>0为尺度参数)$
-
-      $ \Gamma 函数: \Gamma(x) = \int_{0}^{\infty}t^{x-1}e^{-t}\mathrm{d}t$
-
-      $ p(x) = \dfrac{\lambda^{\alpha}}{\Gamma(\alpha)}x^{\alpha - 1}e^{-\lambda x}I_{[0,\infty)}(x)$
-
-      $ EX = \dfrac{\lambda^{\alpha}}{\Gamma(\alpha)}\Gamma(\alpha+1) = \dfrac{\alpha}{\lambda}$
-
-      $ EX^2 = \dfrac{\alpha(\alpha+1)}{\lambda^2},Var(X) = \dfrac{\alpha}{\lambda^2}$
-
-      $ \Gamma(1,\lambda )= Exp(\lambda), \Gamma(\dfrac{n}{2},\dfrac{1}{2}) = \chi ^2(n)$
-
-      $ \varphi(t) = (\dfrac{\lambda-it}{\lambda})^{\alpha}$
-    \item \textbf{Beta分布} $ Be(a,b),(a,b>0)$
-
-      $ Beta函数:B(a,b) = \int_{0}^{1}{x^{a-1}(1-x)^{b-1}\mathrm{d}x} = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$
-
-      $ p(x) = \dfrac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}I_{(0,1)}(x)$
-
-      $ EX = \dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\dfrac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)} = \dfrac{a}{a+b}$
-
-      $ EX^2 = \dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\dfrac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)} = \dfrac{a(a+1)}{(a+b)(a+b+1)}$
-
-      $ Var(X) = \dfrac{ab}{(a+b)^2(a+b+1)}$
-
-      $ p(x)=ax^{a-1}\Leftrightarrow X\sim Be(a,1)$
-
-      \item \textbf{卡方分布} $ \chi^2(k).(自由度k>0)$
-
-        $ Y_1 \xlongequal{i.i.d} \cdots \xlongequal{i.i.d} Y_k \sim N(0,1)
-      \Rightarrow X = \sum{Y^2}\sim \chi^2(k)$
-
-      $ p(x) = \dfrac{x^{\frac{k}{2}-1}e^{-\frac{x}{2}}}{2^{k/2}\Gamma(\frac{k}{2})} I_{[0,+\infty)(x)}$
-
-      $ EX = k. Var(X) = 2k$
-
-      $ \varphi(t) = (1-2it)^{-\frac{n}{2}}$
-
-    \item \textbf{对数正态分布}$ LN(\mu, \sigma^2)$
-
-      $ X\sim N(\mu,\sigma^2)\Rightarrow Y = e^{X}\sim LN(\mu,\sigma^2)$
-
-    $ p(x) = \dfrac{1}{\sqrt{2\pi}x\sigma}e^{-\frac{(\ln x- \mu)^2}{2\sigma^2}}I_{\mathbb{R}^{+}}(x)$
-
-    $ EX = e^{\mu + \frac{\sigma^2}{2}}, Var(X) = e^{2\mu+\sigma^2}(e^{\sigma^2}-1). 中位数e^\mu$
-
-  \item \textbf{Cauchy分布}$ Cauchy(\mu, \lambda).$
-
-    $ Y \xlongequal{i.i.d} Z \sim N(0,1) \Rightarrow \dfrac{Y}{Z}\sim Cauchy(0,1)$
-
-  $ p(x) = \dfrac{\lambda}{\pi(\lambda^2 +(x-\mu)^2)}$
-
-  期望与方差不存在.
-
-  $ \varphi(t) = e^{i\mu t - \lambda |t|}$
-
-\item \textbf{Weibull分布}$ W(\lambda,k)$
-
-  设备失效率=$ \lambda t^{k-1}\Rightarrow  寿命服从W(\lambda,k). $
-
-$ W(\lambda,1) = Exp(\lambda)$
-
-$ p(x) = \dfrac{k}{\lambda}(\dfrac{x}{\lambda})^{k-1}e^{-(\frac{x}{\lambda})^k}I_{[0,+\infty)}(x)$
-
-$ F(x) = 1-e^{-(\frac{x}{\lambda})^k}$
-
-$ EX = \lambda \Gamma(1+\dfrac{1}{k}), Var(X) = \lambda^2\Gamma(1+\dfrac{2}{k})-(EX)^2$
-
-    \item \textbf{Laplace分布} $ L(\mu,b)$
-
-      $ p(x)=\dfrac{1}{2b}e^{-\frac{|x-\mu|}{b}}, F(x)=\dfrac{1+\sgn(x-\mu)}{2}(1-e^{-\frac{|x-\mu|}{b}})$
-
-      $ X,Y\sim Exp(\frac{1}{\lambda})\Rightarrow X-Y\sim L(0,\lambda), |X-Y|\sim Exp(\dfrac{1}{\lambda})$
-
-    $ X,Y\sim \chi^2(1)\Rightarrow X-Y\sim L(0,1)$
-
-  \item \textbf{Pareto分布}
-    $ p(x) = (\alpha-1)x_0^{\alpha-1}x^{-\alpha}I_{[x_0,+\infty]}, \alpha>2, x_0>0$
-
-    $ EX = \dfrac{\alpha-1}{\alpha-2}x_0, Var(X) = \dfrac{(\alpha-1)x_0^2}{(\alpha-3)(\alpha-2)^2}(如果 \alpha>3)$
-
-\end{enumerate}
-
-\textbf{密度公式:}
-函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
-
-\textbf{证:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
-\xlongequal{x=h(z)}\int_{-\infty}^{y}RHS$
-
-应用: $X\sim \Gamma(\alpha, \lambda) \Rightarrow  kX \sim \Gamma(\alpha, \dfrac{\lambda}{k}), 2\lambda X \sim \chi^2(2\alpha)$
-\\
-
-\textbf{对角线:}$ F_X(x)$若为严格增的连续函数,$F_X(X) \sim U(0,1)$
-
-\textbf{证}:$ F_{F_X(X)}(x) = P(F_X(X)\le x) = P(X \le F_X^{-1}(x)) = F_X(F_X^{-1}(x)) =x$

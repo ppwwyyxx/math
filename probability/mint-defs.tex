@@ -1,6 +1,8 @@
 % $File: mint-defs.tex
-% $Date: Fri Jan 06 14:25:30 2012 +0800
+% $Date: Tue Jan 08 19:13:34 2013 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
+
+\usepackage{xparse}
 
 
 % \inputmintedConfigured[additional minted options]{lang}{file path}{
@@ -26,3 +28,20 @@
 
 \newcommand{\cppsrc}[2][]{\inputmintedConfigured[#1]{cpp}{#2}}
 \newcommand{\cppsrcpart}[4][]{\cppsrc[firstline=#3,firstnumber=#3,lastline=#4,#1]{#2}}
+
+\renewcommand{\P}[1]{\text{P}\left(#1\right)}
+\renewcommand{\Pr}[1]{\text{P}\left\{#1\right\}}
+\newcommand{\Px}[2]{\text{P}_{#1}\left(#2\right)}
+\newcommand{\E}[1]{\text{E}\left[#1\right]}
+\newcommand{\Ex}[1]{\text{E}#1}
+\newcommand{\Var}[1]{\text{Var}\left[#1\right]}
+%\newcommand{\Cov}[2]{\text{Cov}\left[#1,#2\right]}
+%\newcommand{\Cov}[1]{\text{Cov}\left[#1 \right]}
+\renewcommand{\T}[1]{\Theta\left(#1\right)}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\card}[1]{\left\|#1\right\|}
+\newtheorem{lemma}{Lemma}
+
+\NewDocumentCommand\Cov{mg}{
+    \text{Cov}\left[ #1 \IfNoValueTF{#2}{}{,#2}\right]
+ }

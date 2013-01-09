@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Thu Dec 27 23:31:33 2012 +0800
+% Date: Tue Jan 08 20:49:16 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Multivariate Distributions}
 \subsection{Joint Distribution}
@@ -72,21 +72,36 @@ $ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\
       = & \dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}\sigma_2\sqrt{1-\rho^2}\int_{\mathbb{R}}{e^{-\frac{t^2}{2}}\mathrm{d}t} \\
       = & \dfrac{1}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}} 为一维正态分布.
     \end{align*}
-    \textbf{相关系数:}设$ (X,Y)\sim N(0,0,1,1,\rho)$
+    设$ (X,Y)\sim N(0,0,1,1,\rho)$
 
     $则p(x,y) = \dfrac{1}{2\pi\sqrt{1-\rho^2}}e^{-\frac{x^2-2\rho xy+y^2}{2(1-\rho^2)}} = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}g(x,y)$
 
     其中$ z(x) = g(x,y)$为$Z\sim N(\rho y,1-\rho^2)$的密度函数.
+
+    $ \Rightarrow $\textbf{条件正态分布:} (直观解释:考虑$ \rho=0,1$时的情形)
+\begin{align*}
+    对\quad  (X,Y)\sim N(0,0,1,1,\rho)&\Rightarrow X|Y=y \sim N(\rho y, 1-\rho^2)\\
+   & \Rightarrow  \E{X|Y} = \rho Y, \E{X|Y=y} = \rho y
+\end{align*}
+ \begin{align*}
+  &对 \quad (X,Y) \sim N(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho) \\
+  &\Rightarrow  X|Y=y \sim N(\mu_1+\rho\dfrac{\sigma_1}{\sigma_2}(y-\mu_2),
+\sigma_1^2(1-\rho^2))&
+\end{align*}
+
+\textbf{相关系数:}
     \begin{align*}
-    于是 r(X,Y) =& \Cov(X,Y) = E(XY)-EXEY=\iint_{\mathbb{R}^2}xyp(x,y)\mathrm{d}x\mathrm{d}y\\
+     r(X,Y) =& \Cov{X}{Y} = \E{XY}-\Ex{X}\Ex{Y}=\iint_{\mathbb{R}^2}xyp(x,y)\mathrm{d}x\mathrm{d}y\\
     =& \int_{\mathbb{R}}\dfrac{y}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}\int_{\mathbb{R}}xg(x,y)\mathrm{d}x\mathrm{d}y\\
-    =& \int_{\mathbb{R}}EZ\dfrac{y}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}\mathrm{d}y\\
-    =& \rho EY^2 = \rho Var(Y) = \rho
+    =& \int_{\mathbb{R}}\Ex{Z}\dfrac{y}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}\mathrm{d}y\\
+    =& \rho \Ex{Y^2} = \rho \Var{Y} = \rho
     \end{align*}
 
     做线性变换可知,任意二维正态分布的相关系数为$ \rho$.
 
     $ \rho = 0$时易证$ p(x,y) = p_X(x)p_Y(y),$于是,对于联合正态分布,不相关与独立等价.
+
+    最大值期望:$ \E{\max\{ X,Y\}} = \E{\dfrac{X+Y+|X-Y|}{2}} = \sqrt{\dfrac{1-\rho}{\pi}} $
 
     \textbf{椭圆域内概率:}$ D=\{(x,y): Q \le t \}, 则P((X,Y)\in D) = 1-e^{-\frac{t}{2(1-\rho^2)}}$
 
@@ -152,11 +167,13 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
 \subsection{Other Functions on Random Variables}
 \begin{description}
   \item[期望:]
-    $ E(g(X,Y))=\begin{cases}\sum_{i,j}g(x_i,y_j)P(X=x_i,Y=y_j)\\\iint_{\mathbb{R}^2}g(x,y)p(x,y)\mathrm{d}x\mathrm{d}y \end{cases}$
+    $ \E{g(X,Y)}=\begin{cases}\sum_{i,j}g(x_i,y_j)P(X=x_i,Y=y_j)\\\iint_{\mathbb{R}^2}g(x,y)p(x,y)\mathrm{d}x\mathrm{d}y \end{cases}$
 
     期望的\textbf{可加性}对任意随机变量成立:
 
-    $ E(X+Y)=\int_{\mathbb{R}}x(\int_{\mathbb{R}}p(x,y)dy)dx+\int_{\mathbb{R}}y(\int_{\mathbb{R}}p(x,y)dx)dy = E(X)+E(Y)$
+    $
+    \E{X+Y}=\int_{\mathbb{R}}x(\int_{\mathbb{R}}p(x,y)dy)dx+\int_{\mathbb{R}}y(\int_{\mathbb{R}}p(x,y)dx)dy
+    = \Ex{X}+\Ex{Y}$
 
   \item[最值:]
     $ Y=\max\{ X_1,\cdots, X_n\}, F_Y(x) = \prod{F_i(x)}$
@@ -164,13 +181,17 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
     $ Z = \min\{ X_1,\cdots ,X_n\}, F_Z(x) = 1-\prod{(1-F_i(x))}$
 
     当$ X_1,\cdots ,X_n$i.i.d.时,$ p_Y(x)=nF(x)^{n-1}p(x), p_Z(x)=n(1-F(x))^{n-1}p(x)$
-  \item[第$ k$小值:]设$ X_1,\cdots ,X_n$i.i.d.,设``第$ k$小值''这个随机变量为$ M_k$
+  \item[第$ k$小值(次序统计量):]设$ X_1,\cdots ,X_n$i.i.d.,设``第$ k$小值''这个随机变量为$ M_k$
 
       $ p_{M_k}(x)=n!\dfrac{F(x)^{k-1}}{(k-1)!}\dfrac{[1-F(x)]^{n-k}}{(n-k)!}p(x)$
 
       $i<j, p_{M_i,M_j}(x,y)=n!\dfrac{F(x)^{i-1}}{(i-1)!}\dfrac{[F(y)-F(x)]^{j-i-1}}{(j-i-1)!}\dfrac{[1-F(y)]^{n-j}}{(n-j)!}p(x)p(y)$
 
       $ p_{M_1,\cdots ,M_n}(x_1,\cdots x_n)=\begin{cases}n!\prod{p(x_i)},if x_1<\cdots <x_n\\0,else \end{cases}$
+
+      设极差$ R_n = M_n - M_1, $由$ p_{M_1,M_n}$做Jacobi可得$ p_{R_n,M_1}$
+
+      $\Rightarrow F_{R_n}(x) = \int_{\mathbb{R}}np(t)(F(x+t)-F(t))^{n-1}\mathrm{d}t $
   \item[双射:]
    $ \begin{cases}U=g(X,Y)\\V=h(X,Y)\end{cases},p_{U,V}(u,v) = p_{X,Y}(x(u,v),y(u,v))|\dfrac{\partial(x,y)}{\partial(u,v)}|$
 
@@ -193,95 +214,88 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
 
    则$(X',Y')\sim N(0,0,1,1,\rho) $
 
- \item[Fisher-Snedecor分布:]独立的$X\sim \chi^2(m),Y\sim\chi^2(n).F=\dfrac{X/m}{Y/n}\sim F(m,n).$
-
-   $ p_{F}(x) = \dfrac{1}{B(\frac{m}{2},\frac{n}{2})}(\dfrac{m}{n})^{\frac{m}{2}}x^{\frac{m}{2}-1}(1+\dfrac{mx}{n})^{-\frac{m+n}{2}}$
-
-   $ \dfrac{mF}{n+mF} \sim B(\dfrac{m}{2},\dfrac{n}{2})$
-
- \item[学生t-分布]独立的$X\sim N(0,1),Y\sim\chi^2(n).t=\dfrac{X}{\sqrt{\frac{Y}{n}}}\sim t(n) $
-
-   由对称性,$ F_t(x)=F_t(0)+\dfrac{1}{2}P(t^2\le x^2)=\dfrac{1}{2}+\dfrac{1}{2}F_{t^2}(x^2)$
-
-   而$ t^2\sim F(1,n).$于是$ p_t(x)=\dfrac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})}(1+\dfrac{x^2}{n})^{-\frac{n+1}{2}}$
-
-   $t(1) = Cauchy(0,1) ;t(\infty)=N(0,1)$
 \end{description}
 
 \subsection{Correlation}
 
-对独立的$X_1,\cdots X_n$,显然有$E(\prod{X_i})=\prod{EX_i} ,Var(\sum{a_iX_i})=\sum{a_i^2Var(X_i)}$
+对独立的$X_1,\cdots X_n$,显然有$\E{\prod{X_i}}=\prod{\Ex{X_i}}
+,\Var{\sum{a_iX_i}}=\sum{a_i^2\Var{X_i}}$
 
-对任意的$ X,Y,有Var(X\pm Y)=Var(X)+Var(Y)\pm2E[(X-EX)(Y-EY)]$.
+对任意的$ X,Y,有\Var{X\pm Y}=\Var{X}+\Var{Y}\pm2\E{(X-\Ex{X})(Y-\Ex{Y})}$.
 
-记协方差$ \Cov(X,Y) = E[(X-EX)(Y-EY)] = E(XY)-EXEY(若E(XY)存在)$
+记协方差$ \Cov{X}{Y} = \E{(X-\Ex{X})(Y-\Ex{Y})} = \E{XY}-\Ex{X}\Ex{Y}(若\E{XY}存在)$
 
-记相关系数$ r(X,Y)=\dfrac{\Cov(X,Y)}{\sigma(X)\sigma(Y)}$
+记相关系数$ r(X,Y)=\dfrac{\Cov{X}{Y}}{\sigma(X)\sigma(Y)}$
 
-独立$ \Rightarrow E(XY) = EXEY\Leftrightarrow r(X,Y) = 0\Leftrightarrow 不相关$
+独立$ \Rightarrow \E{XY} = \Ex{X}\Ex{Y}\Leftrightarrow r(X,Y) = 0\Leftrightarrow 不相关$
 
 $ r(X,Y) = \pm 1\Leftrightarrow X,Y几乎处处线性相关\Leftrightarrow P(Y=aX+b)=1$
 \\
 
-由于$ E(XY)$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.因此,由Cauchy's Inequality:
+由于$ \E{XY}$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.因此,由Cauchy's Inequality:
 
-$\Cov(X,Y)^2=|\langle X-EX, Y-EY\rangle |^2 \le |X-EX||Y-EY|=Var(X)Var(Y) $
+$\Cov{X}{Y}^2=|\langle X-\Ex{X}, Y-\Ex{Y}\rangle |^2 \le
+|X-\Ex{X}||Y-\Ex{Y}|=\Var{X}\Var{Y} $
 
 $ \Leftrightarrow |r(X,Y)|\le 1. $
 
-$  r$可看做$X-EX, Y-EY$的夹角余弦,$EX$看做$ X$在常数子空间上的投影.
+$  r$可看做$X-\Ex{X}, Y-\Ex{Y}$的夹角余弦,$\Ex{X}$看做$ X$在常数子空间上的投影.
 
-将对角线上非负的对称双线性函数$ \Cov(X,Y)$看做内积,同样可得$ |r(X,Y)|\le 1$.
+将对角线上非负的对称双线性函数$ \Cov{X}{Y}$看做内积,同样可得$ |r(X,Y)|\le 1$.
 \\
 
-\textbf{线性回归}:求使$ E[X-(aY+b)]^2$最小的$(a,b)$:
+\textbf{线性回归}:求使$ \E{X-(aY+b)}^2$最小的$(a,b)$:
 
-考虑内积空间中垂直最小, $E[(X-(\hat{a}Y+\hat{b})(aY+b))] = 0 $
+考虑内积空间中垂直最小, $\E{(X-(\hat{a}Y+\hat{b})(aY+b))} = 0 $
 
-$\Rightarrow  E[X-(\hat{a}Y+\hat{b})]=0,E[Y(X-(\hat{a}Y+\hat{b}))]=0. $
+$\Rightarrow  \E{X-(\hat{a}Y+\hat{b})}=0,\E{Y(X-(\hat{a}Y+\hat{b}))}=0. $
 
-解得$\hat{a}=\dfrac{\Cov(X,Y)}{Var(Y)},\hat{b}=EX-\hat{a}EY.\quad \hat{X} = \dfrac{\Cov(X,Y)}{Var(Y)}(Y-EY)+EX$
+解得$\hat{a}=\dfrac{\Cov{X}{Y}}{\Var{Y}},\hat{b}=\Ex{X}-\hat{a}\Ex{Y}.\quad
+\hat{X} = \dfrac{\Cov{X}{Y}}{\Var{Y}}(Y-\Ex{Y})+\Ex{X}$
 \begin{align*}
-  此时误差 E(X-\hat{X})^2 &= E[(X-EX)-\dfrac{\Cov(X,Y)}{Var(Y)}(Y-EY)] \\
-  &= Var(X)-\dfrac{\Cov(X,Y)^2}{Var(Y)}\\
-  &=Var(X)[1-r(X,Y)^2]
+  此时误差 \E{X-\hat{X}^2} &= \E{(X-\Ex{X})-\dfrac{\Cov{X}{Y}}{\Var{Y}}(Y-\Ex{Y})} \\
+  &= \Var{X}-\dfrac{\Cov{X}{Y}^2}{\Var{Y}}\\
+  &=\Var{X}[1-r(X,Y)^2]
 \end{align*}
 \label{sec:linear}
 
 \textbf{协方差矩阵} $ \vec{X} = (X_1,\cdots ,X_n)',每个分量期望都存在,则随机向量\vec{X}有期望$.
 
-定义协方差矩阵为$\Cov(\vec{X})= (\Cov(X_i,X_j))_{n\times n}=E[(\vec{X}-E\vec{X})(\vec{X}-E\vec{X})']$
+定义协方差矩阵为$\Cov{\vec{X}}= (\Cov{X_i}{X_j})_{n\times
+  n}=\E{(\vec{X}-\Ex{\vec{X}})(\vec{X}-\Ex{\vec{X}})'}$
 
-$Var(\sum{X_i})=\sum{Var(X_i)} +\sum_{1\le<i<j\le n}{\Cov(X_i,X_j)}$为矩阵中所有元素和.
+$\Var{\sum{X_i}}=\sum{\Var{X_i}} +\sum_{1\le<i<j\le n}{\Cov{X_i}{X_j}}$为矩阵中所有元素和.
 
-$ \Cov(\vec{X})$为\textbf{半正定对称阵}:任取向量$ \vec{\alpha}$,
+$ \Cov{\vec{X}}$为\textbf{半正定对称阵}:任取向量$ \vec{\alpha}$,
 \begin{align*}
-\vec{\alpha'}\Cov(\vec{X})\vec{\alpha} =& \sum_{i=1}^{n}\sum_{j=1}^{n}{\alpha_i\alpha_j\Cov(X_i,X_j)}\\
-=&\sum_{i=1}^n\sum_{j=1}^n{E[\alpha_i(X_i-EX_i)\alpha_j(X_j-EX_j)]}\\
-=&E[\sum_{i=1}^n\sum_{j=1}^n{\alpha_i(X_i-EX_i)\alpha_j(X_j-EX_j)}]\\
-=&E[\sum_{i=1}^n{\alpha_i(X_i-EX_i)}\sum_{j=1}^n{\alpha_j(X_j-EX_j)}]\\
-=&E[\sum_{i=1}^n{\alpha_i(X_i-EX_i)}]^2\ge 0
+\vec{\alpha'}\Cov{\vec{X}}\vec{\alpha} =& \sum_{i=1}^{n}\sum_{j=1}^{n}{\alpha_i\alpha_j\Cov{X_i}{X_j}}\\
+=&\sum_{i=1}^n\sum_{j=1}^n{\E{\alpha_i(X_i-\Ex{X_i})\alpha_j(X_j-\Ex{X_j})}}\\
+=&\E{\sum_{i=1}^n\sum_{j=1}^n{\alpha_i(X_i-\Ex{X_i})\alpha_j(X_j-\Ex{X_j})}}\\
+=&\E{\sum_{i=1}^n{\alpha_i(X_i-\Ex{X_i})}\sum_{j=1}^n{\alpha_j(X_j-\Ex{X_j})}}\\
+=&\E{\sum_{i=1}^n{\alpha_i(X_i-\Ex{X_i})}}^2\ge 0
 \end{align*}
 
 \subsection{Gauss Distribution}
 $ \vec{Z} = (Z_1,\cdots Z_n)^{T}, Z_i\sim N(0,1)相互独立,A=(a_{ij})_{m\times n}, \vec{\mu} = (\mu_1,\cdots ,\mu_m)^{T},则\vec{X} = A\vec{Z}+\vec{\mu}
-服从m$维\textbf{Gauss分布},记$\vec{X}\sim N(E\vec{X},\Cov(\vec{X})) = N(\vec{\mu}, \Sigma)$
+服从m$维\textbf{Gauss分布},记$\vec{X}\sim N(\Ex{\vec{X}},\Cov{\vec{X}}) = N(\vec{\mu}, \Sigma)$
 
-$ E\vec{X} = \vec{\mu}, Var(X_i) = \sum_{k}a_{ik}^2$
+$ \Ex{\vec{X}} = \vec{\mu}, \Var{X_i} = \sum_{k}a_{ik}^2$
+\begin{align*}
+ \Cov{Z_k}{Z_l} = \delta_{kl}&\Rightarrow
+ \Cov{X_i}{X_j}=\sum_{k,l}a_{ik}a_{jl}\Cov{Z_k}{Z_l} = \sum_{k}a_{ik}a_{jk}\\
+ &\Rightarrow \Sigma = \Cov{\vec{X}}=AA^T
+\end{align*}
 
-$ \Cov(Z_k,Z_l) = \delta_{kl}\Rightarrow \Cov(X_i,X_j)=\sum_{k,l}a_{ik}a_{jl}\Cov(Z_k,Z_l) =
-\sum_{k}a_{ik}a_{jk}\Rightarrow \Sigma = \Cov(\vec{X})=AA^T$
-
-  $ \vec{X}服从m维$\textbf{正态分布}$\Leftrightarrow r(A)=r(AA^T)=r(\Cov(X))=m\Leftrightarrow \Cov(\vec{X})正定$
+  $ \vec{X}服从m维$\textbf{正态分布}$\Leftrightarrow r(A)=r(AA^T)=r(\Cov{\vec{X}})=m\Leftrightarrow \Cov{\vec{X}}正定$
 
 $ \varphi(\vec{t})=e^{i\vec{t}^T\vec{\mu}-\frac{1}{2}\vec{t}^T\Sigma\vec{t}},$且对于每个非负实对称阵$ \Sigma$,此函数都是Gauss分布.
 
 $ \bullet $由特征函数容易证明,Gauss分布做线性变换后仍为Gauss分布.
 
 $ p(\vec{x})=\dfrac{1}{(2\pi)^{\frac{n}{2}}\sqrt{|\Sigma|}}e^{-\dfrac{(\vec{x}-\vec{\mu})^T\Sigma^{-1}(\vec{x}-\vec{\mu})}{2}}$
-\\
+\vspace{1cm}
 
-Matrix Tricks:
+\textbf{Matrix Tricks}:
 
 设$n维随机向量 \vec{X}\sim N(0,I), $
 取\textbf{正交阵}$A,使其首行为(\dfrac{1}{\sqrt{n}},\cdots ,\dfrac{1}{\sqrt{n}}),$
@@ -293,22 +307,21 @@ Matrix Tricks:
   \Rightarrow & \bar{X}与(n-1)S^2独立&\\
 \end{flalign*}
 
+设$ n$个独立同分布正态样本$ X_i \sim N(\mu, \sigma^2),$同上设$ A,$
+并特别地,构造$ A$ 的第$ k\ge 2$行为$ (\dfrac{-1}{\sqrt{(k-1)k}},
+\dfrac{-1}{\sqrt{(k-1)k}},\cdots ,\dfrac{k}{\sqrt{(k-1)k}},0,\cdots ,0)$,使得行和
+为0.
+
+则有$ \Ex{Y_1} = \sqrt{n}\mu, \Ex{Y_k} = 0(k\ge 2), \Var{Y_k} = \sigma^2(k\ge 1)$
+
 \subsection{Conditional Distribution}
 设$ A$为事件,$ F_{X|A}(x)=P(X\le x|A) = \int_{-\infty}^{x}p_{X|A}(u)\mathrm{d}u$
 
 当$ Y$为随机变量时,根据新的下标重载函数$ F$:
 
 $ F_{X|Y}(x|y) = P(X\le x|Y=y)=\int_{-\infty}^x{\dfrac{p_{X,Y}(u,y)}{p_Y(y)}\mathrm{d}u}=\int_{-\infty}^x{ p_{X|Y}(u|y)}\mathrm{d}u$
+
 \begin{description}
-  \item [条件正态分布:]\hfill\\
-    \quad $ (X,Y)\sim N(0,0,1,1,\rho)\Rightarrow X|Y=y \sim N(\rho y, 1-\rho^2)$
-
-  $\Rightarrow  E(X|Y) = \rho Y, E(X|Y=y) = \rho y$
-
-\quad$ (X,Y) \sim N(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho) $
-
-$\Rightarrow  X|Y=y \sim N(\mu_1+\rho\dfrac{\sigma_1}{\sigma_2}(y-\mu_2), \sigma_1^2(1-\rho^2))$
-
   \item [逆乘法公式:]\hfill\\
     若$p_{X,Y}(x,y) = g(y)h(x,y),且\forall y, \int_{R}h(x,y)\mathrm{d}x=1$
 
@@ -319,26 +332,28 @@ $\Rightarrow  X|Y=y \sim N(\mu_1+\rho\dfrac{\sigma_1}{\sigma_2}(y-\mu_2), \sigma
   \item[连续Bayes公式:]$ p_{X|Y}(x|y) = \dfrac{p_X(x)p_{Y|X}(y|x)}{\int_{\mathbb{R}}{p_X(x)p_{Y|X}(y|x)}\mathrm{d}x}$
 
   \item[条件期望:]\hfill\\
-    $ E(X|Y=y) = \int_{\mathbb{R}}{xp_{X|Y}(x|y)\mathrm{d}x}$, 其值是关于$ Y$的随机变量,记做$E(X|Y) $
+    $ \E{X|Y=y} = \int_{\mathbb{R}}{xp_{X|Y}(x|y)\mathrm{d}x}$, 其值是关于$ Y$的
+    随机变量,记做$\E{X|Y} $
 
-    $\quad E[g(X)h(Y)|Y=y] = E[g(X)h(y)|Y=y] = h(y) E[g(X)|Y=y]$
+    $\quad \E{g(X)h(Y)|Y=y} = \E{g(X)h(y)|Y=y} = h(y) \E{g(X)|Y=y}$
 
-    $\Rightarrow E[g(X)h(Y)|Y] = h(Y)E[g(X)|Y]$
+    $\Rightarrow \E{g(X)h(Y)|Y} = h(Y)\E{g(X)|Y}$
 
 \item[重期望公式:]\hfill
   \begin{flalign*}
-    E(X) &= \int_{\mathbb{R}}\int_{\mathbb{R}}{xp(x,y)\mathrm{d}x\mathrm{d}y} =\int_{\mathbb{R}}\int_{\mathbb{R}}xp(x|y)p_Y(y)\mathrm{d}x\mathrm{d}y &\\
-    &=\int_{\mathbb{R}}{E(X|Y=y)p_Y(y)\mathrm{d}y} = E(E(X|Y))&\\
-    E(X) &= \sum_{j}E(X|Y=y_j)P(Y=y_j) 用于很多趣题.&\\
-    推论:&随机个随机变量和.设 X_1\cdots \text{i.i.d},则有 E(\sum_{i=1}^N{X_i})=E(X)E(N)&
+    \Ex{X} &= \int_{\mathbb{R}}\int_{\mathbb{R}}{xp(x,y)\mathrm{d}x\mathrm{d}y} =\int_{\mathbb{R}}\int_{\mathbb{R}}xp(x|y)p_Y(y)\mathrm{d}x\mathrm{d}y &\\
+    &=\int_{\mathbb{R}}{\E{X|Y=y}p_Y(y)\mathrm{d}y} = \E{\E{X|Y}}&\\
+    \Ex{X} &= \sum_{j}\E{X|Y=y_j}P(Y=y_j) 用于很多趣题.&\\
+    推论:&随机个随机变量和.设 X_1\cdots \text{i.i.d},则有
+    \E{\sum_{i=1}^N{X_i}}=\Ex{X}\Ex{N}&
   \end{flalign*}
-\item [条件期望是最佳平方逼近:] $ EX^2<\infty 时,E[X-E(X|Y)]^2 =\min E[X-\varphi(Y)]^2$ \hfill\\
-  \textbf{证:}由$ E[E(X|Y)]^2\le E[E(X^2|Y)] =EX^2$知存在性.
+\item [条件期望是最佳平方逼近:] $ \Ex{X^2}<\infty 时,\E{X-\E{X|Y}}^2 =\min \E{X-\varphi(Y)}^2$ \hfill\\
+  \textbf{证:}由$ \E{\E{X|Y}}^2\le \E{\E{X^2|Y}} =\Ex{X^2}$知存在性.
 
-  考虑期望在线性空间中的点积意义,需证$ E[[X-E(X|Y)]\varphi(Y)]=0$.
+  考虑期望在线性空间中的点积意义,需证$ \E{(X-\E{X|Y})\varphi(Y)}=0$.
 
-  LHS = $ E[E([X-E(X|Y)]\varphi(Y)|Y)] = E(\varphi(Y)E[X-E(X|Y)|Y]) = E[\varphi(Y)(E(X|Y) - E[E(X|Y)|Y])] = 0$
-
+  LHS = $ \E{\E{(X-\E{X|Y})\varphi(Y)|Y}} = \E{\varphi(Y)\E{X-\E{X|Y}|Y}} =
+  \E{\varphi(Y)(\E{X|Y} - \E{\E{X|Y}|Y})} = 0$
 
 \end{description}
 

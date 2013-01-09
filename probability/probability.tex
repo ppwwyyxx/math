@@ -1,5 +1,5 @@
 % $File: probability.tex
-% $Date: Fri Dec 28 10:36:58 2012 +0800
+% $Date: Tue Jan 08 19:28:20 2013 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \documentclass[a4paper]{article}
@@ -8,10 +8,13 @@
 \usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
 \usepackage[sorting=none]{biblatex}
 \usepackage{subfigure}
+\usepackage{chngpage}
 \usepackage{indentfirst}
 \usepackage{extarrows}
 \zhspacing
 
+
+\changepage{+1.3cm}{3cm}{-1.5cm}{-1.5cm}{}{-0.9cm}{}{}{}
 
 %\renewcommand{\abstractname}{摘要}
 %\renewcommand{\contentsname}{目录}
@@ -26,7 +29,6 @@
 \DeclareMathOperator{\LT}{\tiny{LT}}
 \DeclareMathOperator{\rank}{\tiny{rank}}
 \DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\Cov}{Cov}
 
 \let\Oldsum\sum
 \renewcommand{\sum}{\displaystyle\Oldsum}
@@ -51,6 +53,7 @@
 \tableofcontents
 \input{basic.tex}
 \input{rv}
+\input{distribution}
 \input{multivariate}
 \input{limit}
 
