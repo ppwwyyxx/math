@@ -1,11 +1,11 @@
 % File: distribution.tex
-% Date: Sat Feb 16 22:06:17 2013 +0800
+% Date: Sun Feb 17 12:27:23 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Distributions}
 
 \subsection{Common Discrete Distributions}
 \begin{enumerate}
-  \item \textbf{Bernoulli (Binomial)}$ b(n,p)$
+  \item \textbf{Bernoulli (Binomial):}$ b(n,p)$
 
     $ P(X = k) = C_n^kp^k(1-p)^{n-k}, k = 0,\cdots,n$
 
@@ -18,7 +18,7 @@
       \lfloor(n+1)p\rfloor&,  (n+1)p \not \in \mathbb{N}
     \end{matrix}\right.$
 
-\item \textbf{Poisson} $ P(\lambda),(\lambda > 0)$
+\item \textbf{Poisson:} $ P(\lambda),(\lambda > 0)$
 
   $ P(X = k) = \dfrac{\lambda^k}{k!}e^{-\lambda}$
 
@@ -34,14 +34,14 @@
     & \rightarrow \dfrac{\lambda^k}{k!}e^{-\lambda}, n\to \infty
 \end{flalign*}
 
-    \item \textbf{Geometry}$ G(p)$
+    \item \textbf{Geometry:}$ G(p)$
 
       $ P(X=k) = p(1-p)^{k-1}, k \in \mathbb{N^+}$
 
       $ \Ex{X} = \sum_{n=1}^{\infty}\sum_{k=1}^{n}{p(1-p)^{n-1}}=
       \sum_{k=1}^{\infty}\sum_{n=k}^{\infty}{p(1-p)^{n-1}}= \dfrac{1}{p}$
 
-      类似方法使用两次求出$ \E{X(X-1)},\Var{X} = \dfrac{1-p}{p^2}$
+      类似方法使用两次求出$ \E{X(X-1)}\Rightarrow \Var{X} = \dfrac{1-p}{p^2}$
 
       $ \varphi(t) = \dfrac{pe^{it}}{1-(1-p)e^{it}}$
 
@@ -51,7 +51,7 @@
 
           (即解Cauchy方程)
 
-        \item \textbf{HyperGeometry} $ h(n,N,M),(n, M\le N)$
+        \item \textbf{HyperGeometry:} $ h(n,N,M),(n, M\le N)$
 
           意义:$ N$件物品含有$ M$件次品,不放回抽取$ n$次得到的次品数.
 
@@ -67,7 +67,7 @@
 
         二项逼近:当$N\to\infty, \frac{M}{N}\to p $时,$ h(n,N,M)\to b(N,p)$
 
-      \item \textbf{Pascal (Negative Binomial)} $ Nb(r,p)$
+      \item \textbf{Pascal (Negative Binomial):} $ Nb(r,p)$
 
         意义:事件发生第$ r$次时的实验次数.$ Nb(r, p) = r * G(p) $
 
@@ -92,18 +92,19 @@
     \end{enumerate}
     \subsection{Common Continuous Distributions}
     \begin{enumerate}
-      \item \textbf{Uniformed} $U(a,b)$
+      \item \textbf{Uniformed:} $U(a,b)$
 
         $p(x) = \dfrac{1}{b-a}I_{[a,b]}(x) = \left \{ \begin{matrix}\dfrac{1}{b-a}, & a\le x \le b \\0, &  \text{else}\end{matrix}\right.$
+        其中$ I$为区间示性函数.
 
         $\Ex{X} = \dfrac{a+b}{2}, \Var{X} = \dfrac{(b-a)^2}{12}$
 
         $ U(-1,1)$的特征函数$\varphi_{X'}(t)=\int_{0}^1{\cos(tx)\mathrm{d}x} = \dfrac{\sin t}{t}\Rightarrow \varphi(t) =
       e^{\frac{(a+b)it}{2}}\dfrac{\sin(\frac{(b-a)t}{2})}{\frac{(b-a)t}{2}}$
 
-      或:$ \varphi(t) = \int_{a}^b{\dfrac{e^{itx}}{b-a}\mathrm{d}x} = \dfrac{e^{ibt}-e^{iat}}{it(b-a)}$
+      或:$ \varphi(t) = \int_{a}^b{\dfrac{e^{itx}}{b-a}\mathrm{d}x} = \dfrac{e^{ibt}-e^{iat}}{it(b-a)}$,与上式其实是相等的.
 
-    \item \textbf{Exponential}$Exp(\lambda),(\lambda > 0)$
+    \item \textbf{Exponential:}$Exp(\lambda),(\lambda > 0)$
 
       $p(x) = \lambda e^{-\lambda x}I_{\mathbb{R^+}}(x)$
 
@@ -129,7 +130,7 @@
         $ X,Y\sim Exp(\frac{1}{\lambda})\Rightarrow X-Y\sim L(0,\lambda), |X-Y|\sim Exp(\dfrac{1}{\lambda})$
 
 
-    \item \textbf{Gauss (Normal)}$N(\mu, \sigma^2)$
+    \item \textbf{Gauss (Normal):}$N(\mu, \sigma^2)$
 
       $p(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
 
@@ -158,7 +159,7 @@
 
     误差函数:$ Erf(x) = 2\Phi(x\sqrt{2})-1$
 
-  \item \textbf{Gamma} $\Gamma(\alpha, \lambda),(\alpha > 0为形状参数,\lambda>0为尺度参数)$
+  \item \textbf{Gamma:} $\Gamma(\alpha, \lambda),(\alpha > 0为形状参数,\lambda>0为尺度参数)$
 
     $ \Gamma 函数: \Gamma(x) = \int_{0}^{\infty}t^{x-1}e^{-t}\mathrm{d}t$
 
@@ -171,7 +172,7 @@
     $ \Gamma(1,\lambda )= Exp(\lambda), \Gamma(\dfrac{n}{2},\dfrac{1}{2}) = \chi ^2(n)$
 
     $ \varphi(t) = (\dfrac{\lambda-it}{\lambda})^{\alpha}$
-  \item \textbf{Beta} $ Be(a,b),(a,b>0)$
+  \item \textbf{Beta:} $ Be(a,b),(a,b>0)$
 
     $ Beta函数:B(a,b) = \int_{0}^{1}{x^{a-1}(1-x)^{b-1}\mathrm{d}x} = \dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$
 
@@ -183,9 +184,10 @@
 
     $ \Var{X} = \dfrac{ab}{(a+b)^2(a+b+1)}$
 
-    $ p(x)=nx^{n-1}\Leftrightarrow X\sim Be(n,1)$
+    特例: $p(x)=nx^{n-1}\Leftrightarrow X\sim Be(n,1);\; p(x) = \dfrac{x^{n-1}(1-x)}{n+n^2}\Leftrightarrow X\sim Be(n,2)$
 
-    \item \textbf{Chi Square} $ \chi^2(k).(自由度k>0)$
+
+    \item \textbf{Chi Square:} $ \chi^2(k).(自由度k>0)$
 
       $ Y_1 \xlongequal{i.i.d} \cdots \xlongequal{i.i.d} Y_k \sim N(0,1)
     \Rightarrow X = \sum{Y^2}\sim \chi^2(k)$
@@ -196,7 +198,7 @@
 
     $ \varphi(t) = (1-2it)^{-\frac{n}{2}}$
 
-  \item \textbf{Logarithmic Normal}$ LN(\mu, \sigma^2)$
+  \item \textbf{Logarithmic Normal:}$ LN(\mu, \sigma^2)$
 
     $ X\sim N(\mu,\sigma^2)\Rightarrow Y = e^{X}\sim LN(\mu,\sigma^2)$
 
@@ -204,7 +206,7 @@
 
   $ \Ex{X} = e^{\mu + \frac{\sigma^2}{2}}, \Var{X} = e^{2\mu+\sigma^2}(e^{\sigma^2}-1). 中位数e^\mu$
 
-\item \textbf{Cauchy}$ Cauchy(\mu, \lambda).$
+\item \textbf{Cauchy:}$ Cauchy(\mu, \lambda).$
 
   $ Y \xlongequal{i.i.d} Z \sim N(0,1) \Rightarrow \dfrac{Y}{Z}\sim Cauchy(0,1)$
 
@@ -214,7 +216,7 @@ $ p(x) = \dfrac{\lambda}{\pi(\lambda^2 +(x-\mu)^2)}$
 
 $ \varphi(t) = e^{i\mu t - \lambda |t|}$
 
- \item \textbf{Fisher-Snedecor} $ F(m, n)$
+ \item \textbf{Fisher-Snedecor:} $ F(m, n)$
 
    独立的$X\sim \chi^2(m),Y\sim\chi^2(n).F=\dfrac{X/m}{Y/n}\sim F(m,n).$
 
@@ -229,7 +231,7 @@ $ \varphi(t) = e^{i\mu t - \lambda |t|}$
 
      注意到$ \dfrac{1}{m}\chi^2(m)$是$ m+1$个样本的样本方差.
 
-   \item \textbf{Student t} $ t(n)$. Student是其论文笔名(1908)
+   \item \textbf{Student t:} $ t(n)$. Student是其论文笔名(1908)
 
      独立的$X\sim N(0,1),Y\sim\chi^2(n).t=\dfrac{X}{\sqrt{\frac{Y}{n}}}\sim t(n) $
 
@@ -237,7 +239,7 @@ $ \varphi(t) = e^{i\mu t - \lambda |t|}$
 
      而$ t^2\sim F(1,n).$于是$ p_t(x)=\dfrac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})}(1+\dfrac{x^2}{n})^{-\frac{n+1}{2}}$
 
-     $t(1) = Cauchy(0,1) ;t(\infty)=N(0,1)$
+     $t(1) = Cauchy(0,1) ,t(\infty)=N(0,1)$
 
      $ \Ex{X}=0(n>1), \Var{X}=\dfrac{n}{n-2}(n>2)$
 
@@ -246,7 +248,7 @@ $ \varphi(t) = e^{i\mu t - \lambda |t|}$
      $ \Rightarrow \dfrac{\sqrt{n}(\bar{x}-\mu)}{s} =
    \dfrac{N(0,1)}{\sqrt{\dfrac{(n-1)s^2}{\sigma^2(n-1)}}} =
    \dfrac{N(0,1)}{\sqrt{\dfrac{\chi^2(n-1)}{n-1}}} \sim t(n-1)$
- \item \textbf{Weibull}$ W(\lambda,k)$
+ \item \textbf{Weibull:}$ W(\lambda,k)$
 
    设备失效率=$ \lambda t^{k-1}\Rightarrow  寿命服从W(\lambda,k). $
 
@@ -259,8 +261,9 @@ $ \varphi(t) = e^{i\mu t - \lambda |t|}$
  $ \Ex{X} = \lambda \Gamma(1+\dfrac{1}{k}), \Var{X} =
  \lambda^2\Gamma(1+\dfrac{2}{k})-(\Ex{X})^2$
 
-\item \textbf{Rayleigh} $ R(\sigma)$
-  $ X,Y$ i.i.d.,$ X\sim N(0, \sigma^2)\Rightarrow \sqrt{X^2+Y^2} \sim R(\sigma)$
+\item \textbf{Rayleigh:} $ R(\sigma)$
+
+  $ X\xlongequal{\text{i.i.d}}Y\sim N(0, \sigma^2)\Rightarrow \sqrt{X^2+Y^2} \sim R(\sigma)$
 
 $ p(x) = \dfrac{x}{\sigma^2}e^{-\frac{x^2}{2\sigma^2}}I_{[0,+\infty)}$
 
@@ -268,7 +271,7 @@ $ F(x) = 1-e^{-\frac{x^2}{\sigma^2}}$
 
 $ \Ex{X} = \sigma\sqrt{\dfrac{\pi}{2}}, \Var{X} = \dfrac{4-\pi}{2}\sigma^2$
 
-\item \textbf{Laplace} $ L(\mu,b)$
+\item \textbf{Laplace:} $ L(\mu,b)$
 
   $ p(x)=\dfrac{1}{2b}e^{-\frac{|x-\mu|}{b}}, F(x)=\dfrac{1+\sgn(x-\mu)}{2}(1-e^{-\frac{|x-\mu|}{b}})$
 

@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Sat Feb 16 22:17:10 2013 +0800
+% Date: Sun Feb 17 12:16:38 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Variables}
@@ -16,11 +16,12 @@
 	\end{split}
 \end{equation*}
 
-即$ F(c + 0) = F(c), F(d - 0) = P(X<d), 且可得F(-\infty) = 0, F(\infty) = 1$.
+即$ F(c + 0) = F(c)(右连续), F(d - 0) = P(X<d), 且可得F(-\infty) = 0, F(\infty) = 1$.
 
 满足以上性质的函数$ F$必定为某随机变量的分布函数.
 
 任意Borel集$ B\subset \mathbb{R}, P(X \in B) 可由F$ 计算得到.
+
 特别的,$ P(X=x) = F(x) - F(x - 0),若F在x连续,则P(X=x) = 0$
 \\
 
@@ -36,6 +37,7 @@ $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le 
 存在非负可积函数,使得$ F(x) = \int_{-\infty}^{x}{p(t)dt}$,则称$ p(x)$为$ X$的\textbf{概率密度函数}.
 
 在$ F(x)$导数存在的点有$ p(x) = F'(x)$,其余点处$ p(x)$可任意取值.
+\\
 
 \textbf{密度公式:}
 函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
