@@ -1,12 +1,12 @@
 % File: walk.tex
-% Date: Sun Feb 17 00:13:35 2013 +0800
+% Date: Sun Feb 17 12:02:43 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{One-Dimensional Random Walk}
 \textbf{Counting Paths}:从$ (0,0)走到 (n,x),(|x|\le n, n + x\equiv 0 \pmod 2)$的折线条数:
 
   设有$ p$个$ +1,q个-1,\begin{cases}n=p+q\\x=p-q \end{cases}$,
-  条数为$ N_{n,x} = C_{p+q}^p = C_{n}^{\frac{p+q}{2}}$
+  条数为$ N_{n,x} = C_{p+q}^p = C_{n}^{\frac{n+x}{2}}$
   \\
 
   \textbf{Reflection Principle}:
@@ -47,7 +47,7 @@ $ \Pr{S_1,\cdots ,S_{2n}>0}=\dfrac{1}{2}\Pr{S_1,\cdots ,S_{2n-1}\ge 0} = \dfrac{
 最后一步是因为$ S_{2n-1}\ge 0$蕴含$ S_{2n}\ge 0. $\qed
 \\
 
-\textbf{几何证明}:考虑到$ S_{2n}=0$的每一条路径,设其所有最小值点中最左边的一个为$ M(k,m),$将$ (0,0)~M$的部分沿$ x=k$翻转后续接到
+\textit{几何证明}:考虑到$ S_{2n}=0$的每一条路径,设其所有最小值点中最左边的一个为$ M(k,m),$将$ (0,0)\sim M$的部分沿$ x=k$翻转后续接到
 $ (2n,0)$后,以$ M$为新原点,便得到一条恒非负路径.\qed
 \vspace{0.6cm}
 
@@ -67,7 +67,7 @@ $ (2n,0)$后,以$ M$为新原点,便得到一条恒非负路径.\qed
   积分:$\sum_{k<xn}a_{2n,2k}\approx \dfrac{2}{\pi}\arcsin{\sqrt{x}}$
 \vspace{0.6cm}
 
-\textbf{Sojourn Times}:有$ 2k$时间在一象限,$ 2n-2k$时间在四象限的概率为$ b_{2n,2k} = a_{2n,2k}$
+\textbf{Sojourn Time}:有$ 2k$时间在一象限,$ 2n-2k$时间在四象限的概率为$ b_{2n,2k} = a_{2n,2k}$
 
 \textit{Proof:}设First Return发生在$ 2r$处,此前恒正有$ \frac{2^{2r}f_{2r}}{2} \times 2^{2n-2r}b_{2n-2r,2k-2r}$种可能,恒负有
 $ \frac{2^{2r}f_{2r}}{2}\times 2^{2n-2r}b_{2n-2r,2k}$种可能.
@@ -84,6 +84,45 @@ $ \Rightarrow b_{2n,2k} = \dfrac{f_{2r}}{2}[\sum_{r=1}^k{b_{2n-2r,2k-2r}} + \sum
 领先不易改变:$ \xi_{n,0}>\xi_{n,1}>\cdots $
 \vspace{0.6cm}
 
-\textbf{Maximum}:由反射原理,$ (0,0)~(n,k)$的路径,最大值为$ r$的概率为$ p_{n,2r-k}-p_{n,2r+2-k}$
+\textbf{Maximum}:由反射原理,$ (0,0)\sim (n,k)$的路径,最大值为$ r$的概率为$ p_{n,2r-k}-p_{n,2r+2-k}$
 
-对上式求和,得长为$ n$的路径,最大值为$ r$的概率为$ p_{n,r}或p_{n,r+1}$(只有一者有意义).
+上式对$ k$求和,得长为$ n$的路径,最大值为$ r$的概率为$ p_{n,r}或p_{n,r+1}$(只有一者有意义).
+
+取$ r=0$即是引理的证明.
+\vspace{0.6cm}
+
+\textbf{First Passage}:$ n$时刻初过$ r$的概率为$\varphi_{n,r}$
+
+$(0,0)\sim (n-1,r-1) $的最大值为$ r-1$的路径概率为$ p_{n-1,r-1}-p_{n-1,r+1}$
+
+$ \Rightarrow \varphi{n,r} = \dfrac{p_{n-1,r-1}-p_{n-1,r+1}}{2} = \dfrac{rp_{n,r}}{n}$
+\vspace{0.6cm}
+
+\textbf{$ \mathbf{r}$th Return}:第$ r$次返回发生在$ n$时刻的概率为$ \varphi_{n-r,r}$
+
+\textit{Proof}:设第$ r$次返回发生在时刻$ n$的长为$ n$的路径有$ A$条,则其中全在$ x$轴下方的路径有$ \dfrac{A}{2^r}$条.
+对每一条这种路径,将它所有从$ x$轴出发的那$ r$步删去,对应到一条$ n-r$时刻初过$ r$的路径.
+\vspace{0.6cm}
+
+\textbf{Sojourn Time with Return:}设$ S_{2n}=0$,前$ 2n$时间中,$ 2k$时间在上方的概率与$ k$无关.
+
+\textit{Proof:}设$ 2r$时刻First Return,讨论$ 1\sim 2r$恒正或恒负,和式变换消去$ k$.概率为$ \dfrac{u_{2n}}{n+1}=2f_{2n+2}$
+\vspace{0.6cm}
+
+\textbf{Duality}:设$ X_i^\star = X_{n-i},S_{i}^\star = S_n-S_{n-i}$,可得到一系列对偶命题.起点-终点,初-末对应.
+\vspace{0.6cm}
+
+\textbf{Asymptotic}:
+
+访问次数$ V_n,$部分和$ S_n$的阶为$ \sqrt{n}.$
+
+$  P(S_n < t\sqrt{n})\to \Phi(t), P(V_n < t\sqrt{n}) \to 2\Phi(2t) -1$
+\\
+
+初过$ r$时间与第$ r$次返回时间的阶为$ r^2$.
+
+初过$ r$发生在$ tr^2$之前的概率$ \to 2 - 2 \Phi(\dfrac{1}{\sqrt{t}})$
+
+第$ r$次返回发生在$ tr^2$之前的概率$ \to 2 - 2\Phi(\dfrac{1}{\sqrt{t}})$.(反直觉)
+
+直觉认为返回后``无记忆'',因此累积时间应当与$ r$同阶.
