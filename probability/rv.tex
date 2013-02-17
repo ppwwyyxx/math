@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Tue Jan 08 19:47:20 2013 +0800
+% Date: Sat Feb 16 22:17:10 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Variables}
@@ -40,7 +40,7 @@ $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le 
 \textbf{密度公式:}
 函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
 
-\textbf{证:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
+\textit{Proof:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
 \xlongequal{x=h(z)}\int_{-\infty}^{y}RHS$
 
 应用: $X\sim \Gamma(\alpha, \lambda) \Rightarrow  kX \sim \Gamma(\alpha, \dfrac{\lambda}{k}), 2\lambda X \sim \chi^2(2\alpha)$
@@ -48,7 +48,7 @@ $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le 
 
 \textbf{对角线:}$ F_X(x)$若为严格增的连续函数,$F_X(X) \sim U(0,1)$
 
-\textbf{证}:$ F_{F_X(X)}(x) = P(F_X(X)\le x) = P(X \le F_X^{-1}(x)) = F_X(F_X^{-1}(x)) =x$
+\textit{Proof}:$ F_{F_X(X)}(x) = P(F_X(X)\le x) = P(X \le F_X^{-1}(x)) = F_X(F_X^{-1}(x)) =x$
 
 \subsection{Expectation \& Variance}
 \begin{equation*} \begin{split}
@@ -73,14 +73,14 @@ $\bullet$ 绝对收敛保证了和的存在且与顺序无关.
 
 即:$y=F(x), x=\Ex{X}, 将0\le y \le 1$分成面积相等的两部分.
 
-\textbf{证:}对两边进行分部积分即可.
+\textit{Proof:}对两边进行分部积分即可.
 \\
 
 \textbf{Cauchy-Schwartz:}
 
 $\E{X^2},\E{Y^2} < \infty, 则(\E{XY})^2 \le \E{X^2}\E{Y^2}$
 
-\textbf{证:}考虑$ f(u) = \E{Xu+Y}^2 = (\E{X^2})u^2 + 2\E{XY}u+\E{Y^2}$的判别式即可.
+\textit{Proof:}考虑$ f(u) = \E{Xu+Y}^2 = (\E{X^2})u^2 + 2\E{XY}u+\E{Y^2}$的判别式即可.
 \\
 
 \textbf{期望的统计意义:}

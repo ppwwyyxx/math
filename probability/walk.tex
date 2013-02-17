@@ -1,0 +1,89 @@
+% File: walk.tex
+% Date: Sun Feb 17 00:13:35 2013 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+\section{One-Dimensional Random Walk}
+\textbf{Counting Paths}:从$ (0,0)走到 (n,x),(|x|\le n, n + x\equiv 0 \pmod 2)$的折线条数:
+
+  设有$ p$个$ +1,q个-1,\begin{cases}n=p+q\\x=p-q \end{cases}$,
+  条数为$ N_{n,x} = C_{p+q}^p = C_{n}^{\frac{p+q}{2}}$
+  \\
+
+  \textbf{Reflection Principle}:
+
+  设$ b_0,b_n>0,从(0,b_0)到(n,b_n)$的经过$ x$轴的折线与$(0,-b_0)$到$(n,b_n)$的折线一一对应.
+  \\
+
+  \textbf{Ballot Theorem}:甲$ p>$乙$ q$票,甲始终领先:
+
+  等价于$ (1,1)$到$ (p+q,p-q)$的不过$ x$轴的折线,有$ N_{n-1,x-1} -
+  N_{n-1,x+1}=\dfrac{x}{n}N_{n,x}$
+  \\
+
+  下面只考虑从原点出发的折线,采用如下记号:
+  $\; X_k = \pm 1, S_k = \sum_{i=1}^k{X_i},S_0=0$
+
+  \textbf{Reach:}$\; p_{n,r} = \Pr{S_n=r} = N_{n,r}2^{-n} = C_{n}^{\frac{n+r}{2}}2^{-n}$
+
+  \textbf{Return}:$\; u_{2n} = p_{2n,0} = \dfrac{(2n)!}{(n!)^2}2^{-2n}\approx \dfrac{1}{\sqrt{\pi n}}$ (Stirling's Approximation)
+  \vspace{0.6cm}
+
+  \textbf{Important Lemma}:
+
+  $ \Pr{S_1,\cdots ,S_{2n}\neq 0} = \Pr{S_{2n}=0}=2\Pr{S_1,\cdots ,S_{2n}>0} =
+    \Pr{S_1,\cdots ,S_{2n}\ge 0}$
+\begin{align*}
+  \textit{Proof}:
+   \Pr{S_1,\cdots ,S_{2n}>0} &= \sum_{r=1}^{n}{\Pr{S_1 ,\cdots S_{2n-1}>0,S_{2n}=2r}}\\
+   &=\sum_{r=1}^{n}{\dfrac{N_{2n-1,2r-1}-N_{2n-1,2r+1}}{2^{2n}}} \; \text{(by ballot theorem)}\\
+   &=\sum_{r=1}^n{\dfrac{1}{2}(p_{2n-1,2r-1}-p_{2n-1,2r+1})} \\
+   &=\dfrac{1}{2}p_{2n-1,1}-0 = \dfrac{1}{2}u_{2n}
+\end{align*}
+又由$ S$的整数连续性知$ \Pr{S_1,\cdots ,S_{2n}\neq0}=2\Pr{S_1,\cdots ,S_{2n}\gtrless 0}$
+
+考虑每一条恒正路径的概率,第一步走到$ (1,1)$的概率为$ \frac{1}{2},$之后对应于一条长为$ 2n-1$的恒非负路径,即
+$ \Pr{S_1,\cdots ,S_{2n}>0}=\dfrac{1}{2}\Pr{S_1,\cdots ,S_{2n-1}\ge 0} = \dfrac{1}{2}\Pr{S_1,\cdots ,S_{2n}\ge 0}$
+
+最后一步是因为$ S_{2n-1}\ge 0$蕴含$ S_{2n}\ge 0. $\qed
+\\
+
+\textbf{几何证明}:考虑到$ S_{2n}=0$的每一条路径,设其所有最小值点中最左边的一个为$ M(k,m),$将$ (0,0)~M$的部分沿$ x=k$翻转后续接到
+$ (2n,0)$后,以$ M$为新原点,便得到一条恒非负路径.\qed
+\vspace{0.6cm}
+
+  \textbf{First Return}:$ f_{2n} = \Pr{S_1,\cdots ,S_{2n-1}\neq 0, S_{2n} = 0}$
+
+  由引理立刻得,$ f_{2n} = u_{2n-2}-u_{2n} = \dfrac{u_{2n}}{2n-1}$
+
+  有递推关系:$ u_{2n}=\sum_{i=1}^n{f_{2i}u_{2n-2i}}$
+  \vspace{0.6cm}
+
+  \textbf{Last Return:}长为$ 2n$的路径,最后一次经过$ x$轴在$ 2k$处的概率为$ a_{2n,2k} = u_{2k}u_{2n-2k}$.
+
+  \textit{Proof:}由引理,前$ 2k$次结束于$ x$轴的概率为$ u_{2k}$,后$ 2n-2k$次不经过$ x$轴的概率为$ u_{2n-2k}$.
+
+  \textbf{ArcSin Distribution:}由$ u_{2k}$的逼近,有$ a_{2n,2k}\approx \dfrac{f(\frac{k}{n})}{n},f(x)=\dfrac{1}{\pi\sqrt{x(1-x)}}$
+
+  积分:$\sum_{k<xn}a_{2n,2k}\approx \dfrac{2}{\pi}\arcsin{\sqrt{x}}$
+\vspace{0.6cm}
+
+\textbf{Sojourn Times}:有$ 2k$时间在一象限,$ 2n-2k$时间在四象限的概率为$ b_{2n,2k} = a_{2n,2k}$
+
+\textit{Proof:}设First Return发生在$ 2r$处,此前恒正有$ \frac{2^{2r}f_{2r}}{2} \times 2^{2n-2r}b_{2n-2r,2k-2r}$种可能,恒负有
+$ \frac{2^{2r}f_{2r}}{2}\times 2^{2n-2r}b_{2n-2r,2k}$种可能.
+
+$ \Rightarrow b_{2n,2k} = \dfrac{f_{2r}}{2}[\sum_{r=1}^k{b_{2n-2r,2k-2r}} + \sum_{r=1}^{n-k}{b_{2n-2r,2k}}],(1\le k \le n-1)$
+
+再由$ b_{2n,0}=b_{2n,2n}=u_{2n}$,归纳即证.
+\vspace{0.6cm}
+
+\textbf{Changes of Sign}:显然$ S_{2n+1}\neq 0$,在前$ 2n+1$次中符号变化的次数为$ r$的概率为$ \xi_{2n+1,r} $
+
+对$ r>1,$只考虑$ X_1=1$的情形,将路径在变号点分两段计数归纳,可证$ \xi_{2n+1,r}=2p_{2n+1,2r+1}.$
+
+领先不易改变:$ \xi_{n,0}>\xi_{n,1}>\cdots $
+\vspace{0.6cm}
+
+\textbf{Maximum}:由反射原理,$ (0,0)~(n,k)$的路径,最大值为$ r$的概率为$ p_{n,2r-k}-p_{n,2r+2-k}$
+
+对上式求和,得长为$ n$的路径,最大值为$ r$的概率为$ p_{n,r}或p_{n,r+1}$(只有一者有意义).

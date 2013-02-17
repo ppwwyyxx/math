@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Tue Jan 08 20:49:16 2013 +0800
+% Date: Sat Feb 16 22:16:37 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Multivariate Distributions}
 \subsection{Joint Distribution}
@@ -232,7 +232,9 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
 $ r(X,Y) = \pm 1\Leftrightarrow X,Y几乎处处线性相关\Leftrightarrow P(Y=aX+b)=1$
 \\
 
-由于$ \E{XY}$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.因此,由Cauchy's Inequality:
+$ \E{XY}$是对角线上非负的对称双线性函数,可作为随机变量的内积的定义.
+
+因此,由Cauchy's Inequality:
 
 $\Cov{X}{Y}^2=|\langle X-\Ex{X}, Y-\Ex{Y}\rangle |^2 \le
 |X-\Ex{X}||Y-\Ex{Y}|=\Var{X}\Var{Y} $
@@ -253,7 +255,8 @@ $\Rightarrow  \E{X-(\hat{a}Y+\hat{b})}=0,\E{Y(X-(\hat{a}Y+\hat{b}))}=0. $
 解得$\hat{a}=\dfrac{\Cov{X}{Y}}{\Var{Y}},\hat{b}=\Ex{X}-\hat{a}\Ex{Y}.\quad
 \hat{X} = \dfrac{\Cov{X}{Y}}{\Var{Y}}(Y-\Ex{Y})+\Ex{X}$
 \begin{align*}
-  此时误差 \E{X-\hat{X}^2} &= \E{(X-\Ex{X})-\dfrac{\Cov{X}{Y}}{\Var{Y}}(Y-\Ex{Y})} \\
+  此时误差 \E{X-\hat{X}}^2 &=
+  \E{(X-\Ex{X})-\dfrac{\Cov{X}{Y}}{\Var{Y}}(Y-\Ex{Y})}^2 \\
   &= \Var{X}-\dfrac{\Cov{X}{Y}^2}{\Var{Y}}\\
   &=\Var{X}[1-r(X,Y)^2]
 \end{align*}
@@ -348,7 +351,7 @@ $ F_{X|Y}(x|y) = P(X\le x|Y=y)=\int_{-\infty}^x{\dfrac{p_{X,Y}(u,y)}{p_Y(y)}\mat
     \E{\sum_{i=1}^N{X_i}}=\Ex{X}\Ex{N}&
   \end{flalign*}
 \item [条件期望是最佳平方逼近:] $ \Ex{X^2}<\infty 时,\E{X-\E{X|Y}}^2 =\min \E{X-\varphi(Y)}^2$ \hfill\\
-  \textbf{证:}由$ \E{\E{X|Y}}^2\le \E{\E{X^2|Y}} =\Ex{X^2}$知存在性.
+  \textit{Proof:}由$ \E{\E{X|Y}}^2\le \E{\E{X^2|Y}} =\Ex{X^2}$知存在性.
 
   考虑期望在线性空间中的点积意义,需证$ \E{(X-\E{X|Y})\varphi(Y)}=0$.
 

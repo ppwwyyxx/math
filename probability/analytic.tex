@@ -1,0 +1,76 @@
+% File: analytic.tex
+% Date: Sat Feb 16 22:17:20 2013 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+\section{Analytic Topics}
+\subsection{Estimation}
+\begin{enumerate}
+  \item \textbf{Chebyshev} \begin{flalign*}
+       \forall \varepsilon > 0, &P(|X-\Ex{X}| \ge \varepsilon)          \\
+      =                    & \int_{|x- \Ex{X}| \ge \varepsilon}{p(x)\mathrm{d}x}
+      \le \int_{|x-\Ex{X}| \ge \varepsilon}{\dfrac{(x-\Ex{X})^2}{\varepsilon^2}p(x)\mathrm{d}x} \\
+      \le                  &
+      \dfrac{\int_{\mathbb{R}}{(x-\mu)^2}p(x)\mathrm{d}x}{\varepsilon^2} =
+      \dfrac{\sigma^2}{\varepsilon^2}\\
+      统计意义:&与均值的距离远近对概率的限定.
+    \end{flalign*}
+  \item \textbf{Kolmogorov}
+
+    设$ X_1,\cdots X_n$相互独立,期望方差为$ \mu_k,\sigma_k^2, \: S_k =
+    \sum_{i=1}^{k}{S_i}$
+
+    $ \forall t > 0, P(\max\limits_{k\in [1,n]}{\dfrac{|S_k -
+        \Ex{S_k}|}{\sqrt{\Var{S_n}}}} < t) \ge 1-t^{-2}$
+
+    $ n=1$的情形即Chebyshev.
+\end{enumerate}
+
+\subsection{Convergence}
+依概率收敛:$\forall \varepsilon>0, P(|X_n-X|\ge \varepsilon)\to 0 (n\to \infty),\Leftrightarrow  X_n\overset{P}{\rightarrow}X$
+
+弱收敛:$ \forall F的连续点x,\lim\limits_{n\to \infty}F_n(x)=F(x)\Leftrightarrow F_n(x)\overset{W}{\rightarrow}F(x)$
+
+依分布收敛:$ X_n\overset{L}{\rightarrow}X$
+
+\subsection{Law of Large Numbers}
+\begin{enumerate}
+  \item 弱大数定律:$\dfrac{\Oldsum{X_i}}{n}\overset{P}{\rightarrow}\mu$
+
+  意义:用平均值作为期望是合理的,即使不知道其分布
+
+  \textbf{Chebyshev}: $X_n $两两不相关,方差一致有界
+
+  \textbf{Markov:}$ X_n$两两不相关,$ \lim\limits_{n\to\infty}\dfrac{1}{n^2}
+  \Var{\sum{X_i}}= 0(Markov条件)$
+
+  \textbf{Bernstein}:只需$ X_n$渐进不相关($ \lim\limits_{|k-l|\to \infty}\Cov(X_k,X_l)=0$),方差一致有界
+
+  \textbf{Khintchine}:只需$ X_n$i.i.d.,期望存在
+
+  推论:\textbf{J.Bernoulli}:
+  $ n$  次试验中$ A$发生的次数$ S_n,\dfrac{S_n}{n}\overset{P}{\rightarrow}p$
+
+意义:概率是频率的极限
+
+    \item 强大数定律:$
+      P(\lim\limits_{n\to\infty}\dfrac{\Oldsum{X_i}}{n}=\dfrac{\Oldsum{\Ex{X_i}}}{n}) = 1$
+
+      \textbf{Borel:}$ X_n$i.i.d.,$ \Ex{X^4}<+\infty$
+
+      \textbf{Kolmogorov:}$ X_n$独立,$ \sum{\dfrac{\Var{X_i}}{i^2}}<+\infty$
+
+  \end{enumerate}
+
+  \subsection{Central Limit Theorem}
+  \begin{enumerate}
+    \item \textbf{Lindeberg-Levy:}$ X_n$i.i.d.,$ Y_n=\dfrac{\Oldsum{X_i}-n\mu}{\sigma\sqrt{n}}\overset{L}{\rightarrow}N(0,1)$
+
+  \item \textbf{De Moivre-Laplace:}$ n次实验中A发生了S_n次,Y_n=\dfrac{S_n-np}{\sqrt{np(1-p)}}\overset{L}{\rightarrow}N(0,1)$
+\item \textbf{Lindeberg/Lyapunov:}$ X_n独立,设B_n=\sqrt{\Oldsum{\sigma_i^2}},若满足$Lindeberg条件:
+  \[ \forall t>0,\lim\limits_{n\to\infty}\dfrac{1}{B_n^2}\sum_{i=1}^n{\int_{|x-\mu_i|>tB_n}{(x-\mu_i)^2p_i(x)\mathrm{d}x}=0} \]
+  或Lyapunov条件(弱于Lindeberg):
+  \[ \exists
+    t>0,\lim\limits_{n\to\infty}(\sum_{i=1}^n{\Var{X_i}})^{-t}\sum_{i=1}^n\E{|X_i-\mu_i|^{2+t}}=0 \]
+  则$ \dfrac{1}{B_n}\sum{(X_i-\mu_i)}\overset{L}{\rightarrow}N(0,1)$.
+
+\end{enumerate}
+
