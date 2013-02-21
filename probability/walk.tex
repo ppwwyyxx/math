@@ -1,8 +1,9 @@
 % File: walk.tex
-% Date: Sun Feb 17 12:02:43 2013 +0800
+% Date: Sun Feb 17 18:36:35 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{One-Dimensional Random Walk}
+\subsection{Combinatorial Perspectives}
 \textbf{Counting Paths}:从$ (0,0)走到 (n,x),(|x|\le n, n + x\equiv 0 \pmod 2)$的折线条数:
 
   设有$ p$个$ +1,q个-1,\begin{cases}n=p+q\\x=p-q \end{cases}$,
@@ -95,7 +96,7 @@ $ \Rightarrow b_{2n,2k} = \dfrac{f_{2r}}{2}[\sum_{r=1}^k{b_{2n-2r,2k-2r}} + \sum
 
 $(0,0)\sim (n-1,r-1) $的最大值为$ r-1$的路径概率为$ p_{n-1,r-1}-p_{n-1,r+1}$
 
-$ \Rightarrow \varphi{n,r} = \dfrac{p_{n-1,r-1}-p_{n-1,r+1}}{2} = \dfrac{rp_{n,r}}{n}$
+$ \Rightarrow \varphi_{n,r} = \dfrac{p_{n-1,r-1}-p_{n-1,r+1}}{2} = \dfrac{rp_{n,r}}{n}$
 \vspace{0.6cm}
 
 \textbf{$ \mathbf{r}$th Return}:第$ r$次返回发生在$ n$时刻的概率为$ \varphi_{n-r,r}$
@@ -126,3 +127,44 @@ $  P(S_n < t\sqrt{n})\to \Phi(t), P(V_n < t\sqrt{n}) \to 2\Phi(2t) -1$
 第$ r$次返回发生在$ tr^2$之前的概率$ \to 2 - 2\Phi(\dfrac{1}{\sqrt{t}})$.(反直觉)
 
 直觉认为返回后``无记忆'',因此累积时间应当与$ r$同阶.
+
+\subsection{Generating Function Perspectives}
+以下的Random Walk中,$ +1,-1$分别具有概率$ p,q$.
+
+\textbf{Waiting Time for a Gain}:设$ \varphi_{n} = \varphi_{n,1}$为初过$ 1$的概率,$ \Phi(x)=\sum_{n=0}^\infty{\varphi_nx^n}$
+
+由定义有$ \varphi_0=0,\varphi_1=p$.
+
+对$ n>1$,必须以$q$的概率走到$ S_1 = -1,\varphi_{v-1}$的概率走到First Return点$ S_v = 0,\varphi_{n-v}$概率走到$ S_n=1$.
+于是,$ \varphi_n = q\sum_{k=1}^{n-2}{\varphi_k\varphi_{n-1-k}}$
+
+注意到右边的Convolution形式,可得$ \Phi(x)-px = qx\Phi^2(x)\Rightarrow \Phi(x) = \dfrac{1-\sqrt{1-4pqx^2}}{2qx}$
+\\
+
+解法二:$ \Phi(x) = \E{x^n} = p\E{x^n | X_1=1} + q\E{x^n|X_1=-1}.$
+
+$X_1=1\Rightarrow n=1\Rightarrow \E{x^n|X_1=1}=s$
+
+$ X_1=-1\Rightarrow n=1+n_1+n_2$(此处仍按照第一步和初返点来分段)
+
+$ \Rightarrow \E{x^n|X_1=-1}=\E{x^{1+n_1+n_2}}=x\Phi^2(x)$.代入即得$ \Phi(x)$
+\\
+
+总会赢的概率:$ \sum{\varphi_n} = \min{\dfrac{p}{q},1}$
+
+赢的期望时间:$ \Phi'(1) = \dfrac{1}{p-q}.$ 公平赌博期望无穷次才能获利.
+\vspace{0.6cm}
+
+\textbf{Return}:$ u_{2n} = C_{2n}^np^nq^n,U(x) = \sum_{n=0}^\infty u_{2n}x^{2n} = \dfrac{1}{\sqrt{1-4pqx^2}}$
+
+\textbf{First Return}:
+设$f_n = f_n^{-}+f_n^+, X_1=-1$时的$ f_{2n}^- = q\varphi_{2n-1}$
+
+$\Rightarrow F^-(x) = \sum_{n=1}^\infty f_{2n}^-x^{2n}=qx\Phi(x)=\dfrac{1-\sqrt{1-4pqx^2}}{2}$
+
+将$ p,q$互换得到$ F^+(x)=F^-(x) \Rightarrow F(x)=\sum_{n=1}^\infty f_nx^n = 1-\sqrt{1-4pqx^2}$
+\\
+
+总会返回的概率:$ F(1) = 1-|p-q|$; 永不返回的概率:$ |p-q|$
+
+$ p=\dfrac{1}{2}$时一定会返回,期望时间为$ F'(1)=\infty$.
