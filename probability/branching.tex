@@ -1,5 +1,5 @@
 % File: branching.tex
-% Date: Fri Feb 22 11:34:29 2013 +0800
+% Date: Fri Feb 22 11:48:02 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Branching Process}
 设$ X_k$表示第$ k$代的个数,$ X_0=1.$每个个体以相同的概率分布独立产生一定数量的后代.
@@ -37,6 +37,8 @@ $ \forall t < 1, R_2(t) = tG(tG(t)) < tG(t) = R_1(t)$,归纳可得$ R_n(t)< R_{n
 由凸性可知根至多有2个. 考查$ x=0, x=e, x=1$时的情形知根只有一个,在$ (0,e]$之间.
 
 $ t = 1时显然\rho(1) = e.$ ($ e \ne 1$时$ \rho(t)$不是一个honest的PGF)
+
+$\E{Y_n} \to \begin{cases}\infty, \mu \ge  1\\\dfrac{1}{1-\mu}, \mu < 1\end{cases} $
 
 \subsection{Geometric Distribution}
 设个体繁衍的概率分布为几何分布,生成函数$ G(t) = \dfrac{q}{1-pt}$
