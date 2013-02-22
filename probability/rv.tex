@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Fri Feb 22 00:37:39 2013 +0800
+% Date: Fri Feb 22 10:11:07 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Variables}
@@ -106,7 +106,25 @@ $ \Var{X} = \E{X^2 - 2X\Ex{X} + (\Ex{X})^2} = \Ex{X^2} - (\Ex{X})^2$
 
 峰度系数$ \beta_{k} = \dfrac{\E{X-\Ex{X}}^4}{(\Var{X})^2} - 3$.描述相比于正态分布的尖峭程度(尾部粗细).正态分布峰度为0.
 
-\subsection{Generating Function}
+\subsection{Probability Generating Function}
+对一取非负整数的随机变量$ X$,设$ p_k = P(X=k)$,定义$ G_X(t) = \E{t^X} = \sum_{k=0}^\infty{p_kt^k}$
+
+注意到$  p_k = \dfrac{G^{(k)}(0)}{k!}, G(1) = 1, G(t)对|t|\le 1$绝对收敛.
+
+$G(t) $在$ [0,1]$上连续,此时由$ G'(t) = \sum{kp_kx^{k-1}}, G''(t) = \sum{k(k-1)p_kx^{k-2}}$知,$ G$是递增的下凸函数.
+
+$ G^{(r)}(1) = \E{X^{\underline{r}}}, $其中$ x^{\underline{r}}$为$ x$的$ r$次降阶乘.
+
+$\Rightarrow \Var{X} = G''(1) - G'(1)^2 + G'(1) $
+\\
+
+$ X,Y$独立$ \Rightarrow G_{X+Y}(t) = G_X(t)G_Y(t), G_{X-Y}(t) = G_X(t)G_Y(t^{-1})$
+
+\textbf{Compound Distribution: } $ X_i $ i.i.d,$ N$是随机变量,$ S_N = \sum_{k=1}^N{X_i} $
+
+$G_{S_N}(t) = \sum_{n=0}^\infty{\E{t^{S_N} | N=n}P(N=n)} =\sum_{n=0}^\infty{\E{t^{S_n}}P(N=n)} = \sum_{n=0}^\infty{\E{t^X}^n P(N=n)} = G_N(G_X(t)) $
+
+$ \Rightarrow \E{S_N} = \E{N}\E{X}, \Var{S_N} = \E{N}\Var{X} + \Var{N}\E{X}^2$
 
 \subsection{Characteristic Function}
 $ \varphi_X(t) = \E{e^{itX}}$
