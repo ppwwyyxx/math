@@ -1,0 +1,143 @@
+% File: recurrent.tex
+% Date: Sat Feb 23 20:08:25 2013 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+\section{Recurrent Event}
+\subsection{Definition}
+一个(未必独立的)重复实验序列,实验结果可能为$ E_j(j=1,\cdots )$
+
+设$ \mathcal{E}$是有限结果序列的一个可判定属性.
+
+语句``$ \mathcal{E}$在$ E_{k_1},\cdots $的第$ n$个位置出现''的意义是$ E_{k_1},\cdots ,E_{k_n}$具有属性$ \mathcal{E}$
+
+若属性满足以下两个条件,则称其定义了一个Recurrent Event:
+\begin{enumerate}
+    \item \textbf{在结尾处判定出现}
+
+      $ \mathcal{E}$在$ E_{k_1},\cdots,E_{k_{n+m}} $的第$ n$和第$ n+m$个位置出现,等价于$ \mathcal{E}$在$ E_{k_1},\cdots ,E_{k_n}$和$
+      E_{k_{n+1}},\cdots ,E_{k_{n+m}}$的最后出现
+
+      \item \textbf{出现后立刻丧失记忆}
+
+        若$ \mathcal{E}$在序列第$ n$位出现,则恒有$ P(E_{k_1},\cdots ,E_{k_{n+m}}) = P(E_{k_1},\cdots ,E_{k_n})P(E_{k_{n+1}},\cdots ,E_{k_{n+m}})$
+\end{enumerate}
+
+\textbf{例子:}
+
+Random Walk 里的Return, 从负方向Return, 更新最大值;
+
+排队论里的达到空闲.
+
+考虑连续Bernoulli实验中的连续成功次数,若规定不计算重叠,则连续$ r$次成功也是Recurrent Event.
+\\
+
+仿照\secref{walk}的记号,设$ \mathcal{E}$在$ n$处出现的概率为$ u_n$,在$ n$处首次出现的概率为$ f_n$.设$ u_0 = 1, f_0=0$.并设其PGF分别为$ U(t),F(t)$.
+需要注意,$ u_k$不是一个概率分布,$ f_k$仅当事件一定会发生($ f = \sum_{n=0}^\infty f_n = 1$)时是概率分布.
+
+设随机变量$ T$表示等待时间,$ P(T=n) = f_n,P(T=\infty) = 1-f$.
+
+设第$ r$次出现位置的分布是$ f^{(r)}_k$则它应是$ f^{(r-1)}_k与f_k$的卷积.于是其PGF满足 $ F^{(r)}(t) = F^r(t)$
+
+至少出现$ r$次的概率为$ F^r(1) = f^r$. 当$ f=1$时,称$ \mathcal{E}$ \textbf{常返}(persistent),否则称\textbf{暂留}(transient).
+
+若使得$ u_n\neq 0$的所有$ n$有公因子$ \lambda >1$,则称$ \mathcal{E}$是\textbf{周期}的.
+
+由于 $ u_n = f_1u_{n-1}+\cdots f_nu_0 (n\ge 1)\Rightarrow U(s)-u_0 = F(s)U(s)\Rightarrow U(s)=\dfrac{1}{1-F(s)}$
+
+$ \mathcal{E}$暂留等价于$ \dfrac{1}{1-f} = u=\sum_{n=0}^\infty u_n$收敛.
+
+
+\subsection{A Theorem of Particular Importance}
+  设$ \mathcal{E}$常返,非周期.$ \mu = \E{T} = F'(1),$则$ u_n\to \mu^{-1}$.特别地,$ \mu=\infty$时,$ u_n\to 0$.
+
+\begin{proof}:
+  \textbf{(P. Erdos \& W. Feller, 1949)}
+
+  设$\lambda=\sup u_n,u_{n_v}$是趋于$ \lambda$的子列.
+
+  首先证明,$ \forall j, $ s.t.$ f_j>0,u_{n_v-j}\to \lambda$.
+
+  \proof:反设$ u_{n_v-j}\to \lambda'<\lambda$,对足够大的$ v$:
+\begin{align*}
+  \lambda-\varepsilon < u_{n_v} &=\sum_{i=0}^{n_v}f_iu_{n_v-i}\\
+     &<(\sum_{\substack{i=0\\i\neq j}}^{n_v}f_i)(\lambda + \varepsilon) + f_j(\lambda' + \varepsilon)\\
+     &<(1-f_j)(\lambda+\varepsilon) + f_j(\lambda' + \varepsilon)
+     =\lambda-f_j(\lambda-\lambda') +\varepsilon \Rightarrow \lambda' = \lambda \qed
+\end{align*}
+重复此操作,可得命题:$u_{n_v}\to \lambda, f_j>0\Rightarrow  u_{n_v-kj}\to \lambda$
+
+由$ \mathcal{E}$的非周期性,所有使得$ f_j>0$的$ j$无公因子.
+
+$\Rightarrow  \exists 足够大的N 和 a_1,\cdots a_l$ ,s.t. $f_{a_i}>0,且 \forall k >N, k 可表为 \sum_{i=1}^l{x_ia_i} $
+
+设$ N^\star = n_v-N,$则$ \forall M, u_{N^\star - M} = u_{n_v - (N+M)}\to \lambda$
+
+再令$ r_n = \sum_{k=n+1}^\infty f_k, R(t) = \sum_{k=0}^{\infty}r_kt^k$ , 由和式变换可知$ R(t)U(t) = (1-t)^{-1}$
+
+即$ \sum_{k=0}^{N^\star}{r_ku_{N^\star - k}} = 1.\Rightarrow  \forall M, \sum_{k=0}^M{r_ku_{N^\star - k}}\le 1$
+
+令式中$v\to \infty , $得$\forall M, \sum_{k=0}^M{r_k} \le \dfrac{1}{\lambda} $
+
+由期望的第二种求法有$ \mu = F'(1) = R(1). $于是 $\lambda \le \dfrac{1}{\mu}$.
+
+重考虑$ \lambda=\inf u_n$的情形,类似以上推理可证$ \lambda \ge \dfrac{1}{\mu}$. (需注意第一步放缩时利用常返性).
+
+于是$ u_n\to \mu$. \qed
+\end{proof}
+
+推广:$ \mathcal{E}$常返,具有周期$ \lambda$时,有$ u_{n\lambda}\to \dfrac{\lambda}{\mu}$
+
+\subsection{Number of Occurences}
+设$ N_n$为前$ n$次中$ \mathcal{E}$出现的次数. $ N_n = \sum_{k=1}^n{Y_n}, P(Y_n=1) = u_n\Rightarrow \E{Y_n} = u_n$
+
+$ \therefore \E{N_n} = \sum_{k=1}^nu_n. 当等待时间的\mu,\sigma 有限时 \E{N_n}\to \dfrac{n}{\mu}, \Var{N_n}\to \dfrac{n\sigma^2}{\mu^3}$
+
+当$ \mu=\infty$时,$ \E{N_n}$可能不与$ n$同阶(反直觉).
+
+如公平赌博中的Return,$ u_{2n}\to \dfrac{1}{\pi n}\Rightarrow \E{N_{2n}}\to 2\sqrt{\dfrac{n}{\pi}}$
+
+\subsection{Runs of Specific Patterns}
+\textbf{Success Runs:}
+
+设$ \mathcal{E}$为Bernoulli实验中长为$ r$的连续成功(不计算重叠),则$ \mathcal{E}$是Recurrent Event.
+
+依照定义,任意连续的$ r$次成功的实验$ n-r+1,\cdots ,n$中必定有一次出现了$ \mathcal{E}$
+
+$ \Rightarrow  p^r = u_n + u_{n-1}p + \cdots +u_{n-r+1}p^{r-1}, n\ge r$.
+
+以及$ u_1=\cdots =u_{r-1}=0,u_0=1$.
+
+将其写为GF形式: $ p^r(t^r +t^{r+1}\cdots ) = (U(t)-1)(1+pt+p^2t^2+\cdots +p^{r-1}t^{r-1})$
+
+$ \Leftrightarrow U(t) = \dfrac{1-t+qp^rt^{r+1}}{(1-t)(1-p^rt^r)} \Rightarrow  F(t) = \dfrac{p^rt^r(1-pt)}{1-t+qp^rt^{r+1}}$
+
+平均等待时间$ \mu = F'(1) = \dfrac{1-p^r}{qp^r}$
+\\
+
+Pattern: SSFFSS.
+
+类似上面的递推,这里有$ p^4q^2 = u_n + p^2q^2u_{n-4} + p^3q^2u_{n-5}$
+
+若欲求期望等待时间,令$ n\to \infty$即可.
+\\
+
+\textbf{Runs of Either Kind:}设$\mathcal{E}$为出现一个长为$ a$的连续成功或长为$ b$的连续失败.
+
+设$ \mathcal{E}_1,\mathcal{E}_2$为连续$a$次成功,连续$b$次失败这两个循环事件.
+
+除0时刻外其余的发生概率都应直接相加,所以$ U(t) = U_1(t)+U_2(t)-1$
+\\
+
+连续$ a$次成功发生在连续$ b$次失败之前的概率$ x$:
+
+解法1: 设$ u,v$分别为``第一次成功/失败''条件下此事件的概率,列出二元线性方程组解之,$ x=pu+qv$.
+
+解法2:设$ \mathcal{E}_1,\mathcal{E}_2$ 对应的等待时间PGF为$ F(t), G(t),  x_n$为$ \mathcal{E}_1$初次发生在
+$ n$且$ \mathcal{E}_2$未发生的概率,其PGF为$ X(n)$,类似定义$ y_n$,则有
+
+$ \begin{cases}
+ x_n =  f_n-(\sum_{i=1}^{n-1}y_if_{n-i}) \Rightarrow  X(t) = F(t)-Y(t)F(t) \\
+ y_n =  g_n-(\sum_{i=1}^{n-1}x_ig_{n-i}) \Rightarrow  Y(t) = G(t)-X(t)G(t)
+\end{cases}\Rightarrow X(t) = \dfrac{F(t)[1-G(t)]}{1-F(t)G(t)}$
+
+利用L' Hospital, $x=\lim\limits_{t\to 1^{-}}X(t)=\dfrac{p^{a-1}(1-q^b)}{p^{a-1}+q^{b-1}-p^{a-1}q^{b-1}}$
+\\

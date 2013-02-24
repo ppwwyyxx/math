@@ -1,9 +1,10 @@
 % File: walk.tex
-% Date: Fri Feb 22 11:07:50 2013 +0800
+% Date: Sun Feb 24 11:30:32 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
-\section{One-Dimensional Random Walk}
+\section{Random Walk}
 \subsection{Combinatorial Perspectives}
+\label{sec:walk}
 \textbf{Counting Paths}:从$ (0,0)走到 (n,x),(|x|\le n, n + x\equiv 0 \pmod 2)$的折线条数:
 
   设有$ p$个$ +1,q个-1,\begin{cases}n=p+q\\x=p-q \end{cases}$,
@@ -34,7 +35,7 @@
   $ \Pr{S_1,\cdots ,S_{2n}\neq 0} = \Pr{S_{2n}=0}=2\Pr{S_1,\cdots ,S_{2n}>0} =
     \Pr{S_1,\cdots ,S_{2n}\ge 0}$
 \begin{align*}
-  \textit{Proof}:
+  \proof:
    \Pr{S_1,\cdots ,S_{2n}>0} &= \sum_{r=1}^{n}{\Pr{S_1 ,\cdots S_{2n-1}>0,S_{2n}=2r}}\\
    &=\sum_{r=1}^{n}{\dfrac{N_{2n-1,2r-1}-N_{2n-1,2r+1}}{2^{2n}}} \; \text{(by ballot theorem)}\\
    &=\sum_{r=1}^n{\dfrac{1}{2}(p_{2n-1,2r-1}-p_{2n-1,2r+1})} \\
@@ -61,7 +62,7 @@ $ (2n,0)$后,以$ M$为新原点,便得到一条恒非负路径.\qed
 
   \textbf{Last Return:}长为$ 2n$的路径,最后一次经过$ x$轴在$ 2k$处的概率为$ a_{2n,2k} = u_{2k}u_{2n-2k}$.
 
-  \textit{Proof:}由引理,前$ 2k$次结束于$ x$轴的概率为$ u_{2k}$,后$ 2n-2k$次不经过$ x$轴的概率为$ u_{2n-2k}$.
+  \proof:由引理,前$ 2k$次结束于$ x$轴的概率为$ u_{2k}$,后$ 2n-2k$次不经过$ x$轴的概率为$ u_{2n-2k}$.
 
   \textbf{ArcSin Distribution:}由$ u_{2k}$的逼近,有$ a_{2n,2k}\approx \dfrac{f(\frac{k}{n})}{n},f(x)=\dfrac{1}{\pi\sqrt{x(1-x)}}$
 
@@ -70,7 +71,7 @@ $ (2n,0)$后,以$ M$为新原点,便得到一条恒非负路径.\qed
 
 \textbf{Sojourn Time}:有$ 2k$时间在一象限,$ 2n-2k$时间在四象限的概率为$ b_{2n,2k} = a_{2n,2k}$
 
-\textit{Proof:}设First Return发生在$ 2r$处,此前恒正有$ \frac{2^{2r}f_{2r}}{2} \times 2^{2n-2r}b_{2n-2r,2k-2r}$种可能,恒负有
+\proof:设First Return发生在$ 2r$处,此前恒正有$ \frac{2^{2r}f_{2r}}{2} \times 2^{2n-2r}b_{2n-2r,2k-2r}$种可能,恒负有
 $ \frac{2^{2r}f_{2r}}{2}\times 2^{2n-2r}b_{2n-2r,2k}$种可能.
 
 $ \Rightarrow b_{2n,2k} = \dfrac{f_{2r}}{2}[\sum_{r=1}^k{b_{2n-2r,2k-2r}} + \sum_{r=1}^{n-k}{b_{2n-2r,2k}}],(1\le k \le n-1)$
@@ -101,13 +102,13 @@ $ \Rightarrow \varphi_{n,r} = \dfrac{p_{n-1,r-1}-p_{n-1,r+1}}{2} = \dfrac{rp_{n,
 
 \textbf{$ \mathbf{r}$th Return}:第$ r$次返回发生在$ n$时刻的概率为$ \varphi_{n-r,r}$
 
-\textit{Proof}:设第$ r$次返回发生在时刻$ n$的长为$ n$的路径有$ A$条,则其中全在$ x$轴下方的路径有$ \dfrac{A}{2^r}$条.
+\proof:设第$ r$次返回发生在时刻$ n$的长为$ n$的路径有$ A$条,则其中全在$ x$轴下方的路径有$ \dfrac{A}{2^r}$条.
 对每一条这种路径,将它所有从$ x$轴出发的那$ r$步删去,对应到一条$ n-r$时刻初过$ r$的路径.
 \vspace{0.6cm}
 
 \textbf{Sojourn Time with Return:}设$ S_{2n}=0$,前$ 2n$时间中,$ 2k$时间在上方的概率与$ k$无关.
 
-\textit{Proof:}设$ 2r$时刻First Return,讨论$ 1\sim 2r$恒正或恒负,和式变换消去$ k$.概率为$ \dfrac{u_{2n}}{n+1}=2f_{2n+2}$
+\proof:设$ 2r$时刻First Return,讨论$ 1\sim 2r$恒正或恒负,和式变换消去$ k$.概率为$ \dfrac{u_{2n}}{n+1}=2f_{2n+2}$
 \vspace{0.6cm}
 
 \textbf{Duality}:设$ X_i^\star = X_{n-i},S_{i}^\star = S_n-S_{n-i}$,可得到一系列对偶命题.起点-终点,初-末对应.
@@ -168,3 +169,70 @@ $\Rightarrow F^-(x) = \sum_{n=1}^\infty f_{2n}^-x^{2n}=qx\Phi(x)=\dfrac{1-\sqrt{
 总会返回的概率:$ F(1) = 1-|p-q|$; 永不返回的概率:$ |p-q|$
 
 $ p=\dfrac{1}{2}$时一定会返回,期望时间为$ F'(1)=\infty$.
+
+\subsection{Ruin Problem}
+考虑一次赌博,若总资产为$ a$,对于从$z$出发的赌徒,走到$ a$或$0$(破产)代表赌博结束.也即在$0$和$a$处有absorbing barrier的random walk.
+
+\textbf{破产概率:}
+
+设从$ z$出发在$ 0$和$a$处被吸收的概率分别为$ q_z,p_z$,对于$ q_z$,有如下差分方程:
+
+$ q_z = pq_{z+1}+qq_{z-1}, 1\le z \le a-1; q_0=1,q_a=0$
+
+$ p\ne q$时,通解为$ q_z=A+B(\dfrac{q}{p})^z; p = q = \dfrac{1}{2}$时,通解为$ q_z=A+Bz$.代入边界条件,可得
+
+破产概率$ q_z=\begin{cases} \dfrac{(q/p)^a-(q/p)^z}{(q/p)^a - 1} , q\neq p \\ 1-\dfrac{z}{a}, q=p \end{cases}
+\to  \begin{cases} 1, p\le q \\ (q/p)^z, p > q\end{cases} (a\to \infty)$
+
+将$ p,q; a-z,z$交换即得$ p_z$的表达式,可见$ p_z+q_z=1$(概率1会终止).
+\\
+
+\textbf{持续时间:}
+
+假设持续时间的期望存在有限,为$ D_z$,则可得差分方程:
+
+$ D_z= p(D_{z+1}+1)+q(D_{z-1}+1) = pD_{z+1}+qD_{z-1}+1, D_0=D_a=0$
+
+$ p\neq q$时,有特解$ D_z = \dfrac{z}{q-p}\Rightarrow $通解$ D_z = \dfrac{z}{q-p}+A+B(\dfrac{q}{p})^z$
+
+$ p=q$时,有特解$ D_z = -z^2\Rightarrow $通解$ D_z=-z^2+A+Bz$,代入边界,得
+
+$ D_z = \begin{cases}\dfrac{z}{q-p}-\dfrac{a}{q-p}\dfrac{1-(q/p)^z}{1-(q/p)^a}, p\neq q\\ z(a-z), p=q\end{cases} \to \begin{cases} \infty, p\ge q \\
+  \dfrac{z}{q-p}, p < q \end{cases} (a\to \infty)$
+\\
+
+\textbf{生成函数:}
+
+设$ u_{z,n}$表示$n$时刻破产(走到0),$ U_z(t) = \sum_{n=0}^\infty u_{z,n}t^n$.
+
+有$ u_{0,n}=u_{a,n} = u_{z,0}=0 (0<z\le a, n\ge 1), u_{0,0}=1$及$ u_{z,n+1}=pu_{z+1,n}+qu_{z-1,n}$
+
+$ \Leftrightarrow U_z(t) = ptU_{z+1}(t)+qtU_{z-1}(t), U_0(t) = 1, U_{a}(t) = 0$
+
+  由特征根法可解出$ U_z(t) = A(t)\lambda_1^z(t)+B(t)\lambda_2^z(t),\lambda_i(t) = \dfrac{1\pm \sqrt{1-4pqt^2}}{2pt}$
+
+  代入边界,得破产时刻的生成函数$ U_z(t) = (\dfrac{q}{p})^z\dfrac{\lambda_1^{a-z}(t) - \lambda_2^{a-z}(t)}{\lambda_1^a(t)-\lambda_2^a(t)}$
+
+  类似可得获胜时刻的生成函数$ V_z(t) = \dfrac{\lambda_1^z(t)-\lambda_2^z(t)}{\lambda_1^a(t) - \lambda_2^a(t)}$
+
+  $ a\to \infty$时,注意Vieta定理可得$ U_z(t) = \lambda_2^z(t),\lambda$取小根.
+
+  半开随机徘徊的破产对应First Passage. 上式表明初过$ -z$的等待时间是$ z$个独立时间和.
+
+  $ U_z(t)$  的显式展开:$ u_{z,n} =
+  \dfrac{2^n}{a}p^{\frac{n-z}{2}}q^{\frac{n+z}{2}}\sum_{k=1}^{a-1}[\cos^{n-1}\dfrac{k\pi}{a}\sin\dfrac{k\pi}{a}\sin\dfrac{kz\pi}{a}]$
+
+\subsection{Return in Higher Dimensions}
+在一维/二维Random Walk中,质点将以概率1返回初始位置,而三维中概率约为0.35.
+
+一维时, $ u_{2n}\approx \dfrac{1}{\sqrt{\pi n}} = O(n^{-\frac{1}{2}}), \Oldsum u_{2n}$发散,于是$ \Oldsum f_{2n} = 1$,必定会返回.
+
+二维时, $ u_{2n} = \dfrac{1}{4^{2n}}\sum_{k=0}^n\dfrac{(2n)!}{k!k!(n-k)!(n-k)!} = \dfrac{1}{4^{2n}}C_{2n}^n \sum_{k=0}^n (C_n^k)^2 =
+\dfrac{(C_{2n}^n)^2}{4^{2n}} = O(n^{-1}). $
+
+三维时,$ u_{2n} = \dfrac{1}{6^{2n}}\sum_{j+k\le n}\dfrac{(2n)!}{j!j!k!k!(n-j-k)!(n-j-k)!} = \dfrac{1}{2^{2n}}C_{2n}^n\sum_{j+k\le n}[\dfrac{n!}{3^n
+  j!k!(n-j-k)!}]^2$
+
+当$j=k=\dfrac{n}{3} $时和式内取到最大项,只分析此项有$ u_{2n} = O(n^{-\frac{3}{2}}), \Oldsum u_{2n}$收敛$ \Rightarrow \Oldsum f_{2n}<1$.
+
+\subsection{Sequential Sampling}

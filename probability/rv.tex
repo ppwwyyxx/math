@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Fri Feb 22 10:11:07 2013 +0800
+% Date: Sat Feb 23 11:35:14 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Variables}
@@ -42,26 +42,28 @@ $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le 
 \textbf{密度公式:}
 函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
 
-\textit{Proof:}$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
+\proof:$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
 \xlongequal{x=h(z)}\int_{-\infty}^{y}RHS$
 
 应用: $X\sim \Gamma(\alpha, \lambda) \Rightarrow  kX \sim \Gamma(\alpha, \dfrac{\lambda}{k}), 2\lambda X \sim \chi^2(2\alpha)$
 \\
 
-\textbf{对角线:}$ F_X(x)$若为严格增的连续函数,$F_X(X) \sim U(0,1)$
+\textbf{Diagonal:}$ F_X(x)$若为严格增的连续函数,$F_X(X) \sim U(0,1)$
 
-\textit{Proof}:$ F_{F_X(X)}(x) = P(F_X(X)\le x) = P(X \le F_X^{-1}(x)) = F_X(F_X^{-1}(x)) =x$
+\proof:$ F_{F_X(X)}(x) = P(F_X(X)\le x) = P(X \le F_X^{-1}(x)) = F_X(F_X^{-1}(x)) =x$
 
 \subsection{Expectation \& Variance}
-\begin{equation*} \begin{split}
+\begin{align*}
     \E{X} & = \int_{\mathbb{R}}{x\mathrm{d}F(x)},其中积分为Lebsegue积分. \\
 			& = \left\{  \begin{matrix}
 	\sum{x_ip(x_i)} = \sum_{n=0}^{\infty}[{P(X>n) - P(X<-n)}], 离散,\sum{|x_i|}P(X = x_i)< \infty \\
 	\int_{\mathbb{R}}{xp(x)\mathrm{d}x} = \int_{\mathbb{R^+}}{P(X>x)\mathrm{d}x} - \int_{\mathbb{R^-}}{P(X<x)\mathrm{d}x},连续,\int_{\mathbb{R}}{|x|p(x)\mathrm{d}x} < \infty
 \end{matrix}\right.
-\end{split} \end{equation*}
+ \end{align*}
 
 $\bullet$ 绝对收敛保证了和的存在且与顺序无关.
+
+特别地,当$ X>0$时,有期望计算公式$ \E{X} = \sum_{n=0}^\infty{P(X>n)}$. 本质是换一种切分方式求面积.
 \\
 
 当期望存在时: $nP(X > n) = n\int_n^{\infty}\mathrm{d}F(x)\le \int_n^{\infty}x\mathrm{d}F(x)$
@@ -75,14 +77,14 @@ $\bullet$ 绝对收敛保证了和的存在且与顺序无关.
 
 即:$y=F(x), x=\Ex{X}, 将0\le y \le 1$分成面积相等的两部分.
 
-\textit{Proof:}对两边进行分部积分即可.
+\proof:对两边进行分部积分即可.
 \\
 
 \textbf{Cauchy-Schwartz:}
 
 $\E{X^2},\E{Y^2} < \infty, 则(\E{XY})^2 \le \E{X^2}\E{Y^2}$
 
-\textit{Proof:}考虑$ f(u) = \E{Xu+Y}^2 = (\E{X^2})u^2 + 2\E{XY}u+\E{Y^2}$的判别式即可.
+\proof:考虑$ f(u) = \E{Xu+Y}^2 = (\E{X^2})u^2 + 2\E{XY}u+\E{Y^2}$的判别式即可.
 \\
 
 \textbf{期望的统计意义:}

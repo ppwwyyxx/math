@@ -1,5 +1,5 @@
 % $File: mint-defs.tex
-% $Date: Sat Feb 16 22:59:11 2013 +0800
+% $Date: Sat Feb 23 15:43:54 2013 +0800
 % $Author: wyx <ppwwyyxxc@gmail.com>
 
 \usepackage{xparse}
@@ -41,10 +41,12 @@
 \newcommand{\real}{\mathbb{R}}
 \newcommand{\card}[1]{\left\|#1\right\|}
 \newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\proof}{\textit{Proof}}
 
 \NewDocumentCommand\Cov{mg}{
     \text{Cov}\left[ #1 \IfNoValueTF{#2}{}{,#2}\right]
  }
 
-\newcommand{\qed}{\hfill \ensuremath{\Box}}
+%\newcommand{\qed}{\hfill \ensuremath{\Box}}
 
