@@ -1,0 +1,156 @@
+% File: 0.tex
+% Date: Fri Mar 22 22:12:57 2013 +0800
+% Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+\section{Introduction}
+Putting integers 1-8 randomly into a matrix of order 3, leaving a blank, gives us
+a valid ``\textbf{pattern}''. We define the \textbf{target pattern} $ T$ as follows:
+\[ T = \begin{bmatrix}
+  1 & 2 & 3    \\
+  4 & 5 & 6    \\
+  7 & 8 & \Box \\
+\end{bmatrix}\]
+
+If by moving the blank to its neighbors, one pattern can be transformed to another
+in finite steps, we say the two patterns are connected.
+
+Define the ``\textbf{sequential ordering}'' of a pattern $ I = (a_{ij})_{3\times3}$
+as $(a_{11}a_{12}a_{13}a_{21}a_{22}a_{23}a_{31}a_{32}a_{33})$, which is a
+permutation of 1-8(omitting the blank symbol).
+
+Define the ``\textbf{snake ordering}''(because the path looks like a snake !) of a pattern $ I = (a_{ij})_{3\times3}$
+as $S(I) = (a_{11}a_{12}a_{13}a_{23}a_{22}a_{21}a_{31}a_{32}a_{33})$, which is also a
+permutation of 1-8 (omitting the blank symbol).
+
+We will prove that a pattern is connected to the target pattern if and only if
+its sequential ordering has even number of inversions.\footnote{\url{http://en.wikipedia.org/wiki/inversions}}
+
+\section{Necessity}
+It's obvious that every move doesn't change the parity of the number of inversions in its sequential ordering.
+And the sequential ordering of $ T$ is $ (1,2,3,4,5,6,7,8)$.
+
+Thus the proof is trival.
+
+And it's easy to see by bijection that there are $ \dfrac{9!}{2}$ patterns which have odd number of inversions.
+
+\section{Sufficiency}
+
+We consider the groups of patterns with the same snake ordering.
+
+It's trival that:
+\begin{enumerate}
+    \item Every snake ordering has 9 different patterns correspondent to it.
+    \item In a given pattern, the blank can move to any place without changing the snake ordering.(Just walk along the ``snake path'')
+\end{enumerate}
+
+Every move can be regarded as a permutation applied to the snake ordering. For example:
+
+\[ P_1 = \begin{bmatrix}a &\Box&b\\c&d&e\\f&g&h\\\end{bmatrix}  \rightarrow P_2 = \begin{bmatrix}a&d&b\\c&\Box&e\\f&g&h\end{bmatrix}\]
+
+The correspondent snake ordering: $ (a,b,e,d,c,f,g,h)\rightarrow (a,d,b,e,c,f,g,h)$
+
+The permutation is: $ \sigma = \begin{pmatrix}1&2&3&4&5&6&7&8\\1&3&4&2&5&6&7&8\\\end{pmatrix}$
+
+Or to write in the form of cycle: $ \sigma = (2,3,4)$
+\vspace{3em}
+
+Label the places in the matrix as followed: $ L = \begin{bmatrix}1&2&3\\6&5&4\\7&8&9\end{bmatrix}$, and denote $ \sigma_{ij}$ as the
+permutation of moving the blank from the place $ i$ to the place $ j$. The above example shows that $ \sigma_{25} = (2,3,4)$.
+
+We have the following results by calculation:
+\begin{enumerate}
+    \item $ \sigma_{ij}= \sigma_{ji}^{-1}$
+      \item $ \sigma_{i(i+1)}$ is an identical permutation.(Since the matrix is labelled along the ``snake path'')
+          \item$  \sigma_{16} = (1,2,3,4,5)$
+          \item$  \sigma_{25} = (2,3,4)$
+          \item$  \sigma_{49} = (4,5,6,7,8)$
+          \item$  \sigma_{58} = (5,6,7)$
+\end{enumerate}
+
+We first try to find the subgroup $ G$ generating by all the $ \sigma_{ij}$.
+
+It's obvious that $G$ is the subgroup of the symmetric group with 8 symbols $ S_8$.
+We claim that: $G$ is the group of all \textbf{even permutations} with 8 symbols $ E_8$.\footnote{\url{http://en.wikipedia.org/wiki/Parity_of_a_permutation}}
+
+The proof requires the following lemma in Group Theory:
+\begin{lemma}
+  \label{lemma:1}
+  All the 3-cycles can generate $E_n$.
+  \begin{proof}
+    By definition, every element in $ E_n$ is the product of even number of transpositions.
+    But every product of two transpositions is equal to the product of some 3-cycles by the following rule:
+    \begin{enumerate}
+      \item $ (a,b)(a,c) = (a,b,c)$
+      \item $ (a,b)(c,b) = (a,c,b)$
+      \item $(a,b)(a,b) = () $
+      \item $(a,b)(c,d) = (a,b,c)(a,d,c) $
+    \end{enumerate}
+    Therefore the proof is done.
+  \end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:2}
+All the 3-cycles of the form $ (1,i,j)$ can generate $ E_n$.
+\begin{proof}
+  Use $(a,b,c) = (1,a,b)(1,b,c) $ and \lemref{1}.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:3}
+All the 3-cycles of the form $ (1,2,k)$ can generate $ E_n$.
+\begin{proof}
+Use $ (1,2,k) = (1,2,k), (1,k,2) = (1,2,k)^{-1}, (1,i,j) = (1,2,j)(1,2,j)(1,2,i)(1,2,i)$ and \lemref{2}.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:4}
+All the consecutive 3-cycles (cycles of the form $(k,k+1,k+2),k \le n-2$) can generate $ E_n(n\ge 5)$.
+\begin{proof}
+  Since $ (1,2,3) = (1,2,3), (1,2,4) = (2,3,4)(2,3,4)(1,2,3)$,
+we can apply induction on the formula \[ (1,2,i) = (1,2,i-2)(1,2,i-1)(i-2,i-1,i)(1,2,i-2)(1,2,i-1) ,(i \ge 5) \]
+It follows that all the consecutive 3-cycles generate all the $ (1,2,k)$. Then
+by \lemref{3}, the proof is done.
+
+\end{proof}
+\end{lemma}
+\begin{theorem}
+$ G = E_8$
+\begin{proof}
+  We have:
+  \begin{flalign*}
+    (1,2,3) &= \sigma_{16}\sigma_{25}\sigma_{61} \\
+    (2,3,4) &= \sigma_{25} \\
+    (3,4,5) &= \sigma_{61}\sigma_{25}\sigma_{16} \\
+    (4,5,6) &= \sigma_{49}\sigma_{58}\sigma_{94}\\
+    (5,6,7) &=\sigma_{58} \\
+    (6,7,8) &=  \sigma_{94}\sigma_{58}\sigma_{49}
+  \end{flalign*}
+  Then by \lemref{4}, $ E_8$ is the subgroup of $ G$.
+
+  Moreover, since $ \sigma_{16}, \sigma_{25}, \sigma_{49}, \sigma_{58} \in E_8$,
+  therefore $ E_8 = G$.
+\end{proof}
+\end{theorem}
+
+\vspace{3em}
+Now we go back our original problem:
+\begin{theorem}
+Every pattern whose sequential ordering has even number of inversions
+is connected to the target pattern.
+\begin{proof}
+As pointed out before, the blank can move freely without changing the snake ordering.
+Then to transform a snake ordering to another, all the permutations $ \sigma_{ij}$ can be combined sequentially
+\underline{in any possible order}.
+
+Since $ |G| = |E_8| = \dfrac{8!}{2}$, therefore from $ S(T), \dfrac{8!}{2} $ different snake ordering can be achieved.
+So $ \dfrac{8!}{2} \times 9 = \dfrac{9!}{2}$ different patterns are connected with $ T$.
+
+From the proof of necessity,$ \dfrac{9!}{2}$ patterns are proved disconnected with $ T$. Thus the proof is finished.
+\end{proof}
+\end{theorem}
+
+\vspace{5em}
+Writing a simple program is enough to prove our proposition, saving the time to read all these...

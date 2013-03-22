@@ -1,5 +1,5 @@
 % File: walk.tex
-% Date: Sun Feb 24 11:30:32 2013 +0800
+% Date: Sun Feb 24 14:12:08 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Walk}
@@ -222,8 +222,8 @@ $ \Leftrightarrow U_z(t) = ptU_{z+1}(t)+qtU_{z-1}(t), U_0(t) = 1, U_{a}(t) = 0$
   $ U_z(t)$  的显式展开:$ u_{z,n} =
   \dfrac{2^n}{a}p^{\frac{n-z}{2}}q^{\frac{n+z}{2}}\sum_{k=1}^{a-1}[\cos^{n-1}\dfrac{k\pi}{a}\sin\dfrac{k\pi}{a}\sin\dfrac{kz\pi}{a}]$
 
-\subsection{Return in Higher Dimensions}
-在一维/二维Random Walk中,质点将以概率1返回初始位置,而三维中概率约为0.35.
+\subsection{Higher Dimensions}
+\textbf{Return:}在一维/二维Random Walk中,质点将以概率1返回初始位置,而三维中概率约为0.35.
 
 一维时, $ u_{2n}\approx \dfrac{1}{\sqrt{\pi n}} = O(n^{-\frac{1}{2}}), \Oldsum u_{2n}$发散,于是$ \Oldsum f_{2n} = 1$,必定会返回.
 
@@ -235,4 +235,10 @@ $ \Leftrightarrow U_z(t) = ptU_{z+1}(t)+qtU_{z-1}(t), U_0(t) = 1, U_{a}(t) = 0$
 
 当$j=k=\dfrac{n}{3} $时和式内取到最大项,只分析此项有$ u_{2n} = O(n^{-\frac{3}{2}}), \Oldsum u_{2n}$收敛$ \Rightarrow \Oldsum f_{2n}<1$.
 
-\subsection{Sequential Sampling}
+三维空间中可以以概率1到达任意一条与坐标轴平行的直线.(投影成二维Random Walk)
+\\
+
+\textbf{期望距离:}在$ d$维空间中,设$ n$时刻到达$ (x_{1,n}\cdots x_{d,n})$,考虑距原点距离平方的增量:
+
+$ \E{D_{n+1}^2 - D_{n}^2} = \E{-2\sum_d{x_{d,n}X_d} + \sum_d{X_d^2}} = \E{\sum_d{X_d^2}} = 1\Rightarrow \E{D_n}=\sqrt{n}$
+

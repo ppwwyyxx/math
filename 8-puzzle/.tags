@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BIBTEX	Makefile	/^BIBTEX=bibtex$/;"	m
+Classical Definitions of Probability	basic.tex	/^\\subsection{Classical Definitions of Probability}$/;"	b
+Classical Definitions of Probability	output/basic.tex	/^\\subsection{Classical Definitions of Probability}$/;"	b
+Common Multivariate Distributions	multivariate.tex	/^\\subsection{Common Multivariate Distributions}$/;"	b
+Common Multivariate Distributions	output/multivariate.tex	/^\\subsection{Common Multivariate Distributions}$/;"	b
+Conditional Distribution	multivariate.tex	/^\\subsection{Conditional Distribution}$/;"	b
+Conditional Distribution	output/multivariate.tex	/^\\subsection{Conditional Distribution}$/;"	b
+Conditional Probability	basic.tex	/^\\subsection{Conditional Probability}$/;"	b
+Conditional Probability	output/basic.tex	/^\\subsection{Conditional Probability}$/;"	b
+Events	basic.tex	/^\\subsection{Events}$/;"	b
+Events	output/basic.tex	/^\\subsection{Events}$/;"	b
+Independence	basic.tex	/^\\subsection{Independence}$/;"	b
+Independence	output/basic.tex	/^\\subsection{Independence}$/;"	b
+Joint Distribution	multivariate.tex	/^\\subsection{Joint Distribution}$/;"	b
+Joint Distribution	output/multivariate.tex	/^\\subsection{Joint Distribution}$/;"	b
+Probability Space	basic.tex	/^\\subsection{Probability Space}$/;"	b
+Probability Space	output/basic.tex	/^\\subsection{Probability Space}$/;"	b
+Properties of Probability	basic.tex	/^\\subsection{Properties of Probability}$/;"	b
+Properties of Probability	output/basic.tex	/^\\subsection{Properties of Probability}$/;"	b
+READER	Makefile	/^READER=evince$/;"	m
+Random Variables	output/rv.tex	/^\\subsection{Random Variables}$/;"	b
+Random Variables	rv.tex	/^\\subsection{Random Variables}$/;"	b
+Sum of Random Variables	multivariate.tex	/^\\subsection{Sum of Random Variables}$/;"	b
+Sum of Random Variables	output/multivariate.tex	/^\\subsection{Sum of Random Variables}$/;"	b
+TARGET	Makefile	/^TARGET=probability$/;"	m
+TEX	Makefile	/^TEX=xelatex -shell-escape$/;"	m
