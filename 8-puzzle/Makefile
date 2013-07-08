@@ -1,4 +1,4 @@
-TARGET=report
+TARGET=8-puzzle
 TEX=xelatex -shell-escape
 BIBTEX=bibtex
 READER=mupdf
