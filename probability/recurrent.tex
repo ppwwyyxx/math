@@ -1,24 +1,22 @@
 % File: recurrent.tex
-% Date: Sat Feb 23 20:08:25 2013 +0800
+% Date: Mon Jul 08 22:07:39 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Recurrent Event}
 \subsection{Definition}
-一个(未必独立的)重复实验序列,实验结果可能为$ E_j(j=1,\cdots )$
 
-设$ \mathcal{E}$是有限结果序列的一个可判定属性.
-
-语句``$ \mathcal{E}$在$ E_{k_1},\cdots $的第$ n$个位置出现''的意义是$ E_{k_1},\cdots ,E_{k_n}$具有属性$ \mathcal{E}$
+我们考虑一个重复实验,每次的结果可能是$E_j (j = 1, 2, \cdots )$.
+$\mathcal{E}$是一个有限结果序列的可判定属性.
+我们姑且称$\mathcal{E}$是一个事件, 其在序列$E_1, \cdots $的第$n$位"发生",
+意思为$E_1, \cdots ,E_n$具有属性$\mathcal{E}$
 
 若属性满足以下两个条件,则称其定义了一个Recurrent Event:
 \begin{enumerate}
-    \item \textbf{在结尾处判定出现}
+    \item
+      $ \mathcal{E}$在$ E_{1},\cdots,E_{n+m} $的第$ n$和第$ n+m$个位置出现,等价于$ \mathcal{E}$在$ E_{1},\cdots ,E_{n}$和$
+      E_{n+1},\cdots ,E_{n+m}$的最后出现
 
-      $ \mathcal{E}$在$ E_{k_1},\cdots,E_{k_{n+m}} $的第$ n$和第$ n+m$个位置出现,等价于$ \mathcal{E}$在$ E_{k_1},\cdots ,E_{k_n}$和$
-      E_{k_{n+1}},\cdots ,E_{k_{n+m}}$的最后出现
-
-      \item \textbf{出现后立刻丧失记忆}
-
-        若$ \mathcal{E}$在序列第$ n$位出现,则恒有$ P(E_{k_1},\cdots ,E_{k_{n+m}}) = P(E_{k_1},\cdots ,E_{k_n})P(E_{k_{n+1}},\cdots ,E_{k_{n+m}})$
+      \item
+        若$ \mathcal{E}$在序列第$ n$位出现,则恒有$ P(E_{1},\cdots ,E_{n+m}) = P(E_{1},\cdots ,E_{n})P(E_{n+1},\cdots ,E_{n+m})$
 \end{enumerate}
 
 \textbf{例子:}
