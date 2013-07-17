@@ -1,5 +1,5 @@
 % File: gf.tex
-% Date: Wed Dec 19 10:18:21 2012 +0800
+% Date: Wed Jul 17 14:44:21 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Generating Function}
@@ -94,7 +94,7 @@ we still get \eqnref{moments}.
 Let the \emph{moment generating function} of $ X$ be
 \[ y(n, t) = \E{e^{tX}} = \sum_{k=0}^{n}e^{tk}\Pr{X=k} \]
 
-It can be calculated as followed:
+It can be calculated as follows:
 \begin{align*}
   \E{e^{tX}} &=\sum_{k=0}^n\dfrac{1}{k!}\sum_{i=0}^{n-k}\dfrac{(-1)^i}{i!}e^{tk} \\
   &=\sum_{s=0}^n\sum_{k=0}^s\dfrac{1}{k!}\dfrac{(-1)^{s-k}}{(s-k)!}e^{tk} \quad (\text{let}\; s = k+i)\\
