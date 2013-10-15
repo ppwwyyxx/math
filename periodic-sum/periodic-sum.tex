@@ -1,0 +1,50 @@
+% $File: periodic-sum.tex
+% $Date: Tue Oct 15 15:41:50 2013 +0800
+% $Author: wyx <ppwwyyxxc@gmail.com>
+
+\documentclass[a4paper]{article}
+\usepackage{fontspec,zhspacing,minted,zhmath}
+
+\usepackage{amsmath,amssymb,amsthm,fontspec,graphicx,algpseudocode}
+\usepackage[hyperfootnotes=false,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+\usepackage[sorting=none]{biblatex}
+%\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{chngpage}
+\newfontfamily\zhfont[BoldFont=SimHei,ItalicFont=KaiTi_GB2312]{SimSun}
+\zhspacing
+
+
+\changepage{+1.3cm}{3cm}{-1.5cm}{-1.5cm}{}{-0.9cm}{}{}{}
+
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\defbibheading{bibliography}{\section{参考文献}}
+\bibliography{refs.bib}
+
+% \figref{label}: reference to a figure
+\newcommand{\figref}[1]{\hyperref[fig:#1]{图\ref*{fig:#1}}}
+% \secref{label}: reference to a section
+\newcommand{\secref}[1]{\hyperref[sec:#1]{\ref*{sec:#1}节}}
+\DeclareMathOperator{\rank}{\tiny{rank}}
+
+\let\Oldsum\sum
+\renewcommand{\sum}{\displaystyle\Oldsum}
+\let\Oldprod\prod
+\renewcommand{\prod}{\displaystyle\Oldprod}
+
+\input{mint-defs.tex}
+
+\title{关于两周期函数之和的周期性}
+\author{吴育昕~计14 \\ ppwwyyxxc@gmail.com}
+\date{}
+
+\begin{document}
+\maketitle
+
+\nocite{adv_alg}\nocite{ideals}\nocite{using}\nocite{lc}\nocite{poly_alg}
+\input{all.tex}
+
+\end{document}
+

@@ -1,0 +1,69 @@
+%File: all.tex
+%Date: Tue Oct 15 15:40:56 2013 +0800
+%Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+
+设$ x_1(t), x_2(t)$为$\mathbb{R}$上的\textbf{连续}周期函数, 最小正周期分别为$ T_1, T_2$.
+$x(t) = x_1(t) + x_2(t)$, 则:
+$x(t) $为周期函数的\textbf{充要条件}是$\dfrac{T_1}{T_2} \in \mathbb{Q}$
+
+
+\begin{proof}
+  充分性显然, 下证必要性.
+  设$x(t)$为周期函数, $T$是它的一个正周期, 则:
+  \[ x(t+T) \equiv x(t) \Leftrightarrow x_1(t+T) - x_1(t) \equiv x_2(t) - x_2(t+T)\]
+
+设$ f(t) = x_1(t+T) - x_1(t) = x_2(t) - x_2(t+T) $,
+显然$ f(t)$也为连续周期函数, $ T_1, T_2$均是$ f(t)$的周期.
+(此时还无法得出$ \dfrac{T_1}{T_2}\in \mathbb{Q}$, 因为未证明$ f(t)$存在最小正周期.)
+
+接下来分情况讨论:
+\begin{enumerate}
+  \item $f(t) \equiv 0 $.
+
+    此时易见$T $是$ x_1(t), x_2(t)$的公共周期, 而已知$x_1(t), x_2(t) $有最小正周期$T_1, T_2 $, 因而必须有:
+    \[ \dfrac{T}{T_1} \in \mathbb{Z}, \dfrac{T}{T_2} \in \mathbb{Z} \Rightarrow \dfrac{T_1}{T_2} \in \mathbb{Q}\]
+  得证.
+
+\item $f(t) \equiv C \neq 0$
+  \begin{align*}
+    \left \{
+      \begin{array}{lll}
+    x_1(t+T) - x_1(t) &=& C \\
+    x_1(t+2T) - x_1(t + T) &=& C \\
+    &\vdots \\
+    x_1(t+nT) - x_1(t +(n-1) T) &=& C
+      \end{array}
+    \right. \Rightarrow  x_1(t+nT) = x_1(t) + (n-1)C
+  \end{align*}
+  \[ \Rightarrow \lim\limits_{n\to+\infty}x_1(t+nT) = \infty, \forall t \in \mathbb{R} \]
+
+无界性与$x_1(t) $的连续性,周期性矛盾, 故不可能.
+
+\item $f(t) $ 非常函数.
+
+  此时若能证明$f(t)$存在最小正周期$T_0$, 则必有
+  \[ \dfrac{T_1}{T_0} \in \mathbb{Z}, \dfrac{T_2}{T_0} \in \mathbb{Z} \Rightarrow \dfrac{T_1}{T_2} \in \mathbb{Q}.\]
+
+前已证明$ f(t)$是连续周期函数, 设其所有正周期的集合为$ S,\  T' = \inf S > 0$, 则只需证明$ T' \in S$.
+
+由$ T' = \inf S$, 故$S$中存在点列$s_0, s_1,\cdots $收敛于$ T'$, 且由$S$ 的定义,
+\[  f(t+s_i) = f(t), \forall i \in \mathbb{N}, t \in \mathbb{R}.  \]
+对上式取极限$n\to +\infty$, 由$f$的连续性, 立刻得$ f(t+T') = f(t)$, 故$ T' \in S$, 是$f$的最小正周期.
+\end{enumerate}
+
+\end{proof}
+
+\vspace{2em}
+
+$ \dfrac{T_1}{T_2} \in \mathbb{Q}$满足时, $ x(t)$的最小正周期\textbf{不一定}是$ T_1, T_2$的最小公倍数$ [T_1, T_2]$.
+\begin{proof}
+首先$ x(t)$未必有最小正周期..
+
+只考虑$ x(t)$存在最小正周期的情况, 若上结论成立, 考虑下式:
+
+\[ x(t) + (-x_1(t)) = x_2(t)\]
+
+则$ x_2(t)$的最小正周期应当是$[[T_1, T_2], T_1] = [T_1, T_2]$, 而不是$T_2$. 矛盾.
+
+反例也很容易由此构造.
+\end{proof}

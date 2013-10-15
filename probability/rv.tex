@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Sat Feb 23 11:35:14 2013 +0800
+% Date: Tue Oct 15 23:12:33 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Variables}
@@ -98,6 +98,16 @@ $\E{(X-a)^2} =\E{(X-\Ex{X})^2} + 2 \E{(X-\Ex{X})(\Ex{X}-a)} + (\Ex{X}-a)^2=
   \begin{matrix}\sum(x_i - \Ex{X})^2p(x_i) \\ \int_{\mathbb{R}}{(x-\Ex{X})^2p(x)\mathrm{d}x} \end{matrix}\right.$
 
 $ \Var{X} = \E{X^2 - 2X\Ex{X} + (\Ex{X})^2} = \Ex{X^2} - (\Ex{X})^2$
+\\
+
+\textbf{Monte Carlo积分:}
+
+$ X_i $为服从密度函数$p(x) $的随机变量, 设$ F_N = \dfrac{1}{N}\sum_{i=1}^N{\dfrac{f(X_i)}{p(X_i)}}$.
+则:
+\[ \E{F_N} = \dfrac{1}{N}\sum_{i=1}^N \E{\dfrac{f(X_i)}{p(X_i)}} = \dfrac{1}{N}\sum_{i=1}^N\int_{a}^b \dfrac{f(x)}{p(x)}p(x)\mathrm{d}x = \int_a^b
+  f(x)\mathrm{d}x \]
+
+一般取$ X_i \sim U[a, b].$
 \\
 
 \textbf{其他统计量:}
