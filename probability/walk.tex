@@ -1,5 +1,5 @@
 % File: walk.tex
-% Date: Sun Feb 24 14:12:08 2013 +0800
+% Date: Fri Nov 29 11:50:51 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Walk}
@@ -8,7 +8,7 @@
 \textbf{Counting Paths}:从$ (0,0)走到 (n,x),(|x|\le n, n + x\equiv 0 \pmod 2)$的折线条数:
 
   设有$ p$个$ +1,q个-1,\begin{cases}n=p+q\\x=p-q \end{cases}$,
-  条数为$ N_{n,x} = C_{p+q}^p = C_{n}^{\frac{n+x}{2}}$
+  条数为$ N_{n,x} = {{p+q}\choose{p}} = {{n}\choose{\frac{n+x}{2}}} $
   \\
 
   \textbf{Reflection Principle}:
@@ -25,7 +25,7 @@
   下面只考虑从原点出发的折线,采用如下记号:
   $\; X_k = \pm 1, S_k = \sum_{i=1}^k{X_i},S_0=0$
 
-  \textbf{Reach:}$\; p_{n,r} = \Pr{S_n=r} = N_{n,r}2^{-n} = C_{n}^{\frac{n+r}{2}}2^{-n}$
+  \textbf{Reach:}$\; p_{n,r} = \Pr{S_n=r} = N_{n,r}2^{-n} = {{n}\choose{\frac{n+r}{2}}} 2^{-n}$
 
   \textbf{Return}:$\; u_{2n} = p_{2n,0} = \dfrac{(2n)!}{(n!)^2}2^{-2n}\approx \dfrac{1}{\sqrt{\pi n}}$ (Stirling's Approximation)
   \vspace{0.6cm}
@@ -156,7 +156,7 @@ $ \Rightarrow \E{x^n|X_1=-1}=\E{x^{1+n_1+n_2}}=x\Phi^2(x)$.代入即得$ \Phi(x)
 赢的期望时间:$ \Phi'(1) = \dfrac{1}{p-q}.$ 公平赌博期望无穷次才能获利.
 \vspace{0.6cm}
 
-\textbf{Return}:$ u_{2n} = C_{2n}^np^nq^n,U(x) = \sum_{n=0}^\infty u_{2n}x^{2n} = \dfrac{1}{\sqrt{1-4pqx^2}}$
+\textbf{Return}:$ u_{2n} = {{2n}\choose{n}} p^nq^n,U(x) = \sum_{n=0}^\infty u_{2n}x^{2n} = \dfrac{1}{\sqrt{1-4pqx^2}}$
 
 \textbf{First Return}:
 设$f_n = f_n^{-}+f_n^+, X_1=-1$时的$ f_{2n}^- = q\varphi_{2n-1}$
@@ -227,10 +227,10 @@ $ \Leftrightarrow U_z(t) = ptU_{z+1}(t)+qtU_{z-1}(t), U_0(t) = 1, U_{a}(t) = 0$
 
 一维时, $ u_{2n}\approx \dfrac{1}{\sqrt{\pi n}} = O(n^{-\frac{1}{2}}), \Oldsum u_{2n}$发散,于是$ \Oldsum f_{2n} = 1$,必定会返回.
 
-二维时, $ u_{2n} = \dfrac{1}{4^{2n}}\sum_{k=0}^n\dfrac{(2n)!}{k!k!(n-k)!(n-k)!} = \dfrac{1}{4^{2n}}C_{2n}^n \sum_{k=0}^n (C_n^k)^2 =
-\dfrac{(C_{2n}^n)^2}{4^{2n}} = O(n^{-1}). $
+二维时, $ u_{2n} = \dfrac{1}{4^{2n}}\sum_{k=0}^n\dfrac{(2n)!}{k!k!(n-k)!(n-k)!} = \dfrac{1}{4^{2n}}{{2n}\choose{n}} \sum_{k=0}^n {n\choose{k}}^2 =
+\dfrac{{{2n}\choose{n}}^2}{4^{2n}} = O(n^{-1}). $
 
-三维时,$ u_{2n} = \dfrac{1}{6^{2n}}\sum_{j+k\le n}\dfrac{(2n)!}{j!j!k!k!(n-j-k)!(n-j-k)!} = \dfrac{1}{2^{2n}}C_{2n}^n\sum_{j+k\le n}[\dfrac{n!}{3^n
+三维时,$ u_{2n} = \dfrac{1}{6^{2n}}\sum_{j+k\le n}\dfrac{(2n)!}{j!j!k!k!(n-j-k)!(n-j-k)!} = \dfrac{1}{2^{2n}}{{2n}\choose{n}} \sum_{j+k\le n}[\dfrac{n!}{3^n
   j!k!(n-j-k)!}]^2$
 
 当$j=k=\dfrac{n}{3} $时和式内取到最大项,只分析此项有$ u_{2n} = O(n^{-\frac{3}{2}}), \Oldsum u_{2n}$收敛$ \Rightarrow \Oldsum f_{2n}<1$.

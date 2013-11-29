@@ -1,5 +1,5 @@
 % File: rv.tex
-% Date: Tue Oct 15 23:12:33 2013 +0800
+% Date: Wed Oct 16 12:07:32 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Random Variables}
@@ -40,7 +40,8 @@ $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le 
 \\
 
 \textbf{密度公式:}
-函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为$ p_Y(y) = p_X(h(y))|h'(y)|$
+函数$g(x)单调连续,h(x) = g^{-1}(x)连续可微,则Y = g(X)$的密度函数为
+\[  p_Y(y) = p_X(h(y))|h'(y)| = p_X(x) |\dfrac{\mathrm{d}y}{\mathrm{d}x}|^{-1} \]
 
 \proof:$F_Y(y) = P(g(X)\le y)=\int_{h(-\infty,y]}{p_X(x)\mathrm{d}x}
 \xlongequal{x=h(z)}\int_{-\infty}^{y}RHS$

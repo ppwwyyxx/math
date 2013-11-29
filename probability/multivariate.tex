@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Sun Feb 17 12:30:40 2013 +0800
+% Date: Fri Nov 29 11:47:49 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Multivariate Distributions}
 \subsection{Joint Distribution}
@@ -46,7 +46,7 @@ $ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\
   \item \textbf{多维超几何分布}
 
     $ N $个球中, $i$号球有$ N_i$个,任取$ n$个,其中各号球的个数作为随机变量,有
-    $ P(X_1=n_1,\cdots X_r=n_r)=\dfrac{\prod{C_{N_i}^{n_i}}}{C_N^n}$
+    $ P(X_1=n_1,\cdots X_r=n_r)=\dfrac{\prod{{{N_i}\choose{n_i}} }}{{N\choose{n}} }$
 
   \item \textbf{多维均匀分布} $ U(D)$
 
@@ -136,15 +136,15 @@ $\Rightarrow p_{X+Y}(z)= \int_{\mathbb{R}}p_X(z-y)p_Y(y)\mathrm{d}y=\int_{\mathb
   \item \textbf{Poisson分布} $ P(\lambda_1)*P(\lambda_2) = P(\lambda_1+\lambda_2)$
 
     $\Leftarrow  \sum_{i=0}^k{\dfrac{\lambda_1^ie^{-\lambda_1}}{i!}\dfrac{\lambda_2^{k-i}e^{-\lambda_2}}{(k-i)!}}= $
-      $\dfrac{e^{-\lambda_1-\lambda_2}}{k!}\sum_{i=0}^k{C_k^i\lambda_1^i\lambda_2^{k-i}}=\dfrac{e^{-\lambda_1-\lambda_2}}{k!}(\lambda_1+\lambda_2)^k$
+      $\dfrac{e^{-\lambda_1-\lambda_2}}{k!}\sum_{i=0}^k{{k\choose{i}} \lambda_1^i\lambda_2^{k-i}}=\dfrac{e^{-\lambda_1-\lambda_2}}{k!}(\lambda_1+\lambda_2)^k$
 
       (Raikov)独立变量的和服从Poisson分布,则每个都服从Poisson分布.
 
   \item \textbf{二项分布} $ b(n,p)*b(m,p) = b(m+n,p)$
     \begin{align*}
-      \Leftarrow \sum_{i=0}^k{P(X=i)P(Y=k-i)}&=\sum_{i=\max\{ 0,k-m\}}^{\min\{ n,k\}}{C_n^ip^i(1-p)^{n-i}C_m^{k-i}p^{k-i}(1-p)^{m-(k-i)}}\\
-        &= p^k(1-p)^{m+n-k}\sum{C_n^iC_m^{k-i}}\\
-        &= C_{m+n}^kp^k(1-p)^{m+n-k}
+      \Leftarrow \sum_{i=0}^k{P(X=i)P(Y=k-i)}&=\sum_{i=\max\{ 0,k-m\}}^{\min\{ n,k\}}{{n\choose{i}} p^i(1-p)^{n-i}{m\choose{k-i}} p^{k-i}(1-p)^{m-(k-i)}}\\
+        &= p^k(1-p)^{m+n-k}\sum{{n\choose{i}} {m\choose{k-i}} }\\
+        &= {{m+n}\choose{k}} p^k(1-p)^{m+n-k}
     \end{align*}
   \item \textbf{Gamma分布} $ \Gamma(\alpha_1,\lambda)*\Gamma(\alpha_2,\lambda) = \Gamma(\alpha_1+\alpha_2, \lambda)$
     \begin{align*}

@@ -1,5 +1,5 @@
 % File: recurrent.tex
-% Date: Mon Jul 08 22:07:39 2013 +0800
+% Date: Fri Nov 29 16:26:25 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Recurrent Event}
 \subsection{Definition}
@@ -33,15 +33,36 @@ Random Walk 里的Return, 从负方向Return, 更新最大值;
 
 设随机变量$ T$表示等待时间,$ P(T=n) = f_n,P(T=\infty) = 1-f$.
 
-设第$ r$次出现位置的分布是$ f^{(r)}_k$则它应是$ f^{(r-1)}_k与f_k$的卷积.于是其PGF满足 $ F^{(r)}(t) = F^r(t)$
+设第$ r$次出现位置的分布是$ f^{(r)}_k$则它应是$ f^{(r-1)}_k与f_k$的卷积.于是其PGF满足 $ F^{(r)}(t) = (F(t))^r$
 
-至少出现$ r$次的概率为$ F^r(1) = f^r$. 当$ f=1$时,称$ \mathcal{E}$ \textbf{常返}(persistent),否则称\textbf{暂留}(transient).
+至少出现$ r$次的概率为$ (F(1))^r = f^r$. 当$ f=1$时,称$ \mathcal{E}$ \textbf{常返}(persistent),否则称\textbf{暂留}(transient).
 
 若使得$ u_n\neq 0$的所有$ n$有公因子$ \lambda >1$,则称$ \mathcal{E}$是\textbf{周期}的.
 
 由于 $ u_n = f_1u_{n-1}+\cdots f_nu_0 (n\ge 1)\Rightarrow U(s)-u_0 = F(s)U(s)\Rightarrow U(s)=\dfrac{1}{1-F(s)}$
 
 $ \mathcal{E}$暂留等价于$ \dfrac{1}{1-f} = u=\sum_{n=0}^\infty u_n$收敛.
+
+\subsection{Examples}
+Bernoulli试验中的Return, 是Recurrent Event.
+
+在$2n$处发生一次的概率为: $ u_{2n} = {{2n}\choose{n}} p^nq^n = {{-\frac{1}{2}}\choose{n}} (-4pq)^n \Rightarrow  U(s) = \dfrac{1}{\sqrt{1-4pqs^2}}$
+
+$ \Rightarrow F(s) = 1 - \sqrt{1 - 4pqs^2} \Rightarrow  f = F(1) = 1 - |p-q|. $
+
+$p=q=\dfrac{1}{2}$时, 为常返, 等待时间$F'(1) = \infty $ ;  否则为暂留.
+
+\vspace{0.5cm}
+
+一次扔$r$个硬币, 全部同面是Recurrent Event. 发生概率为:$ u_n = 2^{-rn}\sum_{k=0}^n{n\choose{k}}^r$
+
+有正态逼近, 有 $ 2^{-n}{n\choose{k}} \to \dfrac{1}{\sqrt{\pi n / 2}} e^{-\frac{(k-n/2)^2}{n/2}}$
+
+可得$u_n \sim \left( \dfrac{2}{\pi n} \right) ^{\frac{r}{2}}\sum_{j=-n/2}^{n/2}e^{\frac{-2rj^2}{n}}
+\sim \left( \dfrac{2}{\pi n} \right) ^{\frac{r}{2}} \dfrac{1}{2}\sqrt{\dfrac{n}{r}}\int_{-\infty}^{+\infty}e^{-\frac{x^2}{2}} \mathrm{d}x
+\sim \dfrac{1}{\sqrt{r}}\left( \dfrac{2}{\pi n}\right) ^{\frac{r-1}{2}}$
+
+$ r \le 3$时, 常返, 等待时间为$ \infty, r \ge 4$时为暂留.
 
 
 \subsection{A Theorem of Particular Importance}
@@ -85,9 +106,9 @@ $\Rightarrow  \exists 足够大的N 和 a_1,\cdots a_l$ ,s.t. $f_{a_i}>0,且 \fo
 推广:$ \mathcal{E}$常返,具有周期$ \lambda$时,有$ u_{n\lambda}\to \dfrac{\lambda}{\mu}$
 
 \subsection{Number of Occurences}
-设$ N_n$为前$ n$次中$ \mathcal{E}$出现的次数. $ N_n = \sum_{k=1}^n{Y_n}, P(Y_n=1) = u_n\Rightarrow \E{Y_n} = u_n$
+设$ N_n$为前$ n$次中$ \mathcal{E}$出现的次数. $ N_n = \sum_{k=1}^n{Y_k}, P(Y_n=1) = u_n\Rightarrow \E{Y_n} = u_n$
 
-$ \therefore \E{N_n} = \sum_{k=1}^nu_n. 当等待时间的\mu,\sigma 有限时 \E{N_n}\to \dfrac{n}{\mu}, \Var{N_n}\to \dfrac{n\sigma^2}{\mu^3}$
+$ \therefore \E{N_n} = \sum_{k=1}^nu_k. 当等待时间的\mu,\sigma 有限时 \E{N_n}\to \dfrac{n}{\mu}, \Var{N_n}\to \dfrac{n\sigma^2}{\mu^3}$
 
 当$ \mu=\infty$时,$ \E{N_n}$可能不与$ n$同阶(反直觉).
 

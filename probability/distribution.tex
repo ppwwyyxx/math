@@ -1,5 +1,5 @@
 % File: distribution.tex
-% Date: Fri Feb 22 00:13:29 2013 +0800
+% Date: Fri Nov 29 11:46:23 2013 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Distributions}
 
@@ -7,7 +7,7 @@
 \begin{enumerate}
   \item \textbf{Bernoulli (Binomial):}$ b(n,p)$
 
-    $ P(X = k) = C_n^kp^k(1-p)^{n-k}, k = 0,\cdots,n$
+    $ P(X = k) = {n\choose{k}} p^k(1-p)^{n-k} , k = 0,\cdots,n$
 
     $ \Ex{X} = np, \Var{X} = \E{X(X-1)}+\Ex{X}-(\Ex{X})^2 = np(1-p)$
 
@@ -28,7 +28,7 @@
 
   \textbf{Poisson 定理},对二项分布$ b(n,p_n),\lim \limits_{n\to \infty} np_n = \lambda > 0$,
   \begin{flalign*}
-    P(X = k) & = C_n^kp_n^k(1-p_n)^{n-k}                                                                                \\
+    P(X = k) & = {n\choose{k}} p_n^k(1-p_n)^{n-k}                                                                                \\
     & =\dfrac{n(n-1)\cdots(n-k+1)}{k!n^k}(np_n)^k(1-\dfrac{np_n}{n})^{n-k}                                     \\
     & =(1-\dfrac{1}{n})\cdots(1-\dfrac{k-1}{n})\dfrac{[\lambda + o(1)]^k}{k!}[1-\dfrac{\lambda+o(1)}{n}]^{n-k} \\
     & \rightarrow \dfrac{\lambda^k}{k!}e^{-\lambda}, n\to \infty
@@ -55,9 +55,9 @@
 
           意义:$ N$件物品含有$ M$件次品,不放回抽取$ n$次得到的次品数.
 
-          $ P(X=k) = \dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}, k \in [\max\{0, n-N + M\}, \min\{M,n\}]$
+          $ P(X=k) = \dfrac{{M\choose{k}} {{N-M}\choose{{n-k}}} }{{N\choose{n}} }, k \in [\max\{0, n-N + M\}, \min\{M,n\}]$
 
-          $ \Ex{X} = \sum_{k}{k\dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}}  = \dfrac{Mn}{N}\sum_{k}{\dfrac{C_{M-1}^{k-1}C_{N-M}^{n-k}}{C_{N-1}^{n-1}}} = \dfrac{Mn}{N}$
+          $ \Ex{X} = \sum_{k}k\dfrac{{M\choose{k}}{{N-M}\choose{n-k}}}{{N\choose{n}}}  = \dfrac{Mn}{N}\sum_{k}\dfrac{{{M-1}\choose{k-1}}{{N-M}\choose{n-k}}}{{{N-1}\choose{n-1}}} = \dfrac{Mn}{N}$
 
           (注意到每次的期望都是$ \dfrac{M}{N}$即可)
 
@@ -71,7 +71,7 @@
 
         意义:事件发生第$ r$次时的实验次数.$ Nb(r, p) = r * G(p) $
 
-        $ P(X = k) = C_{k-1}^{r-1}p^r(1-p)^{k-r}, k = r,r+1,\cdots$
+        $ P(X = k) = {{k-1}\choose{r-1}} p^r(1-p)^{k-r}, k = r,r+1,\cdots$
 
         $ \Ex{X} = \dfrac{r}{p}, \Var{x} = \dfrac{r(1-p)}{p^2}$
 
@@ -83,7 +83,7 @@
 
         事件(的一半)相当于:成功$ n+1$次时恰已有$ n-k$次失败,设$ Y\sim Nb(n+1, \dfrac{1}{2})$
 
-        立即有:$ p_{n,k} = 2P(Y = 2n-k+1) = C_{2n-k}^{n}2^{-2n+k}$
+        立即有:$ p_{n,k} = 2P(Y = 2n-k+1) = {{2n-k}\choose{n}} 2^{-2n+k}$
 
       \item \textbf{Fixed Points}
 
