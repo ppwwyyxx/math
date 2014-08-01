@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Fri Nov 29 11:47:49 2013 +0800
+% Date: Thu Jul 31 19:18:59 2014 -0700
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Multivariate Distributions}
 \subsection{Joint Distribution}
@@ -73,6 +73,8 @@ $ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\
       = & \dfrac{1}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}} 为一维正态分布.
     \end{align*}
 
+\textbf{线性运算}: $ X \pm Y \sim N(\mu_1 + \mu_2, \sqrt{\sigma_1^2 + \sigma_2^2 \pm2 \rho \sigma_1 \sigma_2})$  (写成卷积形式证明)
+
     设$ (X,Y)\sim N(0,0,1,1,\rho)$
 
     $则p(x,y) = \dfrac{1}{2\pi\sqrt{1-\rho^2}}e^{-\frac{x^2-2\rho xy+y^2}{2(1-\rho^2)}} = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}g(x,y)$
@@ -89,6 +91,7 @@ $ p_X(x) = \int_{\mathbb{R}}p(x,y)\mathrm{d}y,p_Y(y) = \int_{\mathbb{R}}{p(x,y)\
   &\Rightarrow  X|Y=y \sim N(\mu_1+\rho\dfrac{\sigma_1}{\sigma_2}(y-\mu_2),
 \sigma_1^2(1-\rho^2))&
 \end{align*}
+
 
 \textbf{相关系数:}
     \begin{align*}
