@@ -1,5 +1,5 @@
 % File: multivariate.tex
-% Date: Thu Jul 31 19:18:59 2014 -0700
+% Date: Wed Aug 06 16:29:09 2014 -0700
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 \section{Multivariate Distributions}
 \subsection{Joint Distribution}
@@ -357,7 +357,7 @@ $ F_{X|Y}(x|y) = P(X\le x|Y=y)=\int_{-\infty}^x{\dfrac{p_{X,Y}(u,y)}{p_Y(y)}\mat
 \item [条件期望是最佳平方逼近:] $ \Ex{X^2}<\infty 时,\E{X-\E{X|Y}}^2 =\min \E{X-\varphi(Y)}^2$ \hfill\\
   \proof:由$ \E{\E{X|Y}}^2\le \E{\E{X^2|Y}} =\Ex{X^2}$知存在性.
 
-  考虑期望在线性空间中的点积意义,需证$ \E{(X-\E{X|Y})\varphi(Y)}=0$.
+  考虑期望在线性空间中的点积意义,需证$\forall Y, \varphi, \E{(X-\E{X|Y})\varphi(Y)}=0$.
 
   LHS = $ \E{\E{(X-\E{X|Y})\varphi(Y)|Y}} = \E{\varphi(Y)\E{X-\E{X|Y}|Y}} =
   \E{\varphi(Y)(\E{X|Y} - \E{\E{X|Y}|Y})} = 0$

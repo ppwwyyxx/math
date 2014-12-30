@@ -1,5 +1,5 @@
 % File: 0.tex
-% Date: Wed Jul 17 14:44:44 2013 +0800
+% Date: Tue Dec 30 20:43:09 2014 +0800
 % Author: Yuxin Wu <ppwwyyxxc@gmail.com>
 
 \section{Introduction}
@@ -93,7 +93,7 @@ The proof requires the following lemmas in Group Theory:
   \label{lemma:2}
 All the 3-cycles of the form $ (1,i,j)$ can generate $ E_n$.
 \begin{proof}
-  Use $(a,b,c) = (1,a,b)(1,b,c) $ and \lemref{1}.
+  Use $(a,b,c) = (1,b,c)(1,c,a) $ and \lemref{1}.
 \end{proof}
 \end{lemma}
 
@@ -101,7 +101,7 @@ All the 3-cycles of the form $ (1,i,j)$ can generate $ E_n$.
   \label{lemma:3}
 All the 3-cycles of the form $ (1,2,k)$ can generate $ E_n$.
 \begin{proof}
-Use $ (1,2,k) = (1,2,k), (1,k,2) = (1,2,k)^{-1}, (1,i,j) = (1,2,j)(1,2,j)(1,2,i)(1,2,i)$ and \lemref{2}.
+Use $ (1,2,k) = (1,2,k), (1,k,2) = (1,2,k)^{-1}, (1,i,j) = (1,2,j)(1,2,i)(1,2,j)(1,2,j)$ and \lemref{2}.
 \end{proof}
 \end{lemma}
 
@@ -110,7 +110,7 @@ Use $ (1,2,k) = (1,2,k), (1,k,2) = (1,2,k)^{-1}, (1,i,j) = (1,2,j)(1,2,j)(1,2,i)
 All the consecutive 3-cycles (cycles of the form $(k,k+1,k+2),k \le n-2$) can generate $ E_n(n\ge 5)$.
 \begin{proof}
   Since $ (1,2,3) = (1,2,3), (1,2,4) = (2,3,4)(2,3,4)(1,2,3)$,
-we can apply induction on the formula \[ (1,2,i) = (1,2,i-2)(1,2,i-1)(i-2,i-1,i)(1,2,i-2)(1,2,i-1) ,(i \ge 5) \]
+we can apply induction on the formula \[ (1,2,i) = (1,2,i-1)(1,2,i-2)(i-2,i-1,i)(1,2,i-1)(1,2,i-2) ,(i \ge 5) \]
 It follows that all the consecutive 3-cycles generate all the $ (1,2,k)$. Then
 by \lemref{3}, the proof is done.
 
