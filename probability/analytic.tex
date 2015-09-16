@@ -25,15 +25,43 @@
 \end{enumerate}
 
 \subsection{Convergence}
-依概率收敛:$\forall \varepsilon>0, P(|X_n-X|\ge \varepsilon)\to 0 (n\to \infty),\Leftrightarrow  X_n\overset{P}{\rightarrow}X$
+两种随机变量的收敛:
+\begin{enumerate}
+  \item Almost Sure Convergence
+
+    定义: $Pr\{\lim _{n\to\infty} Y_n=\mu\}=1$
+
+    写作: $Y_n \xrightarrow{a.s.} \mu, $ as $  n\to \infty$
+
+    解释: fraction of sample paths,
+where the value of RV converges to $\mu$, is 1
+
+Example: Think of $X_n = 0, 1 $ with prob 0.5 each, $Y_n=\sum X_n / n$
+number of sample paths of $Y_n$ not convergence to 0.5, is uncountable infinity:
+Proof: build any binary sequence combination of 001 and 101
+
+  \item Convergence in Probability
+
+    定义: $\forall \epsilon >0, \lim_{n\to\infty}Pr\{|Y_n-\mu|>\epsilon\}=0$
+
+    写作: $Y_n\xrightarrow{P}\mu$, as $n\to \infty$:
+
+    解释: for particular n, fraction of sample paths of length $ n$ within the good range ($\epsilon$ distance to $\mu$) tends to 1, as $n\to\infty$ .
+\end{enumerate}
+
+1 推 2, but not otherwise.
+反例:
+fraction of 'good for now' sample paths tends to 0, but no sample path is really good. (e.g., each path has less frequent spikes over time)
+
 
 弱收敛:$ \forall F的连续点x,\lim\limits_{n\to \infty}F_n(x)=F(x)\Leftrightarrow F_n(x)\overset{W}{\rightarrow}F(x)$
 
 依分布收敛:$ X_n\overset{L}{\rightarrow}X$
 
 \subsection{Law of Large Numbers}
+有 $X_i$ iid, $Y_n = \sum X_i  / n$
 \begin{enumerate}
-  \item 弱大数定律:$\dfrac{\Oldsum{X_i}}{n}\overset{P}{\rightarrow}\mu$
+  \item 弱大数定律:$Y_n \xrightarrow{P} E[X]$ (WLLN)
 
   意义:用平均值作为期望是合理的,即使不知道其分布
 
@@ -51,8 +79,7 @@
 
 意义:概率是频率的极限
 
-    \item 强大数定律:$
-      P(\lim\limits_{n\to\infty}\dfrac{\Oldsum{X_i}}{n}=\dfrac{\Oldsum{\Ex{X_i}}}{n}) = 1$
+    \item 强大数定律:$Y_n \xrightarrow{a.s.} E[X]$ (SLLN)
 
       \textbf{Borel:}$ X_n$i.i.d.,$ \Ex{X^4}<+\infty$
 
