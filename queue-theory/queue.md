@@ -75,3 +75,40 @@ A variant: Preemptive-LCFS. pause the current job and always work on the "last c
 If job switch is free, it is actually better!!! Job switch will be more likely to expose you to small jobs!!
 
 variants on P-LCFS: maximum working time on one job to switch.
+
+
+### Throughput and Utilization
+
+#### definition
+$S$ = job size
+$T$ = resposne time
+$T_a$ queueting = T - S
+$N$: #jobs in system
+$N_a$ : #jobs in queue
+
+Throughput $X$ = rate of completion
+Utilization (load) $\rho$ = fraction of time server is busy
+
+For queue with $\lambda < \mu$,
+$\rho = \frac{\lambda}{\mu}, X = \lambda$
+
+$C(t)$ = #completions by time t
+$B(t)$ = total busy time in $[0, t]$
+Then $X = \lim \frac{C(t)}{t}, \rho = \lim \frac{B(t)}{t} $
+$E[S] = \lim \frac{B(t)}{C(t)}, X = \mu\rho$
+
+__Open System__: arrivals are exogenous, doesn't depend on anything in the system
+__Close System__: arrivals can be triggered by job completion
+
+__Closed Interactive System__:
+Small Web System: everyone works -> submit stuff -> wait result -> works -> submit stuff -> loop
+The response triggers the next arrival.
+Only when #user is very large, it becomes more open.
+When work time is small, becomes closed batch system.
+
+__Closed Batch System__:
+Have a large number of jobs, only $N$ is allowed to run simutaneously.
+Have them run, send new job as soon as some completes.
+$X = \mu$ (always busy!).
+
+In closed system, change policy in queue (such as short job first rather than FCFS) doesn't help. (2007 paper). In open system is always better.
