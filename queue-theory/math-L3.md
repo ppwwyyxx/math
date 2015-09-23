@@ -38,3 +38,21 @@ Given __ergodic__ system, $\overline{N}_{ensemble}$ exists, $\overline{N}_{time}
 Ergodic: 常返，非周期. (Positive Recurrent + Irreducible + Aperiodic)
 Positive Recurrent: 在有限时间内返回状态
 Irreducible: 每个状态都能到达别的状态
+
+
+### Little's Law:
+$E[N]$: mean # jobs in system (ensemble)
+$E[T]$: mean time in system
+
+For any open system, s.t. $\lambda = X, \overline{N}_{time}=\lambda \overline{T}_{time}$
+$\Rightarrow$ For any ergodic open system， $E[T] = \frac{E[N]}{\lambda}$
+
+Beautiful proof is on notes!
+
+For a single queue, think of Little's Law on Serving!
+$\overline{N}=\rho,$ (fraction of time server is busy)
+$\overline{T}=E[S]$, (expected time of serving)
+$\Rightarrow \rho = \lambda / \mu$
+
+In closed system, $N$ is fixed (in either batch closed or interactive closed).
+$N = X E[T]$, $T$ is average time for whole loop (running + thinking for interactive closed system)

@@ -65,6 +65,13 @@ $ p =\dfrac{1}{2}$时称为\textbf{中位数}.$\Leftrightarrow \dfrac{1}{2} \le 
 $\bullet$ 绝对收敛保证了和的存在且与顺序无关.
 
 特别地,当$ X>0$时,有期望计算公式$ \E{X} = \sum_{n=0}^\infty{P(X>n)}$. 本质是换一种切分方式求面积.
+
+\proof: $\int_{0}^\infty P(X>x)\mathrm{d}x =
+\int_0^{\infty} \int_x^{\infty}p(t)\mathrm{d}t\mathrm{d}x =
+\int_0^\infty \int_0^t \mathrm{d}xp(t)\mathrm{d}t= \int_{\mathbb{R^+}}tp(t)dt = \E{X}$
+
+类似还可证: $ \int_{\mathbb{R^+}}x P(X>x)\mathrm{d}x = \dfrac{\E{X^2}}{2}$
+\\
 \\
 
 当期望存在时: $nP(X > n) = n\int_n^{\infty}\mathrm{d}F(x)\le \int_n^{\infty}x\mathrm{d}F(x)$
