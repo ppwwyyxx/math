@@ -8,7 +8,7 @@ Think of $X_n = 0, 1 $ with prob 0.5 each, $Y_n=\sum X_n / n$
 number of sample paths of $Y_n$ not convergence to 0.5, is uncountable infinity:
 Proof: build any binary sequence combination of 001 and 101
 
-#### 2. convergence in probability 
+#### 2. convergence in probability
 $Y_n\xrightarrow{P}\mu$, as $n\to \infty$:
 $\forall \epsilon >0, \lim_{n\to\infty}Pr\{|Y_n-\mu|>\epsilon\}=0$
 for particular n, fraction of sample paths of length $ n$ within the good range ($\epsilon$ distance to $\mu$) tends to 1, as $n\to\infty$ .
@@ -47,7 +47,7 @@ $E[T]$: mean time in system
 For any open system, s.t. $\lambda = X, \overline{N}_{time}=\lambda \overline{T}_{time}$
 $\Rightarrow$ For any ergodic open system， $E[T] = \frac{E[N]}{\lambda}$
 
-Beautiful proof is on notes!
+__Beautiful proof__ is on notes!
 
 For a single queue, think of Little's Law on Serving!
 $\overline{N}=\rho,$ (fraction of time server is busy)
@@ -56,3 +56,20 @@ $\Rightarrow \rho = \lambda / \mu$
 
 In closed system, $N$ is fixed (in either batch closed or interactive closed).
 $N = X E[T]$, $T$ is average time for whole loop (running + thinking for interactive closed system)
+
+For any single device, little's law holds.
+
+#### Bottleneck's Law
+For a single device, $\rho_i = X E[D_i] = X E[S_i]E[V_i] = X_i E[S_i]$
+$V_i$ is number of visit on this device for a job.
+$D_i$ is the demanded total time of this device for each job.
+
+### well-approximate a closed system:
+For ANY interactive closed system, $N$ users and $m$ devices:
+Let $D_{max} = max E[D_i], D = \sum_{i=1}^mD_i$
+Then $X\le min \left\{ \frac{N}{D+E[Z]}, \frac{1}{D_{max}}\right\},
+E[R] \ge max\left\{ D, ND_{max}-E[Z]\right\}$
+First item in each is low $N$ asymptote, second is for high $N$.
+Proof:
+For high $N$, bottleneck $\rho \le 1$ is tight, therefore $X\le \frac{1}{D_{max}}$, the other part is trival.
+For low $N$, queueing time $\approx 0 \Rightarrow E[R]\ge D$ is tight, the rest is trival.
